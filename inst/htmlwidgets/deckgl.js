@@ -66,16 +66,8 @@ var deck = window.deck;
             layers: []
           });
 
-          /*
-          deckgl.setProps({
-            layers: [
-              helloWorld.scatterplotLayer(),
-              helloWorld.textLayer(x.message)
-            ]
-          });
-          */
-
           methods.addHelloWorldExample.apply(deckgl, [ x.message ]);
+
         },
 
         resize: function(width, height) {
