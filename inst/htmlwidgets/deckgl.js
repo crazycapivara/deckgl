@@ -1,28 +1,83 @@
-HTMLWidgets.widget({
+var deck = window.deck;
 
-  name: 'deckgl',
+(function() {"use strict"; // anonymos start
 
-  type: 'output',
+  var deckglWidget = window.deckglWidget = {};
 
-  factory: function(el, width, height) {
+  var helloWorld = {};
 
-    // TODO: define shared variables for this instance
+  helloWorld.scatterplotLayer = function() {
+    var data = [ { coordinates: [-122.45, 37.8] } ];
+    return new deck.ScatterplotLayer({
+      id: "points",
+      data: data,
+      getPosition: d => d.coordinates,
+      getRadius: d => 1400,
+      getColor: d => [255, 140, 0]
+    });
+  };
 
-    return {
+  helloWorld.textLayer = function(text) {
+    var data = [ { position: [-122.45, 37.8], text: text } ];
+    return new deck.TextLayer({
+      id: "text",
+      data: data
+    });
+  };
 
-      renderValue: function(x) {
+  var methods = {};
 
-        // TODO: code to render the widget, e.g.
-        el.innerText = x.message;
+  methods.addHelloWorldExample = function(text) {
+    this.setProps({
+      layers: [
+        helloWorld.scatterplotLayer(),
+        helloWorld.textLayer(text)
+      ]
+    });
+  };
 
-      },
+  HTMLWidgets.widget({
 
-      resize: function(width, height) {
+    name: 'deckgl',
 
-        // TODO: code to re-render the widget with a new size
+    type: 'output',
 
-      }
+    factory: function(el, width, height) {
 
-    };
-  }
-});
+      // TODO: define shared variables for this instance
+      deckglWidget.element = el;
+
+      var deckgl = null;
+
+      return {
+
+        renderValue: function(x) {
+
+          // TODO: code to render the widget, e.g.
+          //el.innerText = x.message;
+
+          console.log("deck.gl version: " + deck.version);
+
+          deckglWidget.deckgl = deckgl = new deck.DeckGL({
+            container: el.id,
+            longitude: -122.45,
+            latitude: 37.8,
+            zoom: 12,
+            layers: []
+          });
+
+          methods.addHelloWorldExample.apply(deckgl, [ x.message ]);
+
+        },
+
+        resize: function(width, height) {
+
+          // TODO: code to re-render the widget with a new size
+
+        }
+
+      };
+    }
+  });
+
+})(); // anonymos end
