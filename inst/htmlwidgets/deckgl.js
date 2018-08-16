@@ -27,8 +27,13 @@ var deck = window.deck;
 
   var methods = {};
 
-  methods.addHelloWorld = function() {
-
+  methods.addHelloWorldExample = function(text) {
+    this.setProps({
+      layers: [
+        helloWorld.scatterplotLayer(),
+        helloWorld.textLayer(text)
+      ]
+    });
   };
 
   HTMLWidgets.widget({
@@ -40,6 +45,8 @@ var deck = window.deck;
     factory: function(el, width, height) {
 
       // TODO: define shared variables for this instance
+      deckglWidget.element = el;
+
       var deckgl = null;
 
       return {
@@ -59,13 +66,16 @@ var deck = window.deck;
             layers: []
           });
 
+          /*
           deckgl.setProps({
             layers: [
               helloWorld.scatterplotLayer(),
               helloWorld.textLayer(x.message)
             ]
           });
+          */
 
+          methods.addHelloWorldExample.apply(deckgl, [ x.message ]);
         },
 
         resize: function(width, height) {
