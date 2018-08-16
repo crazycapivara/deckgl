@@ -51,31 +51,17 @@ var deck = window.deck;
 
           console.log("deck.gl version: " + deck.version);
 
-          var sampleDataPoints = [ { coordinates: [-122.45, 37.8] } ];
-          var sampleDataText = [ { position: [-122.45, 37.8], text: "Hello World"} ];
-
           deckglWidget.deckgl = deckgl = new deck.DeckGL({
             container: el.id,
             longitude: -122.45,
             latitude: 37.8,
             zoom: 12,
+            layers: []
+          });
+
+          deckgl.setProps({
             layers: [
-              /*
-              new deck.ScatterplotLayer({
-                id: "points",
-                data: sampleDataPoints,
-                getPosition: d => d.coordinates,
-                getRadius: d => 1200,
-                getColor: d => [255, 140, 0]
-              }),
-              */
               helloWorld.scatterplotLayer(),
-              /*
-              new deck.TextLayer({
-                id: "text",
-                data: sampleDataText
-              })
-              */
               helloWorld.textLayer(x.message)
             ]
           });
