@@ -1,28 +1,34 @@
-HTMLWidgets.widget({
+var deck = window.deck;
 
-  name: 'deckgl',
+(function() {"use strict"; // anonymos start
 
-  type: 'output',
+  HTMLWidgets.widget({
 
-  factory: function(el, width, height) {
+    name: 'deckgl',
 
-    // TODO: define shared variables for this instance
+    type: 'output',
 
-    return {
+    factory: function(el, width, height) {
 
-      renderValue: function(x) {
+      // TODO: define shared variables for this instance
 
-        // TODO: code to render the widget, e.g.
-        el.innerText = x.message;
+      return {
 
-      },
+        renderValue: function(x) {
 
-      resize: function(width, height) {
+          // TODO: code to render the widget, e.g.
+          el.innerText = x.message;
 
-        // TODO: code to re-render the widget with a new size
+        },
 
-      }
+        resize: function(width, height) {
 
-    };
-  }
-});
+          // TODO: code to re-render the widget with a new size
+
+        }
+
+      };
+    }
+  });
+
+})(); // anonymos end
