@@ -4,6 +4,27 @@ var deck = window.deck;
 
   var deckglWidget = window.deckglWidget = {};
 
+  var helloWorld = {};
+
+  helloWorld.scatterplotLayer = function() {
+    var data = [ { coordinates: [-122.45, 37.8] } ];
+    return new deck.ScatterplotLayer({
+      id: "points",
+      data: data,
+      getPosition: d => d.coordinates,
+      getRadius: d => 1400,
+      getColor: d => [255, 140, 0]
+    });
+  };
+
+  helloWorld.textLayer = function(text) {
+    var data = [ { position: [-122.45, 37.8], text: text } ];
+    return new deck.TextLayer({
+      id: "text",
+      data: data
+    });
+  };
+
   var methods = {};
 
   methods.addHelloWorld = function() {
@@ -39,6 +60,7 @@ var deck = window.deck;
             latitude: 37.8,
             zoom: 12,
             layers: [
+              /*
               new deck.ScatterplotLayer({
                 id: "points",
                 data: sampleDataPoints,
@@ -46,10 +68,15 @@ var deck = window.deck;
                 getRadius: d => 1200,
                 getColor: d => [255, 140, 0]
               }),
+              */
+              helloWorld.scatterplotLayer(),
+              /*
               new deck.TextLayer({
                 id: "text",
                 data: sampleDataText
               })
+              */
+              helloWorld.textLayer(x.message)
             ]
           });
 
