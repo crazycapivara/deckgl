@@ -4,17 +4,17 @@ var deck = window.deck;
 
   var deckglWidget = window.deckglWidget = {};
 
-  var newLayer = function(className, id, data, options) {
-    options.id = id;
-    options.data = data;
-    return new deck[className](options);
+  var newLayer = function(className, properties) {
+    return new deck[className](properties);
   };
 
   var tests = {};
 
   tests.textLayer = function() {
     const textData = "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json";
-    return newLayer("TextLayer", "text-layer", textData, {
+    return newLayer("TextLayer", {
+      id: "text-layer",
+      data: textData,
       getText: d => d.name,
       getPosition: d => d.coordinates,
       getSize: 32
@@ -85,16 +85,15 @@ var deck = window.deck;
 
           if (x.message) {
             methods.addHelloWorldExample.apply(deckgl, [ x.message ]);
+            return;
           }
-
 
           //deckglWidget.l = tests.textLayer();
           //deckgl.setProps({ layers: [ deckglWidget.l ] });
 
           deckglWidget.layers = x.layers.map(function(item) {
             console.log(item);
-            //return item;
-            return newLayer(item.className, item.id, item.data, item.args);
+            return newLayer(item.className, item.properties);
           });
 
           deckgl.setProps({ layers: deckglWidget.layers });
