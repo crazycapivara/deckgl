@@ -42,7 +42,7 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, width = NULL, height = 
 #' @name deckgl-shiny
 #'
 #' @export
-deckglOutput <- function(outputId, width = '100%', height = '400px'){
+deckglOutput <- function(outputId, width = '100%', height = '400px') {
   htmlwidgets::shinyWidgetOutput(outputId, 'deckgl', width, height, package = 'deckgl')
 }
 
