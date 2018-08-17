@@ -60,13 +60,15 @@ var deck = window.deck;
 
           deckglWidget.deckgl = deckgl = new deck.DeckGL({
             container: el.id,
-            longitude: -122.45,
-            latitude: 37.8,
+            longitude: x.longitude,
+            latitude: x.latitude,
             zoom: 12,
             layers: []
           });
 
-          methods.addHelloWorldExample.apply(deckgl, [ x.message ]);
+          if (x.message) {
+            methods.addHelloWorldExample.apply(deckgl, [ x.message ]);
+          }
 
         },
 

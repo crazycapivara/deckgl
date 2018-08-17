@@ -1,15 +1,16 @@
-#' <Add Title>
+#' Create deckgl widget
 #'
 #' <Add Description>
 #'
 #' @import htmlwidgets
 #'
 #' @export
-deckgl <- function(message, width = NULL, height = NULL, elementId = NULL) {
+deckgl <- function(latitude = 37.8, longitude = -122.45, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
-    message = message
+    latitude = latitude,
+    longitude = longitude
   )
 
   # create widget
