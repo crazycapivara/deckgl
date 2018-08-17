@@ -10,7 +10,8 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, width = NULL, height = 
   # forward options using x
   x = list(
     latitude = latitude,
-    longitude = longitude
+    longitude = longitude,
+    layers = list()
   )
 
   # create widget

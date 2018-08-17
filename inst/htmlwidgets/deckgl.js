@@ -88,8 +88,16 @@ var deck = window.deck;
           }
 
 
-          deckglWidget.l = tests.textLayer();
-          deckgl.setProps({ layers: [ deckglWidget.l ] });
+          //deckglWidget.l = tests.textLayer();
+          //deckgl.setProps({ layers: [ deckglWidget.l ] });
+
+          deckglWidget.layers = x.layers.map(function(item) {
+            console.log(item);
+            //return item;
+            return newLayer(item.className, item.id, item.data, item.args);
+          });
+
+          deckgl.setProps({ layers: deckglWidget.layers });
 
         },
 
