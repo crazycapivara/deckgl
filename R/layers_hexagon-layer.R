@@ -1,3 +1,5 @@
+# Example HexagonLayer
+# -----
 sf_bike_parking <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json"
 
 properties_hexagon_layer <- list(
