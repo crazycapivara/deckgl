@@ -4,6 +4,23 @@ var deck = window.deck;
 
   var deckglWidget = window.deckglWidget = {};
 
+  var newLayer = function(className, properties) {
+    return new deck[className](properties);
+  };
+
+  var tests = {};
+
+  tests.textLayer = function() {
+    const textData = "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json";
+    return newLayer("TextLayer", {
+      id: "text-layer",
+      data: textData,
+      getText: d => d.name,
+      getPosition: d => d.coordinates,
+      getSize: 32
+    });
+  };
+
   var helloWorld = {};
 
   helloWorld.scatterplotLayer = function() {
@@ -60,13 +77,26 @@ var deck = window.deck;
 
           deckglWidget.deckgl = deckgl = new deck.DeckGL({
             container: el.id,
-            longitude: -122.45,
-            latitude: 37.8,
-            zoom: 12,
+            longitude: x.longitude,
+            latitude: x.latitude,
+            zoom: x.zoom || 12,
             layers: []
           });
 
-          methods.addHelloWorldExample.apply(deckgl, [ x.message ]);
+          if (x.message) {
+            methods.addHelloWorldExample.apply(deckgl, [ x.message ]);
+            return;
+          }
+
+          //deckglWidget.l = tests.textLayer();
+          //deckgl.setProps({ layers: [ deckglWidget.l ] });
+
+          deckglWidget.layers = x.layers.map(function(item) {
+            console.log(item);
+            return newLayer(item.className, item.properties);
+          });
+
+          deckgl.setProps({ layers: deckglWidget.layers });
 
         },
 
