@@ -6,8 +6,8 @@ properties_hexagon_layer <- list(
   pickable = TRUE,
   extruded = TRUE,
   radius = 200,
-  elevationScale =  4,
-  getPosition =  htmlwidgets::JS("d => d.COORDINATES")
+  elevationScale =4,
+  getPosition = htmlwidgets::JS("data => data.COORDINATES")
 )
 
 #' @export
