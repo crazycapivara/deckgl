@@ -92,7 +92,11 @@ var deck = window.deck;
           //deckgl.setProps({ layers: [ deckglWidget.l ] });
 
           deckglWidget.layers = x.layers.map(function(item) {
+            if (item.properties.dataframeToD3) {
+              item.data = HTMLWidgets.dataframeToD3(item.data);
+            }
             console.log(item);
+            item.properties.data = item.data;
             return newLayer(item.className, item.properties);
           });
 
