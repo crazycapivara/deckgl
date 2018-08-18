@@ -13,4 +13,7 @@ properties <- list(
 )
 
 deckgl(latitude = lat, longitude = lng, zoom = 4) %>%
-  add_text_layer(data = cities, properties = properties)
+  add_text_layer(data = cities, properties = properties) %>%
+  # combine layers, TODO: move to separate example
+  add_scatterplot_layer(data = cities, properties = properties,
+                        getRadius = 1400, radiusScale = 12, getColor = c(255, 140, 0))
