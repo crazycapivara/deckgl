@@ -3,8 +3,8 @@
 bart_stations <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json"
 
 properties_text_layer <- list(
-  getPosition = htmlwidgets::JS("data => data.coordinates"),
-  getText = htmlwidgets::JS("data => data.name")
+  getPosition = JS("data => data.coordinates"),
+  getText = JS("data => data.name")
 )
 
 #' @export
