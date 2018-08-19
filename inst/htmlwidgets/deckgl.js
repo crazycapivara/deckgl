@@ -76,23 +76,32 @@ var deck = window.deck;
           console.log("deck.gl version: " + deck.version);
 
           deckglWidget.deckgl = deckgl = new deck.DeckGL({
+            mapboxApiAccessToken: x.mapboxApiAccessToken || "",
+            mapStyle: x.mapStyle || "",
             container: el.id,
             longitude: x.longitude,
             latitude: x.latitude,
-            zoom: x.zoom || 12,
+            zoom: x.zoom,
+            pitch: x.pitch,
             layers: []
           });
 
+          /*
           if (x.message) {
             methods.addHelloWorldExample.apply(deckgl, [ x.message ]);
             return;
           }
+          */
 
           //deckglWidget.l = tests.textLayer();
           //deckgl.setProps({ layers: [ deckglWidget.l ] });
 
           deckglWidget.layers = x.layers.map(function(item) {
+            if (item.properties.dataframeToD3) {
+              item.data = HTMLWidgets.dataframeToD3(item.data);
+            }
             console.log(item);
+            item.properties.data = item.data;
             return newLayer(item.className, item.properties);
           });
 
