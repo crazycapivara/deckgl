@@ -5,13 +5,15 @@
 #' @import htmlwidgets
 #'
 #' @export
-deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, width = NULL, height = NULL, elementId = NULL) {
+deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0,
+                   width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x <- list(
     latitude = latitude,
     longitude = longitude,
     zoom = zoom,
+    pitch = pitch,
     layers = list()
   )
 
