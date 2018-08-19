@@ -21,42 +21,6 @@ var deck = window.deck;
     });
   };
 
-  /*
-  var helloWorld = {};
-
-  helloWorld.scatterplotLayer = function() {
-    var data = [ { coordinates: [-122.45, 37.8] } ];
-    return new deck.ScatterplotLayer({
-      id: "points",
-      data: data,
-      getPosition: d => d.coordinates,
-      getRadius: d => 1400,
-      getColor: d => [255, 140, 0]
-    });
-  };
-
-  helloWorld.textLayer = function(text) {
-    var data = [ { position: [-122.45, 37.8], text: text } ];
-    return new deck.TextLayer({
-      id: "text",
-      data: data
-    });
-  };
-  */
-
-  /*
-  var methods = {};
-
-  methods.addHelloWorldExample = function(text) {
-    this.setProps({
-      layers: [
-        helloWorld.scatterplotLayer(),
-        helloWorld.textLayer(text)
-      ]
-    });
-  };
-  */
-
   HTMLWidgets.widget({
 
     name: 'deckgl',
@@ -89,16 +53,6 @@ var deck = window.deck;
             pitch: x.pitch,
             layers: []
           });
-
-          /*
-          if (x.message) {
-            methods.addHelloWorldExample.apply(deckgl, [ x.message ]);
-            return;
-          }
-          */
-
-          //deckglWidget.l = tests.textLayer();
-          //deckgl.setProps({ layers: [ deckglWidget.l ] });
 
           deckglWidget.layers = x.layers.map(function(item) {
             if (item.properties.dataframeToD3) {
