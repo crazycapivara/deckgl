@@ -11,16 +11,17 @@ var deck = window.deck;
   var tests = {};
 
   tests.textLayer = function() {
-    const textData = "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json";
+    const data = "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json";
     return newLayer("TextLayer", {
       id: "text-layer",
-      data: textData,
-      getText: d => d.name,
-      getPosition: d => d.coordinates,
+      data: data,
+      getText: data => data.name,
+      getPosition: data => data.coordinates,
       getSize: 32
     });
   };
 
+  /*
   var helloWorld = {};
 
   helloWorld.scatterplotLayer = function() {
@@ -41,7 +42,9 @@ var deck = window.deck;
       data: data
     });
   };
+  */
 
+  /*
   var methods = {};
 
   methods.addHelloWorldExample = function(text) {
@@ -52,6 +55,7 @@ var deck = window.deck;
       ]
     });
   };
+  */
 
   HTMLWidgets.widget({
 
@@ -61,7 +65,8 @@ var deck = window.deck;
 
     factory: function(el, width, height) {
 
-      // TODO: define shared variables for this instance
+      // Define shared variables for this instance
+
       deckglWidget.element = el;
 
       var deckgl = null;
@@ -70,8 +75,7 @@ var deck = window.deck;
 
         renderValue: function(x) {
 
-          // TODO: code to render the widget, e.g.
-          //el.innerText = x.message;
+          // Render the widget
 
           console.log("deck.gl version: " + deck.version);
 
