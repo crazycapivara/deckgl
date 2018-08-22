@@ -12,12 +12,11 @@ properties_hexagon_layer <- list(
 
 #' @export
 add_hexagon_layer <- function(deckgl, id = "hexagon-layer", data = NULL, properties = list(), ...) {
-  properties <- c(properties, list(...))
   # use sample data if no data is given
   if (is.null(data)) {
     data <- sf_bike_parking
     properties <- properties_hexagon_layer
   }
 
-  add_layer(deckgl, "HexagonLayer", id, data, properties)
+  add_layer(deckgl, "HexagonLayer", id, data, properties, ...)
 }
