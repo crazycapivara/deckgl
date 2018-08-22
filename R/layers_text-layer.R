@@ -9,12 +9,12 @@ properties_text_layer <- list(
 
 #' @export
 add_text_layer <- function(deckgl, id = "text-layer", data = NULL, properties = list(), ...) {
-  properties <- c(properties, list(...))
+  #properties <- c(properties, list(...))
   # use sample data if no data is given
   if (is.null(data)) {
     data <- bart_stations
     properties <- properties_text_layer
   }
 
-  add_layer(deckgl, "TextLayer", id, data, properties)
+  add_layer(deckgl, "TextLayer", id, data, properties, ...)
 }
