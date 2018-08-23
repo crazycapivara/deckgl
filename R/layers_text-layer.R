@@ -7,6 +7,12 @@ properties_text_layer <- list(
   getText = JS("data => data.name")
 )
 
+#' Add a text layer to the deckgl widget
+#'
+#' @inheritParams add_layer
+#'
+#' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/text-layer}
+#'
 #' @export
 add_text_layer <- function(deckgl, id = "text-layer", data = NULL, properties = list(), ...) {
   # use sample data if no data is given

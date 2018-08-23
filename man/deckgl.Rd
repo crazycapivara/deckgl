@@ -2,11 +2,29 @@
 % Please edit documentation in R/deckgl.R
 \name{deckgl}
 \alias{deckgl}
-\title{Create deckgl widget}
+\title{Create a deckgl widget}
 \usage{
 deckgl(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0,
   width = NULL, height = NULL, elementId = NULL)
 }
+\arguments{
+\item{latitude}{latitude of the initial view state}
+
+\item{longitude}{longitude of the initial view state}
+
+\item{zoom}{zoom of the initial view state}
+
+\item{pitch}{pitch of the initial view state}
+
+\item{width}{width of the widget}
+
+\item{height}{height of the widget}
+
+\item{elementId}{explicit element id (usually not needed)}
+}
+\value{
+deckgl widget
+}
 \description{
-<Add Description>
+Create a deckgl widget
 }
