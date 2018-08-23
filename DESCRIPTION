@@ -11,6 +11,7 @@ BugReports: https://github.com/crazycapivara/deckgl/issues/
 Depends: R (>= 3.3)
 Imports:
   htmlwidgets,
+  htmltools,
   magrittr
 License: MIT + file LICENSE
 Encoding: UTF-8
