@@ -2,7 +2,7 @@
 % Please edit documentation in R/layers_geojson-layer.R
 \name{add_geojson_layer}
 \alias{add_geojson_layer}
-\title{Add a text geojson to the deckgl widget}
+\title{Add a geojson layer to the deckgl widget}
 \usage{
 add_geojson_layer(deckgl, id = "geojson-layer", data = NULL,
   properties = list(), ...)
@@ -22,7 +22,7 @@ for the given layer class}
 want to use a properties object for more than one layer}
 }
 \description{
-Add a text geojson to the deckgl widget
+Add a geojson layer to the deckgl widget
 }
 \seealso{
 \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/geojson-layer}
