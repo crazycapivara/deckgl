@@ -1,4 +1,4 @@
-#' Add a text geojson to the deckgl widget
+#' Add a geojson layer to the deckgl widget
 #'
 #' @inheritParams add_layer
 #'
