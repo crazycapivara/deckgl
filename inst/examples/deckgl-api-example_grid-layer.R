@@ -18,5 +18,4 @@ properties <- list(
 token <- ""
 
 deckgl(zoom = 11, pitch = 45) %>%
-  # add_layer("ArcLayer", "arc-layer", sample_data, properties) %>% add_mapbox_basemap(token)
   add_grid_layer(data = sample_data, properties = properties) %>% add_mapbox_basemap(token)
