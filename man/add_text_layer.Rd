@@ -14,8 +14,9 @@ add_text_layer(deckgl, id = "text-layer", data = NULL,
 
 \item{data}{url to fetch data from or data object}
 
-\item{properties}{named list of properties with names corresponding to the
-properties as described in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl api reference} for the given layer class}
+\item{properties}{named list of properties with names corresponding to the properties defined
+in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
+for the given layer class}
 
 \item{...}{more properties (will be added to the properties object), useful if you
 want to use a properties object for more than one layer}

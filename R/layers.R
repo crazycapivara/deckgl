@@ -7,8 +7,9 @@
 #' @param class_name name of the js layer class, e. g. \code{ScatterplotLayer}
 #' @param id id of the layer
 #' @param data url to fetch data from or data object
-#' @param properties named list of properties with names corresponding to the
-#'   properties as described in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl api reference} for the given layer class
+#' @param properties named list of properties with names corresponding to the properties defined
+#'   in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
+#'   for the given layer class
 #' @param ... more properties (will be added to the properties object), useful if you
 #'   want to use a properties object for more than one layer
 #'
