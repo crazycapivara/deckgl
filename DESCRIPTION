@@ -1,7 +1,7 @@
 Package: deckgl
 Title: An R Interface to 'deck.gl'
-Version: 0.0.2
-Date: 2018-08-22
+Version: 0.1.0
+Date: 2018-08-23
 Authors@R: person("Stefan", "Kuethe", email = "crazycapivara@gmail.com", role = c("aut", "cre"))
 Maintainer: Stefan Kuethe <crazycapivara@gmail.com>
 Description: Makes the open-source JavaScript library 'deck.gl' <https://deck.gl/> available
@@ -11,6 +11,7 @@ BugReports: https://github.com/crazycapivara/deckgl/issues/
 Depends: R (>= 3.3)
 Imports:
   htmlwidgets,
+  htmltools,
   magrittr
 License: MIT + file LICENSE
 Encoding: UTF-8
