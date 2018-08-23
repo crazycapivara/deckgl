@@ -1,6 +1,14 @@
-#' Create deckgl widget
+#' Create a deckgl widget
 #'
-#' <Add Description>
+#' @param latitude latitude of the initial view state
+#' @param longitude longitude of the initial view state
+#' @param zoom zoom of the initial view state
+#' @param pitch pitch of the initial view state
+#' @param width width of the widget
+#' @param height height of the widget
+#' @param elementId explicit element id (usually not needed)
+#'
+#' @return deckgl widget
 #'
 #' @import htmlwidgets
 #'
