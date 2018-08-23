@@ -92,7 +92,7 @@ deckgl(zoom = 11, pitch = 45) %>%
 Layers
 ------
 
-Due to the generic function `add_layer` any kind of layer defined in the deckgl-api-reference is supported. The type of layer is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of `add_*_layer` shortcut functions instead:
+Due to the generic function `add_layer` any kind of layer defined in the deckgl-api-reference is supported. The type of layer is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of the `add_*_layer` shortcut functions instead:
 
 ``` r
 # Generic function
