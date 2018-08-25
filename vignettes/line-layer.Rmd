@@ -9,7 +9,7 @@ vignette: >
 
 The Line Layer renders flat lines joining pairs of source and target points, specified as latitude/longitude coordinates.
 
-```{r line-layer-example, eval = FALSE}
+```{r line-layer-example, eval = TRUE}
 library(deckgl)
 
 sample_data <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-segments.json"
@@ -28,4 +28,6 @@ deckgl(zoom = 10, pitch = 20, width = "100%") %>%
 
 ```
 
-see also [deckgl-api-reference-line-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/line-layer)
+## See also
+
+[deckgl-api-reference-line-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/line-layer)
