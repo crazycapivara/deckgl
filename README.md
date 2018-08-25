@@ -52,7 +52,7 @@ deckgl() %>%
 Usage
 -----
 
-First you need to create a deckgl widget:
+Create a deckgl widget:
 
 ``` r
 deckgl()
@@ -88,8 +88,8 @@ deckgl(zoom = 11, pitch = 45) %>%
   add_mapbox_basemap(token) # optional
 ```
 
--   The `data` parameter can either be an *url* to fetch data from or an *R data object*
--   The `properties` parameter is a *named list* with names corresponding to the properties defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given layer class. For the example above see [api-reference grid-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer). In case the property is a function (usually a lambda expression), just use the `JS` function in R to pass it to the layer object. In the example above this done for the properties `getPosition` and `onHover`.
+-   The `data` parameter can either be an *url* to fetch data from or an *data object*
+-   The `properties` parameter is a *named list* with names corresponding to the properties defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given layer class. For the example above see [grid-layer-api-reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer). In case the property is a function (usually in the form of a lambda expression), just use the `JS` function in R to pass it to the layer object. In the example above this is done for the properties `getPosition` and `onHover`.
 
 Layers
 ------
