@@ -45,6 +45,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/line-layer.html">LineLayer</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -111,7 +123,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>First you need to create a deckgl widget:</p>
+<p>Create a deckgl widget:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/deckgl.html">deckgl</a></span>()</code></pre></div>
 <p>Add a base map from mapbox (optional):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">token &lt;-<span class="st"> "yourSuperSecretApiToken"</span>
@@ -136,9 +148,9 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
 <span class="st">  </span><span class="kw"><a href="reference/add_grid_layer.html">add_grid_layer</a></span>(<span class="dt">data =</span> sample_data, <span class="dt">properties =</span> properties) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span>(token) <span class="co"># optional</span></code></pre></div>
 <ul>
-<li>The <code>data</code> parameter can either be an <em>url</em> to fetch data from or an <em>R data object</em>
+<li>The <code>data</code> parameter can either be an <em>url</em> to fetch data from or an <em>data object</em>
 </li>
-<li>The <code>properties</code> parameter is a <em>named list</em> with names corresponding to the properties defined in the <a href="https://deck.gl/#/documentation/deckgl-api-reference">deckgl-api-reference</a> for the given layer class. For the example above see <a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer">api-reference grid-layer</a>. In case the property is a function (usually in the form of a lambda expression), just use the <code>JS</code> function in R to pass it to the layer object. In the example above this is done for the properties <code>getPosition</code> and <code>onHover</code>.</li>
+<li>The <code>properties</code> parameter is a <em>named list</em> with names corresponding to the properties defined in the <a href="https://deck.gl/#/documentation/deckgl-api-reference">deckgl-api-reference</a> for the given layer class. For the example above see <a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer">grid-layer-api-reference</a>. In case the property is a function (usually in the form of a lambda expression), just use the <code>JS</code> function in R to pass it to the layer object. In the example above this is done for the properties <code>getPosition</code> and <code>onHover</code>.</li>
 </ul>
 </div>
 <div id="layers" class="section level2">
