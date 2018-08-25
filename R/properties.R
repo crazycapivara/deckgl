@@ -12,6 +12,7 @@ get_position <- function(latitude = NULL, longitude = NULL, coordinates = NULL) 
   coordinates_ <- is.null(coordinates) %>%
     ifelse(
       sprintf("[data.%s, data.%s]", longitude, latitude),
-      sprintf("data.%s", coordinates))
-  sprintf("data => %s", coordinates_) %>% JS
+      sprintf("data.%s", coordinates)
+    )
+  sprintf("data => %s", coordinates_) %>% JS()
 }
