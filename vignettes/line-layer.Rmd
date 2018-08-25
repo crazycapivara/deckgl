@@ -1,0 +1,31 @@
+---
+title: "LineLayer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{LineLayer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The Line Layer renders flat lines joining pairs of source and target points, specified as latitude/longitude coordinates.
+
+```{r line-layer-example, eval = FALSE}
+library(deckgl)
+
+sample_data <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-segments.json"
+
+properties <- list(
+  pickable = TRUE,
+  getStrokeWidth = 12,
+  getSourcePosition = get_position(coordinates = "from.coordinates"),
+  getTargetPosition = get_position(coordinates = "to.coordinates"),
+  getColor = JS("d => [Math.sqrt(d.inbound + d.outbound), 140, 0]"),
+  onHover = JS("({object}) => console.log(`${object.from.name} to ${object.to.name}`)")
+)
+
+deckgl(zoom = 10, pitch = 20, width = "100%") %>%
+  add_line_layer(data = sample_data, properties = properties)
+
+```
+
+see also [deckgl-api-reference-line-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/line-layer)
