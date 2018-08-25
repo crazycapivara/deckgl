@@ -3,7 +3,7 @@
 #' @param latitude latitude key in data object
 #' @param longitude longitude key in data object
 #' @param coordinates coordinates key in data object
-#'   (in the case \code{latitude} and \code{longitude} parameters are ignored)
+#'   (in this case \code{latitude} and \code{longitude} parameters are ignored)
 #'
 #' @return getPosition property
 #'

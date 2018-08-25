@@ -12,7 +12,7 @@ get_position(latitude = NULL, longitude = NULL, coordinates = NULL)
 \item{longitude}{longitude key in data object}
 
 \item{coordinates}{coordinates key in data object
-(in the case \code{latitude} and \code{longitude} parameters are ignored)}
+(in this case \code{latitude} and \code{longitude} parameters are ignored)}
 }
 \value{
 getPosition property
