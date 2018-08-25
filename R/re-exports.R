@@ -1,5 +1,7 @@
 #' @importFrom htmlwidgets JS
-#' @export JS
+#' @export
+htmlwidgets::JS
+
 #' @importFrom magrittr %>%
-#' @export %>%
-NULL
+#' @export
+magrittr::`%>%`
