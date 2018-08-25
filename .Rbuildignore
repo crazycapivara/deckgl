@@ -3,3 +3,4 @@
 ^README\.Rmd$
 ^README-.*\.png$
 playground/
+^\.travis\.yml$

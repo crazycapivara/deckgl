@@ -27,11 +27,11 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0,
 
   # create widget
   htmlwidgets::createWidget(
-    name = 'deckgl',
+    name = "deckgl",
     x,
     width = width,
     height = height,
-    package = 'deckgl',
+    package = "deckgl",
     elementId = elementId
   )
 }
@@ -53,13 +53,15 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0,
 #' @name deckgl-shiny
 #'
 #' @export
-deckglOutput <- function(outputId, width = '100%', height = '400px') {
-  htmlwidgets::shinyWidgetOutput(outputId, 'deckgl', width, height, package = 'deckgl')
+deckglOutput <- function(outputId, width = "100%", height = "400px") {
+  htmlwidgets::shinyWidgetOutput(outputId, "deckgl", width, height, package = "deckgl")
 }
 
 #' @rdname deckgl-shiny
 #' @export
 renderDeckgl <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) { expr <- substitute(expr) } # force quoted
+  if (!quoted) {
+    expr <- substitute(expr)
+  } # force quoted
   htmlwidgets::shinyRenderWidget(expr, deckglOutput, env, quoted = TRUE)
 }

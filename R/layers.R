@@ -17,9 +17,9 @@
 #'
 #' @export
 add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
-  properties = c(properties, list(...))
-  if (is.data.frame(data)){
-    properties$dataframeToD3 = TRUE
+  properties <- c(properties, list(...))
+  if (is.data.frame(data)) {
+    properties$dataframeToD3 <- TRUE
   }
 
   n <- length(deckgl$x$layers)

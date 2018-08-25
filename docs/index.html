@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">deckgl</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.1</span>
       </span>
     </div>
 
@@ -72,13 +72,14 @@
 <div id="an-r-interface-to-deck-gl" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#an-r-interface-to-deck-gl" class="anchor"></a>An R Interface to deck.gl</h1></div>
+
 <p>Deckgl for R makes the open-source JavaScript library <a href="https://deck.gl/">deck.gl</a> available within R via the <a href="https://www.htmlwidgets.org/">htmlwidgets</a> package.</p>
 <div id="notes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#notes" class="anchor"></a>Notes</h2>
 <ul>
 <li>It is a known issue that the deckgl widget might not be visible in the viewer pane of RStudio. Just open it in your browser by clicking <em>Show in new window</em> and everything will be fine.</li>
-<li>The documentation is work in progress. Please check the <a href="inst/examples">examples</a> as a starting point.</li>
+<li>The <a href="https://crazycapivara.github.io/deckgl/">documentation</a> is work in progress. Please check the <a href="inst/examples">examples</a> as a starting point.</li>
 <li>You do <em>not</em> need a <a href="https://www.mapbox.com/">mapbox</a> api key to use this package. It is always optional to add a base map from mapbox to your widget.</li>
 </ul>
 </div>
@@ -127,8 +128,8 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="dt">extruded =</span> <span class="ot">TRUE</span>,
   <span class="dt">cellSize =</span> <span class="dv">200</span>,
   <span class="dt">elevationScale =</span> <span class="dv">4</span>,
-  <span class="dt">getPosition =</span> <span class="kw">JS</span>(<span class="st">"data =&gt; data.COORDINATES"</span>),
-  <span class="dt">onHover =</span> <span class="kw">JS</span>(<span class="st">"({object}) =&gt; { if(object) console.log(object.count) }"</span>)
+  <span class="dt">getPosition =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"data =&gt; data.COORDINATES"</span>),
+  <span class="dt">onHover =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"({object}) =&gt; { if(object) console.log(object.count) }"</span>)
 )
 
 <span class="kw"><a href="reference/deckgl.html">deckgl</a></span>(<span class="dt">zoom =</span> <span class="dv">11</span>, <span class="dt">pitch =</span> <span class="dv">45</span>) <span class="op">%&gt;%</span>
@@ -137,7 +138,7 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
 <ul>
 <li>The <code>data</code> parameter can either be an <em>url</em> to fetch data from or an <em>R data object</em>
 </li>
-<li>The <code>properties</code> parameter is a <em>named list</em> with names corresponding to the properties defined in the <a href="https://deck.gl/#/documentation/deckgl-api-reference">deckgl-api-reference</a> for the given layer class. For the example above see <a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer">api-reference grid-layer</a>. In case the property is a function (usually a lambda expression), just use the <code>JS</code> function in R to pass it to the layer object. In the example above this done for the properties <code>getPosition</code> and <code>onHover</code>.</li>
+<li>The <code>properties</code> parameter is a <em>named list</em> with names corresponding to the properties defined in the <a href="https://deck.gl/#/documentation/deckgl-api-reference">deckgl-api-reference</a> for the given layer class. For the example above see <a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer">api-reference grid-layer</a>. In case the property is a function (usually in the form of a lambda expression), just use the <code>JS</code> function in R to pass it to the layer object. In the example above this is done for the properties <code>getPosition</code> and <code>onHover</code>.</li>
 </ul>
 </div>
 <div id="layers" class="section level2">
@@ -149,6 +150,15 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
 
 <span class="co"># Shortcut function</span>
 <span class="kw"><a href="reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/add_arc_layer.html">add_arc_layer</a></span>(<span class="st">"arc-layer"</span>, data, properties)</code></pre></div>
+</div>
+<div id="documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation" class="anchor"></a>Documentation</h2>
+<ul>
+<li><a href="https://crazycapivara.github.io/deckgl/">deckgl-api-reference for R</a></li>
+<li><a href="inst/examples">example scripts</a></li>
+<li><a href="https://deck.gl/#/documentation/deckgl-api-reference">deckgl-api-reference</a></li>
+</ul>
 </div>
 </div>
   </div>
@@ -174,17 +184,23 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Stefan Kuethe <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Stefan Küthe <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
-      </div>
+      <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://travis-ci.org/crazycapivara/deckgl"><img src="https://travis-ci.org/crazycapivara/deckgl.svg?branch=master" alt="Travis-CI Build Status"></a></li>
+</ul>
+</div>
+</div>
 
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Stefan Kuethe.</p>
+  <p>Developed by Stefan Küthe.</p>
 </div>
 
 <div class="pkgdown">
