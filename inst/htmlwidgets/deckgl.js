@@ -7,14 +7,21 @@ var deck = window.deck;
   var newLayer = function(className, properties) {
     if (properties.getTooltip) {
       properties.onHover = function({x, y, object}) {
+        var tooltipElement = deckglWidget.tooltipElement;
         if (!object) {
-          deckglWidget.tooltipElement.innerHTML = "";
+          tooltipElement.innerHTML = "";
           return;
         }
 
-        console.log(x, y, object);
+        // console.log(x, y, object);
         var text = properties.getTooltip(object);
-        deckglWidget.tooltipElement.innerHTML = text;
+        // TODO: add option to use fixed tooltip element
+        if (!properties.fixedTooltip) {
+          tooltipElement.style.top = y + "px";
+          tooltipElement.style.left = x + "px";
+        }
+
+        tooltipElement.innerHTML = text;
       };
     }
 
