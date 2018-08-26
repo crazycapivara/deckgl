@@ -7,7 +7,7 @@
 #' @return deckgl widget
 #'
 #' @export
-add_mapbox_basemap <- function(deckgl, token = "", style = "mapbox://styles/mapbox/light-v9") {
+add_mapbox_basemap <- function(deckgl, token = Sys.getenv("MAPBOX_API_TOKEN"), style = "mapbox://styles/mapbox/light-v9") {
   deckgl$dependencies <- c(
     deckgl$dependencies,
     mapboxgl_dependencies()
