@@ -4,7 +4,7 @@
 \alias{add_mapbox_basemap}
 \title{Add a base map from mapbox to the deckgl widget}
 \usage{
-add_mapbox_basemap(deckgl, token = "",
+add_mapbox_basemap(deckgl, token = Sys.getenv("MAPBOX_API_TOKEN"),
   style = "mapbox://styles/mapbox/light-v9")
 }
 \arguments{

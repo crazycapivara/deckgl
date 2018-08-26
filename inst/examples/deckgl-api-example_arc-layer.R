@@ -13,7 +13,8 @@ properties <- list(
   getTargetPosition = JS("d => d.to.coordinates"),
   getSourceColor = JS("d => [Math.sqrt(d.inbound), 140, 0]"),
   getTargetColor = JS("d => [Math.sqrt(d.outbound), 140, 0]"),
-  onHover = JS("({object}) => console.log(`${object.from.name} to ${object.to.name}`)")
+  #onHover = JS("({object}) => console.log(`${object.from.name} to ${object.to.name}`)")
+  getTooltip = JS("object => `${object.from.name} to ${object.to.name}`")
 )
 
 token <- ""
