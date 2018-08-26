@@ -4,4 +4,4 @@
     version: 6.0.3
     src: htmlwidgets/lib/deckgl
     script: deckgl.min.js
-#    stylesheet:
+    stylesheet: deckgl_.css

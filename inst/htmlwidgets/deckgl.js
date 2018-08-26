@@ -5,9 +5,30 @@ var deck = window.deck;
   var deckglWidget = window.deckglWidget = {};
 
   var newLayer = function(className, properties) {
+    if (properties.getTooltip) {
+      properties.onHover = function({x, y, object}) {
+        var tooltipElement = deckglWidget.tooltipElement;
+        if (!object) {
+          tooltipElement.innerHTML = "";
+          return;
+        }
+
+        // console.log(x, y, object);
+        var text = properties.getTooltip(object);
+        // TODO: add option to use fixed tooltip element
+        if (!properties.fixedTooltip) {
+          tooltipElement.style.top = y + "px";
+          tooltipElement.style.left = x + "px";
+        }
+
+        tooltipElement.innerHTML = text;
+      };
+    }
+
     return new deck[className](properties);
   };
 
+  // TODO: Remove tests!
   var tests = {};
 
   tests.textLayer = function() {
@@ -32,6 +53,12 @@ var deck = window.deck;
       // Define shared variables for this instance
 
       deckglWidget.element = el;
+
+      var tooltipElement = deckglWidget.tooltipElement = document.createElement("div");
+      tooltipElement.id = "tooltip";
+      // tooltipElement.style.background = "yellow";
+      el.appendChild(tooltipElement);
+      // tooltipElement.innerHTML = "bender";
 
       var deckgl = null;
 

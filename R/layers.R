@@ -9,7 +9,9 @@
 #' @param data url to fetch data from or data object
 #' @param properties named list of properties with names corresponding to the properties defined
 #'   in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
-#'   for the given layer class
+#'   for the given layer class, additionally there is a \code{getTooltip} property (callback)
+#'   showing a tooltip when the mouse enters an object,
+#'   e. g. \code{getTooltip = JS("object => object.name")}
 #' @param ... more properties (will be added to the properties object), useful if you
 #'   want to use a properties object for more than one layer
 #'
