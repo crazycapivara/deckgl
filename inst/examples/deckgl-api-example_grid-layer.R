@@ -12,7 +12,8 @@ properties <- list(
   cellSize = 200,
   elevationScale = 4,
   getPosition = JS("d => d.COORDINATES"),
-  getTooltip = JS("object => `${object.position.join(', ')}\nCount: ${object.count}`")
+  getTooltip = JS("object => `${object.position.join(', ')}\nCount: ${object.count}`"),
+  fixedTooltip = TRUE
   #onHover = JS("({x, y, object}) => { if(object) console.log(x, y, object.count) }")
 )
 
