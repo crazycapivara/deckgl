@@ -32,4 +32,4 @@ deckgl(zoom = 10, pitch = 35) %>%
 
 ## See also
 
-[deckgl-api-reference-line-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/arc-layer)
+[deckgl-api-reference-arc-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/arc-layer)
