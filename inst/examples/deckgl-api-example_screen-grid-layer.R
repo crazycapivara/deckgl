@@ -12,7 +12,7 @@ properties <- list(
   cellSizePixels = 50,
   minColor = c(0, 0, 0, 0),
   maxColor = c(0, 180, 0, 255),
-  getPosition = JS("d => d.COORDINATES"), #get_position(coordinates = "COORDINATES"),
+  getPosition = get_position(coordinates = "COORDINATES"),
   getWeight = JS("d => d.SPACES")
 )
 
