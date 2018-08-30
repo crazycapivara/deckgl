@@ -15,5 +15,5 @@ properties <- list(
 )
 
 deckgl() %>%
-  add_layer("PolygonLayer", "polygon-layer", data = sample_data, properties = properties) %>%
+  add_polygon_layer(data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
