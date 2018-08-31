@@ -11,6 +11,7 @@ properties <- list(
   getTooltip =JS("object => object.name")
 )
 
-deckgl() %>%
-  add_layer("PathLayer", "path-layer", data = sample_data, properties = properties) %>%
+deckgl(pitch = 25) %>%
+  add_path_layer(data = sample_data, properties = properties) %>%
+  #add_layer("PathLayer", "path-layer", data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
