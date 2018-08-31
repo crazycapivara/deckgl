@@ -13,5 +13,6 @@ properties <- list(
 )
 
 deckgl(pitch = 45, zoom = 11) %>%
-  add_layer("PointCloudLayer", "point-cloud-layer", data = sample_data, properties = properties) %>%
+  add_point_cloud_layer(data = sample_data, properties = properties) %>%
+  # add_layer("PointCloudLayer", "point-cloud-layer", data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
