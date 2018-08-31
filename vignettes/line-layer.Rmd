@@ -25,7 +25,6 @@ properties <- list(
 
 deckgl(zoom = 10, pitch = 20, width = "100%") %>%
   add_line_layer(data = sample_data, properties = properties)
-
 ```
 
 ## See also
