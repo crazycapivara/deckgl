@@ -4,6 +4,15 @@ var deck = window.deck;
 
   var deckglWidget = window.deckglWidget = {};
 
+  deckglWidget.colorToRGBArray = function(color) {
+    color = color.substring(1); // remove '#'
+    return [
+      parseInt(color.substring(0, 2), 16),
+      parseInt(color.substring(2, 4), 16),
+      parseInt(color.substring(4), 16)
+    ];
+  };
+
   var newLayer = function(className, properties) {
     if (properties.getTooltip) {
       properties.onHover = function({x, y, object}) {
