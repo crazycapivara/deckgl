@@ -25,6 +25,7 @@ properties <- list(
   getTooltip = JS ("object => `${object.name}\n${object.address}`")
 )
 
-deckgl() %>%
-  add_layer("IconLayer", "icon-layer", data = sample_data, properties = properties) %>%
+deckgl(pitch = 45) %>%
+  add_icon_layer(data = sample_data, properties = properties) %>%
+  # add_layer("IconLayer", "icon-layer", data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
