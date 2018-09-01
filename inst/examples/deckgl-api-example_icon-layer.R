@@ -1,3 +1,6 @@
+#' debug:
+#' js> deckglWidget.deckgl.layerManager.layers[0].props.iconAtlas
+# ' -----
 sample_data <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json"
 
 icon_atlas <- "https://deck.gl/images/icon-atlas.png"
@@ -15,8 +18,8 @@ icon_mapping <- list(
 
 properties <- list(
   pickable = TRUE,
-  iconAtlas = icon_atlas,
-  iconMapping = icon_mapping,
+  iconAtlas = encode_icon_atlas(), # icon_atlas,
+  iconMapping = list(marker = icon_definition()),
   sizeScale = 15,
   getPosition = get_position(coordinates = "coordinates"), # JS("d => d.coordinates"),
   getIcon = JS("d => 'marker'"),
