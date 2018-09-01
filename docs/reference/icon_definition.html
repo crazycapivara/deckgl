@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a polygon layer to the deckgl widget — add_polygon_layer • deckgl</title>
+<title>Icon definition on an atlas image — icon_definition • deckgl</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Add a polygon layer to the deckgl widget — add_polygon_layer" />
+<meta property="og:title" content="Icon definition on an atlas image — icon_definition" />
 
-<meta property="og:description" content="The Polygon Layer renders filled and/or stroked polygons." />
+<meta property="og:description" content="Icon definition on an atlas image" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -127,53 +127,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a polygon layer to the deckgl widget</h1>
-    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl//blob/master/R/layers_polygon-layer.R'><code>R/layers_polygon-layer.R</code></a></small>
-    <div class="hidden name"><code>add_polygon_layer.Rd</code></div>
+    <h1>Icon definition on an atlas image</h1>
+    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl//blob/master/R/icons.R'><code>R/icons.R</code></a></small>
+    <div class="hidden name"><code>icon_definition.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The Polygon Layer renders filled and/or stroked polygons.</p>
+    <p>Icon definition on an atlas image</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_polygon_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"polygon-layer"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>properties</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>icon_definition</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>128</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>128</span>, <span class='kw'>anchorX</span> <span class='kw'>=</span> <span class='fl'>64</span>,
+  <span class='kw'>anchorY</span> <span class='kw'>=</span> <span class='fl'>128</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>deckgl</th>
-      <td><p>deckgl widget</p></td>
+      <th>x</th>
+      <td><p>x position of icon on the atlas image</p></td>
     </tr>
     <tr>
-      <th>id</th>
-      <td><p>id of the layer</p></td>
+      <th>y</th>
+      <td><p>y position of icon on the atlas image</p></td>
     </tr>
     <tr>
-      <th>data</th>
-      <td><p>url to fetch data from or data object</p></td>
+      <th>width</th>
+      <td><p>width of icon on the atlas image</p></td>
     </tr>
     <tr>
-      <th>properties</th>
-      <td><p>named list of properties with names corresponding to the properties defined
-in the <a href='https://deck.gl/#/documentation/deckgl-api-reference'>deckgl-api-reference</a>
-for the given layer class, additionally there is a <code>getTooltip</code> property (callback)
-showing a tooltip when the mouse enters an object,
-e. g. <code>getTooltip = JS("object =&gt; object.name")</code></p></td>
+      <th>height</th>
+      <td><p>height of icon on the atlas image</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>more properties (will be added to the properties object), useful if you
-want to use a properties object for more than one layer</p></td>
+      <th>anchorX</th>
+      <td><p>horizontal position of icon anchor</p></td>
+    </tr>
+    <tr>
+      <th>anchorY</th>
+      <td><p>vertical position of icon anchor</p></td>
+    </tr>
+    <tr>
+      <th>mask</th>
+      <td><p>whether icon is treated as a transparency mask,
+if <code>TRUE</code>, user defined color is applied,
+if <code>FALSE</code>, pixel color from the image is applied</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/polygon-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/polygon-layer</a></p></div>
     
 
   </div>
@@ -181,9 +182,7 @@ want to use a properties object for more than one layer</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#see-also">See also</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>
