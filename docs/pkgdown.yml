@@ -4,6 +4,7 @@ pkgdown_sha: ~
 articles:
   arc-layer: arc-layer.html
   grid-layer: grid-layer.html
+  icon-layer: icon-layer.html
   line-layer: line-layer.html
   polygon-layer: polygon-layer.html
   screen-grid-layer: screen-grid-layer.html
