@@ -12,7 +12,8 @@ Depends: R (>= 3.3)
 Imports:
   htmlwidgets,
   htmltools,
-  magrittr
+  magrittr,
+  base64enc
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

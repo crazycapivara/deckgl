@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LineLayer • deckgl</title>
+<title>IconLayer • deckgl</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="LineLayer">
+<script src="../pkgdown.js"></script><meta property="og:title" content="IconLayer">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -94,36 +94,42 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>LineLayer</h1>
+      <h1>IconLayer</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/crazycapivara/deckgl//blob/master/vignettes/line-layer.Rmd"><code>vignettes/line-layer.Rmd</code></a></small>
-      <div class="hidden name"><code>line-layer.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/crazycapivara/deckgl//blob/master/vignettes/icon-layer.Rmd"><code>vignettes/icon-layer.Rmd</code></a></small>
+      <div class="hidden name"><code>icon-layer.Rmd</code></div>
 
     </div>
 
     
     
-<p>The Line Layer renders flat lines joining pairs of source and target points, specified as latitude/longitude coordinates.</p>
+<p>The Icon Layer renders raster icons at given coordinates.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(deckgl)
 
-sample_data &lt;-<span class="st"> "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-segments.json"</span>
+sample_data &lt;-<span class="st"> "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json"</span>
+
+<span class="co"># icon_atlas &lt;- "https://deck.gl/images/icon-atlas.png"</span>
 
 properties &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="dt">pickable =</span> <span class="ot">TRUE</span>,
-  <span class="dt">getStrokeWidth =</span> <span class="dv">12</span>,
-  <span class="dt">getSourcePosition =</span> <span class="kw"><a href="../reference/get_position.html">get_position</a></span>(<span class="dt">coordinates =</span> <span class="st">"from.coordinates"</span>),
-  <span class="dt">getTargetPosition =</span> <span class="kw"><a href="../reference/get_position.html">get_position</a></span>(<span class="dt">coordinates =</span> <span class="st">"to.coordinates"</span>),
-  <span class="dt">getColor =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"d =&gt; [Math.sqrt(d.inbound + d.outbound), 140, 0]"</span>),
-  <span class="dt">onHover =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"({object}) =&gt; console.log(`${object.from.name} to ${object.to.name}`)"</span>)
+  <span class="dt">iconAtlas =</span> <span class="kw"><a href="../reference/encode_icon_atlas.html">encode_icon_atlas</a></span>(), <span class="co"># icon_atlas,</span>
+  <span class="dt">iconMapping =</span> <span class="kw">list</span>(<span class="dt">marker =</span> <span class="kw"><a href="../reference/icon_definition.html">icon_definition</a></span>()),
+  <span class="dt">sizeScale =</span> <span class="dv">15</span>,
+  <span class="dt">getPosition =</span> <span class="kw"><a href="../reference/get_position.html">get_position</a></span>(<span class="dt">coordinates =</span> <span class="st">"coordinates"</span>),
+  <span class="dt">getIcon =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"d =&gt; 'marker'"</span>),
+  <span class="dt">getSize =</span> <span class="dv">5</span>,
+  <span class="dt">getColor =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"d =&gt; [Math.sqrt(d.exits), 140, 0]"</span>),
+  <span class="dt">getTooltip =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span> (<span class="st">"object =&gt; `${object.name}</span><span class="ch">\n</span><span class="st">${object.address}`"</span>)
 )
 
-<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">zoom =</span> <span class="dv">10</span>, <span class="dt">pitch =</span> <span class="dv">20</span>, <span class="dt">width =</span> <span class="st">"100%"</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_line_layer.html">add_line_layer</a></span>(<span class="dt">data =</span> sample_data, <span class="dt">properties =</span> properties)</code></pre></div>
+<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">pitch =</span> <span class="dv">45</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/add_icon_layer.html">add_icon_layer</a></span>(<span class="dt">data =</span> sample_data, <span class="dt">properties =</span> properties) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span>()</code></pre></div>
 <div id="see-also" class="section level2">
 <h2 class="hasAnchor">
 <a href="#see-also" class="anchor"></a>See also</h2>
-<p><a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/line-layer">deckgl-api-reference-line-layer</a></p>
+<p><a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/icon-layer">deckgl-api-reference-icon-layer</a></p>
 </div>
   </div>
 
