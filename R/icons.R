@@ -7,7 +7,7 @@
 #' @export
 encode_icon_atlas <- function(filename = NULL) { # nocov start
   if (is.null(filename)) {
-    filename <-system.file("icons/icon-atlas.png", package = "deckgl")
+    filename <- system.file("icons/icon-atlas.png", package = "deckgl")
   }
 
   paste("data:image/png;base64,", base64enc::base64encode(filename))
