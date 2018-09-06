@@ -22,10 +22,11 @@ properties <- list(
   iconMapping = list(marker = icon_definition()),
   sizeScale = 15,
   getPosition = get_position(coordinates = "coordinates"), # JS("d => d.coordinates"),
+  #getPosition = get_position(latitude = "lat", longitude = "lng"),
   getIcon = JS("d => 'marker'"),
   getSize = 5,
   getColor = JS("d => [Math.sqrt(d.exits), 140, 0]"),
-  getTooltip = JS ("object => `${object.name}\n${object.address}`")
+  getTooltip = JS("object => `${object.name}\n${object.address}`")
 )
 
 deckgl(pitch = 45) %>%
