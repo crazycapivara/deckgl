@@ -5,6 +5,9 @@ filename <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/w
 sf_bike_parking <- read_json(filename, simplifyVector = TRUE) %>%
   as.tibble() %>%
   unnest_coords(coordinates = "COORDINATES")
+names(sf_bike_parking) %<>% tolower()
+
+write_json(sf_bike_parking, "inst/sample-data/sf-bike-parking.json")
 
 # --------------- test dataset
 deckgl(zoom = 11, pitch = 45) %>%

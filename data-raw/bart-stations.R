@@ -5,6 +5,9 @@ filename <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/w
 bart_stations <- read_json(filename, simplifyVector = TRUE) %>%
   as.tibble() %>%
   unnest_coords()
+bart_stations[c("entries", "exits")] %<>% lapply(as.numeric)
+
+write_json(bart_stations, "inst/sample-data/bart-stations.json")
 
 # --------------- test dataset
 deckgl() %>%

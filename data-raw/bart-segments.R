@@ -11,6 +11,8 @@ bart_segments[c("from_name", "from_lng", "from_lat")] <- bart_segments_$from %>%
 bart_segments[c("to_name", "to_lng", "to_lat")] <- bart_segments_$to %>%
   unnest_coords()
 
+write_json(bart_segments, "inst/sample-data/bart-segments.json")
+
 # --------------- test dataset
 deckgl() %>%
   add_arc_layer(
