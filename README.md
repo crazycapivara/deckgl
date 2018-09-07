@@ -61,10 +61,10 @@ deckgl()
 Add a base map from mapbox (optional):
 
 ``` r
-token <- "yourSuperSecretApiToken"
+Sys.setenv(MAPBOX_API_TOKEN = "yourSuperSecretApiToken")
 
 deckgl() %>%
-  add_mapbox_basemap(token, style = "mapbox://styles/mapbox/dark-v9")
+  add_mapbox_basemap(style = "mapbox://styles/mapbox/dark-v9")
 ```
 
 Add any kind of layers:
@@ -80,16 +80,16 @@ properties <- list(
   cellSize = 200,
   elevationScale = 4,
   getPosition = JS("data => data.COORDINATES"),
-  onHover = JS("({object}) => { if(object) console.log(object.count) }")
+  getTooltip = JS("object => object.count")
 )
 
 deckgl(zoom = 11, pitch = 45) %>%
   add_grid_layer(data = sample_data, properties = properties) %>%
-  add_mapbox_basemap(token) # optional
+  add_mapbox_basemap() # optional
 ```
 
--   The `data` parameter can either be an *url* to fetch data from or an *data object*
--   The `properties` parameter is a *named list* with names corresponding to the properties defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given layer class. For the example above see [grid-layer-api-reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer). In case the property is a function (usually in the form of a lambda expression), just use the `JS` function in R to pass it to the layer object. In the example above this is done for the properties `getPosition` and `onHover`.
+-   The `data` parameter can either be an *url* to fetch data from or a *data object*
+-   The `properties` parameter is a *named list* with names corresponding to the properties defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given layer class. For the example above see [grid-layer-api-reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer). In case the property is a function (usually in the form of a lambda expression), just use the `JS` function in R to pass it to the layer object. In the example above this is done for the properties `getPosition` and `getTooltip`.
 
 Layers
 ------
