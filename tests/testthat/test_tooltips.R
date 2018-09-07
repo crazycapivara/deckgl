@@ -1,9 +1,5 @@
 context("tooltips")
 
-properties_ <- function(deckgl) {
-  deckgl$x$layers[[1]]$properties
-}
-
 test_that("pickable not set", {
   # Prepare
   sample_data <- "some-sample-data"
