@@ -10,8 +10,8 @@ view <- fluidPage(
 backend <- function(input, output) {
   output$deckgl <- renderDeckgl({
     deckgl(pitch = 45) %>%
+      # 'data = NULL' loads some sample data
       add_hexagon_layer(
-        pickable = TRUE,
         getTooltip = JS("object => `count: ${object.points.length}`")
       ) %>%
       add_mapbox_basemap()
