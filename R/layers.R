@@ -20,6 +20,10 @@
 #' @export
 add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
   properties <- c(properties, list(...))
+  if (!is.null(properties$getTooltip) && is.null(properties$pickable)) {
+    properties$pickable <- TRUE
+  }
+
   if (is.data.frame(data)) {
     properties$dataframeToD3 <- TRUE
   }
