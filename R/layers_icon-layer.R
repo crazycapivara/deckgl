@@ -7,22 +7,50 @@
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/icon-layer}
 #'
 #' @export
-add_icon_layer <- function(deckgl, id = "icon-layer", data = NULL, properties = list(), ...) {
-  properties <- properties_icon(properties, ...)
+add_icon_layer <- function(
+  deckgl, id = "icon-layer", data = NULL, properties = default_icon_properties(), ...) {
+  #properties <- properties_icon(properties, ...)
   add_layer(deckgl, "IconLayer", id, data, properties, ...)
 }
 
 # TODO: Maybe export function as 'default_icon_properties'
-properties_icon <- function(properties = list(), ...) {
-  if (c(properties, list(...))$iconAtlas %>% is.null()) {
-    properties$defaultIcon <- TRUE
-    properties$iconAtlas <- encode_icon_atlas()
-    properties$iconMapping <- list(marker = icon_definition())
-    properties$getIcon <- JS("d => 'marker'")
-    properties$getColor <- c(240, 140, 0)
-    properties$sizeScale <- 15
-    properties$getSize <- 5
-  }
+#properties_icon <- function(properties = list(), ...) {
+#  if (c(properties, list(...))$iconAtlas %>% is.null()) {
+#    properties$defaultIcon <- TRUE
+#    properties$iconAtlas <- encode_icon_atlas()
+#    properties$iconMapping <- list(marker = icon_definition())
+#    properties$getIcon <- JS("d => 'marker'")
+#    properties$getColor <- c(240, 140, 0)
+#    properties$sizeScale <- 15
+#    properties$getSize <- 5
+#  }
+#
+#  properties
+#}
 
-  properties
+#' Default icon properties
+#'
+#' Returns icon properties with default values for \code{iconAtlas}, \code{iconMapping}
+#' and \code{getIcon}, so that the default icon is used.
+#'
+#' @param sizeScale icon size multiplier
+#' @param getSize height of each object (in pixels),
+#'   if a number is provided, it is used as the size for all objects,
+#'   if a function is provided, it is called on each object to retrieve its size
+#' @param getColor rgba color of each object,
+#'   if an array is provided, it is used as the color for all objects
+#'   if a function is provided, it is called on each object to retrieve its color
+#' @param ... more properties (see \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/icon-layer})
+#'
+#' @export
+default_icon_properties <- function(sizeScale = 15, getSize = 5, getColor = c(240, 140, 0), ...) {
+  properties <- list(
+    iconAtlas = encode_icon_atlas(),
+    iconMapping = list(marker = icon_definition()),
+    getIcon = JS("d => 'marker'"),
+    sizeScale = sizeScale,
+    getSize = getSize,
+    getColor = getColor
+  )
+  merge_properties(properties, list(...))
 }

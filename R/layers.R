@@ -19,7 +19,8 @@
 #'
 #' @export
 add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
-  properties <- c(properties, list(...))
+  properties <- merge_properties(properties, list(...))
+  #properties <- c(properties, list(...))
   if (!is.null(properties$getTooltip) && is.null(properties$pickable)) {
     properties$pickable <- TRUE
   }
@@ -35,4 +36,12 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
     properties = c(id = id, properties)
   )
   deckgl
+}
+
+# Merge properties overwriting duplicates
+merge_properties <- function(x, y) {
+  for (name in names(y)) {
+    x[[name]] <- y[[name]]
+  }
+  x
 }
