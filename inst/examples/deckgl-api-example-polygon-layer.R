@@ -8,7 +8,7 @@ properties <- list(
   lineWidthMinPixels = 1,
   getPolygon = JS("d => d.contour"),
   getElevation = JS("d => d.population / d.area / 10"),
-  getFillColor= JS("d => [d.population / d.area / 60, 140, 0]"),
+  getFillColor = JS("d => [d.population / d.area / 60, 140, 0]"),
   getLineColor = c(80, 80, 80),
   getLineWidth = 1,
   getTooltip = JS("object => `${object.zipcode}\nPopulation: ${object.population}`")

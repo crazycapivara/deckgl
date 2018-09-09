@@ -14,7 +14,7 @@ properties <- list(
   getPosition = JS("d => d.COORDINATES"),
   getTooltip = JS("object => `${object.position.join(', ')}\nCount: ${object.count}`"),
   fixedTooltip = TRUE
-  #onHover = JS("({x, y, object}) => { if(object) console.log(x, y, object.count) }")
+  # onHover = JS("({x, y, object}) => { if(object) console.log(x, y, object.count) }")
 )
 
 deckgl(zoom = 11, pitch = 45) %>%

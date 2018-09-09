@@ -16,5 +16,6 @@ properties <- list(
   getWeight = JS("d => d.SPACES")
 )
 
-deckgl() %>% add_screen_grid_layer(data = sample_data, properties = properties) %>%
+deckgl() %>%
+  add_screen_grid_layer(data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
