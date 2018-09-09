@@ -5,7 +5,7 @@
 \title{Default icon properties}
 \usage{
 default_icon_properties(sizeScale = 15, getSize = 5, getColor = c(240,
-  140, 0), ...)
+  140, 0))
 }
 \arguments{
 \item{sizeScale}{icon size multiplier}
@@ -17,8 +17,6 @@ if a function is provided, it is called on each object to retrieve its size}
 \item{getColor}{rgba color of each object,
 if an array is provided, it is used as the color for all objects
 if a function is provided, it is called on each object to retrieve its color}
-
-\item{...}{more properties (see \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/icon-layer})}
 }
 \description{
 Returns icon properties with default values for \code{iconAtlas}, \code{iconMapping}

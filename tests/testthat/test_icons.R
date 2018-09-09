@@ -14,7 +14,7 @@ test_that("default atlas image", {
   expect_equal(properties$iconMapping, list(marker = icon_definition()))
 })
 
-test_that("custom atlas image", {
+test_that("overwrite atlas image only", {
   # Prepare
   sample_data <- "some_data"
   custom_atlas_image <- "https://deck.gl/images/icon-atlas.png"
@@ -25,5 +25,20 @@ test_that("custom atlas image", {
 
   # Assert
   expect_equal(properties_(deckgl)$iconAtlas, custom_atlas_image)
-  #expect_null(properties_(deckgl)$iconMapping)
+  expect_equal(properties_(deckgl)$iconMapping$marker, icon_definition())
+})
+
+test_that("custom icon properties", {
+  # Prepare
+  sample_data <- "some_data"
+  custom_atlas_image <- "https://deck.gl/images/icon-atlas.png"
+  properties <- list (iconAtlas = custom_atlas_image)
+
+  # Act
+  deckgl <- deckgl() %>%
+    add_icon_layer(data = sample_data, properties = properties)
+
+  # Assert
+  expect_equal(properties_(deckgl)$iconAtlas, custom_atlas_image)
+  expect_null(properties_(deckgl)$iconMapping)
 })
