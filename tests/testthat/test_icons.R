@@ -32,7 +32,7 @@ test_that("custom icon properties", {
   # Prepare
   sample_data <- "some_data"
   custom_atlas_image <- "https://deck.gl/images/icon-atlas.png"
-  properties <- list (iconAtlas = custom_atlas_image)
+  properties <- list(iconAtlas = custom_atlas_image)
 
   # Act
   deckgl <- deckgl() %>%

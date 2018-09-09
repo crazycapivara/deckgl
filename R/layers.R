@@ -20,7 +20,6 @@
 #' @export
 add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
   properties <- merge_properties(properties, list(...))
-  #properties <- c(properties, list(...))
   if (!is.null(properties$getTooltip) && is.null(properties$pickable)) {
     properties$pickable <- TRUE
   }

@@ -15,7 +15,8 @@ test_that("merge properties", {
 
   # Act
   properties <- merge_properties(
-    default_icon_properties, overwrite_and_add_properties)
+    default_icon_properties, overwrite_and_add_properties
+  )
 
   # Assert
   expect_equal(properties$getColor, c(140, 120, 0))
