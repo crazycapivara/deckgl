@@ -14,6 +14,17 @@ var deck = window.deck;
   };
 
   var newLayer = function(className, properties) {
+    // Pass data back to R in 'shinyMode'
+    if (HTMLWidgets.shinyMode) {
+      console.log("Shiny mode");
+      properties.onClick = function(info) {
+        // console.log(info);
+        var data_ = { lnglat: info.lngLat, object: info.object };
+        console.log(data_);
+        Shiny.onInputChange(deckglWidget.element.id + "_onclick", data_);
+      };
+    }
+
     if (properties.getTooltip) {
       properties.onHover = function({x, y, object}) {
         var tooltipElement = deckglWidget.tooltipElement;
