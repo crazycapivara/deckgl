@@ -105,6 +105,7 @@ var deck = window.deck;
             mapStyle: x.mapStyle || "",
             container: el.id,
             initialViewState: x.initialViewState || initialViewState(x),
+            views: x.views || new MapView(),
             /*
             longitude: x.longitude,
             latitude: x.latitude,
