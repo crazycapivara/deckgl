@@ -48,6 +48,16 @@ var deck = window.deck;
     return new deck[className](properties);
   };
 
+  var initialViewState = function(x) {
+    return {
+      longitude: x.longitude,
+      latitude: x.latitude,
+      zoom: x.zoom,
+      pitch: x.pitch,
+      bearing: x.bearing
+    };
+  };
+
   // TODO: Remove tests!
   var tests = {};
 
@@ -94,11 +104,14 @@ var deck = window.deck;
             mapboxApiAccessToken: x.mapboxApiAccessToken || "",
             mapStyle: x.mapStyle || "",
             container: el.id,
+            initialViewState: x.initialViewState || initialViewState(x),
+            /*
             longitude: x.longitude,
             latitude: x.latitude,
             zoom: x.zoom,
             pitch: x.pitch,
             bearing: x.bearing,
+            */
             layers: []
           });
 

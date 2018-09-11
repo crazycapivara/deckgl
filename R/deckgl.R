@@ -5,6 +5,8 @@
 #' @param zoom zoom of the initial view state
 #' @param pitch pitch of the initial view state
 #' @param bearing bearing of the initial view state
+#' @param initialViewState initial view state,
+#'   if set, other view state arguments (\code{longitude}, \code{latidude} etc.) are ignored
 #' @param width width of the widget
 #' @param height height of the widget
 #' @param elementId explicit element id (usually not needed)
@@ -15,6 +17,7 @@
 #'
 #' @export
 deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, bearing = 0,
+                   initialViewState = NULL,
                    width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
@@ -24,6 +27,7 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, b
     zoom = zoom,
     pitch = pitch,
     bearing = bearing,
+    initialViewState = initialViewState,
     layers = list()
   )
 

@@ -5,7 +5,8 @@
 \title{Create a deckgl widget}
 \usage{
 deckgl(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0,
-  bearing = 0, width = NULL, height = NULL, elementId = NULL)
+  bearing = 0, initialViewState = NULL, width = NULL, height = NULL,
+  elementId = NULL)
 }
 \arguments{
 \item{latitude}{latitude of the initial view state}
@@ -17,6 +18,9 @@ deckgl(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0,
 \item{pitch}{pitch of the initial view state}
 
 \item{bearing}{bearing of the initial view state}
+
+\item{initialViewState}{initial view state,
+if set, other view state arguments (\code{longitude}, \code{latidude} etc.) are ignored}
 
 \item{width}{width of the widget}
 
