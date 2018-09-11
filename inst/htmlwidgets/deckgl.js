@@ -98,6 +98,7 @@ var deck = window.deck;
             latitude: x.latitude,
             zoom: x.zoom,
             pitch: x.pitch,
+            bearing: x.bearing,
             layers: []
           });
 
