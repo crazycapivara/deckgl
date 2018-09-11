@@ -22,7 +22,7 @@ backend <- function(input, output) {
   observeEvent(input$deckgl_onclick, {
     info <- input$deckgl_onclick
     object <- info$object
-    #print(info)
+    # print(info)
     print(object$points %>% length())
     print(object$centroid)
   })
@@ -30,12 +30,15 @@ backend <- function(input, output) {
   df <- eventReactive(input$deckgl_onclick, {
     df <- input$deckgl_onclick$object$points %>%
       sapply("[", c("ADDRESS", "RACKS", "SPACES")) %>%
-      t() %>% as.data.frame()
+      t() %>%
+      as.data.frame()
     df[, c("RACKS", "SPACES")] %<>% sapply(as.integer)
     df
   })
 
-  output$selected <- renderTable({df()})
+  output$selected <- renderTable({
+    df()
+  })
 }
 
 shinyApp(view, backend)
