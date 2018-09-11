@@ -19,9 +19,9 @@ var deck = window.deck;
       console.log("Shiny mode");
       properties.onClick = function(info) {
         // console.log(info);
-        var data_ = { lnglat: info.lngLat, object: info.object };
-        console.log(data_);
-        Shiny.onInputChange(deckglWidget.element.id + "_onclick", data_);
+        var data = { lng: info.lngLat[0], lat: info.lngLat[1], object: info.object };
+        console.log(data);
+        Shiny.onInputChange(deckglWidget.element.id + "_onclick", data);
       };
     }
 

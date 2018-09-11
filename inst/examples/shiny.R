@@ -1,10 +1,12 @@
+library(magrittr)
 library(shiny)
 library(deckgl)
 
 view <- fluidPage(
   h1("deckgl for R"),
   deckglOutput("deckgl"),
-  style = "font-family: ubuntu;"
+  tableOutput("selected"),
+  style = "font-family: Helvetica, Arial, sans-serif;"
 )
 
 backend <- function(input, output) {
@@ -18,17 +20,22 @@ backend <- function(input, output) {
   })
 
   observeEvent(input$deckgl_onclick, {
-    object <- input$deckgl_onclick$object
-    print(input$deckgl_onclick$lnglat)
+    info <- input$deckgl_onclick
+    object <- info$object
+    #print(info)
     print(object$points %>% length())
     print(object$centroid)
-    df <- data.frame(
-      count = length(object$points),
-      lng = object$centroid[[1]][1],
-      lat = object$centroid[[2]][1]
-    )
-    print(df)
   })
+
+  df <- eventReactive(input$deckgl_onclick, {
+    df <- input$deckgl_onclick$object$points %>%
+      sapply("[", c("ADDRESS", "RACKS", "SPACES")) %>%
+      t() %>% as.data.frame()
+    df[, c("RACKS", "SPACES")] %<>% sapply(as.integer)
+    df
+  })
+
+  output$selected <- renderTable({df()})
 }
 
 shinyApp(view, backend)
