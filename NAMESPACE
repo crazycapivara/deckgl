@@ -3,6 +3,7 @@
 export("%>%")
 export(JS)
 export(add_arc_layer)
+export(add_contour_layer)
 export(add_geojson_layer)
 export(add_grid_layer)
 export(add_hexagon_layer)
