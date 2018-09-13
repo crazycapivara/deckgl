@@ -45,4 +45,5 @@ initial_view_state <- list(
 )
 
 deckgl(initialViewState = initial_view_state, views = JS("new OrbitView()")) %>%
-  add_point_cloud_layer(data = data, properties = properties)
+  add_point_cloud_layer(data = data, properties = properties) %>%
+  htmlwidgets::onRender("() => deckglWidget.element.style.background = 'black'")
