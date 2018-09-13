@@ -8,11 +8,11 @@ contour_definition(threshold = 1, color = c(255, 255, 255),
   strokeWidth = 1)
 }
 \arguments{
+\item{threshold}{threshold value to be used in contour generation}
+
 \item{color}{RGB color array to be used to render contour lines}
 
 \item{strokeWidth}{width of the contour line in pixels}
-
-\item{treshold}{threshold value to be used in contour generation}
 }
 \description{
 Contour definition

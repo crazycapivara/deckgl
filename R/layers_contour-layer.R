@@ -15,7 +15,7 @@ add_contour_layer <- function(deckgl, id = "contour-layer", data = NULL, propert
 
 #' Contour definition
 #'
-#' @param treshold threshold value to be used in contour generation
+#' @param threshold threshold value to be used in contour generation
 #' @param color RGB color array to be used to render contour lines
 #' @param strokeWidth width of the contour line in pixels
 #'
