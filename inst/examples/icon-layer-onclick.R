@@ -9,4 +9,5 @@ deckgl() %>%
     pickable = TRUE,
     # onClick = JS("info => console.log(info)")
     onClick = JS("info => deckglWidget.tooltipElement.innerHTML = info.object.name")
-  ) %>% add_mapbox_basemap()
+  ) %>%
+  add_mapbox_basemap()

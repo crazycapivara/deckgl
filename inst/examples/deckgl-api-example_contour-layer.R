@@ -1,6 +1,6 @@
 sample_data <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json"
 
-contours = list(
+contours <- list(
   contour_definition(
     threshold = 1,
     color = c(255, 0, 0),
