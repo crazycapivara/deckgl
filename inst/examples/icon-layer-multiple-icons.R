@@ -1,7 +1,7 @@
 library(geojsonio)
 
-val_max <- apply(us_cities[,c("lat", "long")],2 , max)
-val_min <- apply(us_cities[,c("lat", "long")],2 , min)
+val_max <- apply(us_cities[, c("lat", "long")], 2, max)
+val_min <- apply(us_cities[, c("lat", "long")], 2, min)
 center <- ((val_max + val_min) / 2) %>%
   as.list()
 
@@ -22,4 +22,5 @@ deckgl(longitude = center$long, latitude = center$lat, zoom = 3) %>%
     onClick = JS("info => deckglWidget.tooltipElement.innerHTML = info.object.name"),
     getSize = 3.5,
     sizeScale = 15
-  ) %>% add_mapbox_basemap()
+  ) %>%
+  add_mapbox_basemap()
