@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a grid layer to the deckgl widget — add_grid_layer • deckgl</title>
+<title>Add a contour layer to the deckgl widget — add_contour_layer • deckgl</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Add a grid layer to the deckgl widget — add_grid_layer" />
+<meta property="og:title" content="Add a contour layer to the deckgl widget — add_contour_layer" />
 
-<meta property="og:description" content="Add a grid layer to the deckgl widget" />
+<meta property="og:description" content="ContourLayer renders contour lines for a given threshold and cell size.
+Internally it implements Marching Squares algorithm to generate contour line segments
+and feeds them into LineLayer to render lines." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -127,18 +129,20 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a grid layer to the deckgl widget</h1>
-    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl//blob/master/R/layers_grid-layer.R'><code>R/layers_grid-layer.R</code></a></small>
-    <div class="hidden name"><code>add_grid_layer.Rd</code></div>
+    <h1>Add a contour layer to the deckgl widget</h1>
+    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl//blob/master/R/layers_contour-layer.R'><code>R/layers_contour-layer.R</code></a></small>
+    <div class="hidden name"><code>add_contour_layer.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Add a grid layer to the deckgl widget</p>
+    <p><code>ContourLayer</code> renders contour lines for a given threshold and cell size.
+Internally it implements Marching Squares algorithm to generate contour line segments
+and feeds them into <code>LineLayer</code> to render lines.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_grid_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"grid-layer"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>add_contour_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"contour-layer"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>properties</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -173,7 +177,7 @@ want to use a properties object for more than one layer</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer</a></p></div>
+    <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/contour-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/contour-layer</a></p></div>
     
 
   </div>
