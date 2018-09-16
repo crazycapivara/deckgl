@@ -8,7 +8,7 @@ properties <- list(
   getPosition = JS("d => d.position"),
   getNormal = JS("d => d.normal"),
   getColor = JS("d => d.color"),
-  lightSettings =  list(),
+  lightSettings = list(),
   getTooltip = JS("object => object.position.join(', ')")
 )
 

@@ -1,7 +1,9 @@
+^_pkgdown\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
 ^README-.*\.png$
-playground/
+^playground$
 ^\.travis\.yml$
 ^data-raw$
+^docs$

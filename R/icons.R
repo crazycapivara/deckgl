@@ -26,7 +26,7 @@ encode_icon_atlas <- function(filename = NULL) { # nocov start
 #'   if \code{FALSE}, pixel color from the image is applied
 #'
 #' @export
-icon_definition <- function(x = 0, y = 0, width = 128, height = 128, anchorX = 64, anchorY = 128, mask = TRUE) {
+icon_definition <- function(x = 0, y = 0, width = 128, height = 128, anchorX = (width / 2), anchorY = 128, mask = TRUE) {
   list(
     x = x,
     y = y,
