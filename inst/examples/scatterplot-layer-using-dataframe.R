@@ -15,7 +15,7 @@ properties <- list(
 )
 
 # Add your mapbox api token here and uncomment 'add_mapbox_basemap' below
-token = ""
+token <- ""
 
 deckgl(latitude = lat, longitude = lng, zoom = 4) %>%
-  add_scatterplot_layer(data = cities, properties = properties) #%>% add_mapbox_basemap(token)
+  add_scatterplot_layer(data = cities, properties = properties) # %>% add_mapbox_basemap(token)

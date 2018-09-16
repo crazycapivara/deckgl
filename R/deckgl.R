@@ -4,6 +4,11 @@
 #' @param longitude longitude of the initial view state
 #' @param zoom zoom of the initial view state
 #' @param pitch pitch of the initial view state
+#' @param bearing bearing of the initial view state
+#' @param initialViewState initial view state,
+#'   if set, other view state arguments (\code{longitude}, \code{latidude} etc.) are ignored
+#' @param views a single \code{View}, or an array of \code{View} instances,
+#'   if not supplied, a single \code{MapView} will be created
 #' @param width width of the widget
 #' @param height height of the widget
 #' @param elementId explicit element id (usually not needed)
@@ -13,7 +18,8 @@
 #' @import htmlwidgets
 #'
 #' @export
-deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0,
+deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, bearing = 0,
+                   initialViewState = NULL, views = NULL,
                    width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
@@ -22,6 +28,9 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0,
     longitude = longitude,
     zoom = zoom,
     pitch = pitch,
+    bearing = bearing,
+    initialViewState = initialViewState,
+    views = views,
     layers = list()
   )
 

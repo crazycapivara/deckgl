@@ -14,6 +14,17 @@ var deck = window.deck;
   };
 
   var newLayer = function(className, properties) {
+    // Pass data back to R in 'shinyMode'
+    if (HTMLWidgets.shinyMode) {
+      console.log("Shiny mode");
+      properties.onClick = function(info) {
+        // console.log(info);
+        var data = { lng: info.lngLat[0], lat: info.lngLat[1], object: info.object };
+        console.log(data);
+        Shiny.onInputChange(deckglWidget.element.id + "_onclick", data);
+      };
+    }
+
     if (properties.getTooltip) {
       properties.onHover = function({x, y, object}) {
         var tooltipElement = deckglWidget.tooltipElement;
@@ -35,6 +46,16 @@ var deck = window.deck;
     }
 
     return new deck[className](properties);
+  };
+
+  var initialViewState = function(x) {
+    return {
+      longitude: x.longitude,
+      latitude: x.latitude,
+      zoom: x.zoom,
+      pitch: x.pitch,
+      bearing: x.bearing
+    };
   };
 
   // TODO: Remove tests!
@@ -83,10 +104,15 @@ var deck = window.deck;
             mapboxApiAccessToken: x.mapboxApiAccessToken || "",
             mapStyle: x.mapStyle || "",
             container: el.id,
+            initialViewState: x.initialViewState || initialViewState(x),
+            views: x.views || new MapView(),
+            /*
             longitude: x.longitude,
             latitude: x.latitude,
             zoom: x.zoom,
             pitch: x.pitch,
+            bearing: x.bearing,
+            */
             layers: []
           });
 

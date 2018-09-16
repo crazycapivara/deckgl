@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.4</span>
       </span>
     </div>
 
@@ -144,6 +144,26 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
   ...
 )</code></pre></div>
 </div>
+    <div id="deckgl-0-1-4" class="section level1">
+<h1 class="page-header">
+<a href="#deckgl-0-1-4" class="anchor"></a>deckgl 0.1.4</h1>
+<ul>
+<li>Switched to <code>deckgl.js</code> 6.1.0</li>
+<li>Added missing <code>add_*_layer</code> functions for all core layers including <code>add_contour_layer</code> (new in version 6.1.0)</li>
+<li>Added helper functions <code>encode_icon_atlas</code>, <code>icon_definition</code> and <code>default_icon_properties</code> to set icons for the icon layer:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">icon_properties &lt;-<span class="st"> </span><span class="kw">list</span>(
+  <span class="dt">iconAtlas =</span> <span class="kw"><a href="../reference/encode_icon_atlas.html">encode_icon_atlas</a></span>(),
+  <span class="dt">iconMapping =</span> <span class="kw">list</span>(<span class="dt">marker =</span> <span class="kw"><a href="../reference/icon_definition.html">icon_definition</a></span>()),
+  <span class="dt">getIcon =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"d =&gt; 'marker'"</span>),
+  ...
+)</code></pre></div>
+<ul>
+<li>Added on click event in <code>shinyMode</code> passing <code>info.object</code> and <code>latLng</code> back to R</li>
+<li>Added arguments <code>inititialViewState</code> and <code>views</code> to <code>deckgl</code> widget. If <code>views</code> is not supplied, a single <code>MapView</code> is created.</li>
+<li>Added more examples (see <code>point-cloud-laz-indoor-scan.R</code> example for how to use an <code>OrbitView</code>)</li>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -151,6 +171,7 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
         <li><a href="#deckgl-0-1-3">0.1.3</a></li>
+        <li><a href="#deckgl-0-1-4">0.1.4</a></li>
       </ul>
     </div>
   </div>
@@ -159,7 +180,7 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
 
       <footer>
       <div class="copyright">
-  <p>Developed by Stefan Küthe.</p>
+  <p>Developed by Stefan Kuethe.</p>
 </div>
 
 <div class="pkgdown">

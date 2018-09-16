@@ -5,7 +5,7 @@
 \title{Add an icon layer to the deckgl widget}
 \usage{
 add_icon_layer(deckgl, id = "icon-layer", data = NULL,
-  properties = list(), ...)
+  properties = default_icon_properties(), ...)
 }
 \arguments{
 \item{deckgl}{deckgl widget}
