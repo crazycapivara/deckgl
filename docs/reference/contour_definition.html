@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a grid layer to the deckgl widget — add_grid_layer • deckgl</title>
+<title>Contour definition — contour_definition • deckgl</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Add a grid layer to the deckgl widget — add_grid_layer" />
+<meta property="og:title" content="Contour definition — contour_definition" />
 
-<meta property="og:description" content="Add a grid layer to the deckgl widget" />
+<meta property="og:description" content="Contour definition" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -127,53 +127,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a grid layer to the deckgl widget</h1>
-    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl//blob/master/R/layers_grid-layer.R'><code>R/layers_grid-layer.R</code></a></small>
-    <div class="hidden name"><code>add_grid_layer.Rd</code></div>
+    <h1>Contour definition</h1>
+    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl//blob/master/R/layers_contour-layer.R'><code>R/layers_contour-layer.R</code></a></small>
+    <div class="hidden name"><code>contour_definition.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Add a grid layer to the deckgl widget</p>
+    <p>Contour definition</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_grid_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"grid-layer"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>properties</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>contour_definition</span>(<span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>255</span>, <span class='fl'>255</span>, <span class='fl'>255</span>),
+  <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>deckgl</th>
-      <td><p>deckgl widget</p></td>
+      <th>threshold</th>
+      <td><p>threshold value to be used in contour generation</p></td>
     </tr>
     <tr>
-      <th>id</th>
-      <td><p>id of the layer</p></td>
+      <th>color</th>
+      <td><p>RGB color array to be used to render contour lines</p></td>
     </tr>
     <tr>
-      <th>data</th>
-      <td><p>url to fetch data from or data object</p></td>
-    </tr>
-    <tr>
-      <th>properties</th>
-      <td><p>named list of properties with names corresponding to the properties defined
-in the <a href='https://deck.gl/#/documentation/deckgl-api-reference'>deckgl-api-reference</a>
-for the given layer class, additionally there is a <code>getTooltip</code> property (callback)
-showing a tooltip when the mouse enters an object,
-e. g. <code>getTooltip = JS("object =&gt; object.name")</code></p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>more properties (will be added to the properties object), useful if you
-want to use a properties object for more than one layer</p></td>
+      <th>strokeWidth</th>
+      <td><p>width of the contour line in pixels</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer</a></p></div>
     
 
   </div>
@@ -181,9 +164,7 @@ want to use a properties object for more than one layer</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#see-also">See also</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>
