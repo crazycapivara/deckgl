@@ -24,8 +24,8 @@ e. g. \code{getTooltip = JS("object => object.name")}}
 want to use a properties object for more than one layer}
 }
 \description{
-\code{ContourLayer} renders contour lines for a given threshold and cell size.
-Internally it implements Marching Squares algorithm to generate contour line segments
+The \code{ContourLayer} renders contour lines for a given threshold and cell size.
+Internally it implements \href{https://en.wikipedia.org/wiki/Marching_squares}{Marching Squares} algorithm to generate contour line segments
 and feeds them into \code{LineLayer} to render lines.
 }
 \seealso{

@@ -12,7 +12,7 @@ contour_definition(threshold = 1, color = c(255, 255, 255),
 
 \item{color}{RGB color array to be used to render contour lines}
 
-\item{strokeWidth}{width of the contour line in pixels}
+\item{strokeWidth}{width of the contour lines in pixels}
 }
 \description{
 Contour definition
