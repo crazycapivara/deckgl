@@ -5,6 +5,8 @@
 \alias{reexports}
 \alias{JS}
 \alias{reexports}
+\alias{onRender}
+\alias{reexports}
 \alias{\%>\%}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -13,7 +15,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{htmlwidgets}{\code{\link[htmlwidgets]{JS}}}
+  \item{htmlwidgets}{\code{\link[htmlwidgets]{JS}}, \code{\link[htmlwidgets]{onRender}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
 }}
