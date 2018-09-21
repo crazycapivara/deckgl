@@ -24,7 +24,8 @@ e. g. \code{getTooltip = JS("object => object.name")}}
 want to use a properties object for more than one layer}
 }
 \description{
-Add a grid layer to the deckgl widget
+The \code{GridLayer} renders a grid heatmap based on an array of points. It takes the constant size all each cell, projects points into cells.
+The color and height of the cell is scaled by number of points it contains.
 }
 \seealso{
 \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer}
