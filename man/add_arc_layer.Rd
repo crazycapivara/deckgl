@@ -24,7 +24,8 @@ e. g. \code{getTooltip = JS("object => object.name")}}
 want to use a properties object for more than one layer}
 }
 \description{
-Add an arc layer to the deckgl widget
+The \code{ArcLayer} renders raised arcs joining pairs of source and target points,
+specified as latitude/longitude coordinates.
 }
 \seealso{
 \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/arc-layer}
