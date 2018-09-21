@@ -24,7 +24,7 @@ e. g. \code{getTooltip = JS("object => object.name")}}
 want to use a properties object for more than one layer}
 }
 \description{
-The Path Layer takes in lists of coordinate points and renders them as extruded lines with mitering.
+The \code{PathLayer} takes in lists of coordinate points and renders them as extruded lines with mitering.
 }
 \seealso{
 \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/path-layer}

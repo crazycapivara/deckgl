@@ -1,5 +1,8 @@
 #' Add a scatterplot layer to the deckgl widget
 #'
+#' The \code{ScatterplotLayer} takes in paired latitude and longitude coordinated points
+#' and renders them as circles with a certain radius.
+#'
 #' @inheritParams add_layer
 #'
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/scatterplot-layer}

@@ -9,6 +9,8 @@ properties_text_layer <- list(
 
 #' Add a text layer to the deckgl widget
 #'
+#' The \code{TextLayer} renders text labels on the map using texture mapping.
+#'
 #' @inheritParams add_layer
 #'
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/text-layer}
