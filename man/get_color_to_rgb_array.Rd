@@ -7,12 +7,12 @@
 get_color_to_rgb_array(color_property)
 }
 \arguments{
-\item{color_property}{property of data object containing the HEX color}
+\item{color_property}{property name of data object containing the HEX color}
 }
 \value{
 JavaScript code evaluated on the client-side
 }
 \description{
-Method called to retrieve the color of each object.
-Parses the HEX color retrieved from the data object to an rgb color array.
+Creates a JS method to retrieve the color of each object.
+The method parses the HEX color property of the data object to an rgb color array.
 }

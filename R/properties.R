@@ -1,6 +1,6 @@
 #' Create a getPosition data accessor
 #'
-#' Method called to retrieve the position of each object.
+#' Creates a JS method to retrieve the position of each object.
 #'
 #' @param latitude latitude property of data object
 #' @param longitude longitude property of data object
@@ -21,23 +21,23 @@ get_position <- function(latitude = NULL, longitude = NULL, coordinates = NULL) 
 
 #' Create a data accessor
 #'
-#' Method called to retrieve the value of the given property of each object.
+#' Creates a JS method to retrieve a given property of each object.
 #'
-#' @param property property of data object
+#' @param property_name property name of data object
 #'
 #' @return JavaScript code evaluated on the client-side
 #'
 #' @export
-get_value <- function(property) {
-  sprintf("data => data.%s", property) %>% JS()
+get_property <- function(property_name) {
+  sprintf("data => data.%s", property_name) %>% JS()
 }
 
 #' Create a getColor data accessor
 #'
-#' Method called to retrieve the color of each object.
-#' Parses the HEX color retrieved from the data object to an rgb color array.
+#' Creates a JS method to retrieve the color of each object.
+#' The method parses the HEX color property of the data object to an rgb color array.
 #'
-#' @param color_property property of data object containing the HEX color
+#' @param color_property property name of data object containing the HEX color
 #'
 #' @return JavaScript code evaluated on the client-side
 #'

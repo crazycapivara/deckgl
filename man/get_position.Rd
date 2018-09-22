@@ -18,5 +18,5 @@ get_position(latitude = NULL, longitude = NULL, coordinates = NULL)
 JavaScript code evaluated on the client-side
 }
 \description{
-Method called to retrieve the position of each object.
+Creates a JS method to retrieve the position of each object.
 }
