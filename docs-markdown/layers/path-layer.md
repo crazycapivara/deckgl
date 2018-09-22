@@ -1,4 +1,8 @@
-## @knitr path-layer
+
+PathLayer
+=========
+
+``` r
 sample_data <- paste0(
   "https://raw.githubusercontent.com/",
   "uber-common/deck.gl-data/master/",
@@ -19,3 +23,4 @@ properties <- list(
 deckgl(pitch = 25, zoom = 10.5) %>%
   add_path_layer(data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
+```

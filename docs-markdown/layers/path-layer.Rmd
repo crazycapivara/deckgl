@@ -1,0 +1,12 @@
+---
+output: github_document
+---
+
+# PathLayer
+
+```{r, include = FALSE}
+knitr::read_chunk("../../inst/examples/deckgl-api-reference/path-layer.R")
+```
+
+```{r path-layer, eval = FALSE}
+```
