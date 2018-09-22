@@ -7,11 +7,11 @@
 get_position(latitude = NULL, longitude = NULL, coordinates = NULL)
 }
 \arguments{
-\item{latitude}{latitude key in data object}
+\item{latitude}{latitude property of data object}
 
-\item{longitude}{longitude key in data object}
+\item{longitude}{longitude property of data object}
 
-\item{coordinates}{coordinates key in data object
+\item{coordinates}{coordinates property of data object
 (in this case \code{latitude} and \code{longitude} parameters are ignored)}
 }
 \value{
