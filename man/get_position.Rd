@@ -2,7 +2,7 @@
 % Please edit documentation in R/properties.R
 \name{get_position}
 \alias{get_position}
-\title{Create a getPosition property}
+\title{Create a getPosition data accessor}
 \usage{
 get_position(latitude = NULL, longitude = NULL, coordinates = NULL)
 }
@@ -15,8 +15,8 @@ get_position(latitude = NULL, longitude = NULL, coordinates = NULL)
 (in this case \code{latitude} and \code{longitude} parameters are ignored)}
 }
 \value{
-getPosition property
+JavaScript code evaluated on the client-side
 }
 \description{
-Create a getPosition property
+Method called to retrieve the position of each object.
 }
