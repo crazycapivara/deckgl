@@ -1,0 +1,12 @@
+---
+output: github_document
+---
+
+# ArcLayer
+
+```{r, include = FALSE}
+knitr::read_chunk("../../inst/examples/deckgl-api-reference/arc-layer.R")
+```
+
+```{r arc-layer, eval = FALSE}
+```

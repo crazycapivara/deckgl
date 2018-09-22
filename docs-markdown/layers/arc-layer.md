@@ -1,4 +1,8 @@
-## @knitr arc-layer
+
+ArcLayer
+========
+
+``` r
 sample_data <- paste0(
   "https://raw.githubusercontent.com/",
   "uber-common/deck.gl-data/master/",
@@ -18,3 +22,4 @@ properties <- list(
 deckgl(zoom = 10, pitch = 35) %>%
   add_arc_layer(data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
+```
