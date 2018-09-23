@@ -2,6 +2,8 @@
 ArcLayer
 ========
 
+![](images/arc-layer.png)
+
 ``` r
 sample_data <- paste0(
   "https://raw.githubusercontent.com/",
