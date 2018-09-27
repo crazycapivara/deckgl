@@ -1,0 +1,14 @@
+---
+output: github_document
+---
+
+# ScatterplotLayer
+
+```{r, include = FALSE}
+knitr::read_chunk("../../inst/examples/deckgl-api-reference/scatterplot-layer.R")
+```
+
+![](images/scatterplot-layer.png)
+
+```{r scatterplot-layer, eval = FALSE}
+```
