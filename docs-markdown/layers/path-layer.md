@@ -7,8 +7,8 @@ PathLayer
 ``` r
 sample_data <- paste0(
   "https://raw.githubusercontent.com/",
-  "uber-common/deck.gl-data/master/",
-  "website/bart-lines.json"
+  "uber-common/deck.gl-data/",
+  "master/website/bart-lines.json"
 )
 
 properties <- list(
