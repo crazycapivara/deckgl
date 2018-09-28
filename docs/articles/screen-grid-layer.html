@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScreenGridLayer • deckgl</title>
+<title>ScreenGridLayer • deckgl for R</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -28,8 +28,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">deckgl</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.4</span>
+        <a class="navbar-link" href="../index.html">deckgl for R</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.5</span>
       </span>
     </div>
 
@@ -55,6 +55,12 @@
       <a href="../articles/arc-layer.html">ArcLayer</a>
     </li>
     <li>
+      <a href="../articles/contour-layer.html">ContourLayer</a>
+    </li>
+    <li>
+      <a href="../articles/geojson-layer.html">GeoJsonLayer</a>
+    </li>
+    <li>
       <a href="../articles/grid-layer.html">GridLayer</a>
     </li>
     <li>
@@ -65,6 +71,9 @@
     </li>
     <li>
       <a href="../articles/polygon-layer.html">PolygonLayer</a>
+    </li>
+    <li>
+      <a href="../articles/scatterplot-layer.html">ScatterplotLayer</a>
     </li>
     <li>
       <a href="../articles/screen-grid-layer.html">ScreenGridLayer</a>
@@ -104,10 +113,12 @@
 
     
     
-<p>The Screen Grid Layer takes in an array of latitude and longitude coordinated points, aggregates them into histogram bins and renders as a grid.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(deckgl)
-
-sample_data &lt;-<span class="st"> "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json"</span>
+<p>The <code>ScreenGridLayer</code> takes in an array of latitude and longitude coordinated points, aggregates them into histogram bins and renders as a grid.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_data &lt;-<span class="st"> </span><span class="kw">paste0</span>(
+  <span class="st">"https://raw.githubusercontent.com/uber-common/"</span>,
+  <span class="st">"deck.gl-data/master/"</span>,
+  <span class="st">"website/sf-bike-parking.json"</span>
+)
 
 properties &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="dt">pickable =</span> <span class="ot">FALSE</span>,
@@ -115,29 +126,17 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="dt">cellSizePixels =</span> <span class="dv">50</span>,
   <span class="dt">minColor =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),
   <span class="dt">maxColor =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">180</span>, <span class="dv">0</span>, <span class="dv">255</span>),
-  <span class="dt">getPosition =</span> <span class="kw"><a href="../reference/get_position.html">get_position</a></span>(<span class="dt">coordinates =</span> <span class="st">"COORDINATES"</span>),
-  <span class="dt">getWeight =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"d =&gt; d.SPACES"</span>)
+  <span class="dt">getPosition =</span> <span class="kw"><a href="../reference/get_property.html">get_property</a></span>(<span class="st">"COORDINATES"</span>),
+  <span class="dt">getWeight =</span> <span class="kw"><a href="../reference/get_property.html">get_property</a></span>(<span class="st">"SPACES"</span>)
 )
 
-<span class="co"># reads mapbox api token from an environment variable called 'MAPBOX_API_TOKEN'</span>
 <span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_screen_grid_layer.html">add_screen_grid_layer</a></span>(<span class="dt">data =</span> sample_data, <span class="dt">properties =</span> properties) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span>()</code></pre></div>
-<div id="see-also" class="section level2">
-<h2 class="hasAnchor">
-<a href="#see-also" class="anchor"></a>See also</h2>
-<p><a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/screen-grid-layer">deckgl-api-reference-screen-grid-layer</a></p>
-</div>
+<p>See also <a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/screen-grid-layer">deckgl-api-reference-screen-grid-layer</a></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#see-also">See also</a></li>
-      </ul>
-</div>
       </div>
 
 </div>
