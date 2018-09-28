@@ -1,0 +1,23 @@
+---
+title: "ScatterplotLayer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ScatterplotLayer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+example <- paste0(
+  rprojroot::find_package_root_file(),
+  "/inst/examples/deckgl-api-reference/scatterplot-layer.R"
+)
+knitr::read_chunk(example)
+```
+
+The `ScatterplotLayer` takes in paired latitude and longitude coordinated points and renders them as circles with a certain radius.
+
+```{r scatterplot-layer, eval = FALSE}
+```
+
+See also [deckgl-api-reference-scatterplot-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/scatterplot-layer)

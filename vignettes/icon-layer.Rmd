@@ -7,33 +7,17 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-The Icon Layer renders raster icons at given coordinates.
-
-```{r icon-layer, eval = FALSE}
-library(deckgl)
-
-sample_data <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json"
-
-# icon_atlas <- "https://deck.gl/images/icon-atlas.png"
-
-properties <- list(
-  pickable = TRUE,
-  iconAtlas = encode_icon_atlas(), # icon_atlas,
-  iconMapping = list(marker = icon_definition()),
-  sizeScale = 15,
-  getPosition = get_position(coordinates = "coordinates"),
-  getIcon = JS("d => 'marker'"),
-  getSize = 5,
-  getColor = JS("d => [Math.sqrt(d.exits), 140, 0]"),
-  getTooltip = JS ("object => `${object.name}\n${object.address}`")
+```{r echo = FALSE}
+example <- paste0(
+  rprojroot::find_package_root_file(),
+  "/inst/examples/deckgl-api-reference/icon-layer.R"
 )
-
-deckgl(pitch = 45) %>%
-  add_icon_layer(data = sample_data, properties = properties) %>%
-  add_mapbox_basemap()
-
+knitr::read_chunk(example)
 ```
 
-## See also
+The `IconLayer` renders raster icons at given coordinates.
 
-[deckgl-api-reference-icon-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/icon-layer)
+```{r icon-layer, eval = FALSE}
+```
+
+See also [deckgl-api-reference-icon-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/icon-layer)

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a getPosition property — get_position • deckgl</title>
+<title>Create a getPosition data accessor — get_position • deckgl for R</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Create a getPosition property — get_position" />
+<meta property="og:title" content="Create a getPosition data accessor — get_position" />
 
-<meta property="og:description" content="Create a getPosition property" />
+<meta property="og:description" content="Creates a JS method to retrieve the position of each object." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -60,8 +60,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">deckgl</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.4</span>
+        <a class="navbar-link" href="../index.html">deckgl for R</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.5</span>
       </span>
     </div>
 
@@ -87,6 +87,12 @@
       <a href="../articles/arc-layer.html">ArcLayer</a>
     </li>
     <li>
+      <a href="../articles/contour-layer.html">ContourLayer</a>
+    </li>
+    <li>
+      <a href="../articles/geojson-layer.html">GeoJsonLayer</a>
+    </li>
+    <li>
       <a href="../articles/grid-layer.html">GridLayer</a>
     </li>
     <li>
@@ -97,6 +103,9 @@
     </li>
     <li>
       <a href="../articles/polygon-layer.html">PolygonLayer</a>
+    </li>
+    <li>
+      <a href="../articles/scatterplot-layer.html">ScatterplotLayer</a>
     </li>
     <li>
       <a href="../articles/screen-grid-layer.html">ScreenGridLayer</a>
@@ -127,14 +136,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a getPosition property</h1>
+    <h1>Create a getPosition data accessor</h1>
     <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl//blob/master/R/properties.R'><code>R/properties.R</code></a></small>
     <div class="hidden name"><code>get_position.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create a getPosition property</p>
+    <p>Creates a JS method to retrieve the position of each object.</p>
     
     </div>
 
@@ -145,22 +154,22 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>latitude</th>
-      <td><p>latitude key in data object</p></td>
+      <td><p>latitude property of data object</p></td>
     </tr>
     <tr>
       <th>longitude</th>
-      <td><p>longitude key in data object</p></td>
+      <td><p>longitude property of data object</p></td>
     </tr>
     <tr>
       <th>coordinates</th>
-      <td><p>coordinates key in data object
+      <td><p>coordinates property of data object
 (in this case <code>latitude</code> and <code>longitude</code> parameters are ignored)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>getPosition property</p>
+    <p>JavaScript code evaluated on the client-side</p>
     
 
   </div>

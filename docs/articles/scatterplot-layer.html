@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ArcLayer • deckgl for R</title>
+<title>ScatterplotLayer • deckgl for R</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="ArcLayer">
+<script src="../pkgdown.js"></script><meta property="og:title" content="ScatterplotLayer">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -103,37 +103,34 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>ArcLayer</h1>
+      <h1>ScatterplotLayer</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/crazycapivara/deckgl//blob/master/vignettes/arc-layer.Rmd"><code>vignettes/arc-layer.Rmd</code></a></small>
-      <div class="hidden name"><code>arc-layer.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/crazycapivara/deckgl//blob/master/vignettes/scatterplot-layer.Rmd"><code>vignettes/scatterplot-layer.Rmd</code></a></small>
+      <div class="hidden name"><code>scatterplot-layer.Rmd</code></div>
 
     </div>
 
     
     
-<p>The <code>ArcLayer</code> renders raised arcs joining pairs of source and target points, specified as latitude/longitude coordinates.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_data &lt;-<span class="st"> </span><span class="kw">paste0</span>(
+<p>The <code>ScatterplotLayer</code> takes in paired latitude and longitude coordinated points and renders them as circles with a certain radius.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bart_stations &lt;-<span class="st"> </span><span class="kw">paste0</span>(
   <span class="st">"https://raw.githubusercontent.com/"</span>,
-  <span class="st">"uber-common/deck.gl-data/master/"</span>,
-  <span class="st">"website/bart-segments.json"</span>
+  <span class="st">"uber-common/deck.gl-data/"</span>,
+  <span class="st">"master/website/bart-stations.json"</span>
 )
 
 properties &lt;-<span class="st"> </span><span class="kw">list</span>(
-  <span class="dt">pickable =</span> <span class="ot">TRUE</span>,
-  <span class="dt">getStrokeWidth =</span> <span class="dv">12</span>,
-  <span class="dt">getSourcePosition =</span> <span class="kw"><a href="../reference/get_property.html">get_property</a></span>(<span class="st">"from.coordinates"</span>),
-  <span class="dt">getTargetPosition =</span> <span class="kw"><a href="../reference/get_property.html">get_property</a></span>(<span class="st">"to.coordinates"</span>),
-  <span class="dt">getSourceColor =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"d =&gt; [Math.sqrt(d.inbound), 140, 0]"</span>),
-  <span class="dt">getTargetColor =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"d =&gt; [Math.sqrt(d.outbound), 140, 0]"</span>),
-  <span class="dt">getTooltip =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"object =&gt; `${object.from.name} to ${object.to.name}`"</span>)
+  <span class="dt">getPosition =</span> <span class="kw"><a href="../reference/get_property.html">get_property</a></span>(<span class="st">"coordinates"</span>),
+  <span class="dt">getRadius =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"data =&gt; Math.sqrt(data.exits)"</span>),
+  <span class="dt">radiusScale =</span> <span class="dv">6</span>,
+  <span class="dt">getColor =</span> <span class="kw">c</span>(<span class="dv">255</span>, <span class="dv">140</span>, <span class="dv">20</span>)
 )
 
-<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">zoom =</span> <span class="dv">10</span>, <span class="dt">pitch =</span> <span class="dv">35</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_arc_layer.html">add_arc_layer</a></span>(<span class="dt">data =</span> sample_data, <span class="dt">properties =</span> properties) <span class="op">%&gt;%</span>
+<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">zoom =</span> <span class="fl">10.5</span>, <span class="dt">pitch =</span> <span class="dv">35</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/add_scatterplot_layer.html">add_scatterplot_layer</a></span>(<span class="dt">data =</span> bart_stations, <span class="dt">properties =</span> properties) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span>()</code></pre></div>
-<p>See also <a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/arc-layer">deckgl-api-reference-arc-layer</a></p>
+<p>See also <a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/scatterplot-layer">deckgl-api-reference-scatterplot-layer</a></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
