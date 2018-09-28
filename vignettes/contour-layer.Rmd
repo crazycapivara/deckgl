@@ -1,0 +1,24 @@
+---
+title: "ContourLayer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+example <- paste0(
+  rprojroot::find_package_root_file(),
+  "/inst/examples/deckgl-api-reference/contour-layer.R"
+)
+knitr::read_chunk(example)
+```
+
+The `ContourLayer` renders contour lines for a given threshold and cell size.
+Internally it implements [Marching Squares](https://en.wikipedia.org/wiki/Marching_squares) algorithm to generate contour line segments and feeds them into `LineLayer` to render lines.
+
+```{r contour-layer, eval = FALSE}
+```
+
+See also [deckgl-api-reference-contour-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/contour-layer)
