@@ -10,9 +10,9 @@ Deckgl for R makes the open-source JavaScript library [deck.gl](https://deck.gl/
 Notes
 -----
 
--   It is a known issue that the deckgl widget might not be visible in the viewer pane of RStudio. Just open it in your browser by clicking *Show in new window* and everything will be fine.
+-   It is a known issue that the deckgl widget might not be visible in the viewer pane of RStudio. Just open it in your browser by clicking **Show in new window** and everything will be fine.
 -   The [documentation](https://crazycapivara.github.io/deckgl/) is work in progress. Please check the [examples](inst/examples) as a starting point.
--   You do *not* need a [mapbox](https://www.mapbox.com/) api key to use this package. It is always optional to add a base map from mapbox to your widget.
+-   You do **not** need a [mapbox](https://www.mapbox.com/) api key to use this package. It is always optional to add a base map from mapbox to your widget.
 
 Installation
 ------------
@@ -72,7 +72,11 @@ Add any kind of layers:
 ``` r
 # Grid layer example
 
-sample_data <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json"
+sample_data <- paste0(
+  "https://raw.githubusercontent.com/",
+  "uber-common/deck.gl-data/",
+  "master/website/sf-bike-parking.json"
+)
 
 properties <- list(
   pickable = TRUE,
@@ -88,13 +92,13 @@ deckgl(zoom = 11, pitch = 45) %>%
   add_mapbox_basemap() # optional
 ```
 
--   The `data` parameter can either be an *url* to fetch data from or a *data object*
--   The `properties` parameter is a *named list* with names corresponding to the properties defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given layer class. For the example above see [grid-layer-api-reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer). In case the property is a function (usually in the form of a lambda expression), just use the `JS` function in R to pass it to the layer object. In the example above this is done for the properties `getPosition` and `getTooltip`.
+-   The `data` parameter can either be an **url** to fetch data from or a **data object**
+-   The `properties` parameter is a **named list** with names corresponding to the **properties** defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given **layer** class. For the example above see the [grid-layer-api-reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer). In case the property is a **data accessor** (usually a function in the form of a lambda expression), just use the `JS` function in R to pass it to the layer object. In the example above this is done for the properties `getPosition` and `getTooltip`.
 
 Layers
 ------
 
-Due to the generic function `add_layer` any kind of layer defined in the deckgl-api-reference is supported. The type of layer is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of the `add_*_layer` shortcut functions instead:
+Due to the generic function `add_layer` any kind of layer defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) is supported. The type of layer is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of the `add_*_layer` shortcut functions instead:
 
 ``` r
 # Generic function
