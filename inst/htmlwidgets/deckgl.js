@@ -16,11 +16,11 @@ var deck = window.deck;
   var newLayer = function(className, properties) {
     // Pass data back to R in 'shinyMode'
     if (HTMLWidgets.shinyMode) {
-      console.log("Shiny mode");
+      // console.log("Shiny mode");
       properties.onClick = function(info) {
         // console.log(info);
         var data = { lng: info.lngLat[0], lat: info.lngLat[1], object: info.object };
-        console.log(data);
+        // console.log(data);
         Shiny.onInputChange(deckglWidget.element.id + "_onclick", data);
       };
     }
@@ -35,7 +35,6 @@ var deck = window.deck;
 
         // console.log(x, y, object);
         var text = properties.getTooltip(object);
-        // TODO: add option to use fixed tooltip element
         if (!properties.fixedTooltip) {
           tooltipElement.style.top = y + "px";
           tooltipElement.style.left = x + "px";
@@ -86,9 +85,7 @@ var deck = window.deck;
 
       var tooltipElement = deckglWidget.tooltipElement = document.createElement("div");
       tooltipElement.id = "tooltip";
-      // tooltipElement.style.background = "yellow";
       el.appendChild(tooltipElement);
-      // tooltipElement.innerHTML = "bender";
 
       var deckgl = null;
 
@@ -120,7 +117,7 @@ var deck = window.deck;
             if (item.properties.dataframeToD3) {
               item.data = HTMLWidgets.dataframeToD3(item.data);
             }
-            console.log(item);
+            // console.log(item);
             item.properties.data = item.data;
             return newLayer(item.className, item.properties);
           });
