@@ -24,7 +24,7 @@ e. g. \code{getTooltip = JS("object => object.name")}}
 want to use a properties object for more than one layer}
 }
 \description{
-The Polygon Layer renders filled and/or stroked polygons.
+The \code{PolygonLayer} renders filled and/or stroked polygons.
 }
 \seealso{
 \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/polygon-layer}

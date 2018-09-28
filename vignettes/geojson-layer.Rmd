@@ -1,0 +1,23 @@
+---
+title: "GeoJsonLayer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{GeoJsonLayer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+example <- paste0(
+  rprojroot::find_package_root_file(),
+  "/inst/examples/deckgl-api-reference/geojson-layer.R"
+)
+knitr::read_chunk(example)
+```
+
+The `GeoJsonLayer` takes in [GeoJson](http://geojson.org) formatted data and renders it as interactive polygons, lines and points.
+
+```{r geojson-layer, eval = FALSE}
+```
+
+See also [deckgl-api-reference-geojson-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/geojson-layer)

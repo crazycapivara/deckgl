@@ -3,9 +3,12 @@ pkgdown: 1.1.0
 pkgdown_sha: ~
 articles:
   arc-layer: arc-layer.html
+  contour-layer: contour-layer.html
+  geojson-layer: geojson-layer.html
   grid-layer: grid-layer.html
   icon-layer: icon-layer.html
   line-layer: line-layer.html
   polygon-layer: polygon-layer.html
+  scatterplot-layer: scatterplot-layer.html
   screen-grid-layer: screen-grid-layer.html
 

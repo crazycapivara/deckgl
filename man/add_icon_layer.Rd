@@ -24,7 +24,7 @@ e. g. \code{getTooltip = JS("object => object.name")}}
 want to use a properties object for more than one layer}
 }
 \description{
-The Icon Layer renders raster icons at given coordinates.
+The \code{IconLayer} renders raster icons at given coordinates.
 }
 \seealso{
 \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/icon-layer}

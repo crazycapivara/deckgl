@@ -2,21 +2,21 @@
 % Please edit documentation in R/properties.R
 \name{get_position}
 \alias{get_position}
-\title{Create a getPosition property}
+\title{Create a getPosition data accessor}
 \usage{
 get_position(latitude = NULL, longitude = NULL, coordinates = NULL)
 }
 \arguments{
-\item{latitude}{latitude key in data object}
+\item{latitude}{latitude property of data object}
 
-\item{longitude}{longitude key in data object}
+\item{longitude}{longitude property of data object}
 
-\item{coordinates}{coordinates key in data object
+\item{coordinates}{coordinates property of data object
 (in this case \code{latitude} and \code{longitude} parameters are ignored)}
 }
 \value{
-getPosition property
+JavaScript code evaluated on the client-side
 }
 \description{
-Create a getPosition property
+Creates a JS method to retrieve the position of each object.
 }

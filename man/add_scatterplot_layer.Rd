@@ -24,7 +24,8 @@ e. g. \code{getTooltip = JS("object => object.name")}}
 want to use a properties object for more than one layer}
 }
 \description{
-Add a scatterplot layer to the deckgl widget
+The \code{ScatterplotLayer} takes in paired latitude and longitude coordinated points
+and renders them as circles with a certain radius.
 }
 \seealso{
 \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/scatterplot-layer}

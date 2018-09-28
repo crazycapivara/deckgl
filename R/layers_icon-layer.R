@@ -1,6 +1,6 @@
 #' Add an icon layer to the deckgl widget
 #'
-#' The Icon Layer renders raster icons at given coordinates.
+#' The \code{IconLayer} renders raster icons at given coordinates.
 #'
 #' @inheritParams add_layer
 #'

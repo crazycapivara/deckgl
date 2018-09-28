@@ -1,6 +1,6 @@
 #' Add a path layer to the deckgl widget
 #'
-#' The Path Layer takes in lists of coordinate points and renders them as extruded lines with mitering.
+#' The \code{PathLayer} takes in lists of coordinate points and renders them as extruded lines with mitering.
 #'
 #' @inheritParams add_layer
 #'

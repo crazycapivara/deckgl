@@ -7,29 +7,17 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-The Grid Layer renders a grid heatmap based on an array of points. It takes the constant size all each cell, projects points into cells. The color and height of the cell is scaled by number of points it contains.
-
-```{r grid-layer, eval = FALSE}
-library(deckgl)
-
-sample_data <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json"
-
-properties <- list(
-  pickable = TRUE,
-  extruded = TRUE,
-  cellSize = 200,
-  elevationScale = 4,
-  getPosition = JS("d => d.COORDINATES"),
-  onHover = JS("({x, y, object}) => { if(object) console.log(x, y, object.count) }")
+```{r echo = FALSE}
+example <- paste0(
+  rprojroot::find_package_root_file(),
+  "/inst/examples/deckgl-api-reference/grid-layer.R"
 )
-
-# Add your mapbox api token here and uncomment 'add_mapbox_basemap' below
-token <- "yourSuperSecretApiToken"
-
-deckgl(zoom = 11, pitch = 45, width = "100%") %>%
-  add_grid_layer(data = sample_data, properties = properties) # %>% add_mapbox_basemap(token)
+knitr::read_chunk(example)
 ```
 
-## See also
+The `GridLayer` renders a grid heatmap based on an array of points. It takes the constant size all each cell, projects points into cells. The color and height of the cell is scaled by number of points it contains.
 
-[deckgl-api-reference-grid-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer)
+```{r grid-layer, eval = FALSE}
+```
+
+See also [deckgl-api-reference-grid-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer)

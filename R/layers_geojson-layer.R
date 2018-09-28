@@ -1,5 +1,8 @@
 #' Add a geojson layer to the deckgl widget
 #'
+#' The \code{GeoJsonLayer} takes in \href{http://geojson.org}{GeoJson} formatted data
+#' and renders it as interactive polygons, lines and points.
+#'
 #' @inheritParams add_layer
 #'
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/geojson-layer}

@@ -24,7 +24,8 @@ e. g. \code{getTooltip = JS("object => object.name")}}
 want to use a properties object for more than one layer}
 }
 \description{
-Add a line layer to the deckgl widget
+The \code{LineLayer} renders flat lines joining pairs of source and target points,
+specified as latitude/longitude coordinates.
 }
 \seealso{
 \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/line-layer}
