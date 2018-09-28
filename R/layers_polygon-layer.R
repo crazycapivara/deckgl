@@ -1,6 +1,6 @@
 #' Add a polygon layer to the deckgl widget
 #'
-#' The Polygon Layer renders filled and/or stroked polygons.
+#' The \code{PolygonLayer} renders filled and/or stroked polygons.
 #'
 #' @inheritParams add_layer
 #'

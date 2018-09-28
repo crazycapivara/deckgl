@@ -24,7 +24,7 @@ e. g. \code{getTooltip = JS("object => object.name")}}
 want to use a properties object for more than one layer}
 }
 \description{
-Add a text layer to the deckgl widget
+The \code{TextLayer} renders text labels on the map using texture mapping.
 }
 \seealso{
 \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/text-layer}

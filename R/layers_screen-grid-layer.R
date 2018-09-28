@@ -1,6 +1,6 @@
 #' Add a screen grid layer to the deckgl widget
 #'
-#' The Screen Grid Layer takes in an array of latitude and longitude coordinated points,
+#' The \code{ScreenGridLayer} takes in an array of latitude and longitude coordinated points,
 #' aggregates them into histogram bins and renders as a grid.
 #'
 #' @inheritParams add_layer

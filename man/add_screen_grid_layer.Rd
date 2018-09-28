@@ -24,7 +24,7 @@ e. g. \code{getTooltip = JS("object => object.name")}}
 want to use a properties object for more than one layer}
 }
 \description{
-The Screen Grid Layer takes in an array of latitude and longitude coordinated points,
+The \code{ScreenGridLayer} takes in an array of latitude and longitude coordinated points,
 aggregates them into histogram bins and renders as a grid.
 }
 \seealso{

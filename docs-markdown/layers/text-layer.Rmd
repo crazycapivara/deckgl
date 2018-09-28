@@ -1,0 +1,14 @@
+---
+output: github_document
+---
+
+# TextLayer
+
+```{r, include = FALSE}
+knitr::read_chunk("../../inst/examples/deckgl-api-reference/text-layer.R")
+```
+
+![](images/text-layer.png)
+
+```{r text-layer, eval = FALSE}
+```

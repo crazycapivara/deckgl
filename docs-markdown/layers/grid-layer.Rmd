@@ -1,0 +1,14 @@
+---
+output: github_document
+---
+
+# GridLayer
+
+```{r, include = FALSE}
+knitr::read_chunk("../../inst/examples/deckgl-api-reference/grid-layer.R")
+```
+
+![](images/grid-layer.png)
+
+```{r grid-layer, eval = FALSE}
+```
