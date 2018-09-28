@@ -7,29 +7,17 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-The Arc Layer renders raised arcs joining pairs of source and target points, specified as latitude/longitude coordinates.
-
-```{r arc-layer-example, eval = FALSE}
-library(deckgl)
-
-sample_data <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-segments.json"
-
-properties <- list(
-  pickable = TRUE,
-  getStrokeWidth= 12,
-  getSourcePosition = JS("d => d.from.coordinates"),
-  getTargetPosition = JS("d => d.to.coordinates"),
-  getSourceColor = JS("d => [Math.sqrt(d.inbound), 140, 0]"),
-  getTargetColor = JS("d => [Math.sqrt(d.outbound), 140, 0]"),
-  # Additional 'getTooltip' property from deckgl for R
-  getTooltip = JS("object => `${object.from.name} to ${object.to.name}`")
+```{r echo = FALSE}
+example <- paste0(
+  rprojroot::find_package_root_file(),
+  "/inst/examples/deckgl-api-reference/arc-layer.R"
 )
-
-deckgl(zoom = 10, pitch = 35) %>%
-  add_arc_layer(data = sample_data, properties = properties) %>%
-  add_mapbox_basemap() # Gets token from the environment variable 'MAPBOX_API_TOKEN'
+knitr::read_chunk(example)
 ```
 
-## See also
+The `ArcLayer` renders raised arcs joining pairs of source and target points, specified as latitude/longitude coordinates.
 
-[deckgl-api-reference-arc-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/arc-layer)
+```{r arc-layer, eval = FALSE}
+```
+
+See also [deckgl-api-reference-arc-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/arc-layer)

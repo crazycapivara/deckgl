@@ -19,4 +19,4 @@ The `ScreenGridLayer` takes in an array of latitude and longitude coordinated po
 
 ```{r screen-grid-layer, eval = FALSE}
 ```
-see also [deckgl-api-reference-screen-grid-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/screen-grid-layer)
+See also [deckgl-api-reference-screen-grid-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/screen-grid-layer)
