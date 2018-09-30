@@ -11,7 +11,7 @@ add_data(deckgl, data, var_name = "thanksForAllTheFish")
 
 \item{data}{data object}
 
-\item{var_name}{name of JavaScript variable, used to make the data availabale}
+\item{var_name}{JavaScript variable name used to make the data available}
 }
 \description{
 EXPERIMENTAL

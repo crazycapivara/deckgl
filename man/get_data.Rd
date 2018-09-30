@@ -7,7 +7,7 @@
 get_data(var_name = "thanksForAllTheFish")
 }
 \arguments{
-\item{var_name}{name of JavaScript variable}
+\item{var_name}{JavaScript variable name}
 }
 \description{
 EXPERIMENTAL

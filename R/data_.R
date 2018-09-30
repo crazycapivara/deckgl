@@ -22,7 +22,7 @@ data_dependency <- function(data, var_name) {
 #'
 #' @param deckgl deckgl widget
 #' @param data data object
-#' @param var_name name of JavaScript variable, used to make the data availabale
+#' @param var_name JavaScript variable name used to make the data available
 #'
 #' @export
 add_data <- function(deckgl, data, var_name = "thanksForAllTheFish") {
@@ -37,7 +37,7 @@ add_data <- function(deckgl, data, var_name = "thanksForAllTheFish") {
 #'
 #' EXPERIMENTAL
 #'
-#' @param var_name name of JavaScript variable
+#' @param var_name JavaScript variable name
 #'
 #' @export
 get_data <- function(var_name = "thanksForAllTheFish") {
