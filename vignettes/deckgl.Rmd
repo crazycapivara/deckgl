@@ -1,0 +1,158 @@
+---
+title: "Introduction to deckgl for R "
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{deckgl}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+example <- paste0(
+  rprojroot::find_package_root_file(),
+  "/inst/examples/deckgl-api-reference/hexagon-layer.R"
+)
+knitr::read_chunk(example)
+```
+
+Deckgl for R makes the open-source JavaScript library [deck.gl](https://deck.gl/) available within R via the [htmlwidgets](https://www.htmlwidgets.org/) package. 
+
+## Quickstart
+
+Create a `deckgl` widget:
+
+```{r widget, eval = FALSE}
+deck <- deckgl()
+```
+
+Add a base map from [mapbox](https://www.mapbox.com/) (optional):
+
+```{r basemap, eval = FALSE}
+Sys.setenv(MAPBOX_API_TOKEN = "yourSuperSecretApiToken")
+
+deck <- deckgl() %>%
+  add_mapbox_basemap(style = "mapbox://styles/mapbox/dark-v9")
+```
+
+Add any kind of layers:
+
+```{r hexagon-layer, eval = FALSE}
+```
+
+## Examples
+
+...
+
+## Layers
+
+Due to the generic function `add_layer` any kind of layer defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) is supported. The type of layer is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of the `add_*_layer` shortcut functions instead:
+
+```{r add-layers-generic-vs-shortcut, eval = FALSE}
+# Generic function
+deckgl() %>% add_layer("ArcLayer", "arc-layer", data, properties)
+
+# Shortcut function
+deckgl() %>% add_arc_layer("arc-layer", data, properties)
+```
+
+All `add_*_layer` functions expect 3 arguments beside the `deckgl` widget itself: 
+
+* `id`: unique id of the layer
+* `data`: data to be rendered, either an url to fetch data from or a data object
+* `properties`: named list of properties with names corresponding to the properties defined in the [deckgl-api-reference](http://deck.gl/#/documentation/deckgl-api-reference/) for the given layer class
+
+## Data parameter
+
+### Data url
+
+```{r data-url, eval = FALSE}
+sample_data <- paste0(
+  "https://raw.githubusercontent.com/",
+  "uber-common/deck.gl-data/",
+  "master/website/sf-bike-parking.json"
+)
+
+deckgl() %>%
+  add_grid_layer(data = sample_data, properties = properties)
+```
+
+### Data object
+
+```{r data-object, eval = FALSE}
+deckgl() %>%
+  add_scatterplot_layer(
+    data = geojsonio::canada_cities,
+    properties = properties
+  )
+```
+
+### Data file
+
+Furthermore it is possible to pass data as an external file (EXPERIMENTAL):
+
+```{r data-file, eval = FALSE}
+var_name <- "canadaCities"
+
+deckgl() %>%
+  add_data(geojsonio::canada_cities, var_name) %>%
+  add_icon_layer(
+    data = get_data(var_name),
+    properties = properties
+  )
+```
+
+## Properties parameter
+
+The `properties` parameter is a named list. The names correspond to the properties defined
+in the [deckgl-api-reference](http://deck.gl/#/documentation/deckgl-api-reference/) for the given layer class and the properties inherited from the [base layer class](http://deck.gl/#/documentation/deckgl-api-reference/layers/layer). 
+
+In case a property is a function, just use the `JS` function in R or one of the helper functions like `get_position` or `get_property` to pass it to the layer object.
+
+### Properties example
+
+JavaScript [api-reference-grid-layer](http://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer):
+
+```javascript
+const layer = new GridLayer({
+  id: 'grid-layer',
+  data,
+  // properties to be defined in the 'properties' parameter in R
+  pickable: true,
+  extruded: true,
+  cellSize: 200,
+  elevationScale: 4,
+  getPosition: d => d.COORDINATES
+});
+```
+
+Corresponding `properties` parameter in R:
+
+```{r-properties, eval = FALSE}
+properties <- list(
+  pickable = TRUE,
+  extruded = TRUE,
+  cellSize = 200,
+  evaluationScale = 4,
+  getPosition = JS("d => d.COORDINATES")
+)
+
+# 'id' and 'data' properties are passed as first 2 arguments to 'add_*_layer'
+deckgl() %>%
+  add_grid_layer(
+    id = "grid-layer",
+    data = data,
+    properties = properties
+  )
+```
+
+### Data accessors / Property functions
+
+...
+
+## Tooltips
+
+...
+
+## Icons
+
+...
