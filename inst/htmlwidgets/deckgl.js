@@ -117,8 +117,9 @@ var deck = window.deck;
             if (item.properties.dataframeToD3) {
               item.data = HTMLWidgets.dataframeToD3(item.data);
             }
-            // console.log(item);
+
             item.properties.data = item.data;
+            // console.log(item);
             return newLayer(item.className, item.properties);
           });
 
