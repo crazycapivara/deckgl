@@ -16,5 +16,5 @@ deckgl() %>%
 
 # external data file
 deckgl() %>%
-  add_data(df, "sfBikeParking") %>%
+  add_data(data, "sfBikeParking") %>%
   add_grid_layer(data = get_data("sfBikeParking"), properties = properties)
