@@ -14,7 +14,9 @@ Imports:
   htmltools,
   magrittr,
   base64enc,
-  yaml
+  yaml,
+  jsonlite,
+  readr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
