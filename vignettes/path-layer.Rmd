@@ -1,0 +1,22 @@
+---
+title: "PathLayer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{PathLayer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+example <- paste0(
+  rprojroot::find_package_root_file(),
+  "/inst/examples/deckgl-api-reference/path-layer.R"
+)
+knitr::read_chunk(example)
+```
+
+The `PathLayer` takes in lists of coordinate points and renders them as extruded lines with mitering.
+
+```{r path-layer, eval = FALSE}
+```
+See also [deckgl-api-reference-path-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/path-layer)

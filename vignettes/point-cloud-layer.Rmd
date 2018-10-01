@@ -1,0 +1,22 @@
+---
+title: "PointCloudLayer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{PointCloudLayer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+example <- paste0(
+  rprojroot::find_package_root_file(),
+  "/inst/examples/deckgl-api-reference/point-cloud-layer.R"
+)
+knitr::read_chunk(example)
+```
+
+The `PointCloudLayer` takes in points with 3d positions, normals and colors and renders them as spheres with a certain radius.
+
+```{r point-cloud-layer, eval = FALSE}
+```
+See also [deckgl-api-reference-point-cloud-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/point-cloud-layer)
