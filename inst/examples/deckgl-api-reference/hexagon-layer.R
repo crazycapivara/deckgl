@@ -16,6 +16,8 @@ properties <- list(
   fixedTooltip = TRUE
 )
 
-deckgl(zoom = 11, pitch = 45, bearing = 35) %>%
+deck <- deckgl(zoom = 11, pitch = 45, bearing = 35) %>%
   add_hexagon_layer(data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
+
+if (interactive()) deck
