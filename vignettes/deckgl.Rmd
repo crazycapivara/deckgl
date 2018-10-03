@@ -43,6 +43,19 @@ Add any kind of layers:
 
 ...
 
+## The deckgl widget
+
+This is where it all begins. To create a deckgl widget you call the `deckgl` function.
+The widget takes mainly view port parameters and layers, which are added via the `add_*_layer` functions (see below).
+
+Create a deckgl widget with 2 layers and `latLng(37.8, -122.45)` as initial view state: 
+
+```{r deckgl-widget, eval = FALSE}
+deck <- deckgl(latitude = 37.8, longitude = -122.45) %>%
+  add_polygon_layer(data = polygon_data, properties = polygon_properties) %>%
+  add_text_layer(data = text_data, properties = text_properties)
+```
+
 ## Layers
 
 Due to the generic function `add_layer` any kind of layer defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) is supported. The type of layer is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of the `add_*_layer` shortcut functions instead:
@@ -55,25 +68,25 @@ deckgl() %>% add_layer("ArcLayer", "arc-layer", data, properties)
 deckgl() %>% add_arc_layer("arc-layer", data, properties)
 ```
 
-All `add_*_layer` functions expect 3 arguments beside the `deckgl` widget itself: 
+All `add_*_layer` functions expect 3 arguments beside the deckgl widget itself: 
 
 * `id`: unique id of the layer
 * `data`: data to be rendered, either an url to fetch data from or a data object
 * `properties`: named list of properties with names corresponding to the properties defined in the [deckgl-api-reference](http://deck.gl/#/documentation/deckgl-api-reference/) for the given layer class
 
-## Data parameter
+## Data
 
 ### Data url
 
 ```{r data-url, eval = FALSE}
-sample_data <- paste0(
+data_url <- paste0(
   "https://raw.githubusercontent.com/",
   "uber-common/deck.gl-data/",
   "master/website/sf-bike-parking.json"
 )
 
 deckgl() %>%
-  add_grid_layer(data = sample_data, properties = properties)
+  add_grid_layer(data = data_url, properties = properties)
 ```
 
 ### Data object
@@ -101,12 +114,12 @@ deckgl() %>%
   )
 ```
 
-## Properties parameter
+## Properties
 
 The `properties` parameter is a named list. The names correspond to the properties defined
-in the [deckgl-api-reference](http://deck.gl/#/documentation/deckgl-api-reference/) for the given layer class and the properties inherited from the [base layer class](http://deck.gl/#/documentation/deckgl-api-reference/layers/layer). 
+in the [deckgl-api-reference](http://deck.gl/#/documentation/deckgl-api-reference/) for the given layer class and the properties inherited from the [base layer](http://deck.gl/#/documentation/deckgl-api-reference/layers/layer) class. 
 
-In case a property is a function, just use the `JS` function in R or one of the helper functions like `get_position` or `get_property` to pass it to the layer object.
+In case a property is a data accessor / function, just use the `JS` function in R or one of the helper functions like `get_position` or `get_property` to pass it to the layer object.
 
 ### Properties example
 
@@ -127,7 +140,7 @@ const layer = new GridLayer({
 
 Corresponding `properties` parameter in R:
 
-```{r-properties, eval = FALSE}
+```{r properties, eval = FALSE}
 properties <- list(
   pickable = TRUE,
   extruded = TRUE,
@@ -145,14 +158,65 @@ deckgl() %>%
   )
 ```
 
-### Data accessors / Property functions
+Furthermore, it is possible to pass the properties directly to the `add_*_layer` functions via the `...` parameter. In case the `properties` parameter is also set, the `...` properties are added. Same properties are overwritten by the `...` properties.
 
-...
+Example for passing properties directly to `add_grid_layer`: 
+
+```{r dots-properties}
+deckgl() %>%
+  add_grid_layer(
+    id = "grid-layer",
+    data = data,
+    pickable = TRUE,
+    extruded = TRUE,
+    cellSize = 200,
+    evaluationScale = 4,
+    getPosition = JS("d => d.COORDINATES")
+  )
+```
+
+### Data accessors
+
+... 
 
 ## Tooltips
 
-...
+Additionally to the base properties defined in the [deckgl-api-reference](http://deck.gl/#/documentation/deckgl-api-reference/layers/layer) there is a `getTooltip` property showing a tooltip when the mouse enters an object. This property implements the `onHover` property and sets `pickable = true` for the given layer:
+
+```{r tooltips eval = FALSE}
+properties <- list(
+  getTooltip = JS("object => object.name"),
+  fixedTooltip = TRUE, # show tooltip always on upper left corner
+  ...
+  )
+```
+
+Available object properties depend on the layer you use. For example properties for the `GeoJsonLayer` can be accessed via `object.properties.<property>`.
 
 ## Icons
 
-...
+Icons are added via `add_icon_layer`. The following properties are used to define
+the icon(s) to be displayed for each object:
+
+* `iconAtlas`: atlas image (url or texture, see `encode_icon_atlas`)
+* `iconMapping`: list with icon names mapped to icon definitions on the atlas image (see `icon_definition`)
+* `getIcon`: method called to retrieve the icon name of each object
+
+If not set, these properties are set via `default_icon_properties`.
+
+## Colors
+
+Layers in `deckgljs` usually expect colors to be rgb color arrays. `HexColor` values are supported though the `get_color_to_rgb_array` function (data accessor):
+
+```{r colors, eval = FALSE}
+sample_data <- bart_stations
+sample_data$color <- rgb(sqrt(sample_data$exits), 140, 0, maxColorValue = 255)
+
+deckgl() %>%
+  add_icon_layer(
+    data = sample_data,
+    getPosition = get_position("lat", "lng"),
+    getColor = get_color_to_rgb_array("color"),
+  ) %>%
+  add_mapbox_basemap()
+```
