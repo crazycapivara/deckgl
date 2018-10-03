@@ -14,3 +14,19 @@
 #'
 #' @source \url{"https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-segments.json"}
 "bart_segments"
+
+#' bart stations
+#'
+#' @format tibble with 44 rows and 7 variables:
+#' \describe{
+#'   \item{name}{station name}
+#'   \item{code}{two-letter station code}
+#'   \item{address}{station address}
+#'   \item{entries}{entries at station}
+#'   \item{exits}{exits at station}
+#'   \item{lng}{station longitude}
+#'   \item{lat}{station latitude}
+#' }
+#'
+#' @source \url{"https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json"}
+"bart_stations"
