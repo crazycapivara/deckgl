@@ -9,8 +9,8 @@
   \item{name}{station name}
   \item{code}{two-letter station code}
   \item{address}{station address}
-  \item{entries}{entries at station}
-  \item{exits}{exits at station}
+  \item{entries}{number of entries}
+  \item{exits}{number of exits}
   \item{lng}{station longitude}
   \item{lat}{station latitude}
 }}
