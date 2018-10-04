@@ -8,11 +8,11 @@
 \describe{
   \item{name}{station name}
   \item{code}{two-letter station code}
-  \item{address}{station address}
+  \item{address}{address}
   \item{entries}{number of entries}
   \item{exits}{number of exits}
-  \item{lng}{station longitude}
-  \item{lat}{station latitude}
+  \item{lng}{longitude}
+  \item{lat}{latitude}
 }}
 \source{
 \url{"https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json"}
