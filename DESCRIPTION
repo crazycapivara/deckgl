@@ -16,7 +16,8 @@ Imports:
   base64enc,
   yaml,
   jsonlite,
-  readr
+  readr,
+  tibble
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
