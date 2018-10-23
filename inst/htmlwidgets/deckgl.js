@@ -106,6 +106,8 @@ var deck = window.deck;
             layers: []
           };
 
+          properties = Object.assign(properties, x.properties);
+
           deckglWidget.deckgl = deckgl = new deck.DeckGL(properties);
 
           deckglWidget.layers = x.layers.map(function(item) {

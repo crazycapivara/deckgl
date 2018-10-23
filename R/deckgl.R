@@ -12,15 +12,18 @@
 #' @param width width of the widget
 #' @param height height of the widget
 #' @param elementId explicit element id (usually not needed)
+#' @param ... optional properties passed to the deck instance
 #'
 #' @return deckgl widget
+#'
+#' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/deck}
 #'
 #' @import htmlwidgets
 #'
 #' @export
 deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, bearing = 0,
                    initialViewState = NULL, views = NULL,
-                   width = NULL, height = NULL, elementId = NULL) {
+                   width = NULL, height = NULL, elementId = NULL, ...) {
 
   # forward options using x
   x <- list(
@@ -31,6 +34,7 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, b
     bearing = bearing,
     initialViewState = initialViewState,
     views = views,
+    properties = list(...),
     layers = list()
   )
 
