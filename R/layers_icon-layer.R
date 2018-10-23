@@ -11,6 +11,7 @@ add_icon_layer <- function(deckgl, id = "icon-layer", data = NULL, properties = 
   if (is.null(properties$iconAtlas) && is.null(list(...)$iconAtlas)) {
     properties <- merge_properties(default_icon_properties(), properties)
   }
+
   add_layer(deckgl, "IconLayer", id, data, properties, ...)
 }
 
@@ -29,7 +30,7 @@ add_icon_layer <- function(deckgl, id = "icon-layer", data = NULL, properties = 
 #'
 #' @export
 default_icon_properties <- function(sizeScale = 15, getSize = 5, getColor = c(240, 140, 0)) {
-  properties <- list(
+  list(
     iconAtlas = encode_icon_atlas(),
     iconMapping = list(marker = icon_definition()),
     getIcon = JS("d => 'marker'"),
