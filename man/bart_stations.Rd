@@ -15,7 +15,7 @@
   \item{lat}{latitude}
 }}
 \source{
-\url{"https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json"}
+\url{https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json}
 }
 \usage{
 bart_stations

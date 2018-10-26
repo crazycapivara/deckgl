@@ -16,7 +16,7 @@
   \item{to_lat}{latitude of target station}
 }}
 \source{
-\url{"https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-segments.json"}
+\url{https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-segments.json}
 }
 \usage{
 bart_segments

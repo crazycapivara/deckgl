@@ -15,7 +15,7 @@ NULL
 #'   \item{to_lat}{latitude of target station}
 #' }
 #'
-#' @source \url{"https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-segments.json"}
+#' @source \url{https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-segments.json}
 "bart_segments"
 
 #' bart stations
@@ -31,7 +31,7 @@ NULL
 #'   \item{lat}{latitude}
 #' }
 #'
-#' @source \url{"https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json"}
+#' @source \url{https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json}
 "bart_stations"
 
 #' sf bike parking
