@@ -97,28 +97,26 @@ var deck = window.deck;
 
           console.log("deck.gl version: " + deck.version);
 
-          deckglWidget.deckgl = deckgl = new deck.DeckGL({
+          var properties = {
             mapboxApiAccessToken: x.mapboxApiAccessToken || "",
             mapStyle: x.mapStyle || "",
             container: el.id,
             initialViewState: x.initialViewState || initialViewState(x),
             views: x.views || new MapView(),
-            /*
-            longitude: x.longitude,
-            latitude: x.latitude,
-            zoom: x.zoom,
-            pitch: x.pitch,
-            bearing: x.bearing,
-            */
             layers: []
-          });
+          };
+
+          properties = Object.assign(properties, x.properties);
+
+          deckglWidget.deckgl = deckgl = new deck.DeckGL(properties);
 
           deckglWidget.layers = x.layers.map(function(item) {
             if (item.properties.dataframeToD3) {
               item.data = HTMLWidgets.dataframeToD3(item.data);
             }
-            // console.log(item);
+
             item.properties.data = item.data;
+            // console.log(item);
             return newLayer(item.className, item.properties);
           });
 

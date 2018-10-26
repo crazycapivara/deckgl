@@ -1,0 +1,22 @@
+---
+title: "HexagonLayer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{HexagonLayer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+example <- paste0(
+  rprojroot::find_package_root_file(),
+  "/inst/examples/deckgl-api-reference/hexagon-layer.R"
+)
+knitr::read_chunk(example)
+```
+
+The `HexagonLayer` renders a hexagon heatmap based on an array of points. It takes the radius of hexagon bin, projects points into hexagon bins. The color and height of the hexagon is scaled by number of points it contains.
+
+```{r hexagon-layer, eval = FALSE}
+```
+See also [deckgl-api-reference-hexagon-layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/hexagon-layer)

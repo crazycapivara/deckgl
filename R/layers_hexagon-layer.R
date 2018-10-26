@@ -19,6 +19,8 @@ properties_hexagon_layer <- list(
 #'
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/hexagon-layer}
 #'
+#' @example inst/examples/deckgl-api-reference/hexagon-layer.R
+#'
 #' @export
 add_hexagon_layer <- function(deckgl, id = "hexagon-layer", data = NULL, properties = list(), ...) {
   # use sample data if no data is given

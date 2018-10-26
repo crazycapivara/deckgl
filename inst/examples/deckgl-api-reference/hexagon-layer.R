@@ -1,5 +1,3 @@
-## see also: https://deck.gl/#/documentation/deckgl-api-reference/layers/hexagon-layer
-
 ## @knitr hexagon-layer
 sample_data <- paste0(
   "https://raw.githubusercontent.com/",
@@ -12,10 +10,12 @@ properties <- list(
   radius = 200,
   elevationScale = 4,
   getPosition = get_property("COORDINATES"),
-  getTooltip = JS("object => `${object.position.join(', ')}<br/>Count: ${object.count}`"),
+  getTooltip = JS("object => `${object.centroid.join(', ')}<br/>Count: ${object.points.length}`"),
   fixedTooltip = TRUE
 )
 
-deckgl(zoom = 11, pitch = 45, bearing = 35) %>%
+deck <- deckgl(zoom = 11, pitch = 45, bearing = 35) %>%
   add_hexagon_layer(data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
+
+if (interactive()) deck

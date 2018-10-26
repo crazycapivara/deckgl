@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.5</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.6</span>
       </span>
     </div>
 
@@ -93,10 +93,19 @@
       <a href="../articles/grid-layer.html">GridLayer</a>
     </li>
     <li>
+      <a href="../articles/hexagon-layer.html">HexagonLayer</a>
+    </li>
+    <li>
       <a href="../articles/icon-layer.html">IconLayer</a>
     </li>
     <li>
       <a href="../articles/line-layer.html">LineLayer</a>
+    </li>
+    <li>
+      <a href="../articles/path-layer.html">PathLayer</a>
+    </li>
+    <li>
+      <a href="../articles/point-cloud-layer.html">PointCloudLayer</a>
     </li>
     <li>
       <a href="../articles/polygon-layer.html">PolygonLayer</a>
@@ -106,6 +115,9 @@
     </li>
     <li>
       <a href="../articles/screen-grid-layer.html">ScreenGridLayer</a>
+    </li>
+    <li>
+      <a href="../articles/text-layer.html">TextLayer</a>
     </li>
   </ul>
 </li>
@@ -137,13 +149,32 @@
       <small>Source: <a href='https://github.com/crazycapivara/deckgl//blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="deckgl-0-1-6" class="section level1">
+<h1 class="page-header">
+<a href="#deckgl-0-1-6" class="anchor"></a>deckgl 0.1.6</h1>
+<ul>
+<li>Switched to <code>deckgl.js</code> 6.2.2</li>
+<li>Added more examples</li>
+<li>Added <code>...</code> parameter to <code>deckgl</code> to pass optional parameters to the <code>deck</code> instance:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(
+  <span class="dt">zoom =</span> <span class="dv">5</span>,
+  <span class="dt">pickingRadius =</span> <span class="dv">5</span>,
+  <span class="dt">style =</span> <span class="kw">list</span>(<span class="dt">background =</span> <span class="st">"black"</span>)
+)</code></pre></div>
+<ul>
+<li>Added functions <code>add_data</code> and <code>get_data</code> to pass <em>data objects</em> as separate files:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/add_data.html">add_data</a></span>(bart_stations) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_scatterplot</span>(<span class="dt">data =</span> <span class="kw"><a href="../reference/get_data.html">get_data</a></span>(), <span class="dt">properties =</span> properties)</code></pre></div>
+</div>
     <div id="deckgl-0-1-5" class="section level1">
 <h1 class="page-header">
 <a href="#deckgl-0-1-5" class="anchor"></a>deckgl 0.1.5</h1>
 <ul>
 <li>Switched to <code>deckgl.js</code> 6.1.1</li>
-<li>Added helper functions <code>get_property</code> and <code>get_color_to_rgb_array</code>
-</li>
+<li>Added helper functions <code>get_property</code> and <code>get_color_to_rgb_array</code>:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">properties &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="dt">getText =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"data =&gt; data.text"</span>)
@@ -202,6 +233,7 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#deckgl-0-1-6">0.1.6</a></li>
         <li><a href="#deckgl-0-1-5">0.1.5</a></li>
         <li><a href="#deckgl-0-1-4">0.1.4</a></li>
         <li><a href="#deckgl-0-1-3">0.1.3</a></li>

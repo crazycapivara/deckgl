@@ -6,9 +6,13 @@ articles:
   contour-layer: contour-layer.html
   geojson-layer: geojson-layer.html
   grid-layer: grid-layer.html
+  hexagon-layer: hexagon-layer.html
   icon-layer: icon-layer.html
   line-layer: line-layer.html
+  path-layer: path-layer.html
+  point-cloud-layer: point-cloud-layer.html
   polygon-layer: polygon-layer.html
   scatterplot-layer: scatterplot-layer.html
   screen-grid-layer: screen-grid-layer.html
+  text-layer: text-layer.html
 

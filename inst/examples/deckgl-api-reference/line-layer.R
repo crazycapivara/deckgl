@@ -14,6 +14,8 @@ properties <- list(
   getTooltip = JS("object => `${object.from.name} to ${object.to.name}`")
 )
 
-deckgl(zoom = 10, pitch = 20) %>%
+deck <- deckgl(zoom = 10, pitch = 20) %>%
   add_line_layer(data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
+
+if (interactive()) deck

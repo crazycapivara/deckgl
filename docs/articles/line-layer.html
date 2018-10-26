@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.5</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.6</span>
       </span>
     </div>
 
@@ -64,10 +64,19 @@
       <a href="../articles/grid-layer.html">GridLayer</a>
     </li>
     <li>
+      <a href="../articles/hexagon-layer.html">HexagonLayer</a>
+    </li>
+    <li>
       <a href="../articles/icon-layer.html">IconLayer</a>
     </li>
     <li>
       <a href="../articles/line-layer.html">LineLayer</a>
+    </li>
+    <li>
+      <a href="../articles/path-layer.html">PathLayer</a>
+    </li>
+    <li>
+      <a href="../articles/point-cloud-layer.html">PointCloudLayer</a>
     </li>
     <li>
       <a href="../articles/polygon-layer.html">PolygonLayer</a>
@@ -77,6 +86,9 @@
     </li>
     <li>
       <a href="../articles/screen-grid-layer.html">ScreenGridLayer</a>
+    </li>
+    <li>
+      <a href="../articles/text-layer.html">TextLayer</a>
     </li>
   </ul>
 </li>
@@ -129,9 +141,11 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="dt">getTooltip =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"object =&gt; `${object.from.name} to ${object.to.name}`"</span>)
 )
 
-<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">zoom =</span> <span class="dv">10</span>, <span class="dt">pitch =</span> <span class="dv">20</span>) <span class="op">%&gt;%</span>
+deck &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">zoom =</span> <span class="dv">10</span>, <span class="dt">pitch =</span> <span class="dv">20</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_line_layer.html">add_line_layer</a></span>(<span class="dt">data =</span> sample_data, <span class="dt">properties =</span> properties) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span>()</code></pre></div>
+<span class="st">  </span><span class="kw"><a href="../reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span>()
+
+<span class="cf">if</span> (<span class="kw">interactive</span>()) deck</code></pre></div>
 <p>See also <a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/line-layer">deckgl-api-reference-line-layer</a></p>
   </div>
 

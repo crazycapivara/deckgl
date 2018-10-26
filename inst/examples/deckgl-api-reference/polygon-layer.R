@@ -19,6 +19,8 @@ properties <- list(
   getTooltip = JS("object => `${object.zipcode}<br/>Population: ${object.population}`")
 )
 
-deckgl(zoom = 11, pitch = 25) %>%
+deck <- deckgl(zoom = 11, pitch = 25) %>%
   add_polygon_layer(data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
+
+if (interactive()) deck
