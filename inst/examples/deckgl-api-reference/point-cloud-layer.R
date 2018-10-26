@@ -17,6 +17,8 @@ properties <- list(
   getTooltip = JS("object => object.position.join(', ')")
 )
 
-deckgl(pitch = 45, zoom = 10.5) %>%
+deck <- deckgl(pitch = 45, zoom = 10.5) %>%
   add_point_cloud_layer(data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
+
+if (interactive()) deck

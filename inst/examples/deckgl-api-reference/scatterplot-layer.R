@@ -14,6 +14,8 @@ properties <- list(
   getColor = c(255, 140, 20)
 )
 
-deckgl(zoom = 10.5, pitch = 35) %>%
+deck <- deckgl(zoom = 10.5, pitch = 35) %>%
   add_scatterplot_layer(data = bart_stations, properties = properties) %>%
   add_mapbox_basemap()
+
+if (interactive()) deck
