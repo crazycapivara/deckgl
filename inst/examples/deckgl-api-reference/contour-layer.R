@@ -30,6 +30,8 @@ properties <- list(
   getPosition = get_property("COORDINATES")
 )
 
-deckgl(zoom = 10.5, pitch = 30) %>%
+deck <- deckgl(zoom = 10.5, pitch = 30) %>%
   add_contour_layer(data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
+
+if (interactive()) deck

@@ -5,7 +5,7 @@ geojson <- paste0(
   "master/website/bart.geo.json"
 )
 
-deckgl(zoom = 10) %>%
+deck <- deckgl(zoom = 10, pickingRadius = 5) %>%
   add_geojson_layer(
     data = geojson,
     filled = TRUE,
@@ -20,3 +20,5 @@ deckgl(zoom = 10) %>%
     getTooltip = JS("object => object.properties.name || object.properties.station")
   ) %>%
   add_mapbox_basemap()
+
+if (interactive()) deck

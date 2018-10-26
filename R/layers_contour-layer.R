@@ -8,6 +8,8 @@
 #'
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/contour-layer}
 #'
+#' @example inst/examples/deckgl-api-reference/arc-layer.R
+#'
 #' @export
 add_contour_layer <- function(deckgl, id = "contour-layer", data = NULL, properties = list(), ...) {
   add_layer(deckgl, "ContourLayer", id, data, properties, ...)

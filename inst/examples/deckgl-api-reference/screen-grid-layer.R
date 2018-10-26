@@ -15,6 +15,8 @@ properties <- list(
   getWeight = get_property("SPACES")
 )
 
-deckgl() %>%
+deck <- deckgl() %>%
   add_screen_grid_layer(data = sample_data, properties = properties) %>%
   add_mapbox_basemap()
+
+if (interactive()) deck
