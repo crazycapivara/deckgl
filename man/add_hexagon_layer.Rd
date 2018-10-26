@@ -28,8 +28,6 @@ The \code{HexagonLayer} renders a hexagon heatmap based on an array of points. I
 The color and height of the hexagon is scaled by number of points it contains.
 }
 \examples{
-## see also: https://deck.gl/#/documentation/deckgl-api-reference/layers/hexagon-layer
-
 ## @knitr hexagon-layer
 sample_data <- paste0(
   "https://raw.githubusercontent.com/",
