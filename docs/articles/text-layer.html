@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GridLayer • deckgl for R</title>
+<title>TextLayer • deckgl for R</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="GridLayer">
+<script src="../pkgdown.js"></script><meta property="og:title" content="TextLayer">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -115,38 +115,33 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>GridLayer</h1>
+      <h1>TextLayer</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/crazycapivara/deckgl//blob/master/vignettes/grid-layer.Rmd"><code>vignettes/grid-layer.Rmd</code></a></small>
-      <div class="hidden name"><code>grid-layer.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/crazycapivara/deckgl//blob/master/vignettes/text-layer.Rmd"><code>vignettes/text-layer.Rmd</code></a></small>
+      <div class="hidden name"><code>text-layer.Rmd</code></div>
 
     </div>
 
     
     
-<p>The <code>GridLayer</code> renders a grid heatmap based on an array of points. It takes the constant size all each cell, projects points into cells. The color and height of the cell is scaled by number of points it contains.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_data &lt;-<span class="st"> </span><span class="kw">paste0</span>(
-  <span class="st">"https://raw.githubusercontent.com/"</span>,
-  <span class="st">"uber-common/deck.gl-data/"</span>,
-  <span class="st">"master/website/sf-bike-parking.json"</span>
-)
-
-properties &lt;-<span class="st"> </span><span class="kw">list</span>(
-  <span class="dt">extruded =</span> <span class="ot">TRUE</span>,
-  <span class="dt">cellSize =</span> <span class="dv">200</span>,
-  <span class="dt">elevationScale =</span> <span class="dv">4</span>,
-  <span class="dt">getPosition =</span> <span class="kw"><a href="../reference/get_property.html">get_property</a></span>(<span class="st">"COORDINATES"</span>),
-  <span class="dt">getTooltip =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"object =&gt; `${object.position.join(', ')}&lt;br/&gt;Count: ${object.count}`"</span>),
-  <span class="dt">fixedTooltip =</span> <span class="ot">TRUE</span>
-)
-
-deck &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">zoom =</span> <span class="dv">11</span>, <span class="dt">pitch =</span> <span class="dv">45</span>, <span class="dt">bearing =</span> <span class="dv">35</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span>(<span class="dt">data =</span> sample_data, <span class="dt">properties =</span> properties) <span class="op">%&gt;%</span>
+<p>The <code>TextLayer</code> renders text labels on the map using texture mapping.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">deck &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">zoom =</span> <span class="dv">10</span>, <span class="dt">pitch =</span> <span class="dv">35</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/add_text_layer.html">add_text_layer</a></span>(
+    <span class="dt">data =</span> bart_stations,
+    <span class="dt">pickable =</span> <span class="ot">TRUE</span>,
+    <span class="dt">getPosition =</span> <span class="kw"><a href="../reference/get_position.html">get_position</a></span>(<span class="st">"lat"</span>, <span class="st">"lng"</span>),
+    <span class="dt">getText =</span> <span class="kw"><a href="../reference/get_property.html">get_property</a></span>(<span class="st">"name"</span>),
+    <span class="dt">getSize =</span> <span class="dv">15</span>,
+    <span class="dt">getAngle =</span> <span class="dv">0</span>,
+    <span class="dt">getTextAnchor =</span> <span class="st">"middle"</span>,
+    <span class="dt">getAlignmentBaseline =</span> <span class="st">"center"</span>,
+    <span class="dt">getTooltip =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"object =&gt;`${object.name}&lt;br/&gt;${object.address}`"</span>)
+  ) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span>()
 
 <span class="cf">if</span> (<span class="kw">interactive</span>()) deck</code></pre></div>
-<p>See also <a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer">deckgl-api-reference-grid-layer</a></p>
+<p>See also <a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/text-layer">deckgl-api-reference-text-layer</a></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

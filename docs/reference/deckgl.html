@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.5</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.6</span>
       </span>
     </div>
 
@@ -96,10 +96,19 @@
       <a href="../articles/grid-layer.html">GridLayer</a>
     </li>
     <li>
+      <a href="../articles/hexagon-layer.html">HexagonLayer</a>
+    </li>
+    <li>
       <a href="../articles/icon-layer.html">IconLayer</a>
     </li>
     <li>
       <a href="../articles/line-layer.html">LineLayer</a>
+    </li>
+    <li>
+      <a href="../articles/path-layer.html">PathLayer</a>
+    </li>
+    <li>
+      <a href="../articles/point-cloud-layer.html">PointCloudLayer</a>
     </li>
     <li>
       <a href="../articles/polygon-layer.html">PolygonLayer</a>
@@ -109,6 +118,9 @@
     </li>
     <li>
       <a href="../articles/screen-grid-layer.html">ScreenGridLayer</a>
+    </li>
+    <li>
+      <a href="../articles/text-layer.html">TextLayer</a>
     </li>
   </ul>
 </li>
@@ -149,7 +161,7 @@
 
     <pre class="usage"><span class='fu'>deckgl</span>(<span class='kw'>latitude</span> <span class='kw'>=</span> <span class='fl'>37.8</span>, <span class='kw'>longitude</span> <span class='kw'>=</span> -<span class='fl'>122.45</span>, <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>12</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>0</span>,
   <span class='kw'>bearing</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>initialViewState</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>views</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>elementId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>elementId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -196,11 +208,19 @@ if not supplied, a single <code>MapView</code> will be created</p></td>
       <th>elementId</th>
       <td><p>explicit element id (usually not needed)</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>optional properties passed to the deck instance</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>deckgl widget</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/deck'>https://deck.gl/#/documentation/deckgl-api-reference/deck</a></p></div>
     
 
   </div>
@@ -210,6 +230,8 @@ if not supplied, a single <code>MapView</code> will be created</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>
