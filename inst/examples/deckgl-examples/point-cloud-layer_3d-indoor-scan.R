@@ -1,9 +1,9 @@
 ## see https://deck.gl/#/examples/core-layers/point-cloud-layer
 
 ## @knitr 3d-indoor-scan
-library("magrittr")
-library("rlas")
-library("data.table")
+library(deckgl)
+library(rlas)
+library(data.table)
 
 # Prepare data: Fit point cloud in a 1x1x1 box centered at [0, 0, 0]
 normalize_data <- function(data) {
@@ -22,8 +22,6 @@ data <- system.file("sample-data/indoor.0.1.laz", package = "deckgl") %>%
   normalize_data()
 
 # Create output
-library("deckgl")
-
 properties <- list(
   coordinateSystem = JS("COORDINATE_SYSTEM.IDENTITY"),
   getPosition = JS("d => [d.X, d.Y, d.Z]"),

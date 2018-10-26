@@ -1,7 +1,7 @@
 ## @knitr every-person-in-manhatten
-library("deckgl")
-library("jsonlite")
-library("tibble")
+library(deckgl)
+library(jsonlite)
+library(tibble)
 
 data_url <- paste0(
   "https://raw.githubusercontent.com/",

@@ -1,7 +1,7 @@
 ## @knitr highway-safety-in-us
-library("magrittr")
-library("data.table")
-library("sf")
+library(magrittr)
+library(data.table)
+library(sf)
 
 data_url <- paste0(
   "https://raw.githubusercontent.com/",
