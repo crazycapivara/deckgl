@@ -1,5 +1,3 @@
-## see also: https://deck.gl/#/documentation/deckgl-api-reference/layers/scatterplot-layer
-
 ## @knitr scatterplot-layer
 bart_stations <- paste0(
   "https://raw.githubusercontent.com/",

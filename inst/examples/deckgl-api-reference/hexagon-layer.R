@@ -1,5 +1,3 @@
-## see also: https://deck.gl/#/documentation/deckgl-api-reference/layers/hexagon-layer
-
 ## @knitr hexagon-layer
 sample_data <- paste0(
   "https://raw.githubusercontent.com/",
