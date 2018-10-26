@@ -1,7 +1,29 @@
+# deckgl 0.1.6
+
+* Switched to `deckgl.js` 6.2.2
+* Added more examples
+* Added `...` parameter to `deckgl` to pass optional parameters to the `deck` instance:
+
+```r
+deckgl(
+  zoom = 5,
+  pickingRadius = 5,
+  style = list(background = "black")
+)
+```
+
+* Added functions `add_data` and `get_data` to pass _data objects_ as separate files:
+
+```r
+deckgl() %>%
+  add_data(bart_stations) %>%
+  add_scatterplot(data = get_data(), properties = properties)
+```
+
 # deckgl 0.1.5
 
 * Switched to `deckgl.js` 6.1.1
-* Added helper functions `get_property` and `get_color_to_rgb_array`
+* Added helper functions `get_property` and `get_color_to_rgb_array`:
 
 ```r
 properties <- list(
