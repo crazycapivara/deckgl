@@ -6,7 +6,7 @@
 \usage{
 deckgl(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0,
   bearing = 0, initialViewState = NULL, views = NULL, width = NULL,
-  height = NULL, elementId = NULL)
+  height = NULL, elementId = NULL, ...)
 }
 \arguments{
 \item{latitude}{latitude of the initial view state}
@@ -30,10 +30,15 @@ if not supplied, a single \code{MapView} will be created}
 \item{height}{height of the widget}
 
 \item{elementId}{explicit element id (usually not needed)}
+
+\item{...}{optional properties passed to the deck instance}
 }
 \value{
 deckgl widget
 }
 \description{
 Create a deckgl widget
+}
+\seealso{
+\url{https://deck.gl/#/documentation/deckgl-api-reference/deck}
 }
