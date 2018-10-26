@@ -21,7 +21,7 @@ Deckgl for R makes the open-source JavaScript library [deck.gl](https://deck.gl/
 ## Notes
 
 * It is a known issue that the deckgl widget might not be visible in the viewer pane of RStudio. Just open it in your browser by clicking __Show in new window__ and everything will be fine.
-* The [documentation](https://crazycapivara.github.io/deckgl/) is work in progress. Please check the [examples](inst/examples) as a starting point.
+* The [documentation](https://crazycapivara.github.io/deckgl/) is work in progress. Please check the [examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples) as a starting point.
 * You do __not__ need a [mapbox](https://www.mapbox.com/) api key to use this package. It is always optional to add a base map from mapbox to your widget.
 
 ## Installation
@@ -117,6 +117,6 @@ deckgl() %>% add_arc_layer("arc-layer", data, properties)
 
 ## Documentation
 
-- [deckgl-api-reference for R](https://crazycapivara.github.io/deckgl/)
-- [example scripts](inst/examples)
+- [deckgl for R](https://crazycapivara.github.io/deckgl/)
+- [example scripts](https://github.com/crazycapivara/deckgl/tree/master/inst/examples)
 - [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference)
