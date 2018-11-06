@@ -1,0 +1,21 @@
+---
+title: "Shiny integration"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Shiny integration}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+example <- paste0(
+  rprojroot::find_package_root_file(),
+  "/inst/examples/shiny.R"
+)
+knitr::read_chunk(example)
+```
+
+```{r shiny-integration, eval = FALSE}
+```
+
+If you click on an object, the `onclick` event sends the resulting __picking info object__ to your Shiny application and updates the corresponding input in the form of `input$widgetId_onclick`. For the example above the `widgetId` is `deck`, so that you access the __info object__ via `input$deck_onclick`. 
