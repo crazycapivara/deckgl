@@ -44,7 +44,7 @@ deck <- deckgl(zoom = 10, pickingRadius = 5) \%>\%
     lineWidthScale = 20,
     lineWidthMinPixels = 2,
     getLineWidth = 1,
-    getLineColor = get_color_to_rgb_array("properties.color"),
+    getLineColor = get_color_to_rgb_array("properties.color || 'black'"),
     getFillColor = c(160, 160, 180, 200),
     getElevation = 30,
     getTooltip = JS("object => object.properties.name || object.properties.station")
