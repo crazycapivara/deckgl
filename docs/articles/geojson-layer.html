@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.6</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.7</span>
       </span>
     </div>
 
@@ -88,6 +88,9 @@
       <a href="../articles/screen-grid-layer.html">ScreenGridLayer</a>
     </li>
     <li>
+      <a href="../articles/shiny.html">Shiny integration</a>
+    </li>
+    <li>
       <a href="../articles/text-layer.html">TextLayer</a>
     </li>
   </ul>
@@ -141,7 +144,7 @@ deck &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deckgl
     <span class="dt">lineWidthScale =</span> <span class="dv">20</span>,
     <span class="dt">lineWidthMinPixels =</span> <span class="dv">2</span>,
     <span class="dt">getLineWidth =</span> <span class="dv">1</span>,
-    <span class="dt">getLineColor =</span> <span class="kw"><a href="../reference/get_color_to_rgb_array.html">get_color_to_rgb_array</a></span>(<span class="st">"properties.color"</span>),
+    <span class="dt">getLineColor =</span> <span class="kw"><a href="../reference/get_color_to_rgb_array.html">get_color_to_rgb_array</a></span>(<span class="st">"properties.color || 'black'"</span>),
     <span class="dt">getFillColor =</span> <span class="kw">c</span>(<span class="dv">160</span>, <span class="dv">160</span>, <span class="dv">180</span>, <span class="dv">200</span>),
     <span class="dt">getElevation =</span> <span class="dv">30</span>,
     <span class="dt">getTooltip =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"object =&gt; object.properties.name || object.properties.station"</span>)

@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.6</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.7</span>
       </span>
     </div>
 
@@ -118,6 +118,9 @@
     </li>
     <li>
       <a href="../articles/screen-grid-layer.html">ScreenGridLayer</a>
+    </li>
+    <li>
+      <a href="../articles/shiny.html">Shiny integration</a>
     </li>
     <li>
       <a href="../articles/text-layer.html">TextLayer</a>
@@ -197,6 +200,29 @@ want to use a properties object for more than one layer</p></td>
     <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/path-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/path-layer</a></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>## @knitr path-layer</span>
+<span class='no'>sample_data</span> <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(
+  <span class='st'>"https://raw.githubusercontent.com/"</span>,
+  <span class='st'>"uber-common/deck.gl-data/"</span>,
+  <span class='st'>"master/website/bart-lines.json"</span>
+)
+
+<span class='no'>properties</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
+  <span class='kw'>pickable</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>widthScale</span> <span class='kw'>=</span> <span class='fl'>20</span>,
+  <span class='kw'>widthMinPixels</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='kw'>getPath</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"path"</span>),
+  <span class='kw'>getColor</span> <span class='kw'>=</span> <span class='fu'><a href='get_color_to_rgb_array.html'>get_color_to_rgb_array</a></span>(<span class='st'>"color"</span>),
+  <span class='kw'>getWidth</span> <span class='kw'>=</span> <span class='fl'>5</span>,
+  <span class='kw'>getTooltip</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"name"</span>)
+)
+
+<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>25</span>, <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>10.5</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_path_layer</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sample_data</span>, <span class='kw'>properties</span> <span class='kw'>=</span> <span class='no'>properties</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='add_mapbox_basemap.html'>add_mapbox_basemap</a></span>()
+
+<span class='kw'>if</span> (<span class='fu'>interactive</span>()) <span class='no'>deck</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -204,7 +230,9 @@ want to use a properties object for more than one layer</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
