@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.6</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.7</span>
       </span>
     </div>
 
@@ -117,6 +117,9 @@
       <a href="../articles/screen-grid-layer.html">ScreenGridLayer</a>
     </li>
     <li>
+      <a href="../articles/shiny.html">Shiny integration</a>
+    </li>
+    <li>
       <a href="../articles/text-layer.html">TextLayer</a>
     </li>
   </ul>
@@ -149,6 +152,18 @@
       <small>Source: <a href='https://github.com/crazycapivara/deckgl//blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="deckgl-0-1-7" class="section level1">
+<h1 class="page-header">
+<a href="#deckgl-0-1-7" class="anchor"></a>deckgl 0.1.7</h1>
+<ul>
+<li>Switched to <code>deckgl.js</code> 6.2.3</li>
+<li>Added examples to r-docs for all <code>add_*_layer</code> functions</li>
+<li>Added helper functions to run api-examples, not exported yet:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">deckgl<span class="op">:::</span><span class="kw">browse_api_examples</span>()[<span class="dv">1</span>] <span class="op">%&gt;%</span>
+<span class="st">  </span>deckgl<span class="op">:::</span><span class="kw">run_api_example</span>()
+deck</code></pre></div>
+</div>
     <div id="deckgl-0-1-6" class="section level1">
 <h1 class="page-header">
 <a href="#deckgl-0-1-6" class="anchor"></a>deckgl 0.1.6</h1>
@@ -233,6 +248,7 @@ properties &lt;-<span class="st"> </span><span class="kw">list</span>(
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#deckgl-0-1-7">0.1.7</a></li>
         <li><a href="#deckgl-0-1-6">0.1.6</a></li>
         <li><a href="#deckgl-0-1-5">0.1.5</a></li>
         <li><a href="#deckgl-0-1-4">0.1.4</a></li>

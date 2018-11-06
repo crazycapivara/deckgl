@@ -62,7 +62,7 @@ and renders them as circles with a certain radius." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.6</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.7</span>
       </span>
     </div>
 
@@ -119,6 +119,9 @@ and renders them as circles with a certain radius." />
     </li>
     <li>
       <a href="../articles/screen-grid-layer.html">ScreenGridLayer</a>
+    </li>
+    <li>
+      <a href="../articles/shiny.html">Shiny integration</a>
     </li>
     <li>
       <a href="../articles/text-layer.html">TextLayer</a>
@@ -199,6 +202,26 @@ want to use a properties object for more than one layer</p></td>
     <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/scatterplot-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/scatterplot-layer</a></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>## @knitr scatterplot-layer</span>
+<span class='no'>bart_stations</span> <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(
+  <span class='st'>"https://raw.githubusercontent.com/"</span>,
+  <span class='st'>"uber-common/deck.gl-data/"</span>,
+  <span class='st'>"master/website/bart-stations.json"</span>
+)
+
+<span class='no'>properties</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
+  <span class='kw'>getPosition</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"coordinates"</span>),
+  <span class='kw'>getRadius</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"data =&gt; Math.sqrt(data.exits)"</span>),
+  <span class='kw'>radiusScale</span> <span class='kw'>=</span> <span class='fl'>6</span>,
+  <span class='kw'>getColor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>255</span>, <span class='fl'>140</span>, <span class='fl'>20</span>)
+)
+
+<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>10.5</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>35</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_scatterplot_layer</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>bart_stations</span>, <span class='kw'>properties</span> <span class='kw'>=</span> <span class='no'>properties</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='add_mapbox_basemap.html'>add_mapbox_basemap</a></span>()
+
+<span class='kw'>if</span> (<span class='fu'>interactive</span>()) <span class='no'>deck</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -206,7 +229,9 @@ want to use a properties object for more than one layer</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

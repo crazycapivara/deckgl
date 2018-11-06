@@ -1,4 +1,4 @@
-data <- system.file("sample-data/sf-bike-parking.json", package = "deckgl")  %>%
+data <- system.file("sample-data/sf-bike-parking.json", package = "deckgl") %>%
   jsonlite::read_json(simplifyVector = TRUE) %>%
   tibble::as.tibble()
 

@@ -15,6 +15,8 @@ properties_text_layer <- list(
 #'
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/text-layer}
 #'
+#' @example inst/examples/deckgl-api-reference/text-layer.R
+#'
 #' @export
 add_text_layer <- function(deckgl, id = "text-layer", data = NULL, properties = list(), ...) {
   # use sample data if no data is given
