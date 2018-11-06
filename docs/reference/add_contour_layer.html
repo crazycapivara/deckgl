@@ -63,7 +63,7 @@ and feeds them into LineLayer to render lines." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.6</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.7</span>
       </span>
     </div>
 
@@ -120,6 +120,9 @@ and feeds them into LineLayer to render lines." />
     </li>
     <li>
       <a href="../articles/screen-grid-layer.html">ScreenGridLayer</a>
+    </li>
+    <li>
+      <a href="../articles/shiny.html">Shiny integration</a>
     </li>
     <li>
       <a href="../articles/text-layer.html">TextLayer</a>
@@ -202,25 +205,40 @@ want to use a properties object for more than one layer</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## @knitr arc-layer</span>
+    <pre class="examples"><div class='input'><span class='co'>## @knitr contour-layer</span>
 <span class='no'>sample_data</span> <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(
   <span class='st'>"https://raw.githubusercontent.com/"</span>,
-  <span class='st'>"uber-common/deck.gl-data/master/"</span>,
-  <span class='st'>"website/bart-segments.json"</span>
+  <span class='st'>"uber-common/deck.gl-data/"</span>,
+  <span class='st'>"master/website/sf-bike-parking.json"</span>
+)
+
+<span class='no'>contours</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
+  <span class='fu'><a href='contour_definition.html'>contour_definition</a></span>(
+    <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+    <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>255</span>, <span class='fl'>0</span>, <span class='fl'>0</span>),
+    <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='fl'>2</span>
+  ),
+  <span class='fu'><a href='contour_definition.html'>contour_definition</a></span>(
+    <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>5</span>,
+    <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>255</span>, <span class='fl'>0</span>),
+    <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='fl'>3</span>
+  ),
+  <span class='fu'><a href='contour_definition.html'>contour_definition</a></span>(
+    <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>15</span>,
+    <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>255</span>),
+    <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='fl'>5</span>
+  )
 )
 
 <span class='no'>properties</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
-  <span class='kw'>pickable</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>getStrokeWidth</span> <span class='kw'>=</span> <span class='fl'>12</span>,
-  <span class='kw'>getSourcePosition</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"from.coordinates"</span>),
-  <span class='kw'>getTargetPosition</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"to.coordinates"</span>),
-  <span class='kw'>getSourceColor</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"d =&gt; [Math.sqrt(d.inbound), 140, 0]"</span>),
-  <span class='kw'>getTargetColor</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"d =&gt; [Math.sqrt(d.outbound), 140, 0]"</span>),
-  <span class='kw'>getTooltip</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"object =&gt; `${object.from.name} to ${object.to.name}`"</span>)
+  <span class='kw'>contours</span> <span class='kw'>=</span> <span class='no'>contours</span>,
+  <span class='kw'>cellSize</span> <span class='kw'>=</span> <span class='fl'>200</span>,
+  <span class='kw'>elevationScale</span> <span class='kw'>=</span> <span class='fl'>4</span>,
+  <span class='kw'>getPosition</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"COORDINATES"</span>)
 )
 
-<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>35</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='add_arc_layer.html'>add_arc_layer</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sample_data</span>, <span class='kw'>properties</span> <span class='kw'>=</span> <span class='no'>properties</span>) <span class='kw'>%&gt;%</span>
+<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>10.5</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>30</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_contour_layer</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sample_data</span>, <span class='kw'>properties</span> <span class='kw'>=</span> <span class='no'>properties</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='add_mapbox_basemap.html'>add_mapbox_basemap</a></span>()
 
 <span class='kw'>if</span> (<span class='fu'>interactive</span>()) <span class='no'>deck</span></div></pre>

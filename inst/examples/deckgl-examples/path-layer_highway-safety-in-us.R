@@ -3,14 +3,16 @@ library(magrittr)
 library(data.table)
 library(sf)
 
-data_url <- paste0(
+data_url_root <- paste0(
   "https://raw.githubusercontent.com/",
   "uber-common/deck.gl-data/",
-  "master/examples/highway/",
-  c("accidents.csv", "roads.json")
-) %>%
-  as.list()
-names(data_url) <- c("accidents", "roads")
+  "master/examples/highway/"
+)
+
+data_url <- list(
+  accidents = paste0(data_url_root, "accidents.csv"),
+  roads = paste0(data_url_root, "roads.json")
+)
 
 # Prepare data
 accidents2010 <- fread(data_url$accidents) %>%

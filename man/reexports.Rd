@@ -4,9 +4,7 @@
 \name{reexports}
 \alias{reexports}
 \alias{JS}
-\alias{reexports}
 \alias{onRender}
-\alias{reexports}
 \alias{\%>\%}
 \title{Objects exported from other packages}
 \keyword{internal}

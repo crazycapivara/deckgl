@@ -26,6 +26,24 @@ want to use a properties object for more than one layer}
 \description{
 The \code{TextLayer} renders text labels on the map using texture mapping.
 }
+\examples{
+## @knitr text-layer
+deck <- deckgl(zoom = 10, pitch = 35) \%>\%
+  add_text_layer(
+    data = bart_stations,
+    pickable = TRUE,
+    getPosition = get_position("lat", "lng"),
+    getText = get_property("name"),
+    getSize = 15,
+    getAngle = 0,
+    getTextAnchor = "middle",
+    getAlignmentBaseline = "center",
+    getTooltip = JS("object =>`${object.name}<br/>${object.address}`")
+  ) \%>\%
+  add_mapbox_basemap()
+
+if (interactive()) deck
+}
 \seealso{
 \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/text-layer}
 }

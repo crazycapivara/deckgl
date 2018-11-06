@@ -6,6 +6,8 @@
 #'
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/point-cloud-layer}
 #'
+#' @example inst/examples/deckgl-api-reference/point-cloud-layer.R
+#'
 #' @export
 add_point_cloud_layer <- function(deckgl, id = "point-cloud-layer", data = NULL, properties = list(), ...) {
   add_layer(deckgl, "PointCloudLayer", id, data, properties, ...)

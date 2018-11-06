@@ -2,7 +2,7 @@ bart_stations <- system.file("sample-data/bart-stations.json", package = "deckgl
   jsonlite::read_json(simplifyVector = TRUE) %>%
   tibble::as.tibble()
 
-main_properties = list(
+main_properties <- list(
   getPosition = get_position("lat", "lng")
 )
 

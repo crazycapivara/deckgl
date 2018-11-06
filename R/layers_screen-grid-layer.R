@@ -7,6 +7,8 @@
 #'
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/screen-grid-layer}
 #'
+#' @example inst/examples/deckgl-api-reference/screen-grid-layer.R
+#'
 #' @export
 add_screen_grid_layer <- function(deckgl, id = "screen-grid-layer", data = NULL, properties = list(), ...) {
   add_layer(deckgl, "ScreenGridLayer", id, data, properties, ...)

@@ -27,6 +27,27 @@ want to use a properties object for more than one layer}
 The \code{ScatterplotLayer} takes in paired latitude and longitude coordinated points
 and renders them as circles with a certain radius.
 }
+\examples{
+## @knitr scatterplot-layer
+bart_stations <- paste0(
+  "https://raw.githubusercontent.com/",
+  "uber-common/deck.gl-data/",
+  "master/website/bart-stations.json"
+)
+
+properties <- list(
+  getPosition = get_property("coordinates"),
+  getRadius = JS("data => Math.sqrt(data.exits)"),
+  radiusScale = 6,
+  getColor = c(255, 140, 20)
+)
+
+deck <- deckgl(zoom = 10.5, pitch = 35) \%>\%
+  add_scatterplot_layer(data = bart_stations, properties = properties) \%>\%
+  add_mapbox_basemap()
+
+if (interactive()) deck
+}
 \seealso{
 \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/scatterplot-layer}
 }

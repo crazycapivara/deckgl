@@ -14,5 +14,6 @@ articles:
   polygon-layer: polygon-layer.html
   scatterplot-layer: scatterplot-layer.html
   screen-grid-layer: screen-grid-layer.html
+  shiny: shiny.html
   text-layer: text-layer.html
 

@@ -6,6 +6,8 @@
 #'
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/icon-layer}
 #'
+#' @example inst/examples/deckgl-api-reference/icon-layer.R
+#'
 #' @export
 add_icon_layer <- function(deckgl, id = "icon-layer", data = NULL, properties = default_icon_properties(), ...) {
   if (is.null(properties$iconAtlas) && is.null(list(...)$iconAtlas)) {

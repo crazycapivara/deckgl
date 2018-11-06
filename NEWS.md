@@ -1,3 +1,15 @@
+# deckgl 0.1.7
+
+* Switched to `deckgl.js` 6.2.3
+* Added examples to r-docs for all `add_*_layer` functions
+* Added helper functions to run api-examples, not exported yet:
+
+```r
+deckgl:::browse_api_examples()[1] %>%
+  deckgl:::run_api_example()
+deck
+```
+
 # deckgl 0.1.6
 
 * Switched to `deckgl.js` 6.2.2
