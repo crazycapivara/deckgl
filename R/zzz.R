@@ -6,11 +6,11 @@
   )
   if (!identical(Sys.getenv("MAPBOX_API_TOKEN"), "")) mapbox_message <- ""
 
-  filename <- system.file("htmlwidgets/deckgl.yaml", package = "deckgl")
-  deckgljs_version <- yaml::yaml.load_file(filename)$dependencies[[1]]$version
+  #filename <- system.file("htmlwidgets/deckgl.yaml", package = "deckgl")
+  #deckgljs_version <- yaml::yaml.load_file(filename)$dependencies[[1]]$version
 
   packageStartupMessage(
-    pkgname, " ", getNamespaceVersion(pkgname), " wrapping deckgljs ", deckgljs_version, "\n",
+    pkgname, " ", getNamespaceVersion(pkgname), " wrapping deckgljs ", deckgljs_version(), "\n",
     "  Documentation: https://crazycapivara.github.io/deckgl/\n",
     "  Issues, notes and bleeding edge: https://github.com/crazycapivara/deckgl\n",
     mapbox_message
