@@ -10,6 +10,7 @@ browse_api_examples <- function() {
 
 run_api_example <- function(script_name = "arc-layer.R") {
   system.file("examples/deckgl-api-reference", package = "deckgl") %>%
-    paste0("/", script_name) %>% source()
+    paste0("/", script_name) %>%
+    source()
   deck
 }
