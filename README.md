@@ -3,7 +3,7 @@
 An R Interface to deck.gl
 =========================
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 Deckgl for R makes the open-source JavaScript library [deck.gl](https://deck.gl/) available within R via the [htmlwidgets](https://www.htmlwidgets.org/) package.
 
@@ -108,9 +108,18 @@ deckgl() %>% add_layer("ArcLayer", "arc-layer", data, properties)
 deckgl() %>% add_arc_layer("arc-layer", data, properties)
 ```
 
+Run examples
+------------
+
+You can run the [api-examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples/deckgl-api-reference) from the `add_*_layer` functions with `example("add_*_layer")`. For the `IconLayer` it looks like this:
+
+``` r
+example("add_icon_layer")
+```
+
 Documentation
 -------------
 
--   [deckgl for R](https://crazycapivara.github.io/deckgl/)
+-   [deckgl for R](https://crazycapivara.github.io/deckgl/) ([pkgdown](https://pkgdown.r-lib.org/)-site)
 -   [example scripts](https://github.com/crazycapivara/deckgl/tree/master/inst/examples)
--   [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference)
+-   [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) (JavaScript framework)
