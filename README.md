@@ -93,7 +93,7 @@ deckgl(zoom = 11, pitch = 45) %>%
 ```
 
 -   The `data` parameter can either be an **url** to fetch data from or a **data object**. Furthermore, you can use `get_data` in conjunction with `add_data` to use a data file.
--   The `properties` parameter is a **named list** with names corresponding to the **properties** defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given **layer** class. For the example above see the [grid-layer-api-reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer). In case the property is a **data accessor** (usually a function in the form of a lambda expression), just use the `JS` function in R to pass it to the layer object. In the example above this is done for the properties `getPosition` and `getTooltip`. It is also possible to pass properties as named arguments via the `...` parameter.
+-   The `properties` parameter is a **named list** with names corresponding to the **properties** defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given **layer** class. For the example above see the [grid-layer-api-reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer). In case the property is a **data accessor** (usually a function in the form of a lambda expression) just use the `JS` function in R to pass it to the layer object. In the example above this is done for the properties `getPosition` and `getTooltip`. It is also possible to pass properties as named arguments via the `...` parameter. They are appended to the properties list. Same properties will be overwritten.
 
 Layers
 ------
@@ -118,12 +118,12 @@ You can run the [api-examples](https://github.com/crazycapivara/deckgl/tree/mast
 example(add_icon_layer)
 ```
 
-Documentation
--------------
+Concept
+-------
 
-Deckgl for R stays as close as possible to the JavaScript api so that usually all parameters of the JavaScript pendants are supported. Therefore, you need to use the [js-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) in conjunction with the [r-api-reference](https://crazycapivara.github.io/deckgl/reference). Use the `JS` function if you need to pass some kind of JavaScript code, as it is the case for **data accessors**. Also see the helper functions like `get_property` or `get_position`.
+Deckgl for R stays as close as possible to the JavaScript api so that usually all parameters of its JavaScript pendants are supported. Therefore, you need to check the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) of the JavaScript framework to get information about the parameters you can pass to the R-functions mostly as named lists or named arguments (`...` parameter). Use the `JS` function if you need to pass any kind of JavaScript code, as it is the case for **data accessors**.
 
-To get an idea of the concept take a look at the [js-grid-layer-api-reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer):
+[GridLayer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) api-example:
 
 ``` javascript
 // JavaScript code
@@ -141,12 +141,6 @@ const layer = new GridLayer({
 ``` r
 # Corresponding R code
 
-data <- paste0(
-  "https://raw.githubusercontent.com/",
-  "uber-common/deck.gl-data/",
-  "master/website/sf-bike-parking.json"
-)
-
 deck <- deckgl() %>%
   add_grid_layer(
     id = "grid-layer",
@@ -157,6 +151,8 @@ deck <- deckgl() %>%
     getPosition = JS("d => d.COORDINATES")
   )
 ```
+
+In this example all properties are passed as named arguments.
 
 You can test your R code like this:
 
@@ -176,6 +172,9 @@ htmlwidgets:::toJSON2(properties, pretty = TRUE)
 #>   "getPosition": "data => data.COORDINATES"
 #> }
 ```
+
+Documentation
+-------------
 
 -   [deckgl for R](https://crazycapivara.github.io/deckgl/) ([pkgdown](https://pkgdown.r-lib.org/)-site)
 -   [example scripts](https://github.com/crazycapivara/deckgl/tree/master/inst/examples)
