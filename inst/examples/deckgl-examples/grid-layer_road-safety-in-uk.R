@@ -1,6 +1,6 @@
 ## @knitr road-safety-in-uk
-library("deckgl")
-library("data.table")
+library(deckgl)
+library(data.table)
 
 data_url <- paste0(
   "https://raw.githubusercontent.com/",
@@ -29,7 +29,7 @@ initial_view_state <- list(
   bearing = -27.396674584323023
 )
 
-deckgl(
+deck <- deckgl(
   initialViewState = initial_view_state,
   style = list(background = "black")
 ) %>%
@@ -44,3 +44,5 @@ deckgl(
     lightSettings = light_settings,
     getTooltip = JS("object => `${object.count} accidents`")
   )
+
+if (interactive()) deck

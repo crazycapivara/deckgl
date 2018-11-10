@@ -1,7 +1,8 @@
 ## @knitr highway-safety-in-us
-library(magrittr)
+library(deckgl)
 library(data.table)
 library(sf)
+library(leaflet)
 
 data_url_root <- paste0(
   "https://raw.githubusercontent.com/",
@@ -31,14 +32,9 @@ roads <- accidents2010[roads] %>%
 roads[is.na(roads)] <- 0
 
 # Set colors
-library("leaflet")
-
 pal <- colorBin("RdYlBu", domain = accidents2010$fatalities, bins = 6)
 roads$color <- pal(roads$fatalities)
 roads[fatalities == 0, ]$color <- "#000000"
-
-# Create output
-library("deckgl")
 
 initial_view_state <- list(
   latitude = 38,
@@ -48,7 +44,7 @@ initial_view_state <- list(
   maxZoom = 8
 )
 
-deckgl(
+deck <- deckgl(
   initialViewState = initial_view_state,
   pickingRadius = 5,
   style = list(background = "black")
@@ -63,3 +59,5 @@ deckgl(
     getWidth = 5,
     getTooltip = get_property("fatalities")
   ) # %>% add_mapbox_basemap()
+
+if (interactive()) deck
