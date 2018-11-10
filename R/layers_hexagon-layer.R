@@ -1,14 +1,22 @@
 # Example HexagonLayer
 # -----
-sf_bike_parking <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json"
+get_sf_bike_parking_url <- function() {
+  paste0(
+    "https://raw.githubusercontent.com/",
+    "uber-common/deck.gl-data/master/",
+    "website/sf-bike-parking.json"
+  )
+}
 
-properties_hexagon_layer <- list(
-  pickable = TRUE,
-  extruded = TRUE,
-  radius = 200,
-  elevationScale = 4,
-  getPosition = JS("data => data.COORDINATES")
-)
+sample_hexagon_properties <- function() {
+  list(
+    pickable = TRUE,
+    extruded = TRUE,
+    radius = 200,
+    elevationScale = 4,
+    getPosition = JS("data => data.COORDINATES")
+  )
+}
 
 #' Add a hexagon layer to the deckgl widget
 #'
@@ -25,8 +33,8 @@ properties_hexagon_layer <- list(
 add_hexagon_layer <- function(deckgl, id = "hexagon-layer", data = NULL, properties = list(), ...) {
   # use sample data if no data is given
   if (is.null(data)) {
-    data <- sf_bike_parking
-    properties <- properties_hexagon_layer
+    data <- get_sf_bike_parking_url()
+    properties <- sample_hexagon_properties()
   }
 
   add_layer(deckgl, "HexagonLayer", id, data, properties, ...)
