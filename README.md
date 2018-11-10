@@ -11,7 +11,7 @@ Notes
 -----
 
 -   It is a known issue that the deckgl widget might not be visible in the viewer pane of RStudio. Just open it in your browser by clicking **Show in new window** and everything will be fine.
--   The [documentation](https://crazycapivara.github.io/deckgl/) is work in progress. Please check the [examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples) as a starting point.
+-   The [documentation](https://crazycapivara.github.io/deckgl/) is work in progress. Please check also the [examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples) as a starting point.
 -   You do **not** need a [mapbox](https://www.mapbox.com/) api key to use this package. It is always optional to add a base map from mapbox to your widget.
 
 Installation
@@ -176,6 +176,6 @@ htmlwidgets:::toJSON2(properties, pretty = TRUE)
 Documentation
 -------------
 
--   [deckgl for R](https://crazycapivara.github.io/deckgl/) ([pkgdown](https://pkgdown.r-lib.org/)-site)
+-   [deckgl for R](https://crazycapivara.github.io/deckgl/) (pkgdown-site)
 -   [example scripts](https://github.com/crazycapivara/deckgl/tree/master/inst/examples)
 -   [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) (JavaScript framework)
