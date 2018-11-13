@@ -10,5 +10,5 @@ get_data(var_name = "thanksForAllTheFish")
 \item{var_name}{JavaScript variable name}
 }
 \description{
-EXPERIMENTAL
+EXPERIMENTAL, usually used in conjunction with \link{add_data}
 }

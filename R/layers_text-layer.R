@@ -1,11 +1,19 @@
 # Example TextLayer
 # -----
-bart_stations <- "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json"
+get_bart_stations_url <- function() {
+  paste0(
+    "https://raw.githubusercontent.com/",
+    "uber-common/deck.gl-data/master/",
+    "website/bart-stations.json"
+  )
+}
 
-properties_text_layer <- list(
-  getPosition = JS("data => data.coordinates"),
-  getText = JS("data => data.name")
-)
+sample_text_properties <- function() {
+  list(
+    getPosition = JS("data => data.coordinates"),
+    getText = JS("data => data.name")
+  )
+}
 
 #' Add a text layer to the deckgl widget
 #'
@@ -21,8 +29,8 @@ properties_text_layer <- list(
 add_text_layer <- function(deckgl, id = "text-layer", data = NULL, properties = list(), ...) {
   # use sample data if no data is given
   if (is.null(data)) {
-    data <- bart_stations
-    properties <- properties_text_layer
+    data <- get_bart_stations_url()
+    properties <- sample_text_properties()
   }
 
   add_layer(deckgl, "TextLayer", id, data, properties, ...)

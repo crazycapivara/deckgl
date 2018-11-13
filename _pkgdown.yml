@@ -1,4 +1,6 @@
 title: deckgl for R
 template:
   params:
-    bootswatch: cosmo
+    bootswatch: flatly
+#navbar:
+#  type: inverse

@@ -24,6 +24,8 @@ data_dependency <- function(data, var_name) {
 #' @param data data object
 #' @param var_name JavaScript variable name used to make the data available
 #'
+#' @example inst/examples/deckgl-api-reference/grid-layer-data-dependency.R
+#'
 #' @export
 add_data <- function(deckgl, data, var_name = "thanksForAllTheFish") {
   deckgl$dependencies <- c(
@@ -35,7 +37,7 @@ add_data <- function(deckgl, data, var_name = "thanksForAllTheFish") {
 
 #' Get data
 #'
-#' EXPERIMENTAL
+#' EXPERIMENTAL, usually used in conjunction with \link{add_data}
 #'
 #' @param var_name JavaScript variable name
 #'
