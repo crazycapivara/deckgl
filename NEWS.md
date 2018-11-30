@@ -1,6 +1,14 @@
+# deckgl 0.1.9
+
+* Switched to `deckgl.js` 6.3.0
+* Switched to `mapbox-gl.js` 0.51.0
+* Updated api example of `ScreenGridLayer`
+* Added `HexagonLayer` example of _road-safety-in-uk_
+
 # deckgl 0.1.8
 
 * Switched to `deckgl.js` 6.2.4
+* cran release
 
 # deckgl 0.1.7
 
