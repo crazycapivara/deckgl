@@ -5,7 +5,7 @@ library(deckgl)
 library(rlas)
 library(data.table)
 
-# Prepare data: Fit point cloud in a 1x1x1 box centered at [0, 0, 0]
+# Fit point cloud in a 1x1x1 box centered at [0, 0, 0]
 normalize_data <- function(data) {
   values_max <- apply(data, 2, max)
   values_min <- apply(data, 2, min)
@@ -21,7 +21,6 @@ data <- system.file("sample-data/indoor.0.1.laz", package = "deckgl") %>%
   read.las("xyz") %>%
   normalize_data()
 
-# Create output
 properties <- list(
   coordinateSystem = JS("COORDINATE_SYSTEM.IDENTITY"),
   getPosition = JS("d => [d.X, d.Y, d.Z]"),
@@ -42,10 +41,15 @@ initial_view_state <- list(
   zoom = 1
 )
 
-deckgl(
+deck <- deckgl(
   initialViewState = initial_view_state,
   views = JS("new OrbitView()"),
   style = list(background = "black")
 ) %>%
   add_data(data) %>%
-  add_point_cloud_layer(data = get_data(), properties = properties)
+  add_point_cloud_layer(
+    data = get_data(),
+    properties = properties
+  )
+
+if (interactive()) deck

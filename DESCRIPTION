@@ -1,10 +1,10 @@
 Package: deckgl
 Title: An R Interface to 'deck.gl'
-Version: 0.1.7
-Date: 2018-11-05
+Version: 0.1.8
+Date: 2018-11-10
 Authors@R: person("Stefan", "Kuethe", email = "crazycapivara@gmail.com", role = c("aut", "cre"))
 Maintainer: Stefan Kuethe <crazycapivara@gmail.com>
-Description: Makes 'deck.gl' <https://deck.gl/>, a WebGL-powered open-source JavaScript framework  
+Description: Makes 'deck.gl' <https://deck.gl/>, a WebGL-powered open-source JavaScript framework
   for visual exploratory data analysis of large datasets, available within R via the 'htmlwidgets' package.
   Furthermore, it supports basemaps from 'mapbox' <https://www.mapbox.com/> via
   'mapbox-gl-js' <https://github.com/mapbox/mapbox-gl-js>.

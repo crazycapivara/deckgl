@@ -27,7 +27,7 @@ initial_view_state <- list(
   bearing = 0
 )
 
-deckgl(initialViewState = initial_view_state) %>%
+deck <- deckgl(initialViewState = initial_view_state) %>%
   add_scatterplot_layer(
     data = data,
     radiusScale = 30,
@@ -37,3 +37,5 @@ deckgl(initialViewState = initial_view_state) %>%
     getRadius = 1
   ) %>%
   add_mapbox_basemap()
+
+if (interactive()) deck

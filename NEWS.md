@@ -1,3 +1,7 @@
+# deckgl 0.1.8
+
+* Switched to `deckgl.js` 6.2.4
+
 # deckgl 0.1.7
 
 * Switched to `deckgl.js` 6.2.3
