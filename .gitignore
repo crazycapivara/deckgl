@@ -3,3 +3,4 @@
 .RData
 playground/
 inst/doc
+node_modules/
