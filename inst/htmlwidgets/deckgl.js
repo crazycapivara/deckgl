@@ -96,6 +96,9 @@ var deck = window.deck;
           // Render the widget
 
           console.log("deck.gl version: " + deck.version);
+          if (typeof mapboxgl !== "undefined") {
+            console.log("mapbox-gl version: " + mapboxgl.version);
+          }
 
           var properties = {
             mapboxApiAccessToken: x.mapboxApiAccessToken || "",
