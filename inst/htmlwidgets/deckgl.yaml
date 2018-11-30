@@ -1,7 +1,7 @@
 # (uncomment to add a dependency)
  dependencies:
   - name: deckgl
-    version: 6.2.4
+    version: 6.3.0
     src: htmlwidgets/lib/deckgl
     script: deckgl.min.js
     stylesheet: deckgl_.css
