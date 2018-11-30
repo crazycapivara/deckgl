@@ -62,7 +62,7 @@ aggregates them into histogram bins and renders as a grid." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.8</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.9</span>
       </span>
     </div>
 
@@ -210,12 +210,15 @@ want to use a properties object for more than one layer</p></td>
   <span class='st'>"website/sf-bike-parking.json"</span>
 )
 
+<span class='no'>color_to_rgb</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>color</span>) <span class='fu'>col2rgb</span>(<span class='no'>color</span>) <span class='kw'>%&gt;%</span> <span class='fu'>as.vector</span>()
+<span class='no'>color_range</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"#0198BD"</span>, <span class='st'>"#49E3CE"</span>, <span class='st'>"#D8FEB5"</span>, <span class='st'>"#FEEDB1"</span>, <span class='st'>"#FEAD54"</span>, <span class='st'>"#D1374E"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>lapply</span>(<span class='no'>color_to_rgb</span>)
+
 <span class='no'>properties</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
   <span class='kw'>pickable</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='fl'>0.8</span>,
   <span class='kw'>cellSizePixels</span> <span class='kw'>=</span> <span class='fl'>50</span>,
-  <span class='kw'>minColor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>),
-  <span class='kw'>maxColor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>180</span>, <span class='fl'>0</span>, <span class='fl'>255</span>),
+  <span class='kw'>colorRange</span> <span class='kw'>=</span> <span class='no'>color_range</span>,
   <span class='kw'>getPosition</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"COORDINATES"</span>),
   <span class='kw'>getWeight</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"SPACES"</span>)
 )

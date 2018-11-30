@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.8</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.9</span>
       </span>
     </div>
 
@@ -135,12 +135,15 @@
   <span class="st">"website/sf-bike-parking.json"</span>
 )
 
+color_to_rgb &lt;-<span class="st"> </span><span class="cf">function</span>(color) <span class="kw">col2rgb</span>(color) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.vector</span>()
+color_range &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"#0198BD"</span>, <span class="st">"#49E3CE"</span>, <span class="st">"#D8FEB5"</span>, <span class="st">"#FEEDB1"</span>, <span class="st">"#FEAD54"</span>, <span class="st">"#D1374E"</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">lapply</span>(color_to_rgb)
+
 properties &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="dt">pickable =</span> <span class="ot">FALSE</span>,
   <span class="dt">opacity =</span> <span class="fl">0.8</span>,
   <span class="dt">cellSizePixels =</span> <span class="dv">50</span>,
-  <span class="dt">minColor =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),
-  <span class="dt">maxColor =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">180</span>, <span class="dv">0</span>, <span class="dv">255</span>),
+  <span class="dt">colorRange =</span> color_range,
   <span class="dt">getPosition =</span> <span class="kw"><a href="../reference/get_property.html">get_property</a></span>(<span class="st">"COORDINATES"</span>),
   <span class="dt">getWeight =</span> <span class="kw"><a href="../reference/get_property.html">get_property</a></span>(<span class="st">"SPACES"</span>)
 )
