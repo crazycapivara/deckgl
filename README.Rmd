@@ -27,7 +27,11 @@ Deckgl for R makes the open-source JavaScript library [deck.gl](https://deck.gl/
 
 ## Installation
 
-You can install deckgl from github with:
+```{r cran-installation, eval = FALSE}
+install.packages("deckgl")
+```
+
+You can install the latest version of deckgl from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
