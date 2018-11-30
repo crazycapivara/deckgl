@@ -8,6 +8,7 @@ data_url <- paste0(
   "master/examples/3d-heatmap/heatmap-data.csv"
 )
 sample_data <- fread(data_url)
+
 color_to_rgb <- function(color) col2rgb(color) %>% as.vector()
 color_range <- c("#0198BD", "#49E3CE", "#D8FEB5", "#FEEDB1", "#FEAD54", "#D1374E") %>%
   lapply(color_to_rgb)

@@ -30,7 +30,7 @@ initial_view_state <- list(
   bearing = -27.396674584323023
 )
 
-deckgl(
+deck <- deckgl(
   initialViewState = initial_view_state,
   style = list(background = "black")
 ) %>%
@@ -49,3 +49,5 @@ deckgl(
     radius = 1000,
     upperPercentile = 100
   )
+
+if (interactive()) deck
