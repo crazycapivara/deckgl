@@ -17,7 +17,11 @@ Notes
 Installation
 ------------
 
-You can install deckgl from github with:
+``` r
+install.packages("deckgl")
+```
+
+You can install the latest version of deckgl from github with:
 
 ``` r
 # install.packages("devtools")

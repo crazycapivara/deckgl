@@ -1,6 +1,6 @@
 ## @knitr road-safety-in-uk
-library(deckgl)
-library(data.table)
+library("deckgl")
+library("data.table")
 
 data_url <- paste0(
   "https://raw.githubusercontent.com/",
@@ -34,16 +34,20 @@ deck <- deckgl(
   initialViewState = initial_view_state,
   style = list(background = "black")
 ) %>%
-  add_grid_layer(
-    data = sample_data,
-    getPosition = get_position("lat", "lng"),
-    cellSize = 2000,
+  add_data(sample_data) %>%
+  add_hexagon_layer(
+    data = get_data(),
+    colorRange = color_range,
+    coverage = 1,
+    elevationRange = c(0, 3000),
     elevationScale = 50,
     extruded = TRUE,
-    opacity = 0.5,
-    colorRange = color_range,
+    getPosition = get_position("lat", "lng"),
     lightSettings = light_settings,
-    getTooltip = JS("object => `${object.count} accidents`")
+    getTooltip = JS("object => `${object.points.length} accidents`"),
+    opacity = 1,
+    radius = 1000,
+    upperPercentile = 100
   )
 
 if (interactive()) deck
