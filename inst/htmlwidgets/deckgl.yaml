@@ -5,3 +5,7 @@
     src: htmlwidgets/lib/deckgl
     script: deckgl.min.js
     stylesheet: deckgl_.css
+  - name: wellknown
+    version: 0.5.0
+    src: htmlwidgets/lib/wellknown
+    script: wellknown.js
