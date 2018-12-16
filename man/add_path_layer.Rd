@@ -2,9 +2,16 @@
 % Please edit documentation in R/layers_path-layer.R
 \name{add_path_layer}
 \alias{add_path_layer}
+\alias{add_path_layer.default}
+\alias{add_path_layer.sf}
 \title{Add a path layer to the deckgl widget}
 \usage{
-add_path_layer(deckgl, id = "path-layer", data = NULL,
+add_path_layer(deckgl, id, data, properties, ...)
+
+\method{add_path_layer}{default}(deckgl, id = "path-layer",
+  data = NULL, properties = list(), ...)
+
+\method{add_path_layer}{sf}(deckgl, id = "path-layer", data = NULL,
   properties = list(), ...)
 }
 \arguments{
