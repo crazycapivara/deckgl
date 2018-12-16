@@ -61,6 +61,10 @@ wellknown_ <- function(data) {
   data
 }
 
+#' Create a data accessor getting coordinates from wellknown text
+#'
+#' Used in conjunction with \code{\link{wellknown}}.
+#'
 #' @export
 get_wellknown <- function() {
   JS("data => wellknown.parse(data.geom_wkt).coordinates")
