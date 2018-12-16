@@ -2,6 +2,7 @@
 
 S3method(wellknown,default)
 S3method(wellknown,sfc_MULTILINESTRING)
+S3method(wellknown,sfc_MULTIPOINT)
 S3method(wellknown,sfc_MULTIPOLYGON)
 export("%>%")
 export(JS)
