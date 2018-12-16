@@ -10,5 +10,11 @@
 #'
 #' @export
 add_polygon_layer <- function(deckgl, id = "polygon-layer", data = NULL, properties = list(), ...) {
+  # Maybe use S3 methods instead, but it seems to be more code
+  if (any(class(data) == "sf")) {
+    data <- wellknown(data)
+    properties$getPolygon <- get_wellknown()
+  }
+
   add_layer(deckgl, "PolygonLayer", id, data, properties, ...)
 }
