@@ -10,5 +10,10 @@
 #'
 #' @export
 add_path_layer <- function(deckgl, id = "path-layer", data = NULL, properties = list(), ...) {
+  if (inherits(data, "sf")) {
+    data <- wellknown(data)
+    properties$getPath <- get_wellknown()
+  }
+
   add_layer(deckgl, "PathLayer", id, data, properties, ...)
 }

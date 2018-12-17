@@ -17,10 +17,20 @@ initial_view_state <- list(
   maxZoom = 8
 )
 
-deckgl(initialViewState = initial_view_state) %>%
+deck <- deckgl(initialViewState = initial_view_state) %>%
   add_path_layer(
     data = wellknown(roads),
     getPath = get_wellknown(),
     widthScale = 20,
     widthMinPixels = 2
   )
+
+# Parsing 'sf' object automatically
+deck <- deckgl(initialViewState = initial_view_state) %>%
+  add_path_layer(
+    data = roads,
+    widthScale = 20,
+    widthMinPixels = 2
+  )
+
+if (interactive()) deck
