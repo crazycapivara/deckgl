@@ -44,23 +44,6 @@ wellknown.default <- function(data) {
   data
 }
 
-# obsolete
-wellknown_ <- function(data) {
-  geometry_class <- sf::st_geometry(data) %>% class()
-  #if ("sfc_MULTIPOLYGON" %in% geometry_class) {
-  #  suppressWarnings(data <- sf::st_cast(data, "POLYGON"))
-  #}
-
-  #if ("sfc_MULTILINESTRING" %in% geometry_class) {
-  #  suppressWarnings(data <- sf::st_cast(data, "LINESTRING"))
-  #}
-
-  data$geom_wkt <- sf::st_geometry(data) %>%
-    sf::st_as_text()
-  sf::st_geometry(data) <- NULL
-  data
-}
-
 #' Create a data accessor getting coordinates from wellknown text
 #'
 #' Used in conjunction with \code{\link{wellknown}}.
