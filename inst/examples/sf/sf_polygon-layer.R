@@ -27,3 +27,10 @@ deck <- deckgl(longitude = lng_lat[1], latitude = lng_lat[2], zoom = 6) %>%
   add_mapbox_basemap()
 
 if (interactive()) deck
+
+# Parse 'sf' object automatically
+deckgl(longitude = lng_lat[1], latitude = lng_lat[2], zoom = 6) %>%
+  add_polygon_layer(
+    data = nc,
+    getFillColor = get_color_to_rgb_array("color")
+  )
