@@ -11,15 +11,7 @@
 #'
 #' @export
 add_scatterplot_layer <- function(deckgl, id = "scatterplot-layer", data = NULL, properties = list(), ...) {
-  if (inherits(data, "sf")) use_sf(data, properties)
+  if (inherits(data, "sf")) use_wellknown()
 
   add_layer(deckgl, "ScatterplotLayer", id, data, properties, ...)
-}
-
-use_sf <- function(data, properties, key = "getPosition") {
-  env <- parent.frame()
-  if (!identical(env, globalenv())) {
-    env$data <- wellknown(data)
-    env$properties[[key]] <- get_wellknown()
-  }
 }

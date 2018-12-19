@@ -1,3 +1,10 @@
+use_wellknown <- function(env = parent.frame(), key = "getPosition") {
+  if (!identical(env, globalenv())) {
+    env$data <- wellknown(env$data)
+    env$properties[[key]] <- get_wellknown()
+  }
+}
+
 cast_this <- function(data, to) {
   suppressWarnings(sf::st_cast(data, to)) %>%
     wellknown()
