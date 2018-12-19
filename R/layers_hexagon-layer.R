@@ -37,5 +37,7 @@ add_hexagon_layer <- function(deckgl, id = "hexagon-layer", data = NULL, propert
     properties <- sample_hexagon_properties()
   }
 
+  if (inherits(data, "sf")) use_wellknown()
+
   add_layer(deckgl, "HexagonLayer", id, data, properties, ...)
 }

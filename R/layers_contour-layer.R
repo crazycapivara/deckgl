@@ -12,6 +12,8 @@
 #'
 #' @export
 add_contour_layer <- function(deckgl, id = "contour-layer", data = NULL, properties = list(), ...) {
+  if (inherits(data, "sf")) use_wellknown()
+
   add_layer(deckgl, "ContourLayer", id, data, properties, ...)
 }
 

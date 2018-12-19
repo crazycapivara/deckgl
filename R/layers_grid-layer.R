@@ -11,5 +11,7 @@
 #'
 #' @export
 add_grid_layer <- function(deckgl, id = "grid-layer", data = NULL, properties = list(), ...) {
+  if (inherits(data, "sf")) use_wellknown()
+
   add_layer(deckgl, "GridLayer", id, data, properties, ...)
 }

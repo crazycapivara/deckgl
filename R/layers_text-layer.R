@@ -33,5 +33,7 @@ add_text_layer <- function(deckgl, id = "text-layer", data = NULL, properties = 
     properties <- sample_text_properties()
   }
 
+  if (inherits(data, "sf")) use_wellknown()
+
   add_layer(deckgl, "TextLayer", id, data, properties, ...)
 }

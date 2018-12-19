@@ -11,5 +11,7 @@
 #'
 #' @export
 add_screen_grid_layer <- function(deckgl, id = "screen-grid-layer", data = NULL, properties = list(), ...) {
+  if (inherits(data, "sf")) use_wellknown()
+
   add_layer(deckgl, "ScreenGridLayer", id, data, properties, ...)
 }

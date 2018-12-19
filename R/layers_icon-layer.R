@@ -14,6 +14,8 @@ add_icon_layer <- function(deckgl, id = "icon-layer", data = NULL, properties = 
     properties <- merge_properties(default_icon_properties(), properties)
   }
 
+  if (inherits(data, "sf")) use_wellknown()
+
   add_layer(deckgl, "IconLayer", id, data, properties, ...)
 }
 
