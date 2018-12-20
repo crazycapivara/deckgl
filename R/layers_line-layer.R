@@ -11,5 +11,11 @@
 #'
 #' @export
 add_line_layer <- function(deckgl, id = "line-layer", data = NULL, properties = list(), ...) {
+  if (inherits(data, "sf")) {
+    data <- wellknown(data)
+    properties$getSourcePosition <- get_wellknown_origin()
+    properties$getTargetPosition <- get_wellknown_destination()
+  }
+
   add_layer(deckgl, "LineLayer", id, data, properties, ...)
 }
