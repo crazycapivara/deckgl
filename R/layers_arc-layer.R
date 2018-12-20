@@ -11,5 +11,11 @@
 #'
 #' @export
 add_arc_layer <- function(deckgl, id = "arc-layer", data = NULL, properties = list(), ...) {
+  if (inherits(data, "sf")) {
+    data <- wellknown(data)
+    properties$getSourcePosition <- get_wellknown_origin()
+    properties$getTargetPosition <- get_wellknown_destination()
+  }
+
   add_layer(deckgl, "ArcLayer", id, data, properties, ...)
 }

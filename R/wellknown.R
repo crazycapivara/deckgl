@@ -59,3 +59,13 @@ wellknown.default <- function(data) {
 get_wellknown <- function() {
   JS("data => wellknown.parse(data.geom_wkt).coordinates")
 }
+
+#' @export
+get_wellknown_origin <- function() {
+  JS("data => wellknown.parse(data.geom_wkt).coordinates[0]")
+}
+
+#' @export
+get_wellknown_destination <- function() {
+  JS("data => wellknown.parse(data.geom_wkt).coordinates.slice(-1)[0]")
+}
