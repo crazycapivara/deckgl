@@ -14,3 +14,5 @@ od_to_line <- function(x, from = c("from_lng", "from_lat"), to = c("to_lng", "to
     }) %>% st_sfc(crs = 4326)
   st_sf(x, geometry = lines)
 }
+
+bart_segments_sf <- od_to_line(bart_segments)
