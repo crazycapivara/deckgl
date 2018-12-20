@@ -11,7 +11,7 @@ od_to_line <- function(x, from = c("from_lng", "from_lat"), to = c("to_lng", "to
       as.numeric() %>%
       matrix(nrow = 2, byrow = TRUE) %>%
       st_linestring()
-    }) %>% st_sfc(crs = 4326)
+  }) %>% st_sfc(crs = 4326)
   st_sf(x, geometry = lines)
 }
 
