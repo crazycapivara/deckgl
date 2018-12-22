@@ -16,3 +16,10 @@ od_to_line <- function(x, from = c("from_lng", "from_lat"), to = c("to_lng", "to
 }
 
 bart_segments_sf <- od_to_line(bart_segments)
+
+### flights
+library(data.table)
+data_url <- 'https://raw.githubusercontent.com/plotly/datasets/master/2011_february_aa_flight_paths.csv'
+
+dt <- fread(data_url, data.table = FALSE)
+dt_sf <- od_to_line(dt, from = c("start_lon", "start_lat"), to = c("end_lon", "end_lat"))
