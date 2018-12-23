@@ -14,6 +14,8 @@ cast_this <- function(data, to) {
 #'
 #' @param data object of class \code{sf}
 #'
+#' @seealso \code{\link{get_wellknown}}
+#'
 #' @name wellknown
 #' @export
 wellknown <- function(data) {
@@ -60,11 +62,13 @@ get_wellknown <- function() {
   JS("data => wellknown.parse(data.geom_wkt).coordinates")
 }
 
+#' @describeIn get_wellknown Get the first point from a \code{LINESTRING}
 #' @export
 get_wellknown_origin <- function() {
   JS("data => wellknown.parse(data.geom_wkt).coordinates[0]")
 }
 
+#' @describeIn get_wellknown Get the last point from a \code{LINESTRING}
 #' @export
 get_wellknown_destination <- function() {
   JS("data => wellknown.parse(data.geom_wkt).coordinates.slice(-1)[0]")

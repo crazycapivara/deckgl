@@ -24,3 +24,6 @@ wellknown(data)
 \description{
 Parse geometry column of \code{sf} object to wellknown text
 }
+\seealso{
+\code{\link{get_wellknown}}
+}

@@ -2,10 +2,23 @@
 % Please edit documentation in R/wellknown.R
 \name{get_wellknown}
 \alias{get_wellknown}
+\alias{get_wellknown_origin}
+\alias{get_wellknown_destination}
 \title{Create a data accessor getting coordinates from wellknown text}
 \usage{
 get_wellknown()
+
+get_wellknown_origin()
+
+get_wellknown_destination()
 }
 \description{
 Used in conjunction with \code{\link{wellknown}}.
 }
+\section{Functions}{
+\itemize{
+\item \code{get_wellknown_origin}: Get the first point from a \code{LINESTRING}
+
+\item \code{get_wellknown_destination}: Get the last point from a \code{LINESTRING}
+}}
+
