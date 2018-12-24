@@ -4,11 +4,12 @@ language: R
 sudo: required
 cache: packages
 dist: trusty
+latex: false
 
 addons:
   apt:
     sources:
-      - sourceline: "ppa:ubuntugis/ubuntugis-unstable"
+      - sourceline: "ppa:ubuntugis/ppa"
       - sourceline: "ppa:opencpu/jq"
     packages:
       - libudunits2-dev
