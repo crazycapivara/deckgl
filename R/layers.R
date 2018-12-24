@@ -42,5 +42,6 @@ merge_properties <- function(x, y) {
   for (name in names(y)) {
     x[[name]] <- y[[name]]
   }
+
   x
 }

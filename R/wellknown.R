@@ -26,16 +26,12 @@ wellknown <- function(data) {
 #' @export
 wellknown.sfc_MULTIPOLYGON <- function(data) {
   cast_this(data, "POLYGON")
-  # suppressWarnings(sf::st_cast(data, "POLYGON")) %>%
-  #   wellknown()
 }
 
 #' @name wellknown
 #' @export
 wellknown.sfc_MULTILINESTRING <- function(data) {
   cast_this(data, "LINESTRING")
-  # suppressWarnings(sf::st_cast(data, "LINESTRING")) %>%
-  #   wellknown()
 }
 
 #' @name wellknown
