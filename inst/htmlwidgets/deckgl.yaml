@@ -1,11 +1,11 @@
 # (uncomment to add a dependency)
- dependencies:
-  - name: h3-js
-    version: 3.4.3
-    src: htmlwidgets/lib/h3
-    script: h3-js.umd.js
-  - name: deckgl
-    version: 7.0.0
-    src: htmlwidgets/lib/deckgl
-    script: dist.min.js
-    stylesheet: deckgl_.css
+# dependencies:
+#  - name: h3-js
+#    version: 3.4.3
+#    src: htmlwidgets/lib/h3
+#    script: h3-js.umd.js
+#  - name: deckgl
+#    version: 7.0.0
+#    src: htmlwidgets/lib/deckgl
+#    script: dist.min.js
+#    stylesheet: deckgl_.css
