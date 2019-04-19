@@ -37,7 +37,7 @@ sample_data <- paste0(
 
 properties <- list(
   pickable = TRUE,
-  getStrokeWidth = 12,
+  getWidth = 12,
   getSourcePosition = get_property("from.coordinates"),
   getTargetPosition = get_property("to.coordinates"),
   getSourceColor = JS("d => [Math.sqrt(d.inbound), 140, 0]"),
