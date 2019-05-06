@@ -4,12 +4,22 @@
 \alias{add_raster_tiles}
 \title{Add raster tiles layer to the deckgl widget}
 \usage{
-add_raster_tiles(deckgl, id = "raster-tiles", ...)
+add_raster_tiles(deckgl, id = "raster-tiles",
+  tileServer = "https://a.tile.openstreetmap.org/",
+  properties = list(), ...)
 }
 \arguments{
 \item{deckgl}{deckgl widget}
 
 \item{id}{id of the layer}
+
+\item{tileServer}{base url of the tile server}
+
+\item{properties}{named list of properties with names corresponding to the properties defined
+in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
+for the given layer class, additionally there is a \code{getTooltip} property (callback)
+showing a tooltip when the mouse enters an object,
+e. g. \code{getTooltip = JS("object => object.name")}}
 
 \item{...}{more properties (will be added to the properties object), useful if you
 want to use a properties object for more than one layer}

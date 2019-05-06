@@ -5,6 +5,7 @@ var deck = window.deck;
   var deckglWidget = window.deckglWidget = {};
 
   // TODO: Remove, see function below
+  /*
   deckglWidget.tileLayer = function() {
     return new deck.TileLayer({
       pickable: true,
@@ -24,6 +25,7 @@ var deck = window.deck;
       }
     });
   };
+  */
 
   deckglWidget.colorToRGBArray = function(color) {
     color = color.substring(1); // remove '#'
@@ -35,7 +37,7 @@ var deck = window.deck;
   };
 
   deckglWidget.renderMapTiles = function(props) {
-    const tileServer = props.tms || "http://a.tile.stamen.com/toner/";
+    const tileServer = props.tileServer || "http://a.tile.stamen.com/toner/";
     const { x, y, z, bbox } = props.tile;
     const { west, south, east, north } = bbox;
 
