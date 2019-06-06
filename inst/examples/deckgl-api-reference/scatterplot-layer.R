@@ -9,7 +9,7 @@ properties <- list(
   getPosition = get_property("coordinates"),
   getRadius = JS("data => Math.sqrt(data.exits)"),
   radiusScale = 6,
-  getColor = c(255, 140, 20)
+  getFillColor = c(255, 140, 20)
 )
 
 deck <- deckgl(zoom = 10.5, pitch = 35) %>%
