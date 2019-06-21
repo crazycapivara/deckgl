@@ -5,6 +5,8 @@
 #' and target points, specified as latitude/longitude coordinates.
 #'
 #' @inheritParams add_layer
+#' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/great-circle-layer}
+#' @example inst/examples/deckgl-api-reference/great-circle-layer.R
 #' @export
 add_great_circle_layer <- function(deckgl, id = "great-circle-layer", data = NULL, properties = list(), ...) {
   add_layer(deckgl, "GreatCircleLayer", id, data, properties, ...)
