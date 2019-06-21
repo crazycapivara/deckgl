@@ -2,10 +2,11 @@
 % Please edit documentation in R/raster-tiles.R
 \name{add_raster_tile_layer}
 \alias{add_raster_tile_layer}
-\title{Add raster tile layer to the deckgl widget}
+\title{Add a raster tile layer to the deckgl widget
+EXPERIMENTAL, see \url{https://deck.gl/#/examples/core-layers/tile-layer}}
 \usage{
 add_raster_tile_layer(deckgl, id = "raster-tiles",
-  tileServer = "https://a.tile.openstreetmap.org/",
+  tileServer = "https://c.tile.openstreetmap.org/",
   properties = list(), ...)
 }
 \arguments{
@@ -25,7 +26,8 @@ e. g. \code{getTooltip = JS("object => object.name")}}
 want to use a properties object for more than one layer}
 }
 \description{
-Add raster tile layer to the deckgl widget
+Add a raster tile layer to the deckgl widget
+EXPERIMENTAL, see \url{https://deck.gl/#/examples/core-layers/tile-layer}
 }
 \examples{
 ## @knitr raster-tile-layer

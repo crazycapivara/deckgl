@@ -1,4 +1,5 @@
-#' Add raster tile layer to the deckgl widget
+#' Add a raster tile layer to the deckgl widget
+#' EXPERIMENTAL, see \url{https://deck.gl/#/examples/core-layers/tile-layer}
 #' @inheritParams add_layer
 #' @param tileServer base url of the tile server
 #' @example inst/examples/deckgl-api-reference/raster-tile-layer.R
@@ -6,7 +7,7 @@
 add_raster_tile_layer <- function(
   deckgl,
   id = "raster-tiles",
-  tileServer = "https://a.tile.openstreetmap.org/",
+  tileServer = "https://c.tile.openstreetmap.org/",
   properties = list(),
   ...
 ) {
