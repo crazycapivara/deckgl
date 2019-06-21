@@ -32,13 +32,14 @@ data_url <- paste0(
   "https://raw.githubusercontent.com/uber-common/deck.gl-data/",
   "master/website/sf.h3clusters.json"
 )
-sample_data <- jsonlite::fromJSON(data_url, simplifyDataFrame = FALSE)
+# sample_data <- jsonlite::fromJSON(data_url, simplifyDataFrame = FALSE)
+sample_data <- data_url
 
 properties <- list(
   stroked = TRUE,
   filled = TRUE,
   extruded = FALSE,
-  getHexagons = get_property("hexIds"), # d => d.hexIds,
+  getHexagons = get_property("hexIds"),
   getFillColor = JS("d => [255, (1 - d.mean / 500) * 255, 0]"),
   getLineColor= c(255, 255, 255),
   lineWidthMinPixels = 2,
