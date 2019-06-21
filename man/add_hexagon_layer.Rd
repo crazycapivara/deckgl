@@ -40,7 +40,7 @@ properties <- list(
   radius = 200,
   elevationScale = 4,
   getPosition = get_property("COORDINATES"),
-  getTooltip = JS("object => `${object.centroid.join(', ')}<br/>Count: ${object.points.length}`"),
+  getTooltip = JS("object => `${object.position.join(', ')}<br/>Count: ${object.points.length}`"),
   fixedTooltip = TRUE
 )
 

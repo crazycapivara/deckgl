@@ -4,6 +4,29 @@ var deck = window.deck;
 
   var deckglWidget = window.deckglWidget = {};
 
+  // TODO: Remove, see function below
+  /*
+  deckglWidget.tileLayer = function() {
+    return new deck.TileLayer({
+      pickable: true,
+      opacity: 1,
+      minZoom: 0,
+      maxZoom: 19,
+      renderSubLayers: function(props) {
+        // const tileServer = 'https://c.tile.openstreetmap.org/';
+        const tileServer = "http://a.tile.stamen.com/toner/";
+        const {x, y, z, bbox} = props.tile;
+        const {west, south, east, north} = bbox;
+
+        return new deck.BitmapLayer(props, {
+          image: `${tileServer}/${z}/${x}/${y}.png`,
+          bounds: [west, south, east, north]
+        });
+      }
+    });
+  };
+  */
+
   deckglWidget.colorToRGBArray = function(color) {
     color = color.substring(1); // remove '#'
     return [
@@ -11,6 +34,17 @@ var deck = window.deck;
       parseInt(color.substring(2, 4), 16),
       parseInt(color.substring(4), 16)
     ];
+  };
+
+  deckglWidget.renderMapTiles = function(props) {
+    const tileServer = props.tileServer || "http://a.tile.stamen.com/toner/";
+    const { x, y, z, bbox } = props.tile;
+    const { west, south, east, north } = bbox;
+
+    return new deck.BitmapLayer(props, {
+      image: `${tileServer}/${z}/${x}/${y}.png`,
+      bounds: [ west, south, east, north ]
+    });
   };
 
   var newLayer = function(className, properties) {
@@ -122,6 +156,9 @@ var deck = window.deck;
             // console.log(item);
             return newLayer(item.className, item.properties);
           });
+
+          // test tile layer
+          // deckglWidget.layers.push(deckglWidget.tileLayer());
 
           deckgl.setProps({ layers: deckglWidget.layers });
 
