@@ -1,3 +1,13 @@
+# deckgl 0.2.0
+
+* Switched to `deckgl.js` 7.1.6
+* `add_column_layer`
+* `add_great_circle_layer`
+* `add_bitmap_layer`
+* `add_h3_cluster_layer`
+* `add_h3_hexagon_layer`
+* `add_raster_tile_layer`
+
 # deckgl 0.1.9
 
 * Switched to `deckgl.js` 6.3.0
