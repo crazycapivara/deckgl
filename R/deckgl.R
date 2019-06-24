@@ -45,7 +45,8 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, b
     width = width,
     height = height,
     package = "deckgl",
-    elementId = elementId
+    elementId = elementId,
+    dependencies = deckgl_dependencies()
   )
 }
 
