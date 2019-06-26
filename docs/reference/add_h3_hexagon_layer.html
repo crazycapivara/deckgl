@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a grid layer to the deckgl widget — add_grid_layer • deckgl for R</title>
+<title>Add a h3 hexagon layer to the deckgl widget — add_h3_hexagon_layer • deckgl for R</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Add a grid layer to the deckgl widget — add_grid_layer" />
+<meta property="og:title" content="Add a h3 hexagon layer to the deckgl widget — add_h3_hexagon_layer" />
 
-<meta property="og:description" content="The GridLayer renders a grid heatmap based on an array of points. It takes the constant size all each cell, projects points into cells.
-The color and height of the cell is scaled by number of points it contains." />
+<meta property="og:description" content="Add a h3 hexagon layer to the deckgl widget" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -154,19 +153,18 @@ The color and height of the cell is scaled by number of points it contains." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a grid layer to the deckgl widget</h1>
-    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/layers_grid-layer.R'><code>R/layers_grid-layer.R</code></a></small>
-    <div class="hidden name"><code>add_grid_layer.Rd</code></div>
+    <h1>Add a h3 hexagon layer to the deckgl widget</h1>
+    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/layers_h3-hexagon-layer.R'><code>R/layers_h3-hexagon-layer.R</code></a></small>
+    <div class="hidden name"><code>add_h3_hexagon_layer.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The <code>GridLayer</code> renders a grid heatmap based on an array of points. It takes the constant size all each cell, projects points into cells.
-The color and height of the cell is scaled by number of points it contains.</p>
+    <p>Add a h3 hexagon layer to the deckgl widget</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_grid_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"grid-layer"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>add_h3_hexagon_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"h3-hexagon-layer"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>properties</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -201,28 +199,24 @@ want to use a properties object for more than one layer</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer</a></p></div>
+    <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/h3-hexagon-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/h3-hexagon-layer</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## @knitr grid-layer</span>
-<span class='no'>sample_data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(
-  <span class='st'>"https://raw.githubusercontent.com/"</span>,
-  <span class='st'>"uber-common/deck.gl-data/"</span>,
-  <span class='st'>"master/website/sf-bike-parking.json"</span>
-)
+    <pre class="examples"><div class='input'><span class='co'>## @knitr h3-hexagon-layer-layer</span>
+<span class='no'>h3_cells</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"sample-data/h3-cells.csv"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"deckgl"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/read.table'>read.csv</a></span>()
 
 <span class='no'>properties</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
-  <span class='kw'>extruded</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>cellSize</span> <span class='kw'>=</span> <span class='fl'>200</span>,
-  <span class='kw'>elevationScale</span> <span class='kw'>=</span> <span class='fl'>4</span>,
-  <span class='kw'>getPosition</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"COORDINATES"</span>),
-  <span class='kw'>getTooltip</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"object =&gt; `${object.position.join(', ')}&lt;br/&gt;Count: ${object.count}`"</span>),
-  <span class='kw'>fixedTooltip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>getHexagon</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"h3_index"</span>),
+  <span class='kw'>getFillColor</span> <span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"d =&gt; [255, (1 - d.count / 500) * 255, 0]"</span>),
+  <span class='kw'>getElevation</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"count"</span>),
+  <span class='kw'>elevationScale</span> <span class='kw'>=</span> <span class='fl'>20</span>,
+  <span class='kw'>getTooltip</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"object =&gt; `${object.h3_index}: ${object.count}`"</span>)
 )
 
-<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>11</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>45</span>, <span class='kw'>bearing</span> <span class='kw'>=</span> <span class='fl'>35</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>add_grid_layer</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sample_data</span>, <span class='kw'>properties</span> <span class='kw'>=</span> <span class='no'>properties</span>) <span class='kw'>%&gt;%</span>
+<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>11</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>35</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_h3_hexagon_layer</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>h3_cells</span>, <span class='kw'>properties</span> <span class='kw'>=</span> <span class='no'>properties</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='add_mapbox_basemap.html'>add_mapbox_basemap</a></span>()
 
 <span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>()) <span class='no'>deck</span></div></pre>

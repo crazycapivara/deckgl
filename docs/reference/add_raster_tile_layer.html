@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a grid layer to the deckgl widget — add_grid_layer • deckgl for R</title>
+<title>Add a raster tile layer to the deckgl widget
+EXPERIMENTAL, see <a href='https://deck.gl/#/examples/core-layers/tile-layer'>https://deck.gl/#/examples/core-layers/tile-layer</a> — add_raster_tile_layer • deckgl for R</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +31,11 @@
 
 
 
-<meta property="og:title" content="Add a grid layer to the deckgl widget — add_grid_layer" />
+<meta property="og:title" content="Add a raster tile layer to the deckgl widget
+EXPERIMENTAL, see <a href='https://deck.gl/#/examples/core-layers/tile-layer'>https://deck.gl/#/examples/core-layers/tile-layer</a> — add_raster_tile_layer" />
 
-<meta property="og:description" content="The GridLayer renders a grid heatmap based on an array of points. It takes the constant size all each cell, projects points into cells.
-The color and height of the cell is scaled by number of points it contains." />
+<meta property="og:description" content="Add a raster tile layer to the deckgl widget
+EXPERIMENTAL, see https://deck.gl/#/examples/core-layers/tile-layer" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -154,19 +156,21 @@ The color and height of the cell is scaled by number of points it contains." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a grid layer to the deckgl widget</h1>
-    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/layers_grid-layer.R'><code>R/layers_grid-layer.R</code></a></small>
-    <div class="hidden name"><code>add_grid_layer.Rd</code></div>
+    <h1>Add a raster tile layer to the deckgl widget
+EXPERIMENTAL, see <a href='https://deck.gl/#/examples/core-layers/tile-layer'>https://deck.gl/#/examples/core-layers/tile-layer</a></h1>
+    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/raster-tiles.R'><code>R/raster-tiles.R</code></a></small>
+    <div class="hidden name"><code>add_raster_tile_layer.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The <code>GridLayer</code> renders a grid heatmap based on an array of points. It takes the constant size all each cell, projects points into cells.
-The color and height of the cell is scaled by number of points it contains.</p>
+    <p>Add a raster tile layer to the deckgl widget
+EXPERIMENTAL, see <a href='https://deck.gl/#/examples/core-layers/tile-layer'>https://deck.gl/#/examples/core-layers/tile-layer</a></p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_grid_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"grid-layer"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>add_raster_tile_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"raster-tiles"</span>,
+  <span class='kw'>tileServer</span> <span class='kw'>=</span> <span class='st'>"https://c.tile.openstreetmap.org/"</span>,
   <span class='kw'>properties</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -181,8 +185,8 @@ The color and height of the cell is scaled by number of points it contains.</p>
       <td><p>id of the layer</p></td>
     </tr>
     <tr>
-      <th>data</th>
-      <td><p>url to fetch data from or data object</p></td>
+      <th>tileServer</th>
+      <td><p>base url of the tile server</p></td>
     </tr>
     <tr>
       <th>properties</th>
@@ -199,31 +203,23 @@ want to use a properties object for more than one layer</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer</a></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## @knitr grid-layer</span>
-<span class='no'>sample_data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(
-  <span class='st'>"https://raw.githubusercontent.com/"</span>,
-  <span class='st'>"uber-common/deck.gl-data/"</span>,
-  <span class='st'>"master/website/sf-bike-parking.json"</span>
+    <pre class="examples"><div class='input'><span class='co'>## @knitr raster-tile-layer</span>
+<span class='no'>tile_servers</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+  <span class='kw'>osm</span> <span class='kw'>=</span> <span class='st'>"https://a.tile.openstreetmap.org/"</span>,
+  <span class='kw'>carto_light</span> <span class='kw'>=</span> <span class='st'>"https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/"</span>,
+  <span class='kw'>carto_dark</span> <span class='kw'>=</span> <span class='st'>"https://cartodb-basemaps-a.global.ssl.fastly.net/dark_all/"</span>,
+  <span class='kw'>stamen_toner</span> <span class='kw'>=</span> <span class='st'>"http://a.tile.stamen.com/toner/"</span>
 )
 
-<span class='no'>properties</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
-  <span class='kw'>extruded</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>cellSize</span> <span class='kw'>=</span> <span class='fl'>200</span>,
-  <span class='kw'>elevationScale</span> <span class='kw'>=</span> <span class='fl'>4</span>,
-  <span class='kw'>getPosition</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"COORDINATES"</span>),
-  <span class='kw'>getTooltip</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"object =&gt; `${object.position.join(', ')}&lt;br/&gt;Count: ${object.count}`"</span>),
-  <span class='kw'>fixedTooltip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)
-
-<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>11</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>45</span>, <span class='kw'>bearing</span> <span class='kw'>=</span> <span class='fl'>35</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>add_grid_layer</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sample_data</span>, <span class='kw'>properties</span> <span class='kw'>=</span> <span class='no'>properties</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='add_mapbox_basemap.html'>add_mapbox_basemap</a></span>()
+<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_raster_tile_layer</span>(
+    <span class='kw'>tileServer</span> <span class='kw'>=</span> <span class='no'>tile_servers</span>$<span class='no'>osm</span>,
+    <span class='kw'>pickable</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <span class='kw'>autoHighlight</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <span class='kw'>highlightColor</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>60</span>, <span class='fl'>60</span>, <span class='fl'>60</span>, <span class='fl'>40</span>)
+  )
 
 <span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>()) <span class='no'>deck</span></div></pre>
   </div>
@@ -231,9 +227,7 @@ want to use a properties object for more than one layer</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#see-also">See also</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 
