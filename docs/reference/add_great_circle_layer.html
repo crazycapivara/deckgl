@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a grid layer to the deckgl widget — add_grid_layer • deckgl for R</title>
+<title>Add a great circle layer to the deckgl widget — add_great_circle_layer • deckgl for R</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,11 @@
 
 
 
-<meta property="og:title" content="Add a grid layer to the deckgl widget — add_grid_layer" />
+<meta property="og:title" content="Add a great circle layer to the deckgl widget — add_great_circle_layer" />
 
-<meta property="og:description" content="The GridLayer renders a grid heatmap based on an array of points. It takes the constant size all each cell, projects points into cells.
-The color and height of the cell is scaled by number of points it contains." />
+<meta property="og:description" content="The GreatCircleLayer is a variation of the ArcLayer.
+It renders flat arcs along the great circle joining pairs of source
+and target points, specified as latitude/longitude coordinates." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -154,19 +155,20 @@ The color and height of the cell is scaled by number of points it contains." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a grid layer to the deckgl widget</h1>
-    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/layers_grid-layer.R'><code>R/layers_grid-layer.R</code></a></small>
-    <div class="hidden name"><code>add_grid_layer.Rd</code></div>
+    <h1>Add a great circle layer to the deckgl widget</h1>
+    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/layers_great-circle-layer.R'><code>R/layers_great-circle-layer.R</code></a></small>
+    <div class="hidden name"><code>add_great_circle_layer.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The <code>GridLayer</code> renders a grid heatmap based on an array of points. It takes the constant size all each cell, projects points into cells.
-The color and height of the cell is scaled by number of points it contains.</p>
+    <p>The <code>GreatCircleLayer</code> is a variation of the <code>ArcLayer</code>.
+It renders flat arcs along the great circle joining pairs of source
+and target points, specified as latitude/longitude coordinates.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_grid_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"grid-layer"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>add_great_circle_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"great-circle-layer"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>properties</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -201,28 +203,23 @@ want to use a properties object for more than one layer</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer</a></p></div>
+    <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/great-circle-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/great-circle-layer</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## @knitr grid-layer</span>
-<span class='no'>sample_data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(
-  <span class='st'>"https://raw.githubusercontent.com/"</span>,
-  <span class='st'>"uber-common/deck.gl-data/"</span>,
-  <span class='st'>"master/website/sf-bike-parking.json"</span>
-)
-
+    <pre class="examples"><div class='input'><span class='co'>## @knitr great-circle-layer</span>
 <span class='no'>properties</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
-  <span class='kw'>extruded</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>cellSize</span> <span class='kw'>=</span> <span class='fl'>200</span>,
-  <span class='kw'>elevationScale</span> <span class='kw'>=</span> <span class='fl'>4</span>,
-  <span class='kw'>getPosition</span> <span class='kw'>=</span> <span class='fu'><a href='get_property.html'>get_property</a></span>(<span class='st'>"COORDINATES"</span>),
-  <span class='kw'>getTooltip</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"object =&gt; `${object.position.join(', ')}&lt;br/&gt;Count: ${object.count}`"</span>),
-  <span class='kw'>fixedTooltip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>pickable</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>getWidth</span> <span class='kw'>=</span> <span class='fl'>12</span>,
+  <span class='kw'>getSourcePosition</span> <span class='kw'>=</span> <span class='fu'><a href='get_position.html'>get_position</a></span>(<span class='st'>"from_lat"</span>, <span class='st'>"from_lng"</span>),
+  <span class='kw'>getTargetPosition</span> <span class='kw'>=</span> <span class='fu'><a href='get_position.html'>get_position</a></span>(<span class='st'>"to_lat"</span>, <span class='st'>"to_lng"</span>),
+  <span class='kw'>getSourceColor</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"d =&gt; [Math.sqrt(d.inbound), 140, 0]"</span>),
+  <span class='kw'>getTargetColor</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"d =&gt; [Math.sqrt(d.outbound), 140, 0]"</span>),
+  <span class='kw'>getTooltip</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='st'>"object =&gt; `${object.from_name} to ${object.to_name}`"</span>)
 )
 
-<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>11</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>45</span>, <span class='kw'>bearing</span> <span class='kw'>=</span> <span class='fl'>35</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>add_grid_layer</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sample_data</span>, <span class='kw'>properties</span> <span class='kw'>=</span> <span class='no'>properties</span>) <span class='kw'>%&gt;%</span>
+<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>35</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_great_circle_layer</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>bart_segments</span>, <span class='kw'>properties</span> <span class='kw'>=</span> <span class='no'>properties</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='add_mapbox_basemap.html'>add_mapbox_basemap</a></span>()
 
 <span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>()) <span class='no'>deck</span></div></pre>
