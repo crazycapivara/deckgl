@@ -2,7 +2,7 @@ deckgl_dependencies <- function() {
   list(
     htmltools::htmlDependency(
       "deckgl",
-      version = "7.1.6",
+      version = "7.1.7",
       src = system.file("htmlwidgets/lib/deckgl", package = "deckgl"),
       script = c("dist.min.js"),
       stylesheet = "deckgl_.css",
