@@ -21,7 +21,8 @@ Imports:
   yaml,
   jsonlite,
   readr,
-  tibble
+  tibble,
+  stats
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -30,5 +31,6 @@ Suggests:
   knitr,
   rmarkdown,
   testthat,
-  rprojroot
+  rprojroot,
+  sf
 VignetteBuilder: knitr

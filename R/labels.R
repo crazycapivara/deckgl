@@ -2,7 +2,7 @@ formula_to_property <- function(properties) {
   for (key in names(properties)) {
     value <- properties[[key]]
     if (inherits(value, "formula")) {
-      x <- labels(terms(value))
+      x <- labels(stats::terms(value))
       if (length(x) > 1) {
         properties[[key]] <- sprintf("data => [%s]", paste0("data.", x, collapse = ", ")) %>%
           JS()
