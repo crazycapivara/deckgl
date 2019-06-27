@@ -4,7 +4,8 @@ modify_sf <- function(data) {
 }
 
 transform_this <- function(data) {
-  if (sf::st_crs(data)$epsg == 4326) {
+  epsg <- sf::st_crs(data)$epsg
+  if (!is.na(epsg) && epsg == 4326) {
     return(data)
   }
 
