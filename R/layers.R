@@ -32,7 +32,7 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
   deckgl$x$layers[[n + 1]] <- list(
     className = class_name,
     data = data,
-    properties = c(id = id, properties)
+    properties = c(id = id, formula_to_property(properties))
   )
   deckgl
 }
