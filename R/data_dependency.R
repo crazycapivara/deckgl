@@ -3,7 +3,7 @@
 data_dependency <- function(data, var_name) {
   src <- tempdir()
   filename <- tolower(var_name) %>% paste0(".js")
-  paste0("var ", var_name, "=", jsonlite::toJSON(data, auto_unbox = TRUE)) %>%
+  paste0("var ", var_name, "=", jsonlite::toJSON(data, auto_unbox = TRUE, force = TRUE)) %>%
     readr::write_file(file.path(src, filename))
   list(
     htmltools::htmlDependency(
