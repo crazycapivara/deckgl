@@ -8,8 +8,8 @@ sample_data <- paste0(
 properties <- list(
   pickable = TRUE,
   getWidth = 12,
-  getSourcePosition = get_property("from.coordinates"),
-  getTargetPosition = get_property("to.coordinates"),
+  getSourcePosition = ~from.coordinates,
+  getTargetPosition = ~to.coordinates,
   getSourceColor = JS("d => [Math.sqrt(d.inbound), 140, 0]"),
   getTargetColor = JS("d => [Math.sqrt(d.outbound), 140, 0]"),
   getTooltip = JS("object => `${object.from.name} to ${object.to.name}`")
