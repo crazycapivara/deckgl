@@ -30,5 +30,6 @@ Suggests:
   knitr,
   rmarkdown,
   testthat,
-  rprojroot
+  rprojroot,
+  sf
 VignetteBuilder: knitr

@@ -1,5 +1,7 @@
 #' Add a raster tile layer to the deckgl widget
+#'
 #' EXPERIMENTAL, see \url{https://deck.gl/#/examples/core-layers/tile-layer}
+#'
 #' @inheritParams add_layer
 #' @param tileServer base url of the tile server
 #' @example inst/examples/deckgl-api-reference/raster-tile-layer.R

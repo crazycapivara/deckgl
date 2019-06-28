@@ -9,7 +9,7 @@ properties <- list(
   extruded = TRUE,
   cellSize = 200,
   elevationScale = 4,
-  getPosition = get_property("COORDINATES"),
+  getPosition = ~COORDINATES,
   getTooltip = JS("object => `${object.position.join(', ')}<br/>Count: ${object.count}`"),
   fixedTooltip = TRUE
 )

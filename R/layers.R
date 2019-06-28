@@ -19,9 +19,14 @@
 #'
 #' @export
 add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
+  ## TODO: use 'utils::modifyList' instead of 'merge_properties'
   properties <- merge_properties(properties, list(...))
   if (!is.null(properties$getTooltip) && is.null(properties$pickable)) {
     properties$pickable <- TRUE
+  }
+
+  if (inherits(data, "sf")) {
+    data <- modify_sf(data)
   }
 
   if (is.data.frame(data)) {
@@ -32,7 +37,7 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
   deckgl$x$layers[[n + 1]] <- list(
     className = class_name,
     data = data,
-    properties = c(id = id, properties)
+    properties = c(id = id, formula_to_property(properties))
   )
   deckgl
 }
