@@ -11,15 +11,15 @@ path <- st_geometry(features) %>%
 deckgl(zoom = 9.5, pitch = 35) %>%
   add_scatterplot_layer(
     data = features,
-    getPosition = ~ geometry,
+    getPosition = ~geometry,
     radiusScale = 6,
     getRadius = 100,
     getColor = c(240, 140, 20),
-    getTooltip = ~ name
+    getTooltip = ~name
   ) %>%
   add_path_layer(
     data = path,
-    getPath = ~ geometry,
+    getPath = ~geometry,
     widthScale = 20,
     widthMinPixels = 2,
     getWidth = 5
