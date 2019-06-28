@@ -21,8 +21,7 @@ Imports:
   yaml,
   jsonlite,
   readr,
-  tibble,
-  stats
+  tibble
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
