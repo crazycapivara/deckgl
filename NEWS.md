@@ -1,3 +1,24 @@
+# deckgl 0.2.1
+
+* Switched to `deckgl.js` 7.1.7
+* Added support for `sf` objects as `data` parameter
+* Added _formula_ syntax for data accessors
+* Added more examples (see  folder `sf` on how pass `sf` objects to the layers)
+
+```r
+properties <- list(
+  getPosition = JS("d => [d.lng, d.lat]")
+  getRadius = JS("d => d.radius")
+)
+
+# equals
+
+properties <- list(
+  getPosition = ~lng + lat,
+  getRadius = ~radius
+)
+```
+
 # deckgl 0.2.0
 
 * Switched to `deckgl.js` 7.1.6
