@@ -23,22 +23,22 @@ data <- system.file("sample-data/indoor.0.1.laz", package = "deckgl") %>%
 
 properties <- list(
   coordinateSystem = JS("COORDINATE_SYSTEM.IDENTITY"),
-  getPosition = JS("d => [d.X, d.Y, d.Z]"),
+  getPosition = ~X + Y + Z, # JS("d => [d.X, d.Y, d.Z]"),
   getNormal = c(0, 1, 0),
   getColor = c(255, 255, 255),
-  radiusPixels = 0.5
+  pointSize = 0.5,
+  opacity = 0.5
 )
 
 initial_view_state <- list(
-  lookAt = c(0, 0, 0),
-  distance = JS("OrbitView.getDistance({boundingBox: [1, 1, 1], fov: 30})"),
+  target = c(0, 0, 0),
   rotationX = 0,
   rotationOrbit = 0,
   orbitAxis = "Y",
-  fov = 30,
-  minDistance = 0.5,
-  maxDistance = 3,
-  zoom = 1
+  fov = 50,
+  minZoom = 0,
+  maxZoom = 20,
+  zoom = 10
 )
 
 deck <- deckgl(
