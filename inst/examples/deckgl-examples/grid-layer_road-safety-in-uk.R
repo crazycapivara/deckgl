@@ -37,7 +37,7 @@ deck <- deckgl(
 ) %>%
   add_grid_layer(
     data = sample_data,
-    getPosition = get_position("lat", "lng"),
+    getPosition = ~lng + lat,
     cellSize = 2000,
     elevationScale = 50,
     extruded = TRUE,
