@@ -50,6 +50,7 @@ deck <- deckgl(
     opacity = 1,
     radius = 1000,
     upperPercentile = 100
-  ) %>% add_mapbox_basemap(style = "mapbox://styles/mapbox/dark-v9")
+  ) %>%
+  add_mapbox_basemap(style = "mapbox://styles/mapbox/dark-v9")
 
 if (interactive()) deck
