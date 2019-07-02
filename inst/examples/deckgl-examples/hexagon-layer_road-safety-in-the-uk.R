@@ -33,8 +33,8 @@ initial_view_state <- list(
 )
 
 deck <- deckgl(
-  initialViewState = initial_view_state,
-  style = list(background = "black")
+  initialViewState = initial_view_state
+  # , style = list(background = "black")
 ) %>%
   add_data(sample_data) %>%
   add_hexagon_layer(
@@ -50,6 +50,6 @@ deck <- deckgl(
     opacity = 1,
     radius = 1000,
     upperPercentile = 100
-  )
+  ) %>% add_mapbox_basemap(style = "mapbox://styles/mapbox/dark-v9")
 
 if (interactive()) deck
