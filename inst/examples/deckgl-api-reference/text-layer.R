@@ -3,8 +3,8 @@ deck <- deckgl(zoom = 10, pitch = 35) %>%
   add_text_layer(
     data = bart_stations,
     pickable = TRUE,
-    getPosition = get_position("lat", "lng"),
-    getText = get_property("name"),
+    getPosition = ~lng + lat,
+    getText = ~name,
     getSize = 15,
     getAngle = 0,
     getTextAnchor = "middle",

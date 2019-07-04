@@ -1,0 +1,10 @@
+.git
+.dockerignore
+.Rproj.user
+data-raw
+playground
+inst/doc
+javascript
+docs
+docs-markdown
+

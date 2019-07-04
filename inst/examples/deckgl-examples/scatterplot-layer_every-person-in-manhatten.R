@@ -32,9 +32,10 @@ deck <- deckgl(initialViewState = initial_view_state) %>%
     data = data,
     radiusScale = 30,
     radiusMinPixels = 0.25,
-    getPosition = get_position("lat", "lng"),
+    getPosition = ~lng + lat,
     getFillColor = get_color_to_rgb_array("color"),
-    getRadius = 1
+    getRadius = 1,
+    getTooltip = JS("object => `${object.lng}, ${object.lat}`")
   ) %>%
   add_mapbox_basemap()
 

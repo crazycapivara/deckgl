@@ -11,3 +11,6 @@
 ^docs$
 ^docs-markdown$
 ^javascript$
+^Dockerfile$
+^docker-entrypoint.sh$
+^.dockerignore$

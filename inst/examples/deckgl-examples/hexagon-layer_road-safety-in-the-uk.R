@@ -7,10 +7,12 @@ data_url <- paste0(
   "uber-common/deck.gl-data/",
   "master/examples/3d-heatmap/heatmap-data.csv"
 )
-sample_data <- fread(data_url)
+sample_data <- fread(data_url) %>%
+  na.omit()
 
 color_to_rgb <- function(color) col2rgb(color) %>% as.vector()
-color_range <- c("#0198BD", "#49E3CE", "#D8FEB5", "#FEEDB1", "#FEAD54", "#D1374E") %>%
+# color_range <- c("#0198BD", "#49E3CE", "#D8FEB5", "#FEEDB1", "#FEAD54", "#D1374E") %>%
+color_range <- scales::brewer_pal(palette = "YlOrRd")(6) %>%
   lapply(color_to_rgb)
 
 light_settings <- list(
@@ -31,8 +33,8 @@ initial_view_state <- list(
 )
 
 deck <- deckgl(
-  initialViewState = initial_view_state,
-  style = list(background = "black")
+  initialViewState = initial_view_state
+  # , style = list(background = "black")
 ) %>%
   add_data(sample_data) %>%
   add_hexagon_layer(
@@ -42,12 +44,13 @@ deck <- deckgl(
     elevationRange = c(0, 3000),
     elevationScale = 50,
     extruded = TRUE,
-    getPosition = get_position("lat", "lng"),
+    getPosition = ~lng + lat,
     lightSettings = light_settings,
     getTooltip = JS("object => `${object.points.length} accidents`"),
     opacity = 1,
     radius = 1000,
     upperPercentile = 100
-  )
+  ) %>%
+  add_mapbox_basemap(style = "mapbox://styles/mapbox/dark-v9")
 
 if (interactive()) deck

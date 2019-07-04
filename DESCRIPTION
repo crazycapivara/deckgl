@@ -31,5 +31,6 @@ Suggests:
   rmarkdown,
   testthat,
   rprojroot,
-  sf
+  sf,
+  scales
 VignetteBuilder: knitr
