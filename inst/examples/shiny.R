@@ -1,4 +1,5 @@
 ## @knitr shiny-integration
+library(magrittr)
 library(shiny)
 library(deckgl)
 
@@ -24,7 +25,7 @@ backend <- function(input, output) {
     object <- info$object
     # print(info)
     print(object$points %>% length())
-    print(object$centroid)
+    print(names(object))
   })
 
   df <- eventReactive(input$deck_onclick, {
