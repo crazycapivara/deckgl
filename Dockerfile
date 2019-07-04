@@ -25,6 +25,7 @@ COPY . /deckgl
 RUN cd deckgl \
   && R -q -e 'devtools::install()' \
   && cp inst/examples/h3-hexagon-layer-greater-manchester.R /home/rstudio \
+  && cp inst/examples/deckgl-examples/polygon-layer-vancouver-blocks.R /home/rstudio \
   && cd .. \
   && rm -rf deckgl
 
