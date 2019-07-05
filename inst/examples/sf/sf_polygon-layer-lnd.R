@@ -1,6 +1,6 @@
 library(deckgl)
 library(sf)
-library(spdata)
+library(spData)
 
 make_color <- function(x) {
   c(as.integer(sqrt(x)) * 2, 140, 10, 50)
@@ -18,6 +18,6 @@ deckgl(longitude = -0.118092, latitude = 51.509865) %>%
     getFillColor = ~color,
     lineWidthMinPixels = 2,
     getLineColor = c(250, 80, 80),
-    getLineWidth = 5,
+    getLineWidth = 5
   ) %>%
   add_mapbox_basemap()
