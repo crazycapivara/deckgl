@@ -147,6 +147,7 @@ var deck = window.deck;
 
           deckglWidget.deckgl = deckgl = new deck.DeckGL(properties);
 
+          /*
           deckglWidget.layers = x.layers.map(function(item) {
             if (item.properties.dataframeToD3) {
               item.data = HTMLWidgets.dataframeToD3(item.data);
@@ -156,9 +157,8 @@ var deck = window.deck;
             // console.log(item);
             return newLayer(item.className, item.properties);
           });
-
-          // test tile layer
-          // deckglWidget.layers.push(deckglWidget.tileLayer());
+          */
+          deckglWidget.layers = makeLayers(x.layers);
 
           deckgl.setProps({ layers: deckglWidget.layers });
 
@@ -187,10 +187,10 @@ var deck = window.deck;
     Shiny.addCustomMessageHandler('proxythis', function(obj) {
       console.log(obj);
       var deckgl = getWidget(obj.id);
-      console.log(deckgl);
+      // console.log(deckgl);
       var layers = makeLayers(obj.x.layers);
       deckgl.setProps({ layers: layers });
-      console.log(deckglWidget.deckgl);
+      // console.log(deckglWidget.deckgl);
     });
   }
 
