@@ -164,6 +164,10 @@ var deck = window.deck;
 
         },
 
+        getDeck: function() {
+          return deckgl;
+        },
+
         resize: function(width, height) {
 
           // TODO: code to re-render the widget with a new size
@@ -173,5 +177,20 @@ var deck = window.deck;
       };
     }
   });
+
+  var getWidget = function(id) {
+    var htmlWidgetsObj = HTMLWidgets.find("#" + id);
+    return htmlWidgetsObj.getDeck();
+  };
+
+  if (HTMLWidgets.shinyMode) {
+    Shiny.addCustomMessageHandler('proxythis', function(obj) {
+      console.log(obj);
+      var deckgl = getWidget(obj.id);
+      console.log(deckgl);
+      deckgl.setProps({ layers: [] });
+      console.log(deckglWidget.deckgl);
+    });
+  }
 
 })(); // anonymos end

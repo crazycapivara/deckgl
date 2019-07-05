@@ -26,6 +26,7 @@ backend <- function(input, output) {
     # print(info)
     print(object$points %>% length())
     print(names(object))
+    deckgl_proxy("deck") %>% add_arc_layer() %>% test_proxy(it = "works")
   })
 
   df <- eventReactive(input$deck_onclick, {
