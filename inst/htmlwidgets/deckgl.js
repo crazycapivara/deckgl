@@ -188,9 +188,22 @@ var deck = window.deck;
       console.log(obj);
       var deckgl = getWidget(obj.id);
       console.log(deckgl);
-      deckgl.setProps({ layers: [] });
+      var layers = makeLayers(obj.x.layers);
+      deckgl.setProps({ layers: layers });
       console.log(deckglWidget.deckgl);
     });
   }
+
+  var makeLayers = function(layers) {
+    var l = deckglWidget.layers = layers.map(function(item) {
+      if (item.properties.dataframeToD3) {
+        item.data = HTMLWidgets.dataframeToD3(item.data);
+      }
+
+      item.properties.data = item.data;
+      return newLayer(item.className, item.properties);
+    });
+    return l;
+  };
 
 })(); // anonymos end
