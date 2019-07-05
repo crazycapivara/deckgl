@@ -8,6 +8,8 @@ update_deckgl(proxy, ...)
 }
 \arguments{
 \item{proxy}{deckgl proxy object}
+
+\item{...}{unused}
 }
 \description{
 Send commands to a deckgl instance in a \code{Shiny} app

@@ -31,7 +31,7 @@ deckgl_proxy <- function(shinyId, session = shiny::getDefaultReactiveDomain()) {
 #' Send commands to a deckgl instance in a \code{Shiny} app
 #'
 #' @param proxy deckgl proxy object
-#' @ ... unused
+#' @param ... unused
 #' @seealso \link{deckgl_proxy}
 #' @export
 update_deckgl <- function(proxy, ...) {
