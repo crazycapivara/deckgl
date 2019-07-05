@@ -37,7 +37,7 @@ backend <- function(input, output) {
     print(.app$visible)
     deckgl_proxy("deck") %>%
       add_hexagon_layer(visible = .app$visible) %>%
-      test_proxy(it = "works")
+      update_deckgl(it = "works")
   })
 
   df <- eventReactive(input$deck_onclick, {

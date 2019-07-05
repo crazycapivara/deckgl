@@ -1,3 +1,11 @@
+#' Create a deckgl proxy object
+#'
+#' Creates a deckgl-like object that can be used to update a deckgl object that has already been rendered.
+#'
+#' @param shinyId single-element character vector indicating the output ID of the
+#'   deck to modify
+#' @param session the \code{Shiny} session object to which the deckgl widget belongs;
+#'   usually the default value will suffice.
 #' @export
 deckgl_proxy <- function(shinyId, session = shiny::getDefaultReactiveDomain()) {
   if (is.null(session)) {
@@ -20,8 +28,13 @@ deckgl_proxy <- function(shinyId, session = shiny::getDefaultReactiveDomain()) {
   )
 }
 
+#' Send commands to a deckgl instance in a \code{Shiny} app
+#'
+#' @param proxy deckgl proxy object
+#' @ ... unused
+#' @seealso \link{deckgl_proxy}
 #' @export
-test_proxy <- function(proxy, ...) {
+update_deckgl <- function(proxy, ...) {
   if (!inherits(proxy, "deckgl_proxy")) {
     stop("This function must be used with a deckgl_proxy object.", call. = FALSE)
   }
