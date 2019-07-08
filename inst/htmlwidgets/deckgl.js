@@ -185,8 +185,20 @@ var deck = window.deck;
 
   if (HTMLWidgets.shinyMode) {
     Shiny.addCustomMessageHandler('proxythis', function(obj) {
-      console.log(obj);
       var deckgl = getWidget(obj.id);
+
+      // Fix JS properties
+      var layerDefs = obj.x.layers;
+      for (let i = 0; i < layerDefs.length; i++) {
+        var properties = layerDefs[i].properties;
+        for (let key of Object.keys(properties)) {
+          try {
+            properties[key] = eval(properties[key]);
+          } catch(err) { }
+        }
+      }
+
+      console.log(obj);
       // console.log(deckgl);
       var layers = makeLayers(obj.x.layers);
       deckgl.setProps({ layers: layers });
