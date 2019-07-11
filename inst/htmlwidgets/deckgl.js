@@ -81,6 +81,14 @@ var deck = window.deck;
     return new deck[className](properties);
   };
 
+  var makeDataAccessor = deckglWidget.makeDataAccessor = function(keys) {
+    if (typeof keys === "string") {
+      return data => data[keys];
+    }
+
+    return data => keys.map(key => data[key]);
+  };
+
   var initialViewState = function(x) {
     return {
       longitude: x.longitude,
@@ -192,11 +200,13 @@ var deck = window.deck;
       for (let i = 0; i < layerDefs.length; i++) {
         var properties = layerDefs[i].properties;
         for (let key of Object.keys(properties)) {
-          try {
-            properties[key] = eval(properties[key]);
-          } catch(err) { }
-        }
-      }
+          if (typeof properties[key] === "string") {
+            try {
+              properties[key] = eval(properties[key]);
+            } catch(err) { }
+          } // end if
+        } // end for
+      } // end for
 
       console.log(obj);
       // console.log(deckgl);
@@ -213,6 +223,17 @@ var deck = window.deck;
       }
 
       item.properties.data = item.data;
+
+      // make data accessors
+      for (let key of Object.keys(item.properties)) {
+        var property = item.properties[key];
+        if (typeof property === "object" && property.dataAccessor !== undefined) {
+          console.log(key, "make data accessor");
+          item.properties[key] = makeDataAccessor(property.dataAccessor);
+        }
+      }
+      // -----
+
       return newLayer(item.className, item.properties);
     });
     return l;
