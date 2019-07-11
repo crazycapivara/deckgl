@@ -10,6 +10,29 @@ export default function(_layers) {
     return layers;
 }
 
-var makeLayer = function(className, props) {
-  return new deck[className](props);
+var makeLayer = function(className, properties) {
+  if (properties.getTooltip) {
+    addTooltip(properties);
+  }
+
+  return new deck[className](properties);
+};
+
+var addTooltip = function(properties) {
+  properties.onHover = function({ x, y, object }) {
+    // console.log(x, y, object);
+    var tooltipElement = _deckGLWidget.tooltipElement;
+    if (!object) {
+      tooltipElement.innerHTML = "";
+      return;
+    }
+
+    var text = properties.getTooltip(object);
+    if (!properties.fixedTooltip) {
+      tooltipElement.style.top = y + "px";
+      tooltipElement.style.left = x + "px";
+    }
+
+    tooltipElement.innerHTML = text;
+  };
 };
