@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "build-this": "webpack src/index2.js -o ../inst/htmlwidgets/deckgl.js"
   },
   "keywords": [],
   "author": "Stefan Kuethe",
