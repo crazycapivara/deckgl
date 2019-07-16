@@ -5,14 +5,12 @@ export default function(el, layers) {
       item.data = HTMLWidgets.dataframeToD3(item.data);
     }
 
-    /*
     if (HTMLWidgets.shinyMode) {
       properties.onClick = function(info) {
         var data = { lng: info.lngLat[0], lat: info.lngLat[1], object: info.object };
         Shiny.onInputChange(el.id + "_onclick", data);
       };
     }
-    */
 
     if (properties.getTooltip) {
       addTooltipTo(properties);
