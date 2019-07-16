@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "build-this": "webpack src/index2.js -o ../inst/htmlwidgets/deckgl.js"
+    "build-this": "webpack src/index2.js --mode production -o ../inst/htmlwidgets/deckgl.js"
   },
   "keywords": [],
   "author": "Stefan Kuethe",

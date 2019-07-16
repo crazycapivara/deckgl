@@ -7,7 +7,8 @@ HTMLWidgets.widget({
     var deckGLWidget = new DeckGLWidget(el, width, height);
     return {
       renderValue: deckGLWidget.renderValue,
-      resize: deckGLWidget.resize
+      resize: deckGLWidget.resize,
+      getDeckGL: deckGLWidget.getDeckGL
     };
   }
 });

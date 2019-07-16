@@ -1,12 +1,15 @@
 import makeDeck from "./make-deck";
 import makeLayers from "./make-layers";
+import fixProperties from "./helpers/fix-properties.js";
 
 global._deckGLWidget = {};
 
 export default function(el, width, height) {
   console.log("I am your DeckGLWidget!");
 
-  self = this;
+  // const _deck = global.deck;
+
+  var self = this;
 
   var deckGL = null;
 
@@ -16,7 +19,7 @@ export default function(el, width, height) {
     _deckGLWidget.element = el;
     self._createTooltipElement();
     deckGL = _deckGLWidget.deckGL = makeDeck(el, x);
-    var layers = _deckGLWidget.layers = makeLayers(x.layers);
+    var layers = _deckGLWidget.layers = makeLayers(el, x.layers);
     deckGL.setProps({ layers: layers });
   };
 
@@ -38,4 +41,18 @@ export default function(el, width, height) {
     tooltipElement.id = "tooltip";
     el.appendChild(tooltipElement);
   };
+}
+
+if (HTMLWidgets.shinyMode) {
+  Shiny.addCustomMessageHandler('proxythis', function(data) {
+    console.log(data);
+    var widget = HTMLWidgets.find("#" + data.id);
+    var deckGL = widget.getDeckGL();
+    console.log("deckGL", deckGL);
+    var el = document.getElementById(data.id);
+    fixProperties(data.x.layers);
+    var layers = makeLayers(el, data.x.layers);
+    console.log(layers);
+    deckGL.setProps({ layers: layers });
+  });
 }

@@ -1,26 +1,30 @@
-export default function(_layers) {
-  var layers = _layers.map(function(item) {
-      if (item.properties.dataframeToD3) {
-        item.data = HTMLWidgets.dataframeToD3(item.data);
-      }
+export default function(el, layers) {
+  return layers.map(function(item) {
+    var properties = item.properties;
+    if (properties.dataframeToD3) {
+      item.data = HTMLWidgets.dataframeToD3(item.data);
+    }
 
-      item.properties.data = item.data;
-      return makeLayer(item.className, item.properties);
-    });
-    return layers;
+    /*
+    if (HTMLWidgets.shinyMode) {
+      properties.onClick = function(info) {
+        var data = { lng: info.lngLat[0], lat: info.lngLat[1], object: info.object };
+        Shiny.onInputChange(el.id + "_onclick", data);
+      };
+    }
+    */
+
+    if (properties.getTooltip) {
+      addTooltipTo(properties);
+    }
+
+    properties.data = item.data;
+    return new deck[item.className](properties);
+  });
 }
 
-var makeLayer = function(className, properties) {
-  if (properties.getTooltip) {
-    addTooltip(properties);
-  }
-
-  return new deck[className](properties);
-};
-
-var addTooltip = function(properties) {
+var addTooltipTo = function(properties) {
   properties.onHover = function({ x, y, object }) {
-    // console.log(x, y, object);
     var tooltipElement = _deckGLWidget.tooltipElement;
     if (!object) {
       tooltipElement.innerHTML = "";

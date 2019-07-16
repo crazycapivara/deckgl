@@ -1,10 +1,11 @@
 export default function(el, x) {
+  const deck = global.deck;
   var properties = {
     mapboxApiAccessToken: x.mapboxApiAccessToken || "",
     mapStyle: x.mapStyle || "",
     container: el.id,
     initialViewState: x.initialViewState || makeInitialViewState(x),
-    views: x.views || new MapView(),
+    views: x.views || new deck.MapView(),
     layers: []
   };
   properties = Object.assign(properties, x.properties);
