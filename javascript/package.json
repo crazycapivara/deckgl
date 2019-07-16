@@ -1,12 +1,11 @@
 {
-  "name": "r2deckgl",
+  "name": "deckglwidget",
   "version": "1.0.0",
   "description": "",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "build-this": "webpack src/index2.js --mode production -o ../inst/htmlwidgets/deckgl.js"
+    "build": "webpack src/index.js --mode production -o ../inst/htmlwidgets/deckgl.js"
   },
   "keywords": [],
   "author": "Stefan Kuethe",
