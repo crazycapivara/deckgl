@@ -2,9 +2,11 @@ import makeDeck from "./make-deck";
 import makeLayers from "./make-layers";
 import fixProperties from "./helpers/fix-properties";
 import hexColorToRGBArray from "./helpers/hex-color-to-rgb-array";
+import renderMapTiles from "./helpers/render-map-tiles";
 
 const _deckGLWidget = global._deckGLWidget = {};
 _deckGLWidget.colorToRGBArray = hexColorToRGBArray;
+_deckGLWidget.renderMapTiles = renderMapTiles;
 
 export default function(el, width, height) {
   console.log("I am your DeckGLWidget!");
@@ -16,10 +18,11 @@ export default function(el, width, height) {
   self.renderValue = function(x) {
     self._logVersions();
     console.log("el", el, "x", x);
-    _deckGLWidget.element = el;
+    _deckGLWidget[el.id] = {};
+    _deckGLWidget[el.id].element = el;
     self._createTooltipElement();
-    deckGL = _deckGLWidget.deckGL = makeDeck(el, x);
-    var layers = _deckGLWidget.layers = makeLayers(el, x.layers);
+    deckGL = _deckGLWidget[el.id].deckGL = makeDeck(el, x);
+    const layers = _deckGLWidget[el.id].layers = makeLayers(el, x.layers);
     deckGL.setProps({ layers: layers });
   };
 

@@ -23,6 +23,6 @@ raster_tile_properties <- function(tile_server) {
     minZoom = 0,
     maxZoom = 19,
     tileServer = tile_server,
-    renderSubLayers = JS("deckglWidget.renderMapTiles")
+    renderSubLayers = JS("_deckGLWidget.renderMapTiles")
   )
 }
