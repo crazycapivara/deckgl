@@ -1,13 +1,13 @@
 import makeDeck from "./make-deck";
 import makeLayers from "./make-layers";
-import fixProperties from "./helpers/fix-properties.js";
+import fixProperties from "./helpers/fix-properties";
+import hexColorToRGBArray from "./helpers/hex-color-to-rgb-array";
 
-global._deckGLWidget = {};
+const _deckGLWidget = global._deckGLWidget = {};
+_deckGLWidget.colorToRGBArray = hexColorToRGBArray;
 
 export default function(el, width, height) {
   console.log("I am your DeckGLWidget!");
-
-  // const _deck = global.deck;
 
   var self = this;
 
