@@ -1,13 +1,16 @@
+import makeDataAccessor from "./helpers/make-data-accessor";
+
 export default function(el, layers) {
   return layers.map(function(item) {
-    var properties = item.properties;
+    const properties = item.properties;
+    makeDataAccessors(properties);
     if (properties.dataframeToD3) {
       item.data = HTMLWidgets.dataframeToD3(item.data);
     }
 
     if (HTMLWidgets.shinyMode) {
       properties.onClick = function(info) {
-        var data = { lng: info.lngLat[0], lat: info.lngLat[1], object: info.object };
+        const data = { lng: info.lngLat[0], lat: info.lngLat[1], object: info.object };
         Shiny.onInputChange(el.id + "_onclick", data);
       };
     }
@@ -21,7 +24,17 @@ export default function(el, layers) {
   });
 }
 
-var addTooltipTo = function(properties) {
+const makeDataAccessors = function(properties) {
+  for (let key of Object.keys(properties)) {
+    var property = properties[key];
+    if (typeof property === "object" && property.dataAccessor !== undefined) {
+      console.log(key, "make data accessor");
+      properties[key] = makeDataAccessor(property.dataAccessor);
+    }
+  }
+};
+
+const addTooltipTo = function(properties) {
   properties.onHover = function({ x, y, object }) {
     var tooltipElement = _deckGLWidget.tooltipElement;
     if (!object) {
