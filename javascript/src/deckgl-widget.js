@@ -4,25 +4,28 @@ import fixProperties from "./helpers/fix-properties";
 import hexColorToRGBArray from "./helpers/hex-color-to-rgb-array";
 import renderMapTiles from "./helpers/render-map-tiles";
 
-const _deckGLWidget = global._deckGLWidget = {};
-_deckGLWidget.colorToRGBArray = hexColorToRGBArray;
-_deckGLWidget.renderMapTiles = renderMapTiles;
+const _deckGLWidget = global._deckGLWidget = {
+  colorToRGBArray: hexColorToRGBArray,
+  renderMapTiles: renderMapTiles,
+  _store: {}
+};
 
 export default function(el, width, height) {
   console.log("I am your DeckGLWidget!");
 
-  var self = this;
+  const _widgetStore = _deckGLWidget._store[el.id] = {};
+
+  const self = this;
 
   var deckGL = null;
 
   self.renderValue = function(x) {
     self._logVersions();
     console.log("el", el, "x", x);
-    _deckGLWidget[el.id] = {};
-    _deckGLWidget[el.id].element = el;
+    _widgetStore.element = el;
     self._createTooltipElement();
-    deckGL = _deckGLWidget[el.id].deckGL = makeDeck(el, x);
-    const layers = _deckGLWidget[el.id].layers = makeLayers(el, x.layers);
+    deckGL = _widgetStore.deckGL = makeDeck(el, x);
+    const layers = _widgetStore.layers = makeLayers(el, x.layers);
     deckGL.setProps({ layers: layers });
   };
 
@@ -40,7 +43,7 @@ export default function(el, width, height) {
   };
 
   self._createTooltipElement = function() {
-    var tooltipElement = _deckGLWidget.tooltipElement = document.createElement("div");
+    const tooltipElement = _deckGLWidget.tooltipElement = document.createElement("div");
     tooltipElement.id = "tooltip";
     el.appendChild(tooltipElement);
   };
@@ -49,12 +52,12 @@ export default function(el, width, height) {
 if (HTMLWidgets.shinyMode) {
   Shiny.addCustomMessageHandler('proxythis', function(data) {
     console.log(data);
-    var widget = HTMLWidgets.find("#" + data.id);
-    var deckGL = widget.getDeckGL();
+    const widget = HTMLWidgets.find("#" + data.id);
+    const deckGL = widget.getDeckGL();
     console.log("deckGL", deckGL);
-    var el = document.getElementById(data.id);
+    const el = document.getElementById(data.id);
     fixProperties(data.x.layers);
-    var layers = makeLayers(el, data.x.layers);
+    const layers = makeLayers(el, data.x.layers);
     console.log(layers);
     deckGL.setProps({ layers: layers });
   });
