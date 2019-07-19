@@ -36,13 +36,13 @@ const makeDataAccessors = function(properties) {
 
 const addTooltipTo = function(properties) {
   properties.onHover = function({ x, y, object }) {
-    var tooltipElement = _deckGLWidget.tooltipElement;
+    const tooltipElement = _deckGLWidget.tooltipElement;
     if (!object) {
       tooltipElement.innerHTML = "";
       return;
     }
 
-    var text = properties.getTooltip(object);
+    const text = properties.getTooltip(object);
     if (!properties.fixedTooltip) {
       tooltipElement.style.top = y + "px";
       tooltipElement.style.left = x + "px";
