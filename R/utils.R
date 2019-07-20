@@ -3,7 +3,9 @@ to_camel_case <- function(x) {
 }
 
 keys_to_camel_case <- function(x) {
-  # names(x) <- names(x) %>% to_camel_case()
-  # x
   stats::setNames(x, to_camel_case(names(x)))
+}
+
+compact <- function(x) {
+  x[!sapply(x, is.null)]
 }
