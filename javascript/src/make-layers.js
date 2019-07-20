@@ -28,8 +28,7 @@ const makeDataAccessors = function(properties) {
   for (let key of Object.keys(properties)) {
     var property = properties[key];
     if (typeof property === "object" && property.dataAccessor !== undefined) {
-      console.log(key, "make data accessor");
-      properties[key] = makeDataAccessor(property.dataAccessor);
+      properties[key] = makeDataAccessor(key, property.dataAccessor);
     }
   }
 };
