@@ -21,7 +21,8 @@ deckgl(latitude = 49.254, longitude = -123.13, zoom = 11, pitch = 45) %>%
     extruded = TRUE,
     wireframe = TRUE,
     fp64 = TRUE,
-    getElevation =  JS("f => Math.sqrt(f.valuePerSqm) * 10"),
-    getFillColor = get_color_to_rgb_array("color"), # JS("f => [f.growth * 50, 140, 10]"),
-    getLineColor =  c(255, 255, 255)
+    getElevation = JS("f => Math.sqrt(f.valuePerSqm) * 10"),
+    getFillColor = ~color,
+    getLineColor = c(255, 255, 255),
+    getTooltip = ~valuePerSqm
   )
