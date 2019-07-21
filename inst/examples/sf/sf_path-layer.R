@@ -14,7 +14,7 @@ deckgl(zoom = 9.5, pitch = 35) %>%
     getPosition = ~geometry,
     radiusScale = 6,
     getRadius = 100,
-    getColor = c(240, 140, 20),
+    getFillColor = c(240, 140, 20),
     getTooltip = ~name
   ) %>%
   add_path_layer(

@@ -81,6 +81,14 @@ var deck = window.deck;
     return new deck[className](properties);
   };
 
+  var makeDataAccessor = deckglWidget.makeDataAccessor = function(keys) {
+    if (typeof keys === "string") {
+      return data => data[keys];
+    }
+
+    return data => keys.map(key => data[key]);
+  };
+
   var initialViewState = function(x) {
     return {
       longitude: x.longitude,
@@ -147,6 +155,7 @@ var deck = window.deck;
 
           deckglWidget.deckgl = deckgl = new deck.DeckGL(properties);
 
+          /*
           deckglWidget.layers = x.layers.map(function(item) {
             if (item.properties.dataframeToD3) {
               item.data = HTMLWidgets.dataframeToD3(item.data);
@@ -156,12 +165,15 @@ var deck = window.deck;
             // console.log(item);
             return newLayer(item.className, item.properties);
           });
-
-          // test tile layer
-          // deckglWidget.layers.push(deckglWidget.tileLayer());
+          */
+          deckglWidget.layers = makeLayers(x.layers);
 
           deckgl.setProps({ layers: deckglWidget.layers });
 
+        },
+
+        getDeck: function() {
+          return deckgl;
         },
 
         resize: function(width, height) {
@@ -173,5 +185,58 @@ var deck = window.deck;
       };
     }
   });
+
+  var getWidget = function(id) {
+    var htmlWidgetsObj = HTMLWidgets.find("#" + id);
+    return htmlWidgetsObj.getDeck();
+  };
+
+  if (HTMLWidgets.shinyMode) {
+    Shiny.addCustomMessageHandler('proxythis', function(obj) {
+      var deckgl = getWidget(obj.id);
+
+      // Fix JS properties
+      var layerDefs = obj.x.layers;
+      for (let i = 0; i < layerDefs.length; i++) {
+        var properties = layerDefs[i].properties;
+        for (let key of Object.keys(properties)) {
+          if (typeof properties[key] === "string") {
+            try {
+              properties[key] = eval(properties[key]);
+            } catch(err) { }
+          } // end if
+        } // end for
+      } // end for
+
+      console.log(obj);
+      // console.log(deckgl);
+      var layers = makeLayers(obj.x.layers);
+      deckgl.setProps({ layers: layers });
+      // console.log(deckglWidget.deckgl);
+    });
+  }
+
+  var makeLayers = function(layers) {
+    var l = deckglWidget.layers = layers.map(function(item) {
+      if (item.properties.dataframeToD3) {
+        item.data = HTMLWidgets.dataframeToD3(item.data);
+      }
+
+      item.properties.data = item.data;
+
+      // make data accessors
+      for (let key of Object.keys(item.properties)) {
+        var property = item.properties[key];
+        if (typeof property === "object" && property.dataAccessor !== undefined) {
+          console.log(key, "make data accessor");
+          item.properties[key] = makeDataAccessor(property.dataAccessor);
+        }
+      }
+      // -----
+
+      return newLayer(item.className, item.properties);
+    });
+    return l;
+  };
 
 })(); // anonymos end
