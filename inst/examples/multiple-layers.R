@@ -1,9 +1,9 @@
 bart_stations <- system.file("sample-data/bart-stations.json", package = "deckgl") %>%
   jsonlite::read_json(simplifyVector = TRUE) %>%
-  tibble::as.tibble()
+  tibble::as_tibble()
 
 main_properties <- list(
-  getPosition = get_position("lat", "lng")
+  getPosition = ~lng + lat
 )
 
 deckgl(zoom = 10, pitch = 35) %>%
@@ -13,11 +13,11 @@ deckgl(zoom = 10, pitch = 35) %>%
     properties = main_properties,
     radiusScale = 6,
     getRadius = 50,
-    getColor = c(240, 140, 20)
+    getFillColor = c(240, 140, 20)
   ) %>%
   add_text_layer(
     data = get_data(),
     properties = main_properties,
-    getText = get_property("name"),
+    getText = ~name,
     getAlignmentBaseline = "bottom"
   )
