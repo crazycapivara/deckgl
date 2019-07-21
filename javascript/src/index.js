@@ -1,4 +1,5 @@
-import DeckGLWidget from "./deckgl-widget";
+// import DeckGLWidget from "./deckgl-widget";
+import DeckGLWidget from "./deckgl-widget-class";
 
 HTMLWidgets.widget({
   name: "deckgl",
