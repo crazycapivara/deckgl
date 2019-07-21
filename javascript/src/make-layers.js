@@ -16,7 +16,8 @@ export default function(el, layers) {
     }
 
     if (properties.getTooltip) {
-      addTooltipTo(properties);
+      const tooltipElement = _deckGLWidget._store[el.id].tooltipElement;
+      setTooltip(properties, tooltipElement);
     }
 
     properties.data = item.data;
@@ -33,9 +34,8 @@ const makeDataAccessors = function(properties) {
   }
 };
 
-const addTooltipTo = function(properties) {
+const setTooltip = function(properties, tooltipElement) {
   properties.onHover = function({ x, y, object }) {
-    const tooltipElement = _deckGLWidget.tooltipElement;
     if (!object) {
       tooltipElement.innerHTML = "";
       return;

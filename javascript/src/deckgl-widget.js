@@ -43,8 +43,9 @@ export default function(el, width, height) {
   };
 
   self._createTooltipElement = function() {
-    const tooltipElement = _deckGLWidget.tooltipElement = document.createElement("div");
-    tooltipElement.id = "tooltip";
+    const tooltipElement = _widgetStore.tooltipElement = document.createElement("div");
+    tooltipElement.id = el.id + "-tooltip";
+    tooltipElement.className = "tooltip";
     el.appendChild(tooltipElement);
   };
 }
