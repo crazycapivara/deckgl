@@ -16,12 +16,12 @@ properties <- list(
 view <- fluidPage(
   h1("deckgl for R"),
   actionButton("go", "go"),
-  deckglOutput("deck"),
+  deckglOutput("map"),
   style = "font-family: Helvetica, Arial, sans-serif;"
 )
 
 backend <- function(input, output) {
-  output$deck <- renderDeckgl({
+  output$map <- renderDeckgl({
     deckgl(pitch = 45) %>%
       add_hexagon_layer(
         data = sample_data,
@@ -29,13 +29,13 @@ backend <- function(input, output) {
       ) %>% add_mapbox_basemap()
   })
 
-  observeEvent(input$deck_onclick, {
-    info <- input$deck_onclick
+  observeEvent(input$map_onclick, {
+    info <- input$map_onclick
     print(names(info$object))
   })
 
   observeEvent(input$go, {
-    deckgl_proxy("deck") %>%
+    deckgl_proxy("map") %>%
       add_hexagon_layer(
         data = sample_data, # [1:sample(1:190, 1), ],
         properties = properties,
