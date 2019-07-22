@@ -20,7 +20,11 @@
 #' @export
 add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
   ## TODO: use 'utils::modifyList' instead of 'merge_properties'
-  properties <- merge_properties(properties, list(...))
+  # properties <- merge_properties(properties, list(...))
+  properties <- utils::modifyList(
+    keys_to_camel_case(properties),
+    keys_to_camel_case(list(...))
+  )
   if (!is.null(properties$getTooltip) && is.null(properties$pickable)) {
     properties$pickable <- TRUE
   }
