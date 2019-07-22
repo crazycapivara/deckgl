@@ -1,4 +1,4 @@
-context("JavaScript code / data accessors")
+context("JavaScript code / data accessors (DEPRECATED)")
 
 test_that("get property", {
   # Prepare
