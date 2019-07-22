@@ -19,8 +19,6 @@
 #'
 #' @export
 add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
-  ## TODO: use 'utils::modifyList' instead of 'merge_properties'
-  # properties <- merge_properties(properties, list(...))
   properties <- utils::modifyList(
     keys_to_camel_case(properties),
     keys_to_camel_case(list(...))
@@ -47,9 +45,9 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
 }
 
 # Merge properties overwriting duplicates
-merge_properties <- function(x, y) {
-  for (name in names(y)) {
-    x[[name]] <- y[[name]]
-  }
-  x
-}
+# merge_properties <- function(x, y) {
+#   for (name in names(y)) {
+#     x[[name]] <- y[[name]]
+#   }
+#   x
+# }
