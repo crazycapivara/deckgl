@@ -1,9 +1,13 @@
+# deckgl 0.2.2
+
+* Added `deckgl_proxy` and `update_deckgl` to update layers in _shiny_ mode
+
 # deckgl 0.2.1
 
 * Switched to `deckgl.js` 7.1.7
 * Added support for `sf` objects as `data` parameter
 * Added _formula_ syntax for data accessors
-* Added more examples (see  folder `sf` on how pass `sf` objects to the layers)
+* Added more examples (see  folder `sf` on how to pass `sf` objects to the layers)
 
 ```r
 properties <- list(
