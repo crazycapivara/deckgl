@@ -1,8 +1,9 @@
 import makeDataAccessor from "./helpers/make-data-accessor";
 
-export default function(el, layer) {
+export default function(widgetElement, layer) {
   const properties = layer.properties;
-  const tooltipElement = _deckGLWidget._store[el.id].tooltipElement;
+  // const tooltipElement = _deckGLWidget._store[widgetElement.id].tooltipElement;
+  const tooltipElement = widgetElement._store.tooltipElement;
 
   const _makeDataAccessors = () => {
     for (let key of Object.keys(properties)) {
@@ -17,7 +18,7 @@ export default function(el, layer) {
     if (HTMLWidgets.shinyMode) {
       properties.onClick = info => {
         let data = { lng: info.lngLat[0], lat: info.lngLat[1], object: info.object };
-        Shiny.onInputChange(el.id + "_onclick", data);
+        Shiny.onInputChange(widgetElement.id + "_onclick", data);
       };
     }
   };

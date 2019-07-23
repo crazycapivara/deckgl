@@ -11,12 +11,13 @@ const _deckGLWidget = global._deckGLWidget = {
 };
 
 export default class {
-  constructor(el, width, height) {
+  constructor(widgetElement, width, height) {
     console.log("I am your DeckGLWidget!");
-    this.el = el;
+    widgetElement._store = {};
+    this.widgetElement = widgetElement;
     this.width = width;
     this.height = height;
-    this._widgetStore = _deckGLWidget._store[el.id] = {};
+    this._widgetStore = _deckGLWidget._store[widgetElement.id] = {};
     this.deckGL = null;
   }
 
@@ -29,18 +30,20 @@ export default class {
 
   _createTooltipElement() {
     const tooltipElement = this._widgetStore.tooltipElement = document.createElement("div");
-    tooltipElement.id = this.el.id + "-tooltip";
+    this.widgetElement._store.tooltipElement = tooltipElement; // NEW
+    tooltipElement.id = this.widgetElement.id + "-tooltip";
     tooltipElement.className = "tooltip";
-    this.el.appendChild(tooltipElement);
+    this.widgetElement.appendChild(tooltipElement);
   }
 
+  // TODO: Rename x
   renderValue(x) {
     this._logVersions();
-    console.log("el", this.el, "x", x);
-    this._widgetStore.element = this.el;
+    console.log("widgetElement", this.widgetElement, "x", x);
+    this._widgetStore.element = this.widgetElement;
     this._createTooltipElement();
-    this.deckGL = this._widgetStore.deckGL = makeDeck(this.el, x);
-    const layers = this._widgetStore.layers = makeLayers(this.el, x.layers);
+    this.deckGL = this._widgetStore.deckGL = makeDeck(this.widgetElement, x);
+    const layers = this._widgetStore.layers = makeLayers(this.widgetElement, x.layers);
     this.deckGL.setProps({ layers: layers });
   }
 
@@ -57,9 +60,9 @@ if (HTMLWidgets.shinyMode) {
     const widget = HTMLWidgets.find("#" + data.id);
     const deckGL = widget.getDeckGL();
     console.log("deckGL", deckGL);
-    const el = document.getElementById(data.id);
+    const widgetElement = document.getElementById(data.id);
     fixProperties(data.x.layers);
-    const layers = makeLayers(el, data.x.layers);
+    const layers = makeLayers(widgetElement, data.x.layers);
     console.log(layers);
     deckGL.setProps({ layers: layers });
   });
