@@ -37,13 +37,13 @@ export default class {
   }
 
   // TODO: Rename x
-  renderValue(x) {
+  renderValue(widgetData) {
     this._logVersions();
-    console.log("widgetElement", this.widgetElement, "x", x);
+    console.log("widgetElement", this.widgetElement, "widgetData", widgetData);
     this._widgetStore.element = this.widgetElement;
     this._createTooltipElement();
-    this.deckGL = this._widgetStore.deckGL = makeDeck(this.widgetElement, x);
-    const layers = this._widgetStore.layers = makeLayers(this.widgetElement, x.layers);
+    this.deckGL = this._widgetStore.deckGL = makeDeck(this.widgetElement, widgetData);
+    const layers = this._widgetStore.layers = makeLayers(this.widgetElement, widgetData.layers);
     this.deckGL.setProps({ layers: layers });
   }
 
@@ -54,6 +54,7 @@ export default class {
   }
 }
 
+// TODO: Rename 'proxythis', and 'x' (needs to be renamed on R side as well)
 if (HTMLWidgets.shinyMode) {
   Shiny.addCustomMessageHandler('proxythis', function(data) {
     console.log(data);
