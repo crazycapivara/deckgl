@@ -54,6 +54,6 @@ export default function(widgetElement, layer) {
   _setShinyCallback();
   _setTooltip();
   _flipData();
-  properties.data = layer.data;
+  properties.data = layer.data === null ? widgetElement._store.data : layer.data;
   return properties;
 }

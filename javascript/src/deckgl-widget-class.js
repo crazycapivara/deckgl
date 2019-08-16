@@ -4,6 +4,7 @@ import fixProperties from "./helpers/fix-properties";
 import hexColorToRGBArray from "./helpers/hex-color-to-rgb-array";
 import renderMapTiles from "./helpers/render-map-tiles";
 
+// Debug
 const _deckGLWidget = global._deckGLWidget = {
   colorToRGBArray: hexColorToRGBArray,
   renderMapTiles: renderMapTiles,
@@ -36,12 +37,20 @@ export default class {
     this.widgetElement.appendChild(tooltipElement);
   }
 
-  // TODO: Rename x
+  _storeData(data) { // NEW
+    if (data.dataframeToD3) {
+      data.value = HTMLWidgets.dataframeToD3(data.value);
+    }
+
+    this.widgetElement._store.data = data.value;
+  }
+
   renderValue(widgetData) {
     this._logVersions();
     console.log("widgetElement", this.widgetElement, "widgetData", widgetData);
     this._widgetStore.element = this.widgetElement;
     this._createTooltipElement();
+    this._storeData(widgetData.data);
     this.deckGL = this._widgetStore.deckGL = makeDeck(this.widgetElement, widgetData);
     const layers = this._widgetStore.layers = makeLayers(this.widgetElement, widgetData.layers);
     this.deckGL.setProps({ layers: layers });
