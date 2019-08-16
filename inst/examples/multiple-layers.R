@@ -6,7 +6,7 @@ main_properties <- list(
   getPosition = ~lng + lat
 )
 
-deckgl(zoom = 10, pitch = 35) %>%
+deckgl(zoom = 10, pitch = 35, elementId = "test") %>%
   add_data(bart_stations) %>%
   add_scatterplot_layer(
     data = get_data(),
@@ -18,6 +18,6 @@ deckgl(zoom = 10, pitch = 35) %>%
   add_text_layer(
     data = get_data(),
     properties = main_properties,
-    getText = ~name,
+    get_text = ~name,
     getAlignmentBaseline = "bottom"
   )
