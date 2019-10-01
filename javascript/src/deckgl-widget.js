@@ -1,6 +1,7 @@
 import makeDataAccessor from "./helpers/make-data-accessor";
 
-const _deckGLWidget = global._deckGLWidget = {};
+global._deckGLWidget = global._deckGLWidget || {};
+const _deckGLWidget = global._deckGLWidget;
 
 function logVersions() {
   console.log("deck.gl version: " + deck.version);
@@ -60,12 +61,13 @@ export default function(widgetElement, width, height) {
   widget.renderValue = (widgetData) => {
     console.log("widget data", widgetData);
     logVersions();
-    deckGL = _deckGLWidget.deckGL = makeDeck(widgetElement.id, widgetData.deckGLProperties);
+    const store = _deckGLWidget[widgetElement.id] = {};
+    deckGL = store.deckGL = makeDeck(widgetElement.id, widgetData.deckGLProperties);
     deckGL._deckGLWidget = {
       sources: {}
     };
     makeTooltipElement(widgetElement);
-    const layers = _deckGLWidget.layers = widgetData.layerDefs
+    const layers = store.layers = widgetData.layerDefs
       .map(layerDef => makeLayer(deckGL, layerDef.className, layerDef.properties));
     deckGL.setProps({ layers: layers});
   };

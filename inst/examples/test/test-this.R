@@ -5,7 +5,7 @@ mapStyle = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
 deckgl(mapStyle = mapStyle) %>%
   add_hexagon_layer()
 
-deckgl(mapStyle = mapStyle) %>%
+deckgl(mapStyle = mapStyle, element_id = "deckthat") %>%
   add_hexagon_layer(
     data = sf_bike_parking,
     getPosition = ~lng + lat,
