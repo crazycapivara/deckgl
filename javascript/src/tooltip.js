@@ -8,15 +8,13 @@ export function makeTooltipElement(widgetElement) {
 export function setTooltipProp(deckGL, props) {
   if(!props.getTooltip) return;
 
-  console.log(props.getTooltip);
   const tooltipId = deckGL.props.container + '-tooltip';
   const tooltipElement = document.getElementById(tooltipId);
-  tooltipElement.innerHTML = props.getTooltip;
   props.onHover = ({ object, x, y }) => {
     if (object) {
-      console.log(object.points.length);
+      tooltipElement.innerHTML = props.getTooltip(object);
     } else {
-      console.log("nothing to do");
+      tooltipElement.innerHTML = "";
     }
   };
 }

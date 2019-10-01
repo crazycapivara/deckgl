@@ -11,5 +11,6 @@ deckgl(mapStyle = mapStyle, element_id = "deckthat") %>%
     getPosition = ~lng + lat,
     extruded = TRUE,
     radius = 200,
-    elevationScale = 4
+    elevationScale = 4,
+    getTooltip = JS("object => object.points.length")
   )
