@@ -11,15 +11,6 @@ function logVersions() {
     }
 }
 
-/*
-function makeTooltipElement(widgetElement) {
-  const tooltipElement = document.createElement("div");
-  tooltipElement.id = widgetElement.id + "-tooltip";
-  tooltipElement.className = "tooltip";
-  widgetElement.appendChild(tooltipElement);
-}
-*/
-
 function makeDeck(elementId, props) {
   props.container = elementId;
   return new deck.DeckGL(props);
@@ -41,24 +32,6 @@ function makeLayer(deckGL, className, props) {
   setTooltipProp(deckGL, props);
   return new deck[className](props);
 }
-
-/*
-function makeTooltip(deckGL, props) {
-  if(!props.getTooltip) return;
-
-  console.log(props.getTooltip);
-  const tooltipId = deckGL.props.container + '-tooltip';
-  const tooltipElement = document.getElementById(tooltipId);
-  tooltipElement.innerHTML = props.getTooltip;
-  props.onHover = ({ object, x, y }) => {
-    if (object) {
-      console.log(object.points.length);
-    } else {
-      console.log("nothing to do");
-    }
-  };
-}
-*/
 
 export default function(widgetElement, width, height) {
   const widget = {};
