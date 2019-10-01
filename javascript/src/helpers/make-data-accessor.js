@@ -6,7 +6,6 @@ export default function(propertyName, keys) {
     const key = keys;
     const isColor = propertyName.includes("Color");
     if (isColor) {
-      // console.log("is color");
       return data => typeof data[key] === "string" ? hexColorToRGBArray(data[key]) : data[key];
     }
 

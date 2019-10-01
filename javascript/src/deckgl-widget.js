@@ -1,4 +1,5 @@
 import makeDataAccessor from "./helpers/make-data-accessor";
+import { makeTooltipElement, setTooltipProp } from "./tooltip";
 
 global._deckGLWidget = global._deckGLWidget || {};
 const _deckGLWidget = global._deckGLWidget;
@@ -10,12 +11,14 @@ function logVersions() {
     }
 }
 
+/*
 function makeTooltipElement(widgetElement) {
   const tooltipElement = document.createElement("div");
   tooltipElement.id = widgetElement.id + "-tooltip";
   tooltipElement.className = "tooltip";
   widgetElement.appendChild(tooltipElement);
 }
+*/
 
 function makeDeck(elementId, props) {
   props.container = elementId;
@@ -26,6 +29,7 @@ function makeLayer(deckGL, className, props) {
   if (props.df) {
     props.data = HTMLWidgets.dataframeToD3(props.data);
   }
+
   // Make simple data accessors
   for (let key of Object.keys(props)) {
     const prop = props[key];
@@ -33,10 +37,12 @@ function makeLayer(deckGL, className, props) {
       props[key] = makeDataAccessor(key, prop.dataAccessor);
     }
   }
-  makeTooltip(deckGL, props);
+
+  setTooltipProp(deckGL, props);
   return new deck[className](props);
 }
 
+/*
 function makeTooltip(deckGL, props) {
   if(!props.getTooltip) return;
 
@@ -52,6 +58,7 @@ function makeTooltip(deckGL, props) {
     }
   };
 }
+*/
 
 export default function(widgetElement, width, height) {
   const widget = {};
@@ -69,7 +76,7 @@ export default function(widgetElement, width, height) {
     makeTooltipElement(widgetElement);
     const layers = store.layers = widgetData.layerDefs
       .map(layerDef => makeLayer(deckGL, layerDef.className, layerDef.properties));
-    deckGL.setProps({ layers: layers});
+    deckGL.setProps({ layers: layers });
   };
 
   widget.resize = (width, height) => {};
