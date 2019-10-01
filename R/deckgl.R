@@ -22,7 +22,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, bearing = 0,
+deckgl_obs <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, bearing = 0,
                    initialViewState = NULL, views = NULL, data = NULL,
                    width = NULL, height = NULL, elementId = NULL, ...) {
 

@@ -1,8 +1,7 @@
-// import DeckGLWidget from "./deckgl-widget";
-import DeckGLWidget from "./deckgl-widget-class";
+import deckGLWidget from "./deckgl-widget";
 
 HTMLWidgets.widget({
   name: "deckgl",
   type: "output",
-  factory: (el, width, height) => new DeckGLWidget(el, width, height)
+  factory: deckGLWidget
 });

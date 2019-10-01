@@ -41,7 +41,8 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
     data = data,
     properties = c(id = id, formula_to_property(properties))
   )
-  deckgl
+  # deckgl
+  append_layer(deckgl, class_name, id, data, properties)
 }
 
 # Merge properties overwriting duplicates
