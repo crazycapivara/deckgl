@@ -6,9 +6,9 @@ const _deckGLWidget = global._deckGLWidget;
 
 function logVersions() {
   console.log("deck.gl version: " + deck.version);
-    if (typeof mapboxgl !== "undefined") {
-      console.log("mapbox-gl version: " + mapboxgl.version);
-    }
+  if (typeof mapboxgl !== "undefined") {
+    console.log("mapbox-gl version: " + mapboxgl.version);
+  }
 }
 
 function makeDeck(elementId, props) {
