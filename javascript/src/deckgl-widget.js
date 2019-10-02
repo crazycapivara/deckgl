@@ -30,6 +30,15 @@ function makeLayer(deckGL, className, props) {
   }
 
   setTooltipProp(deckGL, props);
+
+  if (HTMLWidgets.shinyMode) {
+    props.onClick = info => {
+      const data = { lng: info.lngLat[0], lat: info.lngLat[1], object: info.object };
+      const widgetId = deckGL.props.container;
+      Shiny.onInputChange(widgetId + "_onclick", data);
+    };
+  }
+
   return new deck[className](props);
 }
 
