@@ -147,7 +147,8 @@ var deck = window.deck;
             mapStyle: x.mapStyle || "",
             container: el.id,
             initialViewState: x.initialViewState || initialViewState(x),
-            views: x.views || new MapView(),
+            views: x.views || new deck.MapView(),
+            controller: true,
             layers: []
           };
 
