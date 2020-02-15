@@ -1,4 +1,6 @@
 ## @knitr text-layer
+data("bart_stations")
+
 deck <- deckgl(zoom = 10, pitch = 35) %>%
   add_text_layer(
     data = bart_stations,
