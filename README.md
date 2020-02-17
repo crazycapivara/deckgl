@@ -3,7 +3,7 @@
 An R Interface to deck.gl
 =========================
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![deck.gl Version](https://img.shields.io/badge/deck.gl-v8.0.15-blue.svg)](https://github.com/uber/deck.gl/releases/tag/v8.0.15)
 
 Deckgl for R makes the open-source JavaScript library [deck.gl](https://deck.gl/) available within R via the [htmlwidgets](https://www.htmlwidgets.org/) package.
 
@@ -75,24 +75,19 @@ Add any kind of layers:
 
 ``` r
 # Grid layer example
-
-sample_data <- paste0(
-  "https://raw.githubusercontent.com/",
-  "uber-common/deck.gl-data/",
-  "master/website/sf-bike-parking.json"
-)
+data("sf_bike_parking")
 
 properties <- list(
   pickable = TRUE,
   extruded = TRUE,
   cellSize = 200,
   elevationScale = 4,
-  getPosition = JS("data => data.COORDINATES"),
+  getPosition = JS("data => [data.lng, data.lat]"),
   getTooltip = JS("object => object.count")
 )
 
 deckgl(zoom = 11, pitch = 45) %>%
-  add_grid_layer(data = sample_data, properties = properties) %>%
+  add_grid_layer(data = sf_bike_parking, properties = properties) %>%
   add_mapbox_basemap() # optional
 ```
 
