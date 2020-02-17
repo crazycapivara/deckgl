@@ -44,15 +44,6 @@ does_it_work("yourSuperSecretApiToken")
 #> Output should be the same as above but rendered on top of a base map from mapbox.
 ```
 
-Show some sample data:
-
-``` r
-# Pass 'data = NULL' to load some sample data for the hexagon layer
-deckgl() %>%
-  add_hexagon_layer(data = NULL) %>%
-  add_mapbox_basemap("yourSuperSecretApiToken") # optional
-```
-
 Usage
 -----
 
@@ -101,10 +92,12 @@ Due to the generic function `add_layer` any kind of layer defined in the [deckgl
 
 ``` r
 # Generic function
-deckgl() %>% add_layer("ArcLayer", "arc-layer", data, properties)
+deckgl() %>%
+  add_layer("ArcLayer", "arc-layer", data, properties)
 
 # Shortcut function
-deckgl() %>% add_arc_layer("arc-layer", data, properties)
+deckgl() %>%
+  add_arc_layer("arc-layer", data, properties)
 ```
 
 Run examples
@@ -120,9 +113,9 @@ example(add_icon_layer)
 Concept
 -------
 
-Deckgl for R stays as close as possible to the JavaScript api so that usually all parameters of its JavaScript pendants are supported. Therefore, you need to check the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) of the JavaScript framework to get information about the parameters you can pass to the R-functions mostly as named lists or named arguments (`...` parameter). Use the `JS` function if you need to pass any kind of JavaScript code, as it is the case for **data accessors**.
+Deckgl for R stays as close as possible to the JavaScript API so that usually all parameters of its JavaScript pendants are supported. Therefore, you need to check the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) of the JavaScript framework to get information about the parameters you can pass to the R-functions mostly as named lists or named arguments (`...` parameter). Use the `JS` function if you need to pass any kind of JavaScript code, as it is the case for **data accessors**.
 
-[GridLayer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) api-example:
+[GridLayer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) API-example:
 
 ``` javascript
 // JavaScript code
