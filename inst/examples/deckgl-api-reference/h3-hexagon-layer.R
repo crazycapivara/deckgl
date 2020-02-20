@@ -3,9 +3,9 @@ h3_cells <- system.file("sample-data/h3-cells.csv", package = "deckgl") %>%
   read.csv()
 
 properties <- list(
-  getHexagon = get_property("h3_index"),
+  getHexagon = ~h3_index,
   getFillColor =JS("d => [255, (1 - d.count / 500) * 255, 0]"),
-  getElevation = get_property("count"),
+  getElevation = ~count,
   elevationScale = 20,
   getTooltip = JS("object => `${object.h3_index}: ${object.count}`")
 )
