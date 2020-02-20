@@ -1,10 +1,14 @@
+# deckgl 0.2.3
+
+* Switched to `deck.gl.js` v8.0.15
+
 # deckgl 0.2.2
 
 * Added `deckgl_proxy` and `update_deckgl` to update layers in _shiny_ mode
 
 # deckgl 0.2.1
 
-* Switched to `deckgl.js` 7.1.7
+* Switched to `deck.gl.js` v7.1.7
 * Added support for `sf` objects as `data` parameter
 * Added _formula_ syntax for data accessors
 * Added more examples (see  folder `sf` on how to pass `sf` objects to the layers)
@@ -25,7 +29,7 @@ properties <- list(
 
 # deckgl 0.2.0
 
-* Switched to `deckgl.js` 7.1.6
+* Switched to `deck.gl.js` v7.1.6
 * `add_column_layer`
 * `add_great_circle_layer`
 * `add_bitmap_layer`
@@ -35,19 +39,19 @@ properties <- list(
 
 # deckgl 0.1.9
 
-* Switched to `deckgl.js` 6.3.0
-* Switched to `mapbox-gl.js` 0.51.0
+* Switched to `deck.gl.js` v6.3.0
+* Switched to `mapbox-gl.js` v0.51.0
 * Updated api example of `ScreenGridLayer`
 * Added `HexagonLayer` example of _road-safety-in-uk_
 
 # deckgl 0.1.8
 
-* Switched to `deckgl.js` 6.2.4
+* Switched to `deck.gl.js` v6.2.4
 * cran release
 
 # deckgl 0.1.7
 
-* Switched to `deckgl.js` 6.2.3
+* Switched to `deck.gl.js` v6.2.3
 * Added examples to r-docs for all `add_*_layer` functions
 * Added helper functions to run api-examples, not exported yet:
 
@@ -59,7 +63,7 @@ deck
 
 # deckgl 0.1.6
 
-* Switched to `deckgl.js` 6.2.2
+* Switched to `deck.gl.js` v6.2.2
 * Added more examples
 * Added `...` parameter to `deckgl` to pass optional parameters to the `deck` instance:
 
@@ -81,7 +85,7 @@ deckgl() %>%
 
 # deckgl 0.1.5
 
-* Switched to `deckgl.js` 6.1.1
+* Switched to `deck.gl.js` 6.1.1
 * Added helper functions `get_property` and `get_color_to_rgb_array`:
 
 ```r
@@ -102,7 +106,7 @@ properties <- list(
 
 # deckgl 0.1.4
 
-* Switched to `deckgl.js` 6.1.0
+* Switched to `deck.gl.js` v6.1.0
 * Added missing `add_*_layer` functions for all core layers including `add_contour_layer` (new in version 6.1.0)
 * Added helper functions `encode_icon_atlas`, `icon_definition` and `default_icon_properties` to set icons for the icon layer:
 
