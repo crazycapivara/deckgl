@@ -1,5 +1,5 @@
 library(deckgl)
-require(geojsonio)
+library(geojsonio)
 
 cities <- geojsonio::canada_cities[canada_cities$capital > 0, ]
 

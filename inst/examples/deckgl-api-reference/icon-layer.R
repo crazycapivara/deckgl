@@ -1,16 +1,12 @@
 ## @knitr icon-layer
-sample_data <- paste0(
-  "https://raw.githubusercontent.com/",
-  "uber-common/deck.gl-data/",
-  "master/website/bart-stations.json"
-)
+data("bart_stations")
 
 properties <- list(
   pickable = TRUE,
   iconAtlas = encode_icon_atlas(),
   iconMapping = list(marker = icon_definition()),
   sizeScale = 10,
-  getPosition = get_property("coordinates"),
+  getPosition = ~lng + lat,
   getIcon = JS("d => 'marker'"),
   getSize = 5,
   getColor = JS("d => [Math.sqrt(d.exits), 140, 0]"),
@@ -18,7 +14,7 @@ properties <- list(
 )
 
 deck <- deckgl(zoom = 10, pitch = 45) %>%
-  add_icon_layer(data = sample_data, properties = properties) %>%
+  add_icon_layer(data = bart_stations, properties = properties) %>%
   add_mapbox_basemap()
 
 if (interactive()) deck

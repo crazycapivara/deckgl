@@ -16,6 +16,7 @@ library(deckgl)
 # An R Interface to deck.gl
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![deck.gl Version](https://img.shields.io/badge/deck.gl-v8.0.15-blue.svg)](https://github.com/uber/deck.gl/releases/tag/v8.0.15)
 
 Deckgl for R makes the open-source JavaScript library [deck.gl](https://deck.gl/) available within R via the [htmlwidgets](https://www.htmlwidgets.org/) package. 
 
@@ -53,15 +54,6 @@ does_it_work("yourSuperSecretApiToken")
 #> Output should be the same as above but rendered on top of a base map from mapbox.
 ```
 
-Show some sample data:
-
-```{r sample-data, eval = FALSE}
-# Pass 'data = NULL' to load some sample data for the hexagon layer
-deckgl() %>%
-  add_hexagon_layer(data = NULL) %>%
-  add_mapbox_basemap("yourSuperSecretApiToken") # optional
-```
-
 ## Usage
 
 Create a deckgl widget:
@@ -83,24 +75,19 @@ Add any kind of layers:
 
 ```{r add-layers, eval = FALSE}
 # Grid layer example
-
-sample_data <- paste0(
-  "https://raw.githubusercontent.com/",
-  "uber-common/deck.gl-data/",
-  "master/website/sf-bike-parking.json"
-)
+data("sf_bike_parking")
 
 properties <- list(
   pickable = TRUE,
   extruded = TRUE,
   cellSize = 200,
   elevationScale = 4,
-  getPosition = JS("data => data.COORDINATES"),
+  getPosition = JS("data => [data.lng, data.lat]"),
   getTooltip = JS("object => object.count")
 )
 
 deckgl(zoom = 11, pitch = 45) %>%
-  add_grid_layer(data = sample_data, properties = properties) %>%
+  add_grid_layer(data = sf_bike_parking, properties = properties) %>%
   add_mapbox_basemap() # optional
 ```
 
@@ -114,10 +101,12 @@ Due to the generic function `add_layer` any kind of layer defined in the [deckgl
 
 ```{r add-layers-generic-vs-shortcut, eval = FALSE}
 # Generic function
-deckgl() %>% add_layer("ArcLayer", "arc-layer", data, properties)
+deckgl() %>%
+  add_layer("ArcLayer", "arc-layer", data, properties)
 
 # Shortcut function
-deckgl() %>% add_arc_layer("arc-layer", data, properties)
+deckgl() %>%
+  add_arc_layer("arc-layer", data, properties)
 ```
 
 ## Run examples
@@ -131,9 +120,9 @@ example(add_icon_layer)
 
 ## Concept
 
-Deckgl for R stays as close as possible to the JavaScript api so that usually all parameters of its JavaScript pendants are supported. Therefore, you need to check the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) of the JavaScript framework to get information about the parameters you can pass to the R-functions mostly as named lists or named arguments (`...` parameter). Use the `JS` function if you need to pass any kind of JavaScript code, as it is the case for __data accessors__.
+Deckgl for R stays as close as possible to the JavaScript API so that usually all parameters of its JavaScript pendants are supported. Therefore, you need to check the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) of the JavaScript framework to get information about the parameters you can pass to the R-functions mostly as named lists or named arguments (`...` parameter). Use the `JS` function if you need to pass any kind of JavaScript code, as it is the case for __data accessors__.
  
-[GridLayer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) api-example:
+[GridLayer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) API-example:
  
 ```JavaScript
 // JavaScript code

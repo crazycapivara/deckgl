@@ -36,7 +36,7 @@ sample_data <- paste0(
 
 properties <- list(
   pickable = TRUE,
-  coordinateSystem = JS("COORDINATE_SYSTEM.METER_OFFSETS"),
+  coordinateSystem = JS("deck.COORDINATE_SYSTEM.METER_OFFSETS"),
   coordinateOrigin = c(-122.4, 37.74),
   pointSize = 4,
   getPosition = ~position,

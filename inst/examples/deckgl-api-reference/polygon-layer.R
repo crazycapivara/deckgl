@@ -11,7 +11,7 @@ properties <- list(
   filled = TRUE,
   wireframe = TRUE,
   lineWidthMinPixels = 1,
-  getPolygon = get_property("contour"),
+  getPolygon = ~contour,
   getElevation = JS("d => d.population / d.area / 10"),
   getFillColor = JS("d => [d.population / d.area / 60, 140, 0]"),
   getLineColor = c(80, 80, 80),

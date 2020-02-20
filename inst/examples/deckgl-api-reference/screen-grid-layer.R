@@ -22,6 +22,8 @@ deck <- deckgl() %>%
   add_mapbox_basemap()
 
 # Use a data object instead of the data url above
+data("sf_bike_parking")
+
 deck <- deckgl() %>%
   add_screen_grid_layer(
     data = sf_bike_parking,

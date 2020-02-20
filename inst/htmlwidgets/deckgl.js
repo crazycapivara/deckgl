@@ -147,7 +147,8 @@ var deck = window.deck;
             mapStyle: x.mapStyle || "",
             container: el.id,
             initialViewState: x.initialViewState || initialViewState(x),
-            views: x.views || new MapView(),
+            views: x.views || new deck.MapView(),
+            controller: true,
             layers: []
           };
 
@@ -227,7 +228,7 @@ var deck = window.deck;
       // make data accessors
       for (let key of Object.keys(item.properties)) {
         var property = item.properties[key];
-        if (typeof property === "object" && property.dataAccessor !== undefined) {
+        if (property !== null && typeof property === "object" && property.dataAccessor !== undefined) {
           console.log(key, "make data accessor");
           item.properties[key] = makeDataAccessor(property.dataAccessor);
         }

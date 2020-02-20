@@ -30,11 +30,13 @@ and target points, specified as latitude/longitude coordinates.
 }
 \examples{
 ## @knitr great-circle-layer
+data("bart_segments")
+
 properties <- list(
   pickable = TRUE,
   getWidth = 12,
-  getSourcePosition = get_position("from_lat", "from_lng"),
-  getTargetPosition = get_position("to_lat", "to_lng"),
+  getSourcePosition = ~from_lng + from_lat,
+  getTargetPosition = ~to_lng + to_lat,
   getSourceColor = JS("d => [Math.sqrt(d.inbound), 140, 0]"),
   getTargetColor = JS("d => [Math.sqrt(d.outbound), 140, 0]"),
   getTooltip = JS("object => `${object.from_name} to ${object.to_name}`")

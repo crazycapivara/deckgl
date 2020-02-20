@@ -29,17 +29,14 @@ and renders them as circles with a certain radius.
 }
 \examples{
 ## @knitr scatterplot-layer
-bart_stations <- paste0(
-  "https://raw.githubusercontent.com/",
-  "uber-common/deck.gl-data/",
-  "master/website/bart-stations.json"
-)
+data("bart_stations")
 
 properties <- list(
-  getPosition = get_property("coordinates"),
+  getPosition = ~lng + lat,
   getRadius = JS("data => Math.sqrt(data.exits)"),
   radiusScale = 6,
-  getFillColor = c(255, 140, 20)
+  getFillColor = c(255, 140, 20),
+  getTooltip = ~name
 )
 
 deck <- deckgl(zoom = 10.5, pitch = 35) \%>\%
