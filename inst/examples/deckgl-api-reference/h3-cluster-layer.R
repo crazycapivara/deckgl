@@ -10,11 +10,11 @@ properties <- list(
   stroked = TRUE,
   filled = TRUE,
   extruded = FALSE,
-  getHexagons = get_property("hexIds"),
+  getHexagons = ~hexIds,
   getFillColor = JS("d => [255, (1 - d.mean / 500) * 255, 0]"),
   getLineColor= c(255, 255, 255),
   lineWidthMinPixels = 2,
-  getTooltip = get_property("mean")
+  getTooltip = ~mean
 )
 
 deck <- deckgl(zoom = 10.5, pitch = 20) %>%
