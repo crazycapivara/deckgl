@@ -1,6 +1,8 @@
 # deckgl 0.2.3
 
 * Switched to `deck.gl.js` v8.0.15
+* `add_heatmap_layer`
+* `add_grid_cell_layer` 
 
 # deckgl 0.2.2
 
