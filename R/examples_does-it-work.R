@@ -5,11 +5,12 @@
 #' @export
 does_it_work <- function(token = NULL) {
   it_works <- data.frame(lat = 37.8, lng = -122.45, text = "it works")
-  deckgl <- deckgl() %>%
+  deck <- deckgl() %>%
     add_text_layer(data = it_works, getPosition = JS("data => [data.lng, data.lat]"))
   if (is.null(token)) {
-    return(deckgl)
+    return(deck)
   }
 
-  deckgl %>% add_mapbox_basemap(token)
+  deck %>%
+    add_mapbox_basemap(token = token)
 }

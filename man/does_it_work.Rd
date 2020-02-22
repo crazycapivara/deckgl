@@ -7,7 +7,7 @@
 does_it_work(token = NULL)
 }
 \arguments{
-\item{token}{mapbox api access token}
+\item{token}{mapbox API access token}
 }
 \description{
 Check if everything works fine
