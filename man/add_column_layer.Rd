@@ -41,7 +41,8 @@ deck <- deckgl(zoom = 11, pitch = 35) \%>\%
     getFillColor = JS("d => [48, 128, d.value * 255, 255]"),
     elevationScale = 5000,
     radius = 250,
-    extruded = TRUE
+    extruded = TRUE,
+    getTooltip = JS("object => `height: ${object.value * 5000}m`")
   ) \%>\%
   add_mapbox_basemap()
 

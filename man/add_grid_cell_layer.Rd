@@ -42,7 +42,8 @@ deck <- deckgl(zoom = 11, pitch = 35) \%>\%
     cellSize = 250,
     extruded = TRUE,
     getTooltip = JS("object => `height: ${object.value * 5000}m`")
-  )
+  ) \%>\%
+  add_mapbox_basemap()
 
 if (interactive()) deck
 }
