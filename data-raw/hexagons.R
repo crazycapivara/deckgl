@@ -9,6 +9,13 @@ hexagon_centroids <- cbind(
   value = df$value
 ) %>% as_tibble()
 
+write.csv(
+  hexagon_centroids,
+  "inst/sample-data/centroids.csv",
+  row.names = FALSE,
+  quote = FALSE
+)
+
 # column layer
 deckgl(zoom = 11, pitch = 35) %>%
   add_column_layer(
