@@ -29,18 +29,19 @@ It renders a tesselated regular polygon centered at each given position (a "disk
 }
 \examples{
 ## @knitr column-layer
-data("bart_stations")
+hexagon_centroids <- system.file("sample-data/centroids.csv", package = "deckgl") \%>\%
+  read.csv()
 
-deck <- deckgl(zoom = 9, pitch = 35) \%>\%
+deck <- deckgl(zoom = 11, pitch = 35) \%>\%
   add_column_layer(
-    data = bart_stations,
-    diskResolution = 10,
-    radius = 500,
+    data = hexagon_centroids,
+    diskResolution = 12,
     getPosition = ~lng + lat,
-    getElevation = ~exits,
-    getFillColor = JS("d => [48, 128, Math.sqrt(d.exits)]"),
-    extruded = TRUE,
-    getTooltip = ~name
+    getElevation = ~value,
+    getFillColor = JS("d => [48, 128, d.value * 255, 255]"),
+    elevationScale = 5000,
+    radius = 250,
+    extruded = TRUE
   ) \%>\%
   add_mapbox_basemap()
 
