@@ -4,9 +4,11 @@
 \alias{add_basemap}
 \title{Add a basemap to the deckgl widget}
 \usage{
-add_basemap(style = use_carto_style(), ...)
+add_basemap(deckgl, style = use_carto_style(), ...)
 }
 \arguments{
+\item{deckgl}{deckgl widget}
+
 \item{style}{The style definition of the map conforming to the Mapbox Style Specification.}
 
 \item{...}{not used}
