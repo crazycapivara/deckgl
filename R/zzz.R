@@ -8,7 +8,7 @@
   }
 
   packageStartupMessage(
-    pkgname, " ", getNamespaceVersion(pkgname), " wrapping deckgljs ", deckgljs_version(), "\n",
+    pkgname, " ", getNamespaceVersion(pkgname), " wrapping deck.gl.js ", deckgljs_version(), "\n",
     "  Documentation: https://crazycapivara.github.io/deckgl/\n",
     "  Issues, notes and bleeding edge: https://github.com/crazycapivara/deckgl\n",
     mapbox_message
