@@ -3,6 +3,7 @@
 export("%>%")
 export(JS)
 export(add_arc_layer)
+export(add_basemap)
 export(add_bitmap_layer)
 export(add_column_layer)
 export(add_contour_layer)
