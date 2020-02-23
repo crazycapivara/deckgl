@@ -1,4 +1,4 @@
-#' Carto style
+#' Use a Carto style
 #'
 #' @param theme The theme of the style, \code{dark-matter}, \code{positron} or \code{voyager}.
 #' @export

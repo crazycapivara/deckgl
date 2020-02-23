@@ -1,4 +1,5 @@
 #' Add a basemap to the deckgl widget
+#'
 #' @param style The style definition of the map conforming to the Mapbox Style Specification.
 #' @param ... not used
 #' @export
