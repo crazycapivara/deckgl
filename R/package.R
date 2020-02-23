@@ -1,7 +1,5 @@
 deckgljs_version <- function() {
-  # filename <- system.file("htmlwidgets/deckgl.yaml", package = "deckgl")
-  # yaml::yaml.load_file(filename)$dependencies[[1]]$version
-  deckgl_dependencies()[[1]]$version
+  use_deps("deck.gl")$deck.gl$version
 }
 
 browse_api_examples <- function() {

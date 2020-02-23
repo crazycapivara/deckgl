@@ -4,6 +4,6 @@
 #' @example inst/examples/deckgl-api-reference/h3-hexagon-layer.R
 #' @export
 add_h3_hexagon_layer <- function(deckgl, id = "h3-hexagon-layer", data = NULL, properties = list(), ...) {
-  deckgl$dependencies <- c(h3_dependencies(), deckgl$dependencies)
+  deckgl$dependencies <- c(use_deps("h3-js"), deckgl$dependencies)
   add_layer(deckgl, "H3HexagonLayer", id, data, properties, ...)
 }
