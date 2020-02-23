@@ -35,8 +35,8 @@ install.packages("deckgl")
 You can install the latest version of deckgl from github with:
 
 ```{r gh-installation, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("crazycapivara/deckgl")
+# install.packages("remotes")
+remotes::install_github("crazycapivara/deckgl")
 ```
 
 ## Quickstart
