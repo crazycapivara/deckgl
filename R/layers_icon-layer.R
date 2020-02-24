@@ -31,7 +31,7 @@ add_icon_layer <- function(deckgl, id = "icon-layer", data = NULL,
 use_default_icon_properties <- function(sizeScale = 15, getSize = 5, getColor = c(240, 140, 0)) {
   list(
     iconAtlas = encode_icon_atlas(),
-    iconMapping = list(marker = icon_definition()),
+    iconMapping = list(marker = use_icon_definition()),
     getIcon = JS("d => 'marker'"),
     sizeScale = sizeScale,
     getSize = getSize,
