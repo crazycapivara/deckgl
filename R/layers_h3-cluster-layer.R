@@ -4,6 +4,6 @@
 #' @example inst/examples/deckgl-api-reference/h3-cluster-layer.R
 #' @export
 add_h3_cluster_layer <- function(deckgl, id = "h3-cluster-layer", data = NULL, properties = list(), ...) {
-  deckgl$dependencies <- c(h3_dependencies(), deckgl$dependencies)
+  deckgl$dependencies <- c(use_deps("h3-js"), deckgl$dependencies)
   add_layer(deckgl, "H3ClusterLayer", id, data, properties, ...)
 }
