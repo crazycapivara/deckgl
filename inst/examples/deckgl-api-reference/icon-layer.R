@@ -4,7 +4,7 @@ data("bart_stations")
 properties <- list(
   pickable = TRUE,
   iconAtlas = encode_icon_atlas(),
-  iconMapping = list(marker = icon_definition()),
+  iconMapping = list(marker = use_icon_definition()),
   sizeScale = 10,
   getPosition = ~lng + lat,
   getIcon = JS("d => 'marker'"),
@@ -15,6 +15,6 @@ properties <- list(
 
 deck <- deckgl(zoom = 10, pitch = 45) %>%
   add_icon_layer(data = bart_stations, properties = properties) %>%
-  add_mapbox_basemap()
+  add_basemap()
 
 if (interactive()) deck
