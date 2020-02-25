@@ -11,7 +11,7 @@ test_that("default atlas image", {
 
   # Assert
   expect_equal(properties$iconAtlas, encode_icon_atlas())
-  expect_equal(properties$iconMapping, list(marker = icon_definition()))
+  expect_equal(properties$iconMapping, list(marker = use_icon_definition()))
 })
 
 test_that("overwrite atlas image only", {
@@ -25,7 +25,7 @@ test_that("overwrite atlas image only", {
 
   # Assert
   expect_equal(properties_(deckgl)$iconAtlas, custom_atlas_image)
-  expect_equal(properties_(deckgl)$iconMapping$marker, icon_definition())
+  expect_equal(properties_(deckgl)$iconMapping$marker, use_icon_definition())
 })
 
 test_that("custom icon properties", {
