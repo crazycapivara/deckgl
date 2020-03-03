@@ -1,9 +1,17 @@
+# deckgl 0.2.5
+
+Renamed
+
+* `icon_definition` to `use_icon_definition`
+* `contour_definition` to `use_contour_definition`
+* `default_icon_properties` to `use_default_icon_properties`
+
 # deckgl 0.2.4
 
 * Switched to `deck.gl.js` v8.0.16
 * Switched to `mapbox-gl.js` v1.8.0
 * Refactored dependencies (uses `deps.yaml` now)
-* Add `use_carto_style` and `add_basemap` using a basemap from carto as default
+* Added `use_carto_style` and `add_basemap` using a basemap from carto as default
 * Added sample data for column and grid cell layer
 * Changed parameter order in `add_mapbox_basemap`, so that `style` is the first parameter now
 
