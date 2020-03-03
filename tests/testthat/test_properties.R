@@ -4,7 +4,7 @@ test_that("merge properties", {
   # Prepare
   default_icon_properties <- list(
     iconAtlas = encode_icon_atlas(),
-    iconMapping = list(marker = icon_definition()),
+    iconMapping = list(marker = use_icon_definition()),
     getIcon = JS("d => 'marker'"),
     getColor = c(240, 140, 0)
   )
