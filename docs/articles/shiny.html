@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shiny integration • deckgl for R</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Shiny integration">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -30,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -103,7 +104,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/crazycapivara/deckgl">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -116,6 +117,7 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -129,13 +131,17 @@
 
     
     
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(deckgl)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(magrittr)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(shiny)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(deckgl)
 
-view &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">h1</a></span>(<span class="st">"deckgl for R"</span>),
+.app =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/reactiveValues.html">reactiveValues</a></span>(<span class="dt">visible =</span> <span class="ot">TRUE</span>)
+
+view &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span>(
+  <span class="kw"><a href="https://rdrr.io/pkg/shiny/man/builder.html">h1</a></span>(<span class="st">"deckgl for R"</span>),
+  <span class="kw"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html">actionButton</a></span>(<span class="st">"visible"</span>, <span class="st">"visible"</span>),
   <span class="kw"><a href="../reference/deckgl-shiny.html">deckglOutput</a></span>(<span class="st">"deck"</span>),
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/tableOutput">tableOutput</a></span>(<span class="st">"selected"</span>),
+  <span class="kw"><a href="https://rdrr.io/pkg/shiny/man/tableOutput.html">tableOutput</a></span>(<span class="st">"selected"</span>),
   <span class="dt">style =</span> <span class="st">"font-family: Helvetica, Arial, sans-serif;"</span>
 )
 
@@ -144,34 +150,43 @@ backend &lt;-<span class="st"> </span><span class="cf">function</span>(input, ou
     <span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">pitch =</span> <span class="dv">45</span>) <span class="op">%&gt;%</span>
 <span class="st">      </span><span class="co"># 'data = NULL' loads some sample data</span>
 <span class="st">      </span><span class="kw"><a href="../reference/add_hexagon_layer.html">add_hexagon_layer</a></span>(
-        <span class="dt">getTooltip =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"object =&gt; `count: ${object.points.length}`"</span>)
+        <span class="dt">getTooltip =</span> <span class="kw"><a href="https://rdrr.io/pkg/htmlwidgets/man/JS.html">JS</a></span>(<span class="st">"object =&gt; `count: ${object.points.length}`"</span>)
       ) <span class="op">%&gt;%</span>
 <span class="st">      </span><span class="kw"><a href="../reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span>()
   })
 
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>deck_onclick, {
+  <span class="kw"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span>(input<span class="op">$</span>deck_onclick, {
     info &lt;-<span class="st"> </span>input<span class="op">$</span>deck_onclick
     object &lt;-<span class="st"> </span>info<span class="op">$</span>object
     <span class="co"># print(info)</span>
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(object<span class="op">$</span>points <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>())
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(object<span class="op">$</span>centroid)
+    <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(object<span class="op">$</span>points <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>())
+    <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(object))
   })
 
-  df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">eventReactive</a></span>(input<span class="op">$</span>deck_onclick, {
+  <span class="kw"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span>(input<span class="op">$</span>visible, {
+    <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="st">"clicked"</span>)
+    .app<span class="op">$</span>visible =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(.app<span class="op">$</span>visible <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)
+    <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(.app<span class="op">$</span>visible)
+    <span class="kw"><a href="../reference/deckgl_proxy.html">deckgl_proxy</a></span>(<span class="st">"deck"</span>) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw"><a href="../reference/add_hexagon_layer.html">add_hexagon_layer</a></span>(<span class="dt">visible =</span> .app<span class="op">$</span>visible) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw"><a href="../reference/update_deckgl.html">update_deckgl</a></span>(<span class="dt">it =</span> <span class="st">"works"</span>)
+  })
+
+  df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">eventReactive</a></span>(input<span class="op">$</span>deck_onclick, {
     df &lt;-<span class="st"> </span>input<span class="op">$</span>deck_onclick<span class="op">$</span>object<span class="op">$</span>points <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(<span class="st">"["</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"ADDRESS"</span>, <span class="st">"RACKS"</span>, <span class="st">"SPACES"</span>)) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>() <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>()
-    df[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"RACKS"</span>, <span class="st">"SPACES"</span>)] <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(as.integer)
+<span class="st">      </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="st">"["</span>, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"ADDRESS"</span>, <span class="st">"RACKS"</span>, <span class="st">"SPACES"</span>)) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw"><a href="https://rdrr.io/r/base/t.html">t</a></span>() <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>()
+    df[, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"RACKS"</span>, <span class="st">"SPACES"</span>)] <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(as.integer)
     df
   })
 
-  output<span class="op">$</span>selected &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/renderTable">renderTable</a></span>({
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Fdist">df</a></span>()
+  output<span class="op">$</span>selected &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/renderTable.html">renderTable</a></span>({
+    <span class="kw"><a href="https://rdrr.io/r/stats/Fdist.html">df</a></span>()
   })
 }
 
-<span class="cf">if</span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/interactive">interactive</a></span>()) <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(view, backend)</code></pre></div>
+<span class="cf">if</span> (<span class="kw"><a href="https://rdrr.io/r/base/interactive.html">interactive</a></span>()) <span class="kw"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span>(view, backend)</code></pre></div>
 <p>If you click on an object, the <code>onclick</code> event sends the resulting <strong>picking info object</strong> to your Shiny application and updates the corresponding input in the form of <code>input$widgetId_onclick</code>. For the example above the <code>widgetId</code> is <code>deck</code>, so that you access the <strong>info object</strong> via <code>input$deck_onclick</code>.</p>
   </div>
 
@@ -181,17 +196,20 @@ backend &lt;-<span class="st"> </span><span class="cf">function</span>(input, ou
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Stefan Kuethe.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

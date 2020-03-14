@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a raster tile layer to the deckgl widget — add_raster_tile_layer • deckgl for R</title>
+<title>Add a grid cell layer to the deckgl widget — add_grid_cell_layer • deckgl for R</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,11 @@
 
 
 
-<meta property="og:title" content="Add a raster tile layer to the deckgl widget — add_raster_tile_layer" />
+<meta property="og:title" content="Add a grid cell layer to the deckgl widget — add_grid_cell_layer" />
 
-<meta property="og:description" content="EXPERIMENTAL, see https://deck.gl/#/examples/core-layers/tile-layer" />
+<meta property="og:description" content="The GridCellLayer can render a grid-based heatmap.
+It is a variation of the ColumnLayer. It takes the constant width / height of all cells and top-left coordinate of each cell.
+The grid cells can be given a height using the getElevation accessor." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -157,19 +159,20 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a raster tile layer to the deckgl widget</h1>
-    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/raster-tiles.R'><code>R/raster-tiles.R</code></a></small>
-    <div class="hidden name"><code>add_raster_tile_layer.Rd</code></div>
+    <h1>Add a grid cell layer to the deckgl widget</h1>
+    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/layers_grid-cell-layer.R'><code>R/layers_grid-cell-layer.R</code></a></small>
+    <div class="hidden name"><code>add_grid_cell_layer.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>EXPERIMENTAL, see <a href='https://deck.gl/#/examples/core-layers/tile-layer'>https://deck.gl/#/examples/core-layers/tile-layer</a></p>
+    <p>The <code>GridCellLayer</code> can render a grid-based heatmap.
+It is a variation of the <code>ColumnLayer</code>. It takes the constant width / height of all cells and top-left coordinate of each cell.
+The grid cells can be given a height using the <code>getElevation</code> accessor.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_raster_tile_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"raster-tiles"</span>,
-  <span class='kw'>tileServer</span> <span class='kw'>=</span> <span class='st'>"https://c.tile.openstreetmap.org/"</span>,
+    <pre class="usage"><span class='fu'>add_grid_cell_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"grid-cell-layer"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>properties</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -184,8 +187,8 @@
       <td><p>id of the layer</p></td>
     </tr>
     <tr>
-      <th>tileServer</th>
-      <td><p>base url of the tile server</p></td>
+      <th>data</th>
+      <td><p>url to fetch data from or data object</p></td>
     </tr>
     <tr>
       <th>properties</th>
@@ -202,23 +205,27 @@ want to use a properties object for more than one layer</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-cell-layer'>https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-cell-layer</a></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## @knitr raster-tile-layer</span>
-<span class='no'>tile_servers</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-  <span class='kw'>osm</span> <span class='kw'>=</span> <span class='st'>"https://a.tile.openstreetmap.org/"</span>,
-  <span class='kw'>carto_light</span> <span class='kw'>=</span> <span class='st'>"https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/"</span>,
-  <span class='kw'>carto_dark</span> <span class='kw'>=</span> <span class='st'>"https://cartodb-basemaps-a.global.ssl.fastly.net/dark_all/"</span>,
-  <span class='kw'>stamen_toner</span> <span class='kw'>=</span> <span class='st'>"http://a.tile.stamen.com/toner/"</span>
-)
+    <pre class="examples"><div class='input'><span class='no'>hexagon_centroids</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"sample-data/centroids.csv"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"deckgl"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>()
 
-<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>add_raster_tile_layer</span>(
-    <span class='kw'>tileServer</span> <span class='kw'>=</span> <span class='no'>tile_servers</span>$<span class='no'>osm</span>,
-    <span class='kw'>pickable</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-    <span class='kw'>autoHighlight</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-    <span class='kw'>highlightColor</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>60</span>, <span class='fl'>60</span>, <span class='fl'>60</span>, <span class='fl'>40</span>)
-  )
+<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>11</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>35</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_grid_cell_layer</span>(
+    <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>hexagon_centroids</span>,
+    <span class='kw'>getPosition</span> <span class='kw'>=</span> ~<span class='no'>lng</span> + <span class='no'>lat</span>,
+    <span class='kw'>getElevation</span> <span class='kw'>=</span> ~<span class='no'>value</span>,
+    <span class='kw'>getFillColor</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span>(<span class='st'>"d =&gt; [48, 128, d.value * 255, 255]"</span>),
+    <span class='kw'>elevationScale</span> <span class='kw'>=</span> <span class='fl'>5000</span>,
+    <span class='kw'>cellSize</span> <span class='kw'>=</span> <span class='fl'>250</span>,
+    <span class='kw'>extruded</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <span class='kw'>getTooltip</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span>(<span class='st'>"object =&gt; `height: ${object.value * 5000}m`"</span>)
+  ) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='add_mapbox_basemap.html'>add_mapbox_basemap</a></span>()
 
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) <span class='no'>deck</span></div></pre>
   </div>
@@ -226,7 +233,9 @@ want to use a properties object for more than one layer</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#see-also">See also</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

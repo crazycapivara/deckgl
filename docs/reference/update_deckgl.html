@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a raster tile layer to the deckgl widget — add_raster_tile_layer • deckgl for R</title>
+<title>Send commands to a deckgl instance in a <code>Shiny</code> app — update_deckgl • deckgl for R</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
 
 
-<meta property="og:title" content="Add a raster tile layer to the deckgl widget — add_raster_tile_layer" />
+<meta property="og:title" content="Send commands to a deckgl instance in a <code>Shiny</code> app — update_deckgl" />
 
-<meta property="og:description" content="EXPERIMENTAL, see https://deck.gl/#/examples/core-layers/tile-layer" />
+<meta property="og:description" content="Send commands to a deckgl instance in a Shiny app" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -157,78 +157,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a raster tile layer to the deckgl widget</h1>
-    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/raster-tiles.R'><code>R/raster-tiles.R</code></a></small>
-    <div class="hidden name"><code>add_raster_tile_layer.Rd</code></div>
+    <h1>Send commands to a deckgl instance in a <code>Shiny</code> app</h1>
+    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/proxy.R'><code>R/proxy.R</code></a></small>
+    <div class="hidden name"><code>update_deckgl.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>EXPERIMENTAL, see <a href='https://deck.gl/#/examples/core-layers/tile-layer'>https://deck.gl/#/examples/core-layers/tile-layer</a></p>
+    <p>Send commands to a deckgl instance in a <code>Shiny</code> app</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_raster_tile_layer</span>(<span class='no'>deckgl</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"raster-tiles"</span>,
-  <span class='kw'>tileServer</span> <span class='kw'>=</span> <span class='st'>"https://c.tile.openstreetmap.org/"</span>,
-  <span class='kw'>properties</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>update_deckgl</span>(<span class='no'>proxy</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>deckgl</th>
-      <td><p>deckgl widget</p></td>
-    </tr>
-    <tr>
-      <th>id</th>
-      <td><p>id of the layer</p></td>
-    </tr>
-    <tr>
-      <th>tileServer</th>
-      <td><p>base url of the tile server</p></td>
-    </tr>
-    <tr>
-      <th>properties</th>
-      <td><p>named list of properties with names corresponding to the properties defined
-in the <a href='https://deck.gl/#/documentation/deckgl-api-reference'>deckgl-api-reference</a>
-for the given layer class, additionally there is a <code>getTooltip</code> property (callback)
-showing a tooltip when the mouse enters an object,
-e. g. <code>getTooltip = JS("object =&gt; object.name")</code></p></td>
+      <th>proxy</th>
+      <td><p>deckgl proxy object</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>more properties (will be added to the properties object), useful if you
-want to use a properties object for more than one layer</p></td>
+      <td><p>unused</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## @knitr raster-tile-layer</span>
-<span class='no'>tile_servers</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-  <span class='kw'>osm</span> <span class='kw'>=</span> <span class='st'>"https://a.tile.openstreetmap.org/"</span>,
-  <span class='kw'>carto_light</span> <span class='kw'>=</span> <span class='st'>"https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/"</span>,
-  <span class='kw'>carto_dark</span> <span class='kw'>=</span> <span class='st'>"https://cartodb-basemaps-a.global.ssl.fastly.net/dark_all/"</span>,
-  <span class='kw'>stamen_toner</span> <span class='kw'>=</span> <span class='st'>"http://a.tile.stamen.com/toner/"</span>
-)
+    <div class='dont-index'><p><a href='deckgl_proxy.html'>deckgl_proxy</a></p></div>
+    
 
-<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>add_raster_tile_layer</span>(
-    <span class='kw'>tileServer</span> <span class='kw'>=</span> <span class='no'>tile_servers</span>$<span class='no'>osm</span>,
-    <span class='kw'>pickable</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-    <span class='kw'>autoHighlight</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-    <span class='kw'>highlightColor</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>60</span>, <span class='fl'>60</span>, <span class='fl'>60</span>, <span class='fl'>40</span>)
-  )
-
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) <span class='no'>deck</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>
