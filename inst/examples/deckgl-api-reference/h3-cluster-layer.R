@@ -12,7 +12,7 @@ properties <- list(
   extruded = FALSE,
   getHexagons = ~hexIds,
   getFillColor = JS("d => [255, (1 - d.mean / 500) * 255, 0]"),
-  getLineColor= c(255, 255, 255),
+  getLineColor = c(255, 255, 255),
   lineWidthMinPixels = 2,
   getTooltip = ~mean
 )

@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ScreenGridLayer • deckgl for R</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="ScreenGridLayer">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -30,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -103,7 +104,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/crazycapivara/deckgl">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -116,6 +117,7 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -130,30 +132,42 @@
     
     
 <p>The <code>ScreenGridLayer</code> takes in an array of latitude and longitude coordinated points, aggregates them into histogram bins and renders as a grid.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
   <span class="st">"https://raw.githubusercontent.com/uber-common/"</span>,
   <span class="st">"deck.gl-data/master/"</span>,
   <span class="st">"website/sf-bike-parking.json"</span>
 )
 
-color_to_rgb &lt;-<span class="st"> </span><span class="cf">function</span>(color) <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/col2rgb">col2rgb</a></span>(color) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/vector">as.vector</a></span>()
-color_range &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"#0198BD"</span>, <span class="st">"#49E3CE"</span>, <span class="st">"#D8FEB5"</span>, <span class="st">"#FEEDB1"</span>, <span class="st">"#FEAD54"</span>, <span class="st">"#D1374E"</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(color_to_rgb)
+color_to_rgb &lt;-<span class="st"> </span><span class="cf">function</span>(color) <span class="kw"><a href="https://rdrr.io/r/grDevices/col2rgb.html">col2rgb</a></span>(color) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span>()
+color_range &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"#0198BD"</span>, <span class="st">"#49E3CE"</span>, <span class="st">"#D8FEB5"</span>, <span class="st">"#FEEDB1"</span>, <span class="st">"#FEAD54"</span>, <span class="st">"#D1374E"</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(color_to_rgb)
 
-properties &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-  <span class="dt">pickable =</span> <span class="ot">FALSE</span>,
+properties &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
   <span class="dt">opacity =</span> <span class="fl">0.8</span>,
   <span class="dt">cellSizePixels =</span> <span class="dv">50</span>,
   <span class="dt">colorRange =</span> color_range,
-  <span class="dt">getPosition =</span> <span class="kw"><a href="../reference/get_property.html">get_property</a></span>(<span class="st">"COORDINATES"</span>),
-  <span class="dt">getWeight =</span> <span class="kw"><a href="../reference/get_property.html">get_property</a></span>(<span class="st">"SPACES"</span>)
+  <span class="dt">getPosition =</span> <span class="op">~</span>COORDINATES,
+  <span class="dt">getWeight =</span> <span class="op">~</span>SPACES
 )
 
 deck &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_screen_grid_layer.html">add_screen_grid_layer</a></span>(<span class="dt">data =</span> sample_data, <span class="dt">properties =</span> properties) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span>()
 
-<span class="cf">if</span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/interactive">interactive</a></span>()) deck</code></pre></div>
+<span class="co"># Use a data object instead of the data url above</span>
+<span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"sf_bike_parking"</span>)
+
+deck &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/add_screen_grid_layer.html">add_screen_grid_layer</a></span>(
+    <span class="dt">data =</span> sf_bike_parking,
+    <span class="dt">properties =</span> properties,
+    <span class="co"># overwrite properties</span>
+    <span class="dt">getPosition =</span> <span class="op">~</span>lng <span class="op">+</span><span class="st"> </span>lat,
+    <span class="dt">getWeight =</span> <span class="op">~</span>spaces
+  ) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span>()
+
+<span class="cf">if</span> (<span class="kw"><a href="https://rdrr.io/r/base/interactive.html">interactive</a></span>()) deck</code></pre></div>
 <p>See also <a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/screen-grid-layer">deckgl-api-reference-screen-grid-layer</a></p>
   </div>
 
@@ -163,17 +177,20 @@ deck &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deckgl
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Stefan Kuethe.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

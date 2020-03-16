@@ -12,7 +12,7 @@ example <- paste0(
   rprojroot::find_package_root_file(),
   "/inst/examples/deckgl-api-reference/scatterplot-layer.R"
 )
-knitr::read_chunk(example)
+do.call(knitr::read_chunk, list(path = example))
 ```
 
 The `ScatterplotLayer` takes in paired latitude and longitude coordinated points and renders them as circles with a certain radius.

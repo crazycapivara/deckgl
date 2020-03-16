@@ -12,7 +12,7 @@ example <- paste0(
   rprojroot::find_package_root_file(),
   "/inst/examples/deckgl-api-reference/contour-layer.R"
 )
-knitr::read_chunk(example)
+do.call(knitr::read_chunk, list(path = example))
 ```
 
 The `ContourLayer` renders contour lines for a given threshold and cell size.

@@ -8,11 +8,11 @@ vignette: >
 ---
 
 ```{r echo = FALSE}
-script <- paste0(
+example <- paste0(
   rprojroot::find_package_root_file(),
   "/inst/examples/deckgl-api-reference/screen-grid-layer.R"
 )
-knitr::read_chunk(script)
+do.call(knitr::read_chunk, list(path = example))
 ```
 
 The `ScreenGridLayer` takes in an array of latitude and longitude coordinated points, aggregates them into histogram bins and renders as a grid.

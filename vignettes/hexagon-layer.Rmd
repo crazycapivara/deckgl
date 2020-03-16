@@ -12,7 +12,7 @@ example <- paste0(
   rprojroot::find_package_root_file(),
   "/inst/examples/deckgl-api-reference/hexagon-layer.R"
 )
-knitr::read_chunk(example)
+do.call(knitr::read_chunk, list(path = example))
 ```
 
 The `HexagonLayer` renders a hexagon heatmap based on an array of points. It takes the radius of hexagon bin, projects points into hexagon bins. The color and height of the hexagon is scaled by number of points it contains.

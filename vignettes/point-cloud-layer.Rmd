@@ -12,7 +12,7 @@ example <- paste0(
   rprojroot::find_package_root_file(),
   "/inst/examples/deckgl-api-reference/point-cloud-layer.R"
 )
-knitr::read_chunk(example)
+do.call(knitr::read_chunk, list(path = example))
 ```
 
 The `PointCloudLayer` takes in points with 3d positions, normals and colors and renders them as spheres with a certain radius.

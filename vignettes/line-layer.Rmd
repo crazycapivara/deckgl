@@ -12,7 +12,7 @@ example <- paste0(
   rprojroot::find_package_root_file(),
   "/inst/examples/deckgl-api-reference/line-layer.R"
 )
-knitr::read_chunk(example)
+do.call(knitr::read_chunk, list(path = example))
 ```
 
 The `LineLayer` renders flat lines joining pairs of source and target points, specified as latitude/longitude coordinates.
