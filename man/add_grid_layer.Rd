@@ -42,7 +42,7 @@ properties <- list(
 
 deck <- deckgl(zoom = 11, pitch = 45, bearing = 35) \%>\%
   add_grid_layer(data = sf_bike_parking, properties = properties) \%>\%
-  add_mapbox_basemap()
+  add_basemap()
 
 if (interactive()) deck
 }
