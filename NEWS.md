@@ -1,3 +1,8 @@
+# deckgl 0.2.5-cran
+
+* Switched to `deck.gl.js` v8.0.17
+* Fixed bug in vignettes when building docs with `pkgdown`
+
 # deckgl 0.2.5
 
 Renamed
