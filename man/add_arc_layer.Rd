@@ -43,7 +43,7 @@ properties <- list(
 
 deck <- deckgl(zoom = 10, pitch = 35) \%>\%
   add_arc_layer(data = bart_segments, properties = properties) \%>\%
-  add_mapbox_basemap()
+  add_basemap()
 
 if (interactive()) deck
 }
