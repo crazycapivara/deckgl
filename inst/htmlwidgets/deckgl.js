@@ -2,30 +2,7 @@ var deck = window.deck;
 
 (function() {"use strict"; // anonymos start
 
-  var deckglWidget = window.deckglWidget = {};
-
-  // TODO: Remove, see function below
-  /*
-  deckglWidget.tileLayer = function() {
-    return new deck.TileLayer({
-      pickable: true,
-      opacity: 1,
-      minZoom: 0,
-      maxZoom: 19,
-      renderSubLayers: function(props) {
-        // const tileServer = 'https://c.tile.openstreetmap.org/';
-        const tileServer = "http://a.tile.stamen.com/toner/";
-        const {x, y, z, bbox} = props.tile;
-        const {west, south, east, north} = bbox;
-
-        return new deck.BitmapLayer(props, {
-          image: `${tileServer}/${z}/${x}/${y}.png`,
-          bounds: [west, south, east, north]
-        });
-      }
-    });
-  };
-  */
+  var deckglWidget = window.deckglWidget = { };
 
   deckglWidget.colorToRGBArray = function(color) {
     color = color.substring(1); // remove '#'
@@ -36,6 +13,7 @@ var deck = window.deck;
     ];
   };
 
+  // TODO: Check whether this still works
   deckglWidget.renderMapTiles = function(props) {
     const tileServer = props.tileServer || "http://a.tile.stamen.com/toner/";
     const { x, y, z, bbox } = props.tile;
@@ -100,6 +78,7 @@ var deck = window.deck;
   };
 
   // TODO: Remove tests!
+  /*
   var tests = {};
 
   tests.textLayer = function() {
@@ -112,17 +91,13 @@ var deck = window.deck;
       getSize: 32
     });
   };
+  */
 
   HTMLWidgets.widget({
-
     name: 'deckgl',
-
     type: 'output',
-
     factory: function(el, width, height) {
-
       // Define shared variables for this instance
-
       deckglWidget.element = el;
 
       var tooltipElement = deckglWidget.tooltipElement = document.createElement("div");
@@ -132,11 +107,8 @@ var deck = window.deck;
       var deckgl = null;
 
       return {
-
         renderValue: function(x) {
-
           // Render the widget
-
           console.log("deck.gl version: " + deck.version);
           if (typeof mapboxgl !== "undefined") {
             console.log("mapbox-gl version: " + mapboxgl.version);
@@ -149,28 +121,16 @@ var deck = window.deck;
             initialViewState: x.initialViewState || initialViewState(x),
             views: x.views || new deck.MapView(),
             controller: true,
-            layers: []
+            layers: [ ]
           };
 
           properties = Object.assign(properties, x.properties);
 
           deckglWidget.deckgl = deckgl = new deck.DeckGL(properties);
 
-          /*
-          deckglWidget.layers = x.layers.map(function(item) {
-            if (item.properties.dataframeToD3) {
-              item.data = HTMLWidgets.dataframeToD3(item.data);
-            }
-
-            item.properties.data = item.data;
-            // console.log(item);
-            return newLayer(item.className, item.properties);
-          });
-          */
           deckglWidget.layers = makeLayers(x.layers);
 
           deckgl.setProps({ layers: deckglWidget.layers });
-
         },
 
         getDeck: function() {
@@ -178,9 +138,7 @@ var deck = window.deck;
         },
 
         resize: function(width, height) {
-
           // TODO: code to re-render the widget with a new size
-
         }
 
       };
