@@ -77,22 +77,6 @@ var deck = window.deck;
     };
   };
 
-  // TODO: Remove tests!
-  /*
-  var tests = {};
-
-  tests.textLayer = function() {
-    const data = "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json";
-    return newLayer("TextLayer", {
-      id: "text-layer",
-      data: data,
-      getText: data => data.name,
-      getPosition: data => data.coordinates,
-      getSize: 32
-    });
-  };
-  */
-
   HTMLWidgets.widget({
     name: 'deckgl',
     type: 'output',
