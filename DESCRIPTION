@@ -1,7 +1,7 @@
 Package: deckgl
 Title: An R Interface to 'deck.gl'
-Version: 0.2.5
-Date: 2020-03-03
+Version: 0.2.5.9000
+Date: 2020-03-28
 Authors@R: person("Stefan", "Kuethe", email = "crazycapivara@gmail.com", role = c("aut", "cre"))
 Maintainer: Stefan Kuethe <crazycapivara@gmail.com>
 Description: Makes 'deck.gl' <https://deck.gl/>, a WebGL-powered open-source JavaScript framework
