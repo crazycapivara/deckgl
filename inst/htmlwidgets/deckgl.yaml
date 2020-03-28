@@ -9,3 +9,9 @@
 #    src: htmlwidgets/lib/deckgl
 #    script: dist.min.js
 #    stylesheet: deckgl_.css
+dependencies:
+  - name: deckgl-widget
+    version: 0.2.5
+    src: htmlwidgets/lib/widget
+    script: deckgl-widget.js
+    all_files: false
