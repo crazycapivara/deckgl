@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "build-dev": "webpack src/index.js --mode development -o ../inst/htmlwidgets/lib/widget/bundle-dev.js"
+    "build-dev": "webpack src/index.js --mode development -o ../inst/htmlwidgets/lib/widget/bundle-dev.js",
+    "build-test": "webpack src/test.js --mode development -o ./dist/bundle.js"
   },
   "keywords": [],
   "author": "Stefan Kuethe",
