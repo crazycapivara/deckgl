@@ -4,3 +4,4 @@
 playground/
 inst/doc
 node_modules/
+inst/htmlwidgets/lib/widget/bundle-dev.js

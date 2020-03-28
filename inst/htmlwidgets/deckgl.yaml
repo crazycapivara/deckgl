@@ -13,5 +13,6 @@ dependencies:
   - name: deckgl-widget
     version: 0.2.5
     src: htmlwidgets/lib/widget
-    script: deckgl-widget.js
+    # script: deckgl-widget.js
+    script: bundle-dev.js
     all_files: false
