@@ -26,3 +26,17 @@ export function logVersions() {
   console.log("deck.gl", deck.version);
   if (typeof mapboxgl !== "undefined") console.log("mapbox-gl", mapboxgl.version);
 }
+
+// Fix JS properties in Shiny
+export function fixLayerProperties(layers) {
+  for (let i = 0; i < layers.length; i++) {
+    const properties = layers[i].properties;
+    for (let key of Object.keys(properties)) {
+      if (typeof properties[key] === "string") {
+        try {
+          properties[key] = eval(properties[key]);
+        } catch(err) { }
+      } // end if
+    } // end for
+  } // end for
+}

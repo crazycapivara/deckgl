@@ -1,6 +1,7 @@
 import {
   createDeckGLProperties,
-  logVersions } from "./utils";
+  logVersions,
+  fixLayerProperties } from "./utils";
 import deckLayer from "./layer";
 
 export default function(widgetElement, width, height) {
@@ -32,6 +33,16 @@ export default function(widgetElement, width, height) {
   widget.resize = function(width, height) {
     // not implemented yet
   };
+
+  if (HTMLWidgets.shinyMode) {
+    Shiny.addCustomMessageHandler('proxythis', function(obj) {
+      // console.log(obj);
+      const widgetData = obj.x;
+      fixLayerProperties(widgetData.layers);
+      console.log(widgetData);
+      _render(widgetData.layers);
+    });
+  }
 
   return widget;
 }
