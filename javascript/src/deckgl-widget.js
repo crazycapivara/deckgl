@@ -4,10 +4,15 @@ import {
   fixLayerProperties } from "./utils";
 import deckLayer from "./layer";
 
+if (!global._deckWidget) {
+  global._deckWidget = { };
+}
+
 export default function(widgetElement, width, height) {
   const widget = { };
 
   let deckGL = null;
+  const globalStore = _deckWidget[widgetElement.id] = { };
 
   function _render(layerDefs) {
     const layers = layerDefs.map(layerDef => {
@@ -26,7 +31,7 @@ export default function(widgetElement, width, height) {
     logVersions();
 
     const deckGLProperties = createDeckGLProperties(widgetElement.id, widgetData);
-    deckGL = new deck.DeckGL(deckGLProperties);
+    deckGL = globalStore.deckGL = new deck.DeckGL(deckGLProperties);
     _render(widgetData.layers);
   };
 
