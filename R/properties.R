@@ -43,5 +43,5 @@ get_property <- function(property_name) {
 #'
 #' @export
 get_color_to_rgb_array <- function(color_property) {
-  sprintf("d => deckglWidget.colorToRGBArray(d.%s)", color_property) %>% JS()
+  sprintf("d => _deckWidget.convertColor(d.%s)", color_property) %>% JS()
 }

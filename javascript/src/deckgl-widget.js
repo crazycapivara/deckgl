@@ -1,11 +1,14 @@
 import {
   createDeckGLProperties,
   logVersions,
-  fixLayerProperties } from "./utils";
+  fixLayerProperties,
+  convertColor } from "./utils";
 import deckLayer from "./layer";
 
 if (!global._deckWidget) {
-  global._deckWidget = { };
+  global._deckWidget = {
+    convertColor
+  };
 }
 
 export default function(widgetElement, width, height) {

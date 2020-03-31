@@ -10,7 +10,7 @@ properties <- list(
   widthScale = 20,
   widthMinPixels = 2,
   getPath = get_property("path"),
-  getColor = get_color_to_rgb_array("color"),
+  getColor = c(0, 128, 0, 100), # get_color_to_rgb_array("color"),
   getWidth = 5,
   getTooltip = get_property("name")
 )

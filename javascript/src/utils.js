@@ -1,3 +1,5 @@
+import { color as d3Color} from "d3-color";
+
 // TODO: Use 'deckGLProperties' parameter in R
 export function createDeckGLProperties(elementId, widgetData) {
    return Object.assign({
@@ -39,4 +41,8 @@ export function fixLayerProperties(layers) {
       } // end if
     } // end for
   } // end for
+}
+
+export function convertColor(specifier) {
+  return Object.entries(d3Color(specifier)).map(item => item[1]).slice(0, 3);
 }
