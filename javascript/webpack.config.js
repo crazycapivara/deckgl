@@ -4,7 +4,7 @@ module.exports = {
   mode: 'production',
   entry: './src/index.js',
   output: {
-    filename: 'deckgl.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, '../inst/htmlwidgets/lib/widget'),
+    filename: 'deckgl-widget.min.js'
   }
 };
