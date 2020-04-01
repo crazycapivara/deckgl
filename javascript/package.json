@@ -7,14 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "build-dev": "webpack src/index.js --mode development -o ../inst/htmlwidgets/lib/widget/bundle-dev.js",
-    "build-test": "webpack src/test.js --mode development -o ./dist/bundle.js"
+    "start-dev": "webpack-dev-server src/test.js --mode development --open"
   },
   "keywords": [],
   "author": "Stefan Kuethe",
   "license": "MIT",
   "devDependencies": {
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
     "d3-color": "^1.4.0"
