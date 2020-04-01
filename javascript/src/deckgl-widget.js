@@ -15,7 +15,7 @@ export default function(widgetElement, width, height) {
   const widget = { };
 
   let deckGL = null;
-  const globalStore = _deckWidget[widgetElement.id] = { };
+  const globalStorage = _deckWidget[widgetElement.id] = { };
 
   function _render(layerDefs) {
     const layers = layerDefs.map(layerDef => {
@@ -34,7 +34,7 @@ export default function(widgetElement, width, height) {
     logVersions();
 
     const deckGLProperties = createDeckGLProperties(widgetElement.id, widgetData);
-    deckGL = globalStore.deckGL = new deck.DeckGL(deckGLProperties);
+    deckGL = globalStorage.deckGL = new deck.DeckGL(deckGLProperties);
     _render(widgetData.layers);
   };
 
