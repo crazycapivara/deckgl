@@ -19,5 +19,5 @@ test_that("get color", {
   js_code <- get_color_to_rgb_array(color_property)
 
   # Assert
-  expect_equal(js_code, JS("d => deckglWidget.colorToRGBArray(d.color)"))
+  expect_equal(js_code, JS("d => _deckWidget.convertColor(d.color)"))
 })
