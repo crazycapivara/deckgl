@@ -14,3 +14,8 @@
   z-index: 9;
   pointer-events: none;
 }
+
+.deck-tooltip {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11px;
+}

@@ -9,3 +9,12 @@
 #    src: htmlwidgets/lib/deckgl
 #    script: dist.min.js
 #    stylesheet: deckgl_.css
+dependencies:
+  - name: deckgl-widget
+    version: 0.2.5
+    src: htmlwidgets/lib/widget
+    # script: deckgl-widget.js
+    # script: bundle-dev.js
+    script: deckgl-widget.min.js
+    stylesheet: deckgl-widget.css
+    all_files: false

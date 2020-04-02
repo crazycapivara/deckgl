@@ -46,8 +46,8 @@ initial_view_state <- list(
 
 deck <- deckgl(
   initialViewState = initial_view_state,
-  pickingRadius = 5,
-  style = list(background = "black")
+  pickingRadius = 5
+  #, style = list(background = "black")
 ) %>%
   add_data(roads) %>%
   add_path_layer(
@@ -58,6 +58,6 @@ deck <- deckgl(
     getColor = get_color_to_rgb_array("color"),
     getWidth = 5,
     getTooltip = get_property("fatalities")
-  ) # %>% add_mapbox_basemap()
+  ) %>% add_basemap()
 
 if (interactive()) deck
