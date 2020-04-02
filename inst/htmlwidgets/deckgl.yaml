@@ -16,4 +16,5 @@ dependencies:
     # script: deckgl-widget.js
     # script: bundle-dev.js
     script: deckgl-widget.min.js
+    stylesheet: deckgl-widget.css
     all_files: false
