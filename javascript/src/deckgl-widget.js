@@ -1,3 +1,5 @@
+import "../styles/default.css";
+
 import {
   createDeckGLProperties,
   logVersions,
