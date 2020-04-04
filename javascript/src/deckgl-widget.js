@@ -1,5 +1,6 @@
 import "../styles/default.css";
 
+import createControls from "./controls";
 import {
   createDeckGLProperties,
   logVersions,
@@ -30,11 +31,13 @@ export default function(widgetElement, width, height) {
   }
 
   function renderValue(widgetData) {
+    widgetData.container = widgetElement.id;
     console.log(widgetData);
     logVersions();
 
-    const deckGLProperties = createDeckGLProperties(widgetElement.id, widgetData);
+    const deckGLProperties = createDeckGLProperties(widgetData);
     deckGL = globalStorage.deckGL = new deck.DeckGL(deckGLProperties);
+    createControls(widgetElement);
     _render(widgetData.layers);
   };
 
