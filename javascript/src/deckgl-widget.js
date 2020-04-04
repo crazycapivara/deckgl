@@ -1,3 +1,5 @@
+import "../styles/default.css";
+
 import {
   createDeckGLProperties,
   logVersions,
@@ -12,8 +14,6 @@ if (!global._deckWidget) {
 }
 
 export default function(widgetElement, width, height) {
-  const widget = { };
-
   let deckGL = null;
   const globalStorage = _deckWidget[widgetElement.id] = { };
 
@@ -29,7 +29,7 @@ export default function(widgetElement, width, height) {
     deckGL.setProps({ layers: layers });
   }
 
-  widget.renderValue = function(widgetData) {
+  function renderValue(widgetData) {
     console.log(widgetData);
     logVersions();
 
@@ -38,7 +38,7 @@ export default function(widgetElement, width, height) {
     _render(widgetData.layers);
   };
 
-  widget.resize = function(width, height) {
+  function resize(width, height) {
     // not implemented yet
   };
 
@@ -52,5 +52,5 @@ export default function(widgetElement, width, height) {
     });
   }
 
-  return widget;
+  return { renderValue, resize };
 }
