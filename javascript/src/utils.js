@@ -1,11 +1,11 @@
 import { color as d3Color } from "d3-color";
 
 // TODO: Use 'deckGLProperties' parameter in R
-export function createDeckGLProperties(elementId, widgetData) {
+export function createDeckGLProperties(widgetData) {
    return Object.assign({
      mapboxApiAccessToken: widgetData.mapboxApiAccessToken || "",
      mapStyle: widgetData.mapStyle || "",
-     container: elementId,
+     container: widgetData.container,
      initialViewState: widgetData.initialViewState || createInitialViewState(widgetData),
      views: widgetData.views || new deck.MapView(),
      controller: true,

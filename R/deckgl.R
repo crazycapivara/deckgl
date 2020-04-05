@@ -35,7 +35,8 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, b
     initialViewState = initialViewState,
     views = views,
     properties = list(...),
-    layers = list()
+    layers = list(),
+    calls = list()
   )
 
   # create widget

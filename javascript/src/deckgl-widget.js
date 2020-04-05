@@ -1,6 +1,9 @@
 import "../styles/default.css";
 
 import {
+  createControls,
+  addControl } from "./controls";
+import {
   createDeckGLProperties,
   logVersions,
   fixLayerProperties,
@@ -12,6 +15,10 @@ if (!global._deckWidget) {
     convertColor
   };
 }
+
+const funcs = {
+  addControl
+};
 
 export default function(widgetElement, width, height) {
   let deckGL = null;
@@ -30,17 +37,21 @@ export default function(widgetElement, width, height) {
   }
 
   function renderValue(widgetData) {
+    widgetData.container = widgetElement.id;
+    const calls = widgetData.calls || [ ];
     console.log(widgetData);
     logVersions();
 
-    const deckGLProperties = createDeckGLProperties(widgetElement.id, widgetData);
+    const deckGLProperties = createDeckGLProperties(widgetData);
     deckGL = globalStorage.deckGL = new deck.DeckGL(deckGLProperties);
+    createControls(widgetElement);
     _render(widgetData.layers);
-  };
+    calls.forEach(({ funcName, args }) => funcs[funcName].apply(null, args));
+  }
 
   function resize(width, height) {
     // not implemented yet
-  };
+  }
 
   if (HTMLWidgets.shinyMode) {
     Shiny.addCustomMessageHandler('proxythis', function(obj) {
