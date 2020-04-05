@@ -1,3 +1,10 @@
+# deckgl 0.2.6
+
+## deckgl 0.2.6-beta.1
+
+* Switched to `deck.gl.js` v8.1.0
+* Added func `add_control` to add controls to the widget
+
 # deckgl 0.2.5-cran
 
 * Switched to `deck.gl.js` v8.0.17
