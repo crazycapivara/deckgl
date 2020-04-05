@@ -1,18 +1,19 @@
-.deck-tooltip {
-  padding: 5px;
-  font: bold 12px/20px "Helvetica Neue", Arial, sans-serif;
+.deck-tooltip, .deckgl-widget-ctrl {
+  font: 12px/20px "Helvetica Neue", Arial, sans-serif;
 }
 
-.deckgl-widget-ctrl {
+.deckgl-widget-ctrl-group {
   position: absolute;
   pointer-events: none;
   z-index: 2;
-  /* background: #FFFFFF; */
-  padding: 5px;
-  font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.deckgl-widget-ctrl {
+  background: #FFFFFF;
+  padding: 10px;
 }
 
 .deckgl-widget-ctrl-top-left { top: 10px; left: 10px; }
 .deckgl-widget-ctrl-top-right { top: 10px; right: 10px; }
 .deckgl-widget-ctrl-bottom-left { bottom: 10px; left: 10px; }
-.deckgl-widget-ctrl-bottom-right { right: 10px; bottom: 10px; }
+.deckgl-widget-ctrl-bottom-right { bottom: 10px; right: 10px; }

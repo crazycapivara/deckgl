@@ -1,5 +1,6 @@
-const CTRL_CLASS_NAME = "deckgl-widget-ctrl";
-const CTRL_POSITIONS = [
+const CLASS_NAME_CTRL = "deckgl-widget-ctrl";
+const CLASS_NAME_CTRL_GROUP = `${CLASS_NAME_CTRL}-group`;
+const POSITIONS = [
   "top-left",
   "top-right",
   "bottom-right",
@@ -7,18 +8,20 @@ const CTRL_POSITIONS = [
 ];
 
 export function createControls(widgetElement) {
-  CTRL_POSITIONS.forEach(pos => {
+  POSITIONS.forEach(pos => {
     const ctrl = document.createElement("div");
-    ctrl.classList.add(CTRL_CLASS_NAME, `${CTRL_CLASS_NAME}-${pos}`);
+    ctrl.classList.add(CLASS_NAME_CTRL_GROUP, `${CLASS_NAME_CTRL}-${pos}`);
     widgetElement.appendChild(ctrl);
   });
 }
 
 export function addControl(content, pos, style) {
   const ctrl = document.createElement("div");
-  ctrl.style.cssText = style || "padding: 10px; background: white;";
+  ctrl.classList.add(CLASS_NAME_CTRL);
+  if (style) ctrl.style.cssText = style;
+
   ctrl.innerHTML = content;
-  const parent = document.getElementsByClassName(`${CTRL_CLASS_NAME}-${pos}`)[0];
+  const parent = document.getElementsByClassName(`${CLASS_NAME_CTRL}-${pos}`)[0];
   parent.appendChild(ctrl);
   return ctrl;
 }

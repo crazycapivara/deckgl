@@ -26,7 +26,7 @@ const WIDGET_DATA = {
   layers: [
     GRID_LAYER
   ],
-  mapStyle: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+  mapStyle: "", //"https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
   calls: [
     { funcName: "addControl", args: [ "I scream for icecream!", "top-right" ] },
     { funcName: "addControl", args: [ "Down by Law", "top-right" ] },
