@@ -1,5 +1,5 @@
 #' Add a control to the widget
-#' @inheritParams deckgl
+#' @inheritParams add_layer
 #' @param html The \code{innerHTML} of the control.
 #' @param pos The position of the control. Possible values are \code{top-left}, \code{top-right},
 #' \code{bottom-right} and \code{bottom-left}.
