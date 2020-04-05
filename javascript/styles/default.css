@@ -1,8 +1,17 @@
-.deck-tooltip, .deckgl-widget-ctrl {
+.deck-tooltip, .deckgl-widget-ctrl, .deckgl-widget-tooltip {
   font: 12px/20px "Helvetica Neue", Arial, sans-serif;
 }
 
-.deckgl-widget-ctrl-group {
+.deckgl-widget-tooltip {
+  padding: 5px;
+  /* border-radius: 5px; */
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  max-width: 300px;
+  display: none;
+}
+
+.deckgl-widget-ctrl-group, .deckgl-widget-tooltip {
   position: absolute;
   pointer-events: none;
   z-index: 2;

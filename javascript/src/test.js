@@ -13,7 +13,12 @@ const GRID_LAYER = {
     elevationScale: 4,
     getPosition: d => d.COORDINATES,
     // onClick: ({ object }) => console.log(object)
-    getTooltip: object => object.count
+    // getTooltip: object => object.count
+    getTooltip: {
+      html: "Count: {{count}}",
+      style: "background: blue; color: white",
+      // fixed: true
+    }
   }
 };
 
