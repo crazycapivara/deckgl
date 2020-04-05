@@ -7,6 +7,8 @@
 add_control(deckgl, html, pos = "top-right", style = NULL)
 }
 \arguments{
+\item{deckgl}{deckgl widget}
+
 \item{html}{The \code{innerHTML} of the control.}
 
 \item{pos}{The position of the control. Possible values are \code{top-left}, \code{top-right},
