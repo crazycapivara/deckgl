@@ -40,7 +40,24 @@ export default function(className, props, widgetElement) {
     };
   }
 
+  Object.assign(props, convertColorProps(props));
+
   return new deck[className](props);
+}
+
+function convertColorProps(props) {
+  const convertedProps = { };
+  for (let [key, value] of Object.entries(props)) {
+    if (key.includes("Color")) {
+      convertedProps[key] = (data) => {
+        const specifier = typeof value === "function" ? value(data) : value;
+        const rgba = typeof specifier === "string" ? _deckWidget.convertColor(specifier) : specifier;
+        return rgba;
+      };
+    }
+  }
+
+  return convertedProps;
 }
 
 function createTooltip(widgetElement) {
