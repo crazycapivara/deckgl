@@ -1,4 +1,5 @@
 import deckGLWidget from "./deckgl-widget";
+import widget_data from "./test-components/path-layer";
 
 global.HTMLWidgets = { };
 
@@ -18,7 +19,9 @@ const GRID_LAYER = {
       html: "Count: {{count}}",
       style: "background: blue; color: white",
       // fixed: true
-    }
+    },
+    getColor: "blue",
+    getStrokeColor: d => "black"
   }
 };
 
@@ -41,4 +44,4 @@ const WIDGET_DATA = {
 
 const widgetElement = document.getElementById("widget");
 const widget = deckGLWidget(widgetElement);
-widget.renderValue(WIDGET_DATA);
+widget.renderValue(widget_data);
