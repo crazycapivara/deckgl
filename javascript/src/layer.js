@@ -35,7 +35,7 @@ export default function(className, props, widgetElement) {
       }
 
       // tooltipElement.innerHTML = text;
-      tooltipElement.innerHTML = mustacheRender(tooltip.html, object);
+      tooltipElement.innerHTML = typeof tooltip === "function" ? tooltip(object) : mustacheRender(tooltip.html, object);
       tooltipElement.style.display = "block";
     };
   }
