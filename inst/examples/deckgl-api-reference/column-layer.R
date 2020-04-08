@@ -13,7 +13,8 @@ deck <- deckgl(zoom = 11, pitch = 35) %>%
     radius = 250,
     extruded = TRUE,
     # getTooltip = JS("object => `height: ${object.value * 5000}m`")
-    getTooltip = use_tooltip("Value: {{value}}", style = "font-style: italic;")
+    pickable = TRUE,
+    tooltip = "Value: {{value}}"
   ) %>%
   add_control("Column Layer", "bottom-left") %>%
   add_basemap()
