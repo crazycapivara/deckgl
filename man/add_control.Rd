@@ -9,12 +9,12 @@ add_control(deckgl, html, pos = "top-right", style = NULL)
 \arguments{
 \item{deckgl}{deckgl widget}
 
-\item{html}{The \code{innerHTML} of the control.}
+\item{html}{The \code{innerHTML} of the element.}
 
 \item{pos}{The position of the control. Possible values are \code{top-left}, \code{top-right},
 \code{bottom-right} and \code{bottom-left}.}
 
-\item{style}{A \code{cssText} string that will modefiy the default style of the control.}
+\item{style}{A \code{cssText} string that will modefiy the default style of the element.}
 }
 \description{
 Add a control to the widget

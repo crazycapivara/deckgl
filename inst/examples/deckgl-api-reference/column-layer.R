@@ -12,8 +12,10 @@ deck <- deckgl(zoom = 11, pitch = 35) %>%
     elevationScale = 5000,
     radius = 250,
     extruded = TRUE,
-    getTooltip = JS("object => `height: ${object.value * 5000}m`")
+    # getTooltip = JS("object => `height: ${object.value * 5000}m`")
+    getTooltip = use_tooltip("Value: {{value}}", style = "font-style: italic;")
   ) %>%
-  add_mapbox_basemap()
+  add_control("Column Layer", "bottom-left") %>%
+  add_basemap()
 
 if (interactive()) deck
