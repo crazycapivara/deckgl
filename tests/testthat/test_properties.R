@@ -8,15 +8,8 @@ test_that("merge properties", {
     getIcon = JS("d => 'marker'"),
     getColor = c(240, 140, 0)
   )
-  #overwrite_and_add_properties <- list(
-  #  getColor = c(140, 120, 0),
-  #  getSize = 5
-  #)
 
   # Act
-  #properties <- utils::modifyList(
-  #  default_icon_properties, overwrite_and_add_properties
-  #)
   deck <- deckgl() %>%
     add_icon_layer(
       data = "some-data",
