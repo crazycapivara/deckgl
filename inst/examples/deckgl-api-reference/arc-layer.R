@@ -2,7 +2,6 @@
 data("bart_segments")
 
 properties <- list(
-  pickable = TRUE,
   getWidth = 12,
   getSourcePosition = ~from_lng + from_lat,
   getTargetPosition = ~to_lng + to_lat,

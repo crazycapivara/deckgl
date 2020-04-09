@@ -7,7 +7,7 @@
 add_control(deckgl, html, pos = "top-right", style = NULL)
 }
 \arguments{
-\item{deckgl}{deckgl widget}
+\item{deckgl}{A deckgl widget object.}
 
 \item{html}{The \code{innerHTML} of the element.}
 

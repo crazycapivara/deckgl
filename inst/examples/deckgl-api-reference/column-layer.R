@@ -12,8 +12,6 @@ deck <- deckgl(zoom = 11, pitch = 35) %>%
     elevationScale = 5000,
     radius = 250,
     extruded = TRUE,
-    # getTooltip = JS("object => `height: ${object.value * 5000}m`")
-    pickable = TRUE,
     tooltip = "Value: {{value}}"
   ) %>%
   add_control("Column Layer", "bottom-left") %>%
