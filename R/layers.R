@@ -23,7 +23,6 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
     compact()
   #if (!is.null(properties$getTooltip)) .Deprecated("tooltip", old = "getTooltip")
 
-  #if (!is.null(properties$tooltip) || !is.null(properties$getTooltip)) {
   if (any(c("tooltip", "getTooltip") %in% names(properties)) && is.null(properties$pickable)) {
     properties$pickable <- TRUE
   }
@@ -40,7 +39,10 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
   deckgl$x$layers[[n + 1]] <- list(
     className = class_name,
     data = data,
-    properties = c(id = id, formula_to_property(properties))
+    properties = c(
+      id = id,
+      formula_to_property(properties)
+    )
   )
   deckgl
 }
