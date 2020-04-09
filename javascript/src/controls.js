@@ -15,12 +15,12 @@ export function createControls(widgetElement) {
   });
 }
 
-export function addControl(content, pos, style) {
+export function addControl(html, pos, style) {
   const ctrl = document.createElement("div");
   ctrl.classList.add(CLASS_NAME_CTRL);
   if (style) ctrl.style.cssText = style;
 
-  ctrl.innerHTML = content;
+  ctrl.innerHTML = html;
   const parent = document.getElementsByClassName(`${CLASS_NAME_CTRL}-${pos}`)[0];
   parent.appendChild(ctrl);
   return ctrl;

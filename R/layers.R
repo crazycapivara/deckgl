@@ -3,25 +3,27 @@
 #' Generic function to add any kind of layer to the deckgl widget.
 #' Usually you will not use this one but any of the \code{add_*_layer} functions instead.
 #'
-#' @param deckgl deckgl widget
-#' @param class_name name of the js layer class, e. g. \code{ScatterplotLayer}
-#' @param id id of the layer
-#' @param data url to fetch data from or data object
-#' @param properties named list of properties with names corresponding to the properties defined
+#' @param deckgl A deckgl widget object.
+#' @param class_name The name of the JavaScript layer class, e. g. \code{ScatterplotLayer}.
+#' @param id The unique id of the layer.
+#' @param data The url to fetch data from or a data object.
+#' @param properties A named list of properties with names corresponding to the properties defined
 #'   in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
-#'   for the given layer class, additionally there is a \code{getTooltip} property (callback)
-#'   showing a tooltip when the mouse enters an object,
-#'   e. g. \code{getTooltip = JS("object => object.name")}
-#' @param ... more properties (will be added to the properties object), useful if you
-#'   want to use a properties object for more than one layer
-#'
-#' @return deckgl widget
-#'
+#'   for the given layer class.
+#' @param ... More properties that will be added to the \code{properties} object. This can be useful
+#'   if you want to use a properties object for more than one layer.
+#' @param tooltip A tooltip template that defines what should be displayed when the mouse enters an object.
+#'   You can also pass a list with the properties \code{html} and \code{style}. See also \code{\link{use_tooltip}}.
+#' @return A deckgl widget object.
 #' @export
-add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
-  ## TODO: use 'utils::modifyList' instead of 'merge_properties'
-  properties <- merge_properties(properties, list(...))
-  if (!is.null(properties$getTooltip) && is.null(properties$pickable)) {
+add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., tooltip = NULL) {
+  properties <- list(tooltip = tooltip) %>%
+    utils::modifyList(properties) %>%
+    utils::modifyList(list(...)) %>%
+    compact()
+  #if (!is.null(properties$getTooltip)) .Deprecated("tooltip", old = "getTooltip")
+
+  if (any(c("tooltip", "getTooltip") %in% names(properties)) && is.null(properties$pickable)) {
     properties$pickable <- TRUE
   }
 
@@ -37,13 +39,19 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ...) {
   deckgl$x$layers[[n + 1]] <- list(
     className = class_name,
     data = data,
-    properties = c(id = id, formula_to_property(properties))
+    properties = c(
+      id = id,
+      formula_to_property(properties)
+    )
   )
   deckgl
 }
 
-# Merge properties overwriting duplicates
+# Deprecated
+# TODO: Remove in next release
 merge_properties <- function(x, y) {
+  .Deprecated("modifyList")
+
   for (name in names(y)) {
     x[[name]] <- y[[name]]
   }

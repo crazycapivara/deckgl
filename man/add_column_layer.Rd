@@ -8,20 +8,18 @@ add_column_layer(deckgl, id = "column-layer", data = NULL,
   properties = list(), ...)
 }
 \arguments{
-\item{deckgl}{deckgl widget}
+\item{deckgl}{A deckgl widget object.}
 
-\item{id}{id of the layer}
+\item{id}{The unique id of the layer.}
 
-\item{data}{url to fetch data from or data object}
+\item{data}{The url to fetch data from or a data object.}
 
-\item{properties}{named list of properties with names corresponding to the properties defined
+\item{properties}{A named list of properties with names corresponding to the properties defined
 in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
-for the given layer class, additionally there is a \code{getTooltip} property (callback)
-showing a tooltip when the mouse enters an object,
-e. g. \code{getTooltip = JS("object => object.name")}}
+for the given layer class.}
 
-\item{...}{more properties (will be added to the properties object), useful if you
-want to use a properties object for more than one layer}
+\item{...}{More properties that will be added to the \code{properties} object. This can be useful
+if you want to use a properties object for more than one layer.}
 }
 \description{
 The \code{ColumnLayer} can be used to render a heatmap of vertical cylinders.
@@ -42,9 +40,10 @@ deck <- deckgl(zoom = 11, pitch = 35) \%>\%
     elevationScale = 5000,
     radius = 250,
     extruded = TRUE,
-    getTooltip = JS("object => `height: ${object.value * 5000}m`")
+    tooltip = "Value: {{value}}"
   ) \%>\%
-  add_mapbox_basemap()
+  add_control("Column Layer", "bottom-left") \%>\%
+  add_basemap()
 
 if (interactive()) deck
 }
