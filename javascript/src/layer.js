@@ -29,13 +29,13 @@ export default function(className, props, widgetElement) {
       }
 
       // const text = props.getTooltip(object);
-      if (!tooltip.fixed) {
+      //if (!tooltip.fixed) {
         tooltipElement.style.top = y + "px";
         tooltipElement.style.left = x + "px";
-      }
+      //}
 
       // tooltipElement.innerHTML = text;
-      tooltipElement.innerHTML = mustacheRender(tooltip.html, object);
+      tooltipElement.innerHTML = typeof tooltip === "function" ? tooltip(object) : mustacheRender(typeof tooltip === "string" ? tooltip : tooltip.html, object);
       tooltipElement.style.display = "block";
     };
   }

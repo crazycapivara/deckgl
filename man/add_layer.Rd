@@ -4,28 +4,30 @@
 \alias{add_layer}
 \title{Add any kind of layer to the deckgl widget}
 \usage{
-add_layer(deckgl, class_name, id, data, properties = list(), ...)
+add_layer(deckgl, class_name, id, data, properties = list(), ...,
+  tooltip = NULL)
 }
 \arguments{
-\item{deckgl}{deckgl widget}
+\item{deckgl}{A deckgl widget object.}
 
-\item{class_name}{name of the js layer class, e. g. \code{ScatterplotLayer}}
+\item{class_name}{The name of the JavaScript layer class, e. g. \code{ScatterplotLayer}.}
 
-\item{id}{id of the layer}
+\item{id}{The unique id of the layer.}
 
-\item{data}{url to fetch data from or data object}
+\item{data}{The url to fetch data from or a data object.}
 
-\item{properties}{named list of properties with names corresponding to the properties defined
+\item{properties}{A named list of properties with names corresponding to the properties defined
 in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
-for the given layer class, additionally there is a \code{getTooltip} property (callback)
-showing a tooltip when the mouse enters an object,
-e. g. \code{getTooltip = JS("object => object.name")}}
+for the given layer class.}
 
-\item{...}{more properties (will be added to the properties object), useful if you
-want to use a properties object for more than one layer}
+\item{...}{More properties that will be added to the \code{properties} object. This can be useful
+if you want to use a properties object for more than one layer.}
+
+\item{tooltip}{A tooltip template that defines what should be displayed when the mouse enters an object.
+You can also pass a list with the properties \code{html} and \code{style}. See also \code{\link{use_tooltip}}.}
 }
 \value{
-deckgl widget
+A deckgl widget object.
 }
 \description{
 Generic function to add any kind of layer to the deckgl widget.

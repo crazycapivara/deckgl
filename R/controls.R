@@ -1,9 +1,9 @@
 #' Add a control to the widget
 #' @inheritParams add_layer
-#' @param html The \code{innerHTML} of the control.
+#' @param html The \code{innerHTML} of the element.
 #' @param pos The position of the control. Possible values are \code{top-left}, \code{top-right},
 #' \code{bottom-right} and \code{bottom-left}.
-#' @param style A \code{cssText} string that will modefiy the default style of the control.
+#' @param style A \code{cssText} string that will modefiy the default style of the element.
 #' @examples
 #' deck <- deckgl() %>%
 #'   add_basemap() %>%

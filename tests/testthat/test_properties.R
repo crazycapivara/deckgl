@@ -8,17 +8,24 @@ test_that("merge properties", {
     getIcon = JS("d => 'marker'"),
     getColor = c(240, 140, 0)
   )
-  overwrite_and_add_properties <- list(
-    getColor = c(140, 120, 0),
-    getSize = 5
-  )
 
   # Act
-  properties <- merge_properties(
-    default_icon_properties, overwrite_and_add_properties
-  )
+  deck <- deckgl() %>%
+    add_icon_layer(
+      data = "some-data",
+      properties = default_icon_properties, getColor = c(140, 120, 0), getSize = 5)
+  properties <- deck$x$layers[[1]]$properties
 
   # Assert
+  expected_properties <- c(
+    "id",
+    "iconAtlas",
+    "iconMapping",
+    "getIcon",
+    "getColor",
+    "getSize"
+  ) %>% sort()
   expect_equal(properties$getColor, c(140, 120, 0))
-  expect_equal(length(properties), 5)
+  expect_equal(length(properties), 6)
+  expect_equal(sort(names(properties)), expected_properties)
 })
