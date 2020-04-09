@@ -1,5 +1,9 @@
 # deckgl 0.2.6
 
+## deckgl 0.2.6-beta.2
+
+* Tooltip templates and styles: `use_tooltip`
+
 ## deckgl 0.2.6-beta.1
 
 * Switched to `deck.gl.js` v8.1.0
