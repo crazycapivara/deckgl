@@ -19,7 +19,8 @@
 add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., tooltip = NULL) {
   properties <- list(tooltip = tooltip) %>%
     utils::modifyList(properties) %>%
-    utils::modifyList(list(...))
+    utils::modifyList(list(...)) %>%
+    compact()
   #if (!is.null(properties$getTooltip)) .Deprecated("tooltip", old = "getTooltip")
 
   #if (!is.null(properties$tooltip) || !is.null(properties$getTooltip)) {
