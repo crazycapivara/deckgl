@@ -20,9 +20,10 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
   properties <- list(tooltip = tooltip) %>%
     utils::modifyList(properties) %>%
     utils::modifyList(list(...))
-  if (!is.null(properties$getTooltip)) .Deprecated("tooltip", old = "getTooltip")
+  #if (!is.null(properties$getTooltip)) .Deprecated("tooltip", old = "getTooltip")
 
-  if (!is.null(properties$tooltip) || !is.null(properties$getTooltip)) {
+  #if (!is.null(properties$tooltip) || !is.null(properties$getTooltip)) {
+  if (any(c("tooltip", "getTooltip") %in% names(properties)) && is.null(properties$pickable)) {
     properties$pickable <- TRUE
   }
 
