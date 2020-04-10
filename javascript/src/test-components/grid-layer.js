@@ -15,8 +15,7 @@ const GRID_LAYER = {
       style: "background: blue; color: white",
       // fixed: true
     },
-    getColor: "blue",
-    getStrokeColor: d => "black"
+    colorRange: [ "green", "yellow", "red", "steelblue", "purple", "white" ]
   }
 };
 

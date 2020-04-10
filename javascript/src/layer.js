@@ -41,7 +41,10 @@ export default function(className, props, widgetElement) {
 function convertColorProps(props) {
   const convertedProps = { };
   for (let [key, value] of Object.entries(props)) {
-    if (key.includes("Color")) {
+    if (key === "colorRange" && typeof value[0] === "string") {
+      convertedProps[key] = value.map(specifier => _deckWidget.convertColor(specifier));
+    }
+    else if (key.includes("Color")) {
       convertedProps[key] = (data) => {
         const specifier = typeof value === "function" ? value(data) : value;
         const rgba = typeof specifier === "string" ? _deckWidget.convertColor(specifier) : specifier;
