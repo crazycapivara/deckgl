@@ -18,8 +18,8 @@ Create a tooltip property
 }
 \section{Tooltip template Syntax}{
 
-The tooltip template is a string in which variable names are identified
-by the double curly brackets that surround them. The variable names available to the
+The tooltip string is a \emph{mustache} template in which variable names are identified
+by the double curly brackets (\emph{mustache} tags) that surround them. The variable names available to the
 template are given by deck.gl’s \code{pickingInfo.object} and vary by layer.
 }
 
@@ -29,7 +29,10 @@ data("bart_segments")
 props <- list(
   tooltip = use_tooltip(
     html = "{{from_name}} to {{to_name}}",
-    "{{from_name}} to {{to_name}}"
+    style = "background: steelBlue; border-radius: 5px;"
   )
 )
+}
+\seealso{
+\href{https://github.com/janl/mustache.js}{mustache} for a complete syntax overwiew.
 }
