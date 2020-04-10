@@ -1,5 +1,10 @@
 # deckgl 0.2.6
 
+## deckgl 0.2.6-beta.3
+
+* Hex color specifiers for all _color_ data accessors and for the `colorRange` property
+are automatically converted to rgba values as required by deckgl
+
 ## deckgl 0.2.6-beta.2
 
 * Tooltip templates and styles: `use_tooltip`
