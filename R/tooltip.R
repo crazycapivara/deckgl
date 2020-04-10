@@ -19,6 +19,17 @@
 #'     style = "background: steelBlue; border-radius: 5px;"
 #'   )
 #' )
+#'
+#' # The picking object of the hexagon layer offers
+#' # a property that contains the list of points of the hexagon.
+#' # You can iterate over this list as shown below.
+#' data("sf_bike_parking")
+#'
+#' html = "
+#'   <p>{{position.0}}, {{position.1}}<p>
+#'   <p>Count: {{points.length}}</p>
+#'   <p>{{#points}}<div>{{address}}</div>{{/points}}</p>
+#' "
 #' @export
 use_tooltip <- function(html, style, ...) {
   list(
