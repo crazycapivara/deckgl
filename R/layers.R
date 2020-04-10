@@ -42,7 +42,7 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
     properties = c(
       id = id,
       formula_to_property(properties)
-    )
+    ) %>% keys_to_camel_case()
   )
   deckgl
 }
