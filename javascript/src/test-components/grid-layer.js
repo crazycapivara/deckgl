@@ -22,7 +22,7 @@ const GRID_LAYER = {
 const LEGEND_ARGS = [
   [
     { color: "steelblue", label: 100 },
-    { color: "steelred", label: 200 }
+    { color: "red", label: 200 }
   ],
   "Legend",
   "top-right",

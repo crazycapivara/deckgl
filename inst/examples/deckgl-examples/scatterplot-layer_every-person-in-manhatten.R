@@ -40,7 +40,9 @@ deck <- deckgl(initialViewState = initial_view_state) %>%
   add_legend(
     colors = c(female_color, male_color),
     labels = c("female", "male"),
-    title = "Legend"
+    title = "Legend",
+    pos = "top-left",
+    style = "background: #efefef;"
   ) %>%
   add_basemap()
 

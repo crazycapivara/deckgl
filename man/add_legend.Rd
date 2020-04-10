@@ -4,7 +4,8 @@
 \alias{add_legend}
 \title{Add a legend to the map}
 \usage{
-add_legend(deckgl, colors, labels, title = NULL, style = NULL, ...)
+add_legend(deckgl, colors, labels, title = NULL, pos = "top-right",
+  style = NULL, ...)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
@@ -14,6 +15,9 @@ add_legend(deckgl, colors, labels, title = NULL, style = NULL, ...)
 \item{labels}{The labels corresponding to the colors of the legend items.}
 
 \item{title}{The title of the legend.}
+
+\item{pos}{The position of the control. Possible values are \code{top-left}, \code{top-right},
+\code{bottom-right} and \code{bottom-left}.}
 
 \item{style}{A \code{cssText} string that will modefiy the default style of the element.}
 
