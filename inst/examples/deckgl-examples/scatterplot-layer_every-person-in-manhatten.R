@@ -11,9 +11,8 @@ data_url <- paste0(
 
 data <- data_url %>%
   read_json(simplifyVector = TRUE) %>%
-  as_tibble()
+  as_tibble(.name_repair = ~ c("lng", "lat", "sex"))
 
-names(data) <- c("lng", "lat", "sex")
 male_color <- rgb(0, 128, 255, maxColorValue = 255)
 female_color <- rgb(255, 0, 128, maxColorValue = 255)
 data$color <- ifelse(data$sex == 1, male_color, female_color)
@@ -30,13 +29,19 @@ initial_view_state <- list(
 deck <- deckgl(initialViewState = initial_view_state) %>%
   add_scatterplot_layer(
     data = data,
-    radiusScale = 30,
-    radiusMinPixels = 0.25,
-    getPosition = ~lng + lat,
-    getFillColor = get_color_to_rgb_array("color"),
-    getRadius = 1,
-    getTooltip = JS("object => `${object.lng}, ${object.lat}`")
+    radius_scale = 30,
+    radius_min_pixels = 0.25,
+    get_position = ~lng + lat,
+    get_fill_color = ~color,
+    get_radius = 1,
+    pickable = TRUE,
+    get_tooltip = "{{lng}}, {{lat}}"
   ) %>%
-  add_mapbox_basemap()
+  add_legend(
+    colors = c(female_color, male_color),
+    labels = c("female", "male"),
+    title = "Legend"
+  ) %>%
+  add_basemap()
 
 if (interactive()) deck

@@ -19,6 +19,16 @@ const GRID_LAYER = {
   }
 };
 
+const LEGEND_ARGS = [
+  [
+    { color: "steelblue", label: 100 },
+    { color: "steelred", label: 200 }
+  ],
+  "Legend",
+  "top-right",
+  "background: yellow;"
+];
+
 export default {
   latitude: 37.8,
   longitude: -122.45,
@@ -32,6 +42,7 @@ export default {
   calls: [
     { funcName: "addControl", args: [ "I scream for icecream!", "top-right" ] },
     { funcName: "addControl", args: [ "Down by Law", "top-right" ] },
-    { funcName: "addControl", args: [ "Test", "top-left" ] }
+    { funcName: "addControl", args: [ "Test", "top-left" ] },
+    { funcName: "addLegend", args: LEGEND_ARGS }
   ]
 };

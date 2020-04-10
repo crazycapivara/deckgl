@@ -2,7 +2,8 @@ import "../styles/default.css";
 
 import {
   createControls,
-  addControl } from "./controls";
+  addControl,
+  addLegend } from "./controls";
 import {
   createDeckGLProperties,
   logVersions,
@@ -17,7 +18,8 @@ if (!global._deckWidget) {
 }
 
 const funcs = {
-  addControl
+  addControl,
+  addLegend
 };
 
 export default function(widgetElement, width, height) {
