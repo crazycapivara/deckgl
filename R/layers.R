@@ -20,10 +20,12 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
   properties <- list(tooltip = tooltip) %>%
     utils::modifyList(properties) %>%
     utils::modifyList(list(...)) %>%
-    compact()
+    compact() %>%
+    keys_to_camel_case()
   #if (!is.null(properties$getTooltip)) .Deprecated("tooltip", old = "getTooltip")
 
-  if (any(c("tooltip", "getTooltip") %in% names(properties)) && is.null(properties$pickable)) {
+  if (any(c("tooltip", "getTooltip", "autoHighlight") %in% names(properties)) &&
+        is.null(properties$pickable)) {
     properties$pickable <- TRUE
   }
 
@@ -42,7 +44,7 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
     properties = c(
       id = id,
       formula_to_property(properties)
-    ) %>% keys_to_camel_case()
+    )
   )
   deckgl
 }

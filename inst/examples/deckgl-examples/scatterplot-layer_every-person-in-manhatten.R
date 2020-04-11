@@ -34,7 +34,7 @@ deck <- deckgl(initialViewState = initial_view_state) %>%
     get_position = ~lng + lat,
     get_fill_color = ~color,
     get_radius = 1,
-    pickable = TRUE,
+    # pickable = TRUE,
     get_tooltip = "{{lng}}, {{lat}}"
   ) %>%
   add_legend(
