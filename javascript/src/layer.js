@@ -1,5 +1,6 @@
-import { CLASS_NAME_TOOLTIP } from "./constants";
 import { render as mustacheRender } from "mustache";
+import { CLASS_NAME_TOOLTIP } from "./constants";
+import { convertColor } from "./utils";
 
 export default function(className, props, widgetElement) {
   // Pass data back to R in 'shinyMode'
@@ -42,12 +43,12 @@ function convertColorProps(props) {
   const convertedProps = { };
   for (let [key, value] of Object.entries(props)) {
     if (key === "colorRange" && typeof value[0] === "string") {
-      convertedProps[key] = value.map(specifier => _deckWidget.convertColor(specifier));
+      convertedProps[key] = value.map(specifier => convertColor(specifier));
     }
     else if (key.includes("Color")) {
       convertedProps[key] = (data) => {
         const specifier = typeof value === "function" ? value(data) : value;
-        const rgba = typeof specifier === "string" ? _deckWidget.convertColor(specifier) : specifier;
+        const rgba = typeof specifier === "string" ? convertColor(specifier) : specifier;
         return rgba;
       };
     }
