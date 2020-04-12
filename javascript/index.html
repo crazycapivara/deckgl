@@ -8,6 +8,8 @@
     <script src="https://unpkg.com/deck.gl/dist.min.js"></script>
     <script src="https://unpkg.com/mapbox-gl/dist/mapbox-gl.js"></script>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/mapbox-gl/dist/mapbox-gl.css">
+    <script src="https://unpkg.com/jsoneditor@8.6.4/dist/jsoneditor.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/jsoneditor@8.6.4/dist/jsoneditor.min.css">
     <style>
       #widget {
         width: 800px;
@@ -17,7 +19,20 @@
   </head>
   <body>
     <div id="widget"></div>
-    <!-- <script src="dist/bundle.js"></script> -->
+    <div id="editor"></div>
+    <script>
+      const editorElement = document.getElementById("editor");
+      const options = {
+        mode: "form",
+        search: false,
+        mainMenuBar: false,
+        navigationBar: false,
+        onChangeJSON: () => console.log(editor.get()),
+        onChangeText: () => console.log("changed")
+      };
+      const editor = new JSONEditor(editorElement, options);
+      editor.set(options);
+    </script>
     <script src="deckgl-widget.min.js"></script>
   </body>
 </html>
