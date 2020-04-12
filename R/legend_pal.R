@@ -10,21 +10,26 @@ use_pal_bin <- function(pal) {
   list( colors = unique(pal(e$bins)), labels = create_labels(values) )
 }
 
+use_pal_quantile <- function(pal) {
+  e <- environment(pal)
+  values <- attributes(pal)$colorArgs$probs * 100
+  list( colors = unique(pal(e$bins)), labels = create_labels(values) )
+}
+
 create_labels <- function(x) {
   sapply(1:(length(x) - 1), function(i) paste(x[i], "-", x[i + 1]))
 }
-
-use_pal.col_numeric <- use_pal_numeric
-
-use_pal.col_bin <- use_pal_bin
-
-use_pal.col_factor <- use_pal_numeric
 
 use_pal <- function(pal) {
   type <- paste0("col_", attributes(pal)$colorType)
   pal <- structure(pal, class = c(class(pal), type))
   UseMethod("use_pal", pal)
 }
+
+use_pal.col_numeric <- use_pal_numeric
+use_pal.col_bin <- use_pal_bin
+use_pal.col_quantile <- use_pal_quantile
+use_pal.col_factor <- use_pal_numeric
 
 #' Add a legend to the deckgl widget
 #'
