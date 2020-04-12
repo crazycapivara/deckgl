@@ -3,6 +3,7 @@
   <head>
     <title>Getting Started</title>
     <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
     <script src="https://unpkg.com/esprima@~4.0/dist/esprima.js"></script>
     <script src="https://unpkg.com/mustache@latest"></script>
     <script src="https://unpkg.com/deck.gl/dist.min.js"></script>
@@ -27,8 +28,12 @@
         search: false,
         mainMenuBar: false,
         navigationBar: false,
-        onChangeJSON: () => console.log(editor.get()),
-        onChangeText: () => console.log("changed")
+        onChangeJSON: (e) => console.log("JSON", e),
+        onChangeText: (e) => console.log("text", e),
+        onEvent: (obj, e) => {
+          // console.log(e.type);
+          if (e.type === "blur") console.log("Here we go");
+        }
       };
       const editor = new JSONEditor(editorElement, options);
       editor.set(options);
