@@ -13,7 +13,7 @@ const GRID_LAYER = {
     getTooltip: {
       html: "Count: {{count}}",
       style: "background: blue; color: white",
-      // fixed: true
+      // eventType: "onClick"
     },
     colorRange: [ "green", "yellow", "red", "steelblue", "purple", "white" ]
   }
