@@ -1,29 +1,25 @@
 #' Create a deckgl widget
 #'
-#' @param latitude latitude of the initial view state
-#' @param longitude longitude of the initial view state
-#' @param zoom zoom of the initial view state
-#' @param pitch pitch of the initial view state
-#' @param bearing bearing of the initial view state
-#' @param initialViewState initial view state,
-#'   if set, other view state arguments (\code{longitude}, \code{latidude} etc.) are ignored
-#' @param views a single \code{View}, or an array of \code{View} instances,
-#'   if not supplied, a single \code{MapView} will be created
-#' @param width width of the widget
-#' @param height height of the widget
-#' @param elementId explicit element id (usually not needed)
-#' @param ... optional properties passed to the deck instance
-#'
+#' @param latitude The latitude of the initial view state.
+#' @param longitude The longitude of the initial view state.
+#' @param zoom The zoom level of the initial view state.
+#' @param pitch The pitch of the initial view state.
+#' @param bearing The bearing of the initial view state.
+#' @param initial_view_state The initial view state.
+#'   If set, other view state arguments (\code{longitude}, \code{latidude} et cetera) are ignored.
+#' @param views A single \code{View}, or an array of \code{View} instances.
+#'   If not supplied, a single \code{MapView} will be created.
+#' @param width The width of the widget.
+#' @param height The height of the widget.
+#' @param element_id The explicit id of the widget (usually not needed).
+#' @param ... Optional properties that are passed to the \code{deck} instance.
 #' @return deckgl widget
-#'
-#' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/deck}
-#'
-#' @import htmlwidgets
-#'
+#' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/deck} for optional properties
+#'   that can be passed to the \code{deck} instance.
 #' @export
 deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, bearing = 0,
-                   initialViewState = NULL, views = NULL,
-                   width = NULL, height = NULL, elementId = NULL, ...) {
+                   initial_view_state = NULL, views = NULL,
+                   width = NULL, height = NULL, element_id = NULL, ...) {
 
   # forward options using x
   x <- list(
@@ -32,9 +28,9 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, b
     zoom = zoom,
     pitch = pitch,
     bearing = bearing,
-    initialViewState = initialViewState,
+    initialViewState = initial_view_state,
     views = views,
-    properties = list(...),
+    properties = list(...) %>% compact() %>% keys_to_camel_case(),
     layers = list(),
     calls = list()
   )
@@ -46,7 +42,7 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, b
     width = width,
     height = height,
     package = "deckgl",
-    elementId = elementId,
+    elementId = element_id,
     dependencies = use_deps("deck.gl")
   )
 }
@@ -66,7 +62,6 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, b
 #'   is useful if you want to save an expression in a variable.
 #'
 #' @name deckgl-shiny
-#'
 #' @export
 deckglOutput <- function(outputId, width = "100%", height = "400px") {
   htmlwidgets::shinyWidgetOutput(outputId, "deckgl", width, height, package = "deckgl")
