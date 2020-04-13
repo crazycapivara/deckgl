@@ -3,11 +3,14 @@
   <head>
     <title>Getting Started</title>
     <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
     <script src="https://unpkg.com/esprima@~4.0/dist/esprima.js"></script>
     <script src="https://unpkg.com/mustache@latest"></script>
     <script src="https://unpkg.com/deck.gl/dist.min.js"></script>
     <script src="https://unpkg.com/mapbox-gl/dist/mapbox-gl.js"></script>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/mapbox-gl/dist/mapbox-gl.css">
+    <script src="https://unpkg.com/jsoneditor@8.6.4/dist/jsoneditor.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/jsoneditor@8.6.4/dist/jsoneditor.min.css">
     <style>
       #widget {
         width: 800px;
@@ -17,7 +20,24 @@
   </head>
   <body>
     <div id="widget"></div>
-    <!-- <script src="dist/bundle.js"></script> -->
+    <div id="editor"></div>
+    <script>
+      const editorElement = document.getElementById("editor");
+      const options = {
+        mode: "form",
+        search: false,
+        mainMenuBar: false,
+        navigationBar: false,
+        onChangeJSON: (e) => console.log("JSON", e),
+        onChangeText: (e) => console.log("text", e),
+        onEvent: (obj, e) => {
+          // console.log(e.type);
+          if (e.type === "blur") console.log("Here we go");
+        }
+      };
+      const editor = new JSONEditor(editorElement, options);
+      editor.set(options);
+    </script>
     <script src="deckgl-widget.min.js"></script>
   </body>
 </html>

@@ -46,6 +46,7 @@ properties <- list(
 
 deck <- deckgl(zoom = 11, pitch = 45, bearing = 35) \%>\%
   add_hexagon_layer(data = sf_bike_parking, properties = properties) \%>\%
+  add_control("Hexagon Layer", "top-left") \%>\%
   add_basemap()
 
 if (interactive()) deck

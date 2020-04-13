@@ -5,14 +5,14 @@
 \title{Use contour definition}
 \usage{
 use_contour_definition(threshold = 1, color = c(255, 255, 255),
-  strokeWidth = 1)
+  stroke_width = 1)
 }
 \arguments{
 \item{threshold}{threshold value to be used in contour generation}
 
 \item{color}{RGB color array to be used to render contour lines}
 
-\item{strokeWidth}{width of the contour lines in pixels}
+\item{stroke_width}{width of the contour lines in pixels}
 }
 \description{
 Use contour definition

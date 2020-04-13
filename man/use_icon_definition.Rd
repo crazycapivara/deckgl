@@ -5,20 +5,20 @@
 \title{Icon definition on an atlas image}
 \usage{
 use_icon_definition(x = 0, y = 0, width = 128, height = 128,
-  anchorX = (width/2), anchorY = 128, mask = TRUE)
+  anchor_x = (width/2), anchor_y = 128, mask = TRUE)
 }
 \arguments{
-\item{x}{x position of icon on the atlas image}
+\item{x}{The x position of the icon on the atlas image.}
 
-\item{y}{y position of icon on the atlas image}
+\item{y}{The y position of the icon on the atlas image.}
 
-\item{width}{width of icon on the atlas image}
+\item{width}{The width of the icon on the atlas image.}
 
-\item{height}{height of icon on the atlas image}
+\item{height}{The height of the icon on the atlas image.}
 
-\item{anchorX}{horizontal position of icon anchor}
+\item{anchor_x}{The horizontal position of the icon anchor.}
 
-\item{anchorY}{vertical position of icon anchor}
+\item{anchor_y}{the vertical position of the icon anchor.}
 
 \item{mask}{whether icon is treated as a transparency mask,
 if \code{TRUE}, user defined color is applied,

@@ -25,3 +25,20 @@ export function addControl(html, pos, style) {
   parent.appendChild(ctrl);
   return ctrl;
 }
+
+export function addLegend(items, title, pos, style) {
+  const rows = items.map(item => `
+    <li>
+      <span class="point-mark" style="background-color:${item.color};border: 1px solid black;"></span>
+      <span>${item.label}</span>
+    </li>
+  `);
+  const html = `
+    <div class="legend">
+      <div class="legend-title">${title || "" }</div>
+      <div class="legend-items"><ul>${rows.join("\n")}</ul></div>
+    </div>
+  `;
+  const legend = addControl(html, pos || "top-right", style);
+  return legend;
+}

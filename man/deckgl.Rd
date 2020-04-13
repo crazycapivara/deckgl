@@ -5,33 +5,33 @@
 \title{Create a deckgl widget}
 \usage{
 deckgl(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0,
-  bearing = 0, initialViewState = NULL, views = NULL, width = NULL,
-  height = NULL, elementId = NULL, ...)
+  bearing = 0, initial_view_state = NULL, views = NULL,
+  width = NULL, height = NULL, element_id = NULL, ...)
 }
 \arguments{
-\item{latitude}{latitude of the initial view state}
+\item{latitude}{The latitude of the initial view state.}
 
-\item{longitude}{longitude of the initial view state}
+\item{longitude}{The longitude of the initial view state.}
 
-\item{zoom}{zoom of the initial view state}
+\item{zoom}{The zoom level of the initial view state.}
 
-\item{pitch}{pitch of the initial view state}
+\item{pitch}{The pitch of the initial view state.}
 
-\item{bearing}{bearing of the initial view state}
+\item{bearing}{The bearing of the initial view state.}
 
-\item{initialViewState}{initial view state,
-if set, other view state arguments (\code{longitude}, \code{latidude} etc.) are ignored}
+\item{initial_view_state}{The initial view state.
+If set, other view state arguments (\code{longitude}, \code{latidude} et cetera) are ignored.}
 
-\item{views}{a single \code{View}, or an array of \code{View} instances,
-if not supplied, a single \code{MapView} will be created}
+\item{views}{A single \code{View}, or an array of \code{View} instances.
+If not supplied, a single \code{MapView} will be created.}
 
-\item{width}{width of the widget}
+\item{width}{The width of the widget.}
 
-\item{height}{height of the widget}
+\item{height}{The height of the widget.}
 
-\item{elementId}{explicit element id (usually not needed)}
+\item{element_id}{The explicit id of the widget (usually not needed).}
 
-\item{...}{optional properties passed to the deck instance}
+\item{...}{Optional properties that are passed to the \code{deck} instance.}
 }
 \value{
 deckgl widget
@@ -40,5 +40,6 @@ deckgl widget
 Create a deckgl widget
 }
 \seealso{
-\url{https://deck.gl/#/documentation/deckgl-api-reference/deck}
+\url{https://deck.gl/#/documentation/deckgl-api-reference/deck} for optional properties
+  that can be passed to the \code{deck} instance.
 }

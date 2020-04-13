@@ -5,17 +5,17 @@ contours <- list(
   use_contour_definition(
     threshold = 1,
     color = c(255, 0, 0),
-    strokeWidth = 2
+    stroke_width = 2
   ),
   use_contour_definition(
     threshold = 5,
     color = c(0, 255, 0),
-    strokeWidth = 3
+    stroke_width = 3
   ),
   use_contour_definition(
     threshold = 15,
     color = c(0, 0, 255),
-    strokeWidth = 5
+    stroke_width = 5
   )
 )
 
@@ -28,6 +28,7 @@ properties <- list(
 
 deck <- deckgl(zoom = 10.5, pitch = 30) %>%
   add_contour_layer(data = sf_bike_parking, properties = properties) %>%
+  add_control("Contour Layer") %>%
   add_basemap()
 
 if (interactive()) deck
