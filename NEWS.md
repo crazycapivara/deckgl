@@ -1,5 +1,11 @@
 # deckgl 0.2.6
 
+## deckgl 0.2.6-beta.4
+
+* Custom legend control: `add_legend`
+* Automatic legend control creating elements from a palette function: `add_legend_pal`
+* Support _snake case_ properties
+
 ## deckgl 0.2.6-beta.3
 
 * Hex color specifiers for all _color_ data accessors and for the `colorRange` property
