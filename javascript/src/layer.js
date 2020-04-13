@@ -2,7 +2,7 @@ import { render as mustacheRender } from "mustache";
 import { CLASS_NAME_TOOLTIP } from "./constants";
 import { convertColor } from "./utils";
 
-export default function(className, props, widgetElement) {
+export default function(props, widgetElement) {
   // Pass data back to R in 'shinyMode'
   if (HTMLWidgets.shinyMode) {
     props.onClick = function(info) {
@@ -35,8 +35,8 @@ export default function(className, props, widgetElement) {
     };
   }
 
-  Object.assign(props, convertColorProps(props));
-  return new deck[className](props);
+  return Object.assign(props, convertColorProps(props));
+  //return new deck[className](props);
 }
 
 function convertColorProps(props) {

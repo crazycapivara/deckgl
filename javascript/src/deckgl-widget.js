@@ -9,7 +9,8 @@ import {
   logVersions,
   fixLayerProperties,
   convertColor } from "./utils";
-import deckLayer from "./layer";
+//import deckLayer from "./layer";
+import parseLayerProps from "./layer";
 
 if (!global._deckWidget) {
   global._deckWidget = {
@@ -33,7 +34,9 @@ export default function(widgetElement, width, height) {
       }
 
       layerDef.properties.data =  layerDef.data;
-      return deckLayer(layerDef.className, layerDef.properties, widgetElement);
+      //return deckLayer(layerDef.className, layerDef.properties, widgetElement);
+      const props = parseLayerProps(layerDef.properties, widgetElement);
+      return new deck[layerDef.className](props);
     });
     deckGL.setProps({ layers: layers });
   }
