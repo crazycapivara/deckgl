@@ -15,18 +15,18 @@ export function createControlGroups(widgetElement) {
   });
 }
 
-export function addControl(html, pos, style) {
+export function addControl({ html, pos, style }) {
   const ctrl = document.createElement("div");
   ctrl.classList.add(CLASS_NAME_CTRL);
   if (style) ctrl.style.cssText = style;
 
   ctrl.innerHTML = html;
-  const parent = document.getElementsByClassName(`${CLASS_NAME_CTRL}-${pos}`)[0];
+  const parent = document.getElementsByClassName(`${CLASS_NAME_CTRL}-${pos  || "top-right"}`)[0];
   parent.appendChild(ctrl);
   return ctrl;
 }
 
-export function addLegend(items, title, pos, style) {
+export function addLegend({ items, title, pos, style }) {
   const rows = items.map(item => `
     <li>
       <span class="point-mark" style="background-color:${item.color};border: 1px solid black;"></span>
@@ -39,6 +39,6 @@ export function addLegend(items, title, pos, style) {
       <div class="legend-items"><ul>${rows.join("\n")}</ul></div>
     </div>
   `;
-  const legend = addControl(html, pos || "top-right", style);
+  const legend = addControl({ html, pos, style });
   return legend;
 }

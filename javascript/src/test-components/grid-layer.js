@@ -19,15 +19,15 @@ const GRID_LAYER = {
   }
 };
 
-const LEGEND_ARGS = [
-  [
+const LEGEND_ARGS = {
+  items: [
     { color: "steelblue", label: 100 },
     { color: "red", label: 200 }
   ],
-  "Legend",
-  "top-right",
-  "background: yellow;"
-];
+  title: "Legend",
+  pos: "top-right",
+  style: "background: yellow;"
+};
 
 export default {
   latitude: 37.8,
@@ -40,9 +40,9 @@ export default {
   ],
   mapStyle: "", //"https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
   calls: [
-    { funcName: "addControl", args: [ "I scream for icecream!", "top-right" ] },
-    { funcName: "addControl", args: [ "Down by Law", "top-right" ] },
-    { funcName: "addControl", args: [ "Test", "top-left" ] },
+    { funcName: "addControl", args: { html: "I scream for icecream!", pos: "top-right" } },
+    { funcName: "addControl", args: { html: "Down by Law", pos: "top-right" } },
+    { funcName: "addControl", args: { html: "Test", pos: "top-left" } },
     { funcName: "addLegend", args: LEGEND_ARGS }
   ]
 };

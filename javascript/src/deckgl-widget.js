@@ -40,7 +40,7 @@ export default function(widgetElement, width, height) {
     createControlGroups(widgetElement);
     viz = globalStorage.viz = Viz({ deckGL, layerDefs: widgetData.layers, widgetElement });
     viz.render();
-    calls.forEach(({ funcName, args }) => funcs[funcName].apply(null, args));
+    calls.forEach(({ funcName, args }) => funcs[funcName].call(null, args));
   }
 
   function resize(width, height) {
