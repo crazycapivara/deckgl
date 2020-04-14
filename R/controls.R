@@ -16,5 +16,5 @@
 #' if (interactive()) deck
 #' @export
 add_control <- function(deckgl, html, pos = "top-right", style = NULL) {
-  invoke_method(deckgl, "addControl", html, pos, style)
+  invoke_method(deckgl, "addControl", html = html, pos = pos, style = style)
 }
