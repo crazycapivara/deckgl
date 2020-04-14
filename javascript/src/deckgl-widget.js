@@ -1,7 +1,7 @@
 import "../styles/default.css";
 
 import {
-  createControls,
+  createControlGroups,
   addControl,
   addLegend } from "./controls";
 import {
@@ -9,7 +9,6 @@ import {
   logVersions,
   fixLayerProperties,
   convertColor } from "./utils";
-//import deckLayer from "./layer";
 import parseLayerProps from "./layer";
 
 if (!global._deckWidget) {
@@ -56,7 +55,7 @@ export default function(widgetElement, width, height) {
     const deckGLProperties = createDeckGLProperties(widgetData);
     // _layerDefs = globalStorage.layers = widgetData.layers;
     deckGL = globalStorage.deckGL = new deck.DeckGL(deckGLProperties);
-    createControls(widgetElement);
+    createControlGroups(widgetElement);
     //_render(widgetData.layers);
     // _render();
     viz = globalStorage.viz = Viz({ deckGL, layerDefs: widgetData.layers, widgetElement });

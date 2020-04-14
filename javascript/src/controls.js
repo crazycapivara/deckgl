@@ -7,7 +7,7 @@ const POSITIONS = [
   "bottom-left"
 ];
 
-export function createControls(widgetElement) {
+export function createControlGroups(widgetElement) {
   POSITIONS.forEach(pos => {
     const ctrl = document.createElement("div");
     ctrl.classList.add(CLASS_NAME_CTRL_GROUP, `${CLASS_NAME_CTRL}-${pos}`);
