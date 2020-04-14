@@ -25,9 +25,11 @@ const funcs = {
 
 export default function(widgetElement, width, height) {
   let deckGL = null;
-  let _layerDefs = null;
+  let viz = null;
+  // let _layerDefs = null;
   const globalStorage = _deckWidget[widgetElement.id] = { };
 
+  /*
   function _render(layerDefs) {
     const layers = _layerDefs.map(layerDef => {
       if (layerDef.properties.dataframeToD3) {
@@ -43,6 +45,7 @@ export default function(widgetElement, width, height) {
   }
 
   globalStorage.render = _render;
+  */
 
   function renderValue(widgetData) {
     widgetData.container = widgetElement.id;
@@ -51,11 +54,13 @@ export default function(widgetElement, width, height) {
     logVersions();
 
     const deckGLProperties = createDeckGLProperties(widgetData);
-    _layerDefs = globalStorage.layers = widgetData.layers;
+    // _layerDefs = globalStorage.layers = widgetData.layers;
     deckGL = globalStorage.deckGL = new deck.DeckGL(deckGLProperties);
     createControls(widgetElement);
     //_render(widgetData.layers);
-    _render();
+    // _render();
+    viz = globalStorage.viz = Viz({ deckGL, layerDefs: widgetData.layers, widgetElement });
+    viz.render();
     calls.forEach(({ funcName, args }) => funcs[funcName].apply(null, args));
   }
 
@@ -69,9 +74,39 @@ export default function(widgetElement, width, height) {
       const widgetData = obj.x;
       fixLayerProperties(widgetData.layers);
       console.log(widgetData);
-      _render(widgetData.layers);
+      // _render(widgetData.layers);
+      viz.setLayerDefs(widgetData.layers);
+      viz.render();
     });
   }
 
   return { renderValue, resize };
 }
+
+// TODO: Move to separte file
+const Viz = ({ deckGL, layerDefs, widgetElement }) => ({
+  deckGL,
+  layerDefs,
+  widgetElement,
+
+  _getContainer() {
+    return this.deckGL.props.container;
+  },
+
+  setLayerDefs(layerDefs) {
+    this.layerDefs = layerDefs;
+  },
+
+  render() {
+    const layers = this.layerDefs.map(layerDef => {
+      if (layerDef.properties.dataframeToD3) {
+        layerDef.data = HTMLWidgets.dataframeToD3(layerDef.data);
+      }
+
+      layerDef.properties.data =  layerDef.data;
+      const props = parseLayerProps(layerDef.properties, this.widgetElement);
+      return new deck[layerDef.className](props);
+    });
+    this.deckGL.setProps({ layers: layers });
+  }
+});
