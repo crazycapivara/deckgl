@@ -25,10 +25,11 @@ const funcs = {
 
 export default function(widgetElement, width, height) {
   let deckGL = null;
+  let _layerDefs = null;
   const globalStorage = _deckWidget[widgetElement.id] = { };
 
   function _render(layerDefs) {
-    const layers = layerDefs.map(layerDef => {
+    const layers = _layerDefs.map(layerDef => {
       if (layerDef.properties.dataframeToD3) {
         layerDef.data = HTMLWidgets.dataframeToD3(layerDef.data);
       }
@@ -41,6 +42,8 @@ export default function(widgetElement, width, height) {
     deckGL.setProps({ layers: layers });
   }
 
+  globalStorage.render = _render;
+
   function renderValue(widgetData) {
     widgetData.container = widgetElement.id;
     const calls = widgetData.calls || [ ];
@@ -48,9 +51,11 @@ export default function(widgetElement, width, height) {
     logVersions();
 
     const deckGLProperties = createDeckGLProperties(widgetData);
+    _layerDefs = globalStorage.layers = widgetData.layers;
     deckGL = globalStorage.deckGL = new deck.DeckGL(deckGLProperties);
     createControls(widgetElement);
-    _render(widgetData.layers);
+    //_render(widgetData.layers);
+    _render();
     calls.forEach(({ funcName, args }) => funcs[funcName].apply(null, args));
   }
 
