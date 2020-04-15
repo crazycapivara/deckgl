@@ -1,14 +1,16 @@
+const SOURCE_ID = "data-grid-layer";
+const LAYER_ID = "grid-layer";
+
 const source = {
-  id: "grid-layer",
+  id: SOURCE_ID,
   data: "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json"
 };
 
 const GRID_LAYER = {
   className: "GridLayer",
-  // data: "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json",
-  source: source,
+  source: SOURCE_ID,
   properties: {
-    id: "grid-layer",
+    id: LAYER_ID,
     pickable: true,
     extruded: true,
     cellSize: 200,
@@ -41,6 +43,9 @@ export default {
   zoom: 12,
   pitch: 35,
   bearing: 0,
+  sources: [
+    source
+  ],
   layers: [
     GRID_LAYER
   ],
