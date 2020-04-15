@@ -1,6 +1,12 @@
+const source = {
+  id: "grid-layer",
+  data: "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json"
+};
+
 const GRID_LAYER = {
   className: "GridLayer",
-  data: "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json",
+  // data: "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json",
+  source: source,
   properties: {
     id: "grid-layer",
     pickable: true,

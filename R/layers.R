@@ -33,14 +33,20 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
     data <- modify_sf(data)
   }
 
-  if (is.data.frame(data)) {
-    properties$dataframeToD3 <- TRUE
-  }
+  #if (is.data.frame(data)) {
+  #  properties$dataframeToD3 <- TRUE
+  #}
+
+  source <- list(
+    id = id,
+    df = inherits(data, "data.frame"),
+    data = data
+  )
 
   n <- length(deckgl$x$layers)
   deckgl$x$layers[[n + 1]] <- list(
     className = class_name,
-    data = data,
+    source = source,
     properties = c(
       id = id,
       formula_to_property(properties)

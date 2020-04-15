@@ -78,15 +78,19 @@ const Viz = ({ deckGL, layerDefs, widgetElement }) => ({
   },
 
   render() {
-    // this._ = { };
     const layers = this.layerDefs.map(layerDef => {
-      // this._[layerDef.properties.id] = JSON.stringify(layerDef.properties);
+      /*
       if (layerDef.properties.dataframeToD3) {
         layerDef.data = HTMLWidgets.dataframeToD3(layerDef.data);
         layerDef.properties.dataframeToD3 = false;
       }
+      */
+      if (layerDef.source.df) {
+        layerDef.source.data = HTMLWidgets.dataframeToD3(layerDef.source.data);
+        layerDef.source.df = false;
+      }
 
-      layerDef.properties.data =  layerDef.data;
+      layerDef.properties.data =  layerDef.source.data;
       const props = parseLayerProps(layerDef.properties, this.widgetElement);
       return new deck[layerDef.className](props);
     });
