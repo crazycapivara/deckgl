@@ -83,6 +83,7 @@ const Viz = ({ deckGL, layerDefs, widgetElement }) => ({
       // this._[layerDef.properties.id] = JSON.stringify(layerDef.properties);
       if (layerDef.properties.dataframeToD3) {
         layerDef.data = HTMLWidgets.dataframeToD3(layerDef.data);
+        layerDef.properties.dataframeToD3 = false;
       }
 
       layerDef.properties.data =  layerDef.data;

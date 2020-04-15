@@ -1,3 +1,6 @@
+const DECKGL_OVERLAY = "deckgl-overlay";
+const KEY_CODE_E = 69;
+const CLASS_NAME_JSON_CTRL = "deckgl-widget-json-editor";
 const DEFAULT_OPTIONS = {
   mode: "code",
   search: false,
@@ -21,11 +24,17 @@ const DEFAULT_OPTIONS = {
 export default function(options) {
   const viz = this;
   const container = document.createElement("div");
-  container.id = "deckgl-widget-code-ctrl";
+  // container.id = "deckgl-widget-code-ctrl";
+  container.classList.add(CLASS_NAME_JSON_CTRL);
   const editor = _deckWidget.editor = new JSONEditor(container, Object.assign(DEFAULT_OPTIONS, options || { }));
-  // container.children[0].style.cssText = "border: none;";
-  document.body.append(container);
+  document.getElementById(DECKGL_OVERLAY).addEventListener("keydown", (e) => {
+    if (e.keyCode === KEY_CODE_E) {
+      console.log(e.keyCode, container.style.display);
+      container.style.display = container.style.display === "none" ? "block" : "none";
+    }
+  });
   if (viz) {
+    viz.widgetElement.append(container);
     const layerProps = viz.layerDefs.map(layerDef => layerDef.properties);
     editor.set({ layers: layerProps });
     editor.options.onChangeText = render(viz);
@@ -44,7 +53,7 @@ function render(viz) {
       // console.log(viz.layerDefs);
       viz.render();
     } catch (e) {
-      // console.log("error", e);
+      console.log("error", e);
     }
   };
 
