@@ -10,6 +10,7 @@ import {
   fixLayerProperties,
   convertColor } from "./utils";
 import parseLayerProps from "./layer";
+import addJSONEditor from "./json-editor";
 
 if (!global._deckWidget) {
   global._deckWidget = {
@@ -19,7 +20,8 @@ if (!global._deckWidget) {
 
 const funcs = {
   addControl,
-  addLegend
+  addLegend,
+  addJSONEditor
 };
 
 export default function(widgetElement, width, height) {
@@ -39,8 +41,8 @@ export default function(widgetElement, width, height) {
     deckGL = globalStorage.deckGL = new deck.DeckGL(deckGLProperties);
     createControlGroups(widgetElement);
     viz = globalStorage.viz = Viz({ deckGL, layerDefs: widgetData.layers, widgetElement });
+    calls.forEach(({ funcName, args }) => funcs[funcName].call(viz, args));
     viz.render();
-    calls.forEach(({ funcName, args }) => funcs[funcName].call(null, args));
   }
 
   function resize(width, height) {
@@ -76,7 +78,9 @@ const Viz = ({ deckGL, layerDefs, widgetElement }) => ({
   },
 
   render() {
+    // this._ = { };
     const layers = this.layerDefs.map(layerDef => {
+      // this._[layerDef.properties.id] = JSON.stringify(layerDef.properties);
       if (layerDef.properties.dataframeToD3) {
         layerDef.data = HTMLWidgets.dataframeToD3(layerDef.data);
       }

@@ -43,6 +43,7 @@ export default {
     { funcName: "addControl", args: { html: "I scream for icecream!", pos: "top-right" } },
     { funcName: "addControl", args: { html: "Down by Law", pos: "top-right" } },
     { funcName: "addControl", args: { html: "Test", pos: "top-left" } },
-    { funcName: "addLegend", args: LEGEND_ARGS }
+    { funcName: "addLegend", args: LEGEND_ARGS },
+    { funcName: "addJSONEditor", args: { } }
   ]
 };
