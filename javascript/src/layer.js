@@ -42,8 +42,10 @@ export default function(props, widgetElement) {
 function convertColorProps(props) {
   const convertedProps = { };
   for (let [key, value] of Object.entries(props)) {
-    if (key === "colorRange" && typeof value[0] === "string") {
-      convertedProps[key] = value.map(specifier => convertColor(specifier));
+    // if (key === "colorRange" && typeof value[0] === "string") {
+    if (key === "colorRange") {
+      convertedProps[key] = value.map(specifier => typeof specifier === "string" ?
+        convertColor(specifier) : specifier);
     }
     else if (key.includes("Color")) {
       convertedProps[key] = (data) => {
