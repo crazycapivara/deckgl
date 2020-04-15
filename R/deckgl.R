@@ -20,8 +20,11 @@
 deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, bearing = 0,
                    initial_view_state = NULL, views = NULL,
                    width = NULL, height = NULL, element_id = NULL, ...) {
+  props <- list(...) %>%
+    compact() %>%
+    keys_to_camel_case()
 
-  # forward options using x
+  # Create widget data
   x <- list(
     latitude = latitude,
     longitude = longitude,
@@ -30,12 +33,13 @@ deckgl <- function(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0, b
     bearing = bearing,
     initialViewState = initial_view_state,
     views = views,
-    properties = list(...) %>% compact() %>% keys_to_camel_case(),
+    properties = props,
     layers = list(),
+    sources = list(),
     calls = list()
   )
 
-  # create widget
+  # Create widget
   htmlwidgets::createWidget(
     name = "deckgl",
     x,
