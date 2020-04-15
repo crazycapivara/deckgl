@@ -6,6 +6,7 @@
 \alias{JS}
 \alias{onRender}
 \alias{\%>\%}
+\alias{\%<>\%}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -15,6 +16,6 @@ below to see their documentation.
 \describe{
   \item{htmlwidgets}{\code{\link[htmlwidgets]{JS}}, \code{\link[htmlwidgets]{onRender}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%<>\%}}}
 }}
 
