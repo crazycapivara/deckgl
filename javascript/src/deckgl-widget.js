@@ -34,7 +34,7 @@ export default function(widgetElement, width, height) {
 
   function renderValue(widgetData) {
     widgetData.container = widgetElement.id;
-    const sources = widgetData.sources ? parseSources(widgetData.sources) : [ ];
+    const sources = widgetData.sources; // ? parseSources(widgetData.sources) : [ ];
     const layerDefs = widgetData.layers;
     const calls = widgetData.calls || [ ];
     console.log(widgetData);
@@ -44,7 +44,8 @@ export default function(widgetElement, width, height) {
     deckGL = new deck.DeckGL(deckGLProperties);
     createControlGroups(widgetElement);
     createTooltip(widgetElement);
-    viz = globalStorage.viz = Viz({ deckGL, layerDefs, sources, widgetElement });
+    viz = globalStorage.viz = Viz({ deckGL, layerDefs, widgetElement });
+    sources.forEach(source => viz.addSource(source));
     calls.forEach(({ funcName, args }) => funcs[funcName].call(viz, args));
     viz.render();
   }
@@ -67,8 +68,10 @@ export default function(widgetElement, width, height) {
   return { renderValue, resize };
 }
 
+/*
 const parseSources = (sources) => sources.map(({ id, data, df }) => {
   if (df) data = HTMLWidgets.dataframeToD3(data);
 
   return { id, data };
 });
+*/

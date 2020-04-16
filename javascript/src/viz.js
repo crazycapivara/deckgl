@@ -1,13 +1,23 @@
 import parseLayerProps from "./layer";
 
-const Viz = ({ deckGL, layerDefs, sources, widgetElement }) => ({
+const Viz = ({ deckGL, layerDefs, widgetElement }) => ({
   deckGL,
   layerDefs,
-  sources,
   widgetElement,
+  sources: [ ],
 
   _getContainer() {
     return this.deckGL.props.container;
+  },
+
+  addSource({ id, data, df }) {
+    if (df) data = HTMLWidgets.dataframeToD3(data);
+    this.sources.push({ id, data });
+  },
+
+  getSource(source_id) {
+    return this.sources.filter(source =>
+        source.id === source_id)[0].data;
   },
 
   setLayerDefs(layerDefs) {
@@ -16,21 +26,7 @@ const Viz = ({ deckGL, layerDefs, sources, widgetElement }) => ({
 
   render() {
     const layers = this.layerDefs.map(layerDef => {
-      /*
-      if (layerDef.properties.dataframeToD3) {
-        layerDef.data = HTMLWidgets.dataframeToD3(layerDef.data);
-        layerDef.properties.dataframeToD3 = false;
-      }
-      */
-      /*
-      if (layerDef.source.df) {
-        layerDef.source.data = HTMLWidgets.dataframeToD3(layerDef.source.data);
-        layerDef.source.df = false;
-      }
-      */
-
-      layerDef.properties.data = this.sources.filter(source =>
-        source.id === layerDef.source)[0].data; //layerDef.source.data;
+      layerDef.properties.data = this.getSource(layerDef.source);
       const props = parseLayerProps(layerDef.properties, this.widgetElement);
       return new deck[layerDef.className](props);
     });
