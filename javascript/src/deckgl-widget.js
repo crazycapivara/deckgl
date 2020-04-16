@@ -5,7 +5,8 @@ import {
   createControlGroups,
   createTooltip,
   addControl,
-  addLegend } from "./controls";
+  addLegend,
+  addInteractiveControl } from "./controls";
 import {
   createDeckGLProperties,
   logVersions,
@@ -15,7 +16,8 @@ import addJSONEditor from "./json-editor";
 
 if (!global._deckWidget) {
   global._deckWidget = {
-    convertColor
+    convertColor,
+    addInteractiveControl
   };
 }
 

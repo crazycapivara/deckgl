@@ -46,3 +46,20 @@ export function createTooltip(widgetElement) {
   widgetElement.appendChild(tooltip);
   return tooltip;
 }
+
+export function addInteractiveControl({ props, pos }) {
+  const ctrl = document.createElement("div");
+  ctrl.classList.add(CLASS_NAME_CTRL);
+  const input = document.createElement("input");
+  Object.assign(input, props);
+  /* Example
+  input.onchange = (e) => {
+    this.layers[0].properties["elevationScale"] = e.target.value;
+    this.render();
+  };
+  */
+  ctrl.appendChild(input);
+  const parent = document.getElementsByClassName(`${CLASS_NAME_CTRL}-${pos  || "top-right"}`)[0];
+  parent.appendChild(ctrl);
+  return input;
+}
