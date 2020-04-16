@@ -24,7 +24,6 @@ const DEFAULT_OPTIONS = {
 export default function(options) {
   const viz = this;
   const container = document.createElement("div");
-  // container.id = "deckgl-widget-code-ctrl";
   container.classList.add(CLASS_NAME_JSON_CTRL);
   const editor = _deckWidget.editor = new JSONEditor(container, Object.assign(DEFAULT_OPTIONS, options || { }));
   document.getElementById(DECKGL_OVERLAY).addEventListener("keydown", (e) => {
@@ -35,7 +34,7 @@ export default function(options) {
   });
   if (viz) {
     viz.widgetElement.append(container);
-    const layerProps = viz.layerDefs.map(layerDef => layerDef.properties);
+    const layerProps = viz.layers.map(layer => layer.properties);
     editor.set({ layers: layerProps });
     editor.options.onChangeText = render(viz);
     viz.editor = editor;
@@ -49,11 +48,11 @@ function render(viz) {
     try {
       const obj = JSON.parse(text);
       // console.log(obj.layers);
-      viz.layerDefs.map((layerDef, i) => Object.assign(layerDef.properties, obj.layers[i]));
-      // console.log(viz.layerDefs);
+      viz.layers.map((layer, i) => Object.assign(layer.properties, obj.layers[i]));
+      // console.log(viz.layers);
       viz.render();
     } catch (e) {
-      console.log("error", e);
+      // console.log("error", e);
     }
   };
 

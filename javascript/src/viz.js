@@ -1,8 +1,8 @@
 import parseLayerProps from "./layer";
 
-const Viz = ({ deckGL, layerDefs, widgetElement }) => ({
+const Viz = ({ deckGL, layers, widgetElement }) => ({
   deckGL,
-  layerDefs,
+  layers,
   widgetElement,
   sources: [ ],
 
@@ -20,17 +20,17 @@ const Viz = ({ deckGL, layerDefs, widgetElement }) => ({
         source.id === source_id)[0].data;
   },
 
-  setLayerDefs(layerDefs) {
-    this.layerDefs = layerDefs;
+  setlayers(layers) {
+    this.layers = layers;
   },
 
   render() {
-    const layers = this.layerDefs.map(layerDef => {
-      layerDef.properties.data = this.getSource(layerDef.source);
-      const props = parseLayerProps(layerDef.properties, this.widgetElement);
-      return new deck[layerDef.className](props);
+    const deckLayers = this.layers.map(layer => {
+      layer.properties.data = this.getSource(layer.source);
+      const props = parseLayerProps(layer.properties, this.widgetElement);
+      return new deck[layer.className](props);
     });
-    this.deckGL.setProps({ layers: layers });
+    this.deckGL.setProps({ layers: deckLayers });
   }
 });
 

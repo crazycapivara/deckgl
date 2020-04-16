@@ -34,8 +34,8 @@ export default function(widgetElement, width, height) {
 
   function renderValue(widgetData) {
     widgetData.container = widgetElement.id;
-    const sources = widgetData.sources; // ? parseSources(widgetData.sources) : [ ];
-    const layerDefs = widgetData.layers;
+    const sources = widgetData.sources || [ ];
+    const layers = widgetData.layers || [ ];
     const calls = widgetData.calls || [ ];
     console.log(widgetData);
     logVersions();
@@ -44,7 +44,7 @@ export default function(widgetElement, width, height) {
     deckGL = new deck.DeckGL(deckGLProperties);
     createControlGroups(widgetElement);
     createTooltip(widgetElement);
-    viz = globalStorage.viz = Viz({ deckGL, layerDefs, widgetElement });
+    viz = globalStorage.viz = Viz({ deckGL, layers, widgetElement });
     sources.forEach(source => viz.addSource(source));
     calls.forEach(({ funcName, args }) => funcs[funcName].call(viz, args));
     viz.render();
