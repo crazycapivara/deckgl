@@ -44,8 +44,9 @@ export default function(widgetElement, width, height) {
     deckGL = new deck.DeckGL(deckGLProperties);
     createControlGroups(widgetElement);
     createTooltip(widgetElement);
-    viz = globalStorage.viz = Viz({ deckGL, layers, widgetElement });
+    viz = globalStorage.viz = Viz({ deckGL, widgetElement });
     sources.forEach(source => viz.addSource(source));
+    viz.setLayers(layers);
     calls.forEach(({ funcName, args }) => funcs[funcName].call(viz, args));
     viz.render();
   }

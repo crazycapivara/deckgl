@@ -1,9 +1,9 @@
 import parseLayerProps from "./layer";
 
-const Viz = ({ deckGL, layers, widgetElement }) => ({
+const Viz = ({ deckGL, widgetElement }) => ({
   deckGL,
-  layers,
   widgetElement,
+  layers: [ ],
   sources: [ ],
 
   _getContainer() {
@@ -20,7 +20,7 @@ const Viz = ({ deckGL, layers, widgetElement }) => ({
         source.id === source_id)[0].data;
   },
 
-  setlayers(layers) {
+  setLayers(layers) {
     this.layers = layers;
   },
 

@@ -28,7 +28,7 @@ export default function(options) {
   const editor = _deckWidget.editor = new JSONEditor(container, Object.assign(DEFAULT_OPTIONS, options || { }));
   document.getElementById(DECKGL_OVERLAY).addEventListener("keydown", (e) => {
     if (e.keyCode === KEY_CODE_E) {
-      console.log(e.keyCode, container.style.display);
+      // console.log(e.keyCode, container.style.display);
       container.style.display = container.style.display === "none" ? "block" : "none";
     }
   });
