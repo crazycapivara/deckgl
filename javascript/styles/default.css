@@ -31,7 +31,7 @@
 .deckgl-widget-json-editor {
   position: absolute;
   z-index: 9;
-  width: 100%;
+  width: 50%;
 }
 
 .legend ul {

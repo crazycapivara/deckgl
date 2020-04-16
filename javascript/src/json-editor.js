@@ -21,11 +21,16 @@ const DEFAULT_OPTIONS = {
   }
 };
 
+const ACE_OPTIONS = {
+  maxLines: 20
+};
+
 export default function(options) {
   const viz = this;
   const container = document.createElement("div");
   container.classList.add(CLASS_NAME_JSON_CTRL);
   const editor = _deckWidget.editor = new JSONEditor(container, Object.assign(DEFAULT_OPTIONS, options || { }));
+  if (editor.aceEditor) editor.aceEditor.setOptions(ACE_OPTIONS);
   document.getElementById(DECKGL_OVERLAY).addEventListener("keydown", (e) => {
     if (e.keyCode === KEY_CODE_E) {
       // console.log(e.keyCode, container.style.display);
