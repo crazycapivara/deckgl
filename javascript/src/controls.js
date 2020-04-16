@@ -1,13 +1,8 @@
-import { CLASS_NAME_TOOLTIP } from "./constants";
-
-const CLASS_NAME_CTRL = "deckgl-widget-ctrl";
-const CLASS_NAME_CTRL_GROUP = `${CLASS_NAME_CTRL}-group`;
-const POSITIONS = [
-  "top-left",
-  "top-right",
-  "bottom-right",
-  "bottom-left"
-];
+import {
+  CLASS_NAME_TOOLTIP,
+  CLASS_NAME_CTRL,
+  CLASS_NAME_CTRL_GROUP,
+  POSITIONS } from "./constants";
 
 export function createControlGroups(widgetElement) {
   POSITIONS.forEach(pos => {
