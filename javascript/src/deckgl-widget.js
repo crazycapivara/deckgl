@@ -2,6 +2,7 @@ import "../styles/default.css";
 
 import {
   createControlGroups,
+  createTooltip,
   addControl,
   addLegend } from "./controls";
 import {
@@ -40,8 +41,9 @@ export default function(widgetElement, width, height) {
     logVersions();
 
     const deckGLProperties = createDeckGLProperties(widgetData);
-    deckGL = globalStorage.deckGL = new deck.DeckGL(deckGLProperties);
+    deckGL = new deck.DeckGL(deckGLProperties);
     createControlGroups(widgetElement);
+    createTooltip(widgetElement);
     viz = globalStorage.viz = Viz({ deckGL, layerDefs, sources, widgetElement });
     calls.forEach(({ funcName, args }) => funcs[funcName].call(viz, args));
     viz.render();

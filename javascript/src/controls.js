@@ -1,3 +1,5 @@
+import { CLASS_NAME_TOOLTIP } from "./constants";
+
 const CLASS_NAME_CTRL = "deckgl-widget-ctrl";
 const CLASS_NAME_CTRL_GROUP = `${CLASS_NAME_CTRL}-group`;
 const POSITIONS = [
@@ -41,4 +43,11 @@ export function addLegend({ items, title, pos, style }) {
   `;
   const legend = addControl({ html, pos, style });
   return legend;
+}
+
+export function createTooltip(widgetElement) {
+  const tooltip = document.createElement("div");
+  tooltip.classList.add(CLASS_NAME_TOOLTIP);
+  widgetElement.appendChild(tooltip);
+  return tooltip;
 }
