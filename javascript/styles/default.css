@@ -23,6 +23,15 @@
   padding: 10px;
 }
 
+.deckgl-widget-ctrl label {
+  padding-right: 10px;
+}
+
+.deckgl-widget-input {
+  display: flex;
+  align-items: center;
+}
+
 .deckgl-widget-ctrl-top-left { top: 10px; left: 10px; }
 .deckgl-widget-ctrl-top-right { top: 10px; right: 10px; }
 .deckgl-widget-ctrl-bottom-left { bottom: 10px; left: 10px; }

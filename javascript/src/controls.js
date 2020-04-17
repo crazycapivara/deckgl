@@ -2,6 +2,7 @@ import {
   CLASS_NAME_TOOLTIP,
   CLASS_NAME_CTRL,
   CLASS_NAME_CTRL_GROUP,
+  CLASS_NAME_INPUT,
   POSITIONS } from "./constants";
 
 export function createControlGroups(widgetElement) {
@@ -47,9 +48,11 @@ export function createTooltip(widgetElement) {
   return tooltip;
 }
 
-export function addInteractiveControl({ props, pos }) {
+export function addInteractiveControl({ props, text, pos }) {
   const ctrl = document.createElement("div");
-  ctrl.classList.add(CLASS_NAME_CTRL);
+  ctrl.classList.add(CLASS_NAME_CTRL, CLASS_NAME_INPUT);
+  const label = document.createElement("label");
+  label.innerText = text || "I am your label";
   const input = document.createElement("input");
   Object.assign(input, props);
   /* Example
@@ -58,6 +61,7 @@ export function addInteractiveControl({ props, pos }) {
     this.render();
   };
   */
+  ctrl.appendChild(label);
   ctrl.appendChild(input);
   const parent = document.getElementsByClassName(`${CLASS_NAME_CTRL}-${pos  || "top-right"}`)[0];
   parent.appendChild(ctrl);
