@@ -1,9 +1,10 @@
 create_file_source <- function(id, data) {
   src <- tempdir()
   filename <- paste0(id, ".js")
-  data <- jsonlite::toJSON(create_source(data)$data, auto_unbox = TRUE, force = TRUE)
+  source <- list(id = id, data = create_source(data)$data) %>%
+    jsonlite::toJSON(auto_unbox = TRUE, force = TRUE)
   #data <- jsonify::to_json(create_source(data)$data, auto_unbox = TRUE)
-  paste0("_deckWidget.sources.push({id: \"", id, "\", data: ", data, "});") %>%
+  paste0("_deckWidget.sources.push(", source, ");") %>%
     readr::write_file(file.path(src, filename))
   list(
     htmltools::htmlDependency(
