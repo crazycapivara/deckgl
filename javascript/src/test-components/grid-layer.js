@@ -34,7 +34,7 @@ const LEGEND_ARGS = {
   ],
   title: "Legend",
   pos: "top-right",
-  style: "background: yellow; width: 100px; margin-right: -10px; float: right;"
+  style: "background: yellow; width: 100px;"
 };
 
 export default {
