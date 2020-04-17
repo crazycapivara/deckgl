@@ -29,9 +29,7 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
     properties$pickable <- TRUE
   }
 
-  # TODO: Use 'push'
-  n <- length(deckgl$x$layers)
-  deckgl$x$layers[[n + 1]] <- list(
+  layer <- list(
     className = class_name,
     source = create_source(data),
     properties = c(
@@ -39,15 +37,17 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
       formula_to_property(properties)
     )
   )
+  deckgl$x$layers %<>%
+    push(layer)
   deckgl
 }
 
-has_source <- function(deckgl, source_id) {
-  n <- length(deckgl$x$sources)
-  if (n == 0) return(FALSE)
+#has_source <- function(deckgl, source_id) {
+#  n <- length(deckgl$x$sources)
+#  if (n == 0) return(FALSE)
 
-  source_id %in% sapply(1:n, function(i) deckgl$x$sources[[i]]$id)
-}
+#  source_id %in% sapply(1:n, function(i) deckgl$x$sources[[i]]$id)
+#}
 
 # Deprecated
 # TODO: Remove in next release
