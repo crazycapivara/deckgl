@@ -31,9 +31,13 @@ const Viz = ({ deckGL, widgetElement }) => ({
 
   render() {
     const deckLayers = this.layers.map(layer => {
-      // Check whether 'layer.source' is a source id
-      layer.properties.data = (typeof layer.source.data === "string" &&
-        this.sources.hasOwnProperty(layer.source.data)) ? this.getSource(layer.source.data) : layer.source.data;
+      // TODO: ... could be done in 'setLayers'
+      // If 'source' is an id there should be no data prop
+      // Problem we must check whether the string is an url or a source id
+      // This must be done on R side, because it always creates a source object at the moment
+      const data = layer.source.data;
+      layer.properties.data = typeof data === "string" && this.sources.hasOwnProperty(data) ?
+        this.getSource(data) : data;
       const props = parseLayerProps(layer.properties, this.widgetElement);
       return new deck[layer.className](props);
     });

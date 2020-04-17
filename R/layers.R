@@ -49,7 +49,7 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
   #  deckgl$x$sources %<>%
   #    push(create_source(source_id, data))
   #}
-
+  # if (!is.character(data)) data <- create_source(data)
 
   # TODO: Use 'push' as above
   n <- length(deckgl$x$layers)

@@ -10,8 +10,9 @@ properties <- list(
   tooltip = "{{position.0}}, {{position.1}}<br/>Count: {{count}}"
 )
 
-deck <- deckgl(zoom = 11, pitch = 45, bearing = 35) %>%
-  add_grid_layer(data = sf_bike_parking, properties = properties) %>%
+deck <- deckgl(zoom = 11, pitch = 45, bearing = 35, element_id = "grid-layer") %>%
+  add_source("sf-bike-parking", sf_bike_parking) %>%
+  add_grid_layer(data = "sf-bike-parking", properties = properties) %>%
   add_control("Grid Layer") %>%
   add_basemap() %>%
   add_json_editor()
