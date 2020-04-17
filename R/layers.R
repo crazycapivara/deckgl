@@ -29,23 +29,29 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
     properties$pickable <- TRUE
   }
 
-  if (inherits(data, "sf")) {
-    data <- modify_sf(data)
+  #if (inherits(data, "sf")) {
+  #  data <- modify_sf(data)
+  #}
+
+  #source_id <- paste0("data-", id)
+
+  #source <- list(
+  #  id = source_id,
+  #  df = inherits(data, "data.frame"),
+  #  data = data
+  #)
+
+  if (is.character(data) & deckgl %>% has_source(data)) {
+    source_id <- data
+  }
+  else {
+    source_id <- paste0("data-", id)
+    deckgl$x$sources %<>%
+      push(create_source(source_id, data))
   }
 
-  #if (is.data.frame(data)) {
-  #  properties$dataframeToD3 <- TRUE
-  #}
-  source_id <- paste0("data-", id)
-  source <- list(
-    id = source_id,
-    df = inherits(data, "data.frame"),
-    data = data
-  )
 
-  deckgl$x$sources %<>%
-    push(source)
-
+  # TODO: Use 'push' as above
   n <- length(deckgl$x$layers)
   deckgl$x$layers[[n + 1]] <- list(
     className = class_name,
@@ -58,13 +64,20 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
   deckgl
 }
 
+has_source <- function(deckgl, source_id) {
+  n <- length(deckgl$x$sources)
+  if (n == 0) return(FALSE)
+
+  source_id %in% sapply(1:n, function(i) deckgl$x$sources[[i]]$id)
+}
+
 # Deprecated
 # TODO: Remove in next release
-merge_properties <- function(x, y) {
-  .Deprecated("modifyList")
+#merge_properties <- function(x, y) {
+#  .Deprecated("modifyList")
 
-  for (name in names(y)) {
-    x[[name]] <- y[[name]]
-  }
-  x
-}
+#  for (name in names(y)) {
+#    x[[name]] <- y[[name]]
+#  }
+#  x
+#}

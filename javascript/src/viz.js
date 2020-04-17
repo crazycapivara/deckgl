@@ -4,7 +4,7 @@ const Viz = ({ deckGL, widgetElement }) => ({
   deckGL,
   widgetElement,
   layers: [ ],
-  sources: [ ],
+  sources: { },
 
   _getContainer() {
     return this.deckGL.props.container;
@@ -12,12 +12,14 @@ const Viz = ({ deckGL, widgetElement }) => ({
 
   addSource({ id, data, df }) {
     if (df) data = HTMLWidgets.dataframeToD3(data);
-    this.sources.push({ id, data });
+    // this.sources.push({ id, data });
+    this.sources[id] = data;
   },
 
-  getSource(source_id) {
-    return this.sources.filter(source =>
-        source.id === source_id)[0].data;
+  getSource(id) {
+    //return this.sources.filter(source =>
+    //    source.id === source_id)[0].data;
+    return this.sources[id];
   },
 
   setLayers(layers) {
