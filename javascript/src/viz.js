@@ -10,6 +10,19 @@ const Viz = ({ deckGL, widgetElement }) => ({
     return this.deckGL.props.container;
   },
 
+  // TODO: If 'source' is an id it should not be stored in the 'data' property of the source
+  // At the moment this is done because of the R part.
+  // In R there should be a function like 'use_source' to specify that the source is an id,
+  // because a string could also be an url.
+  _getData(source) {
+    let data = source.data;
+    if (typeof data === "string" && this.sources.hasOwnProperty(data)) {
+      data = this.getSource(data);
+    }
+
+    return data;
+  },
+
   addSource({ id, data, df }) {
     if (df) data = HTMLWidgets.dataframeToD3(data);
     this.sources[id] = data;
@@ -31,13 +44,7 @@ const Viz = ({ deckGL, widgetElement }) => ({
 
   render() {
     const deckLayers = this.layers.map(layer => {
-      // TODO: ... could be done in 'setLayers'
-      // If 'source' is an id there should be no data prop
-      // Problem we must check whether the string is an url or a source id
-      // This must be done on R side, because it always creates a source object at the moment
-      const data = layer.source.data;
-      layer.properties.data = typeof data === "string" && this.sources.hasOwnProperty(data) ?
-        this.getSource(data) : data;
+      layer.properties.data = this._getData(layer.source);
       const props = parseLayerProps(layer.properties, this.widgetElement);
       return new deck[layer.className](props);
     });
