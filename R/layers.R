@@ -29,29 +29,7 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
     properties$pickable <- TRUE
   }
 
-  #if (inherits(data, "sf")) {
-  #  data <- modify_sf(data)
-  #}
-
-  #source_id <- paste0("data-", id)
-
-  #source <- list(
-  #  id = source_id,
-  #  df = inherits(data, "data.frame"),
-  #  data = data
-  #)
-
-  #if (is.character(data) & deckgl %>% has_source(data)) {
-  #  source_id <- data
-  #}
-  #else {
-  #  source_id <- paste0("data-", id)
-  #  deckgl$x$sources %<>%
-  #    push(create_source(source_id, data))
-  #}
-  # if (!is.character(data)) data <- create_source(data)
-
-  # TODO: Use 'push' as above
+  # TODO: Use 'push'
   n <- length(deckgl$x$layers)
   deckgl$x$layers[[n + 1]] <- list(
     className = class_name,
