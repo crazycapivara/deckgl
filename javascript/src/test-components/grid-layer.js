@@ -8,7 +8,7 @@ const source = {
 
 const GRID_LAYER = {
   className: "GridLayer",
-  source: SOURCE_ID,
+  source: source, // SOURCE_ID,
   properties: {
     id: LAYER_ID,
     pickable: true,
