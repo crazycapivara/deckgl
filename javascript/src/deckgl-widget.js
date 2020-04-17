@@ -17,7 +17,8 @@ import addJSONEditor from "./json-editor";
 if (!global._deckWidget) {
   global._deckWidget = {
     convertColor,
-    addInteractiveControl
+    addInteractiveControl,
+    sources: [ ]
   };
 }
 
@@ -47,7 +48,8 @@ export default function(widgetElement, width, height) {
     createControlGroups(widgetElement);
     createTooltip(widgetElement);
     viz = globalStorage.viz = Viz({ deckGL, widgetElement });
-    sources.forEach(source => viz.addSource(source));
+    //sources.forEach(source => viz.addSource(source));
+    sources.concat(_deckWidget.sources).forEach(source => viz.addSource(source));
     viz.setLayers(layers);
     calls.forEach(({ funcName, args }) => funcs[funcName].call(viz, args));
     viz.render();
