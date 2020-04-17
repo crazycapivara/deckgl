@@ -4,7 +4,7 @@ const Viz = ({ deckGL, widgetElement }) => ({
   deckGL,
   widgetElement,
   layers: [ ],
-  sources: { },
+  sources: [ ],
 
   _getContainer() {
     return this.deckGL.props.container;
@@ -16,8 +16,8 @@ const Viz = ({ deckGL, widgetElement }) => ({
   // because a string could also be an url.
   _getData(source) {
     let data = source.data;
-    if (typeof data === "string" && this.sources.hasOwnProperty(data)) {
-      data = this.getSource(data);
+    if (typeof data === "string" && this.sources.map(source => source.id).includes(data)) {
+      data = this.getSource(data).data;
     }
 
     return data;
@@ -25,11 +25,11 @@ const Viz = ({ deckGL, widgetElement }) => ({
 
   addSource({ id, data, df }) {
     if (df) data = HTMLWidgets.dataframeToD3(data);
-    this.sources[id] = data;
+    this.sources.push({ id, data });
   },
 
   getSource(id) {
-    return this.sources[id];
+    return this.sources.filter(source => source.id === id)[0];
   },
 
   setLayers(layers) {
