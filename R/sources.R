@@ -4,9 +4,11 @@
 #' @param id The unique id of the source.
 #' @export
 add_source <- function(deckgl, id, data) {
-  deckgl$x$sources %<>%
-    push(c(id = id, create_source(data)))
-  deckgl
+  #deckgl$x$sources %<>%
+  #  push(c(id = id, create_source(data)))
+  #deckgl
+  source <- create_source(data)
+  invoke_method(deckgl, "addSource", id = id, data = source$data, df = source$df)
 }
 
 create_source <- function(data) {
