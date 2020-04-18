@@ -95,6 +95,26 @@ The tooltip string is a *mustache* template in which variable names are identifi
 
 See [mustache](https://github.com/janl/mustache.js) for a complete syntax overwiew.
 
+``` r
+data("bart_segments")
+
+props <- list(
+  getWidth = 12,
+  getSourcePosition = ~from_lng + from_lat,
+  getTargetPosition = ~to_lng + to_lat,
+  getSourceColor = "yellow",
+  getTargetColor = "orange",
+  tooltip = use_tooltip(
+    html = "{{from_name}} to {{to_name}}",
+    style = "background: steelBlue; border-radius: 5px;"
+  )
+)
+
+deckgl(zoom = 9.5, pitch = 35) %>%
+  add_arc_layer(data = bart_segments, properties = props) %>%
+  add_basemap()
+```
+
 Run Examples
 ------------
 
