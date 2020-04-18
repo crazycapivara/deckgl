@@ -97,7 +97,33 @@ props <- list(
 Layer Props
 -----------
 
-The `properties` parameter is a **named list** with names corresponding to the **properties** defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given **layer** type (class). For the example above see the [grid-layer-api-reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer). In case the property is a **data accessor** (usually a function in the form of a lambda expression) just use the `JS` function in R to pass it to the layer object. In the example above this is done for the properties `getPosition` and `getTooltip`. It is also possible to pass properties as named arguments via the `...` parameter. They are appended to the properties list. Same properties will be overwritten.
+The `properties` parameter is a *named list* with names corresponding to the *properties* defined in the [deck.gl-API-Reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given *layer type* (class). For the example above see the [Grid-Layer-API-Reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer).
+
+It is also possible to pass properties as named arguments via the `...` parameter. They are appended to the properties list. Same properties will be overwritten.
+
+See the [deck.gl-Layer-Catalog](https://github.com/visgl/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview) for a full list of available layers and their properties.
+
+### Camels or Snakes
+
+...
+
+### Data Accessors
+
+Use the *formula* syntax in R if a property is a *data accessor*:
+
+``` r
+list(
+  getPosition = ~lng + lat # js: d => [d.lng, d.lat]
+  getFillColor = ~color # js: d => d.color
+  # ...
+)
+```
+
+The example above assumes that your data contains the columns `lng`, `lat` and `color`.
+
+### Colors
+
+*Deck.gl* uses rgba arrays (`[r, g, b, a]`) to represent colors. Nevertheless you can pass hex color codes all color arguments of the `add_*_layer` functions. They are automatically converted to the required rgba arrays.
 
 Tooltips
 --------
@@ -133,10 +159,19 @@ deckgl(zoom = 9.5, pitch = 35) %>%
   add_basemap()
 ```
 
-Colors
-------
+Controls
+--------
 
-*Deck.gl* uses rgba arrays (`[r, g, b, a]`) to represent colors. Nevertheless you can pass hex color codes all color arguments of the `add_*_layer` functions. They are automatically converted to the required rgba arrays.
+*Controls* are elements that are placed as overlays on top of the map / deck. Usually you can set the *position* and the *style* of the control. The most basic control is a text box:
+
+``` r
+deckgl() %>%
+  add_control("Some text")
+```
+
+### Legends
+
+...
 
 Run Examples
 ------------
