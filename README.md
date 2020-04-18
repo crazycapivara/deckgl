@@ -74,7 +74,25 @@ deckgl() %>%
 Data
 ----
 
-The `data` parameter can either be an **url** to fetch data from or a **data object**.
+The `data` parameter can either be an **url** to fetch data from or a **data object**. In most cases you will pass an object of type `data.frame` to the layers. To define *data accessors* (functions that are used by *deck.gl* to access the properties), you use the formula syntax in R. For example, if the coordinates are contained in the columns `lng` and `lat` you set your props like this:
+
+``` r
+props <- list(
+  getPosition: ~lng + lat
+  # ...
+)
+```
+
+### Data objects of class *sf*
+
+If you pass an object of class [sf](https://github.com/r-spatial/sf) to the layers you just need to tell the corrosponding prop that fetches the geometry to use the *geometry* column. In the case of the `PolygonLayer` this would be as follows:
+
+``` r
+props <- list(
+  getPolygon = ~geometry
+  # ...
+)
+```
 
 Layer Props
 -----------
