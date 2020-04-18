@@ -31,7 +31,7 @@ remotes::install_github("crazycapivara/deckgl")
 Usage
 -----
 
-Create a deckgl widget:
+Create a *deckgl* widget:
 
 ``` r
 deckgl()
@@ -66,9 +66,6 @@ deckgl(zoom = 11, pitch = 45) %>%
   add_mapbox_basemap() # optional
 ```
 
--   The `data` parameter can either be an **url** to fetch data from or a **data object**. Furthermore, you can use `get_data` in conjunction with `add_data` to use a data file.
--   The `properties` parameter is a **named list** with names corresponding to the **properties** defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given **layer** class. For the example above see the [grid-layer-api-reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer). In case the property is a **data accessor** (usually a function in the form of a lambda expression) just use the `JS` function in R to pass it to the layer object. In the example above this is done for the properties `getPosition` and `getTooltip`. It is also possible to pass properties as named arguments via the `...` parameter. They are appended to the properties list. Same properties will be overwritten.
-
 Layers
 ------
 
@@ -84,7 +81,31 @@ deckgl() %>%
   add_arc_layer("arc-layer", data, properties)
 ```
 
-Run examples
+Data
+----
+
+The `data` parameter can either be an **url** to fetch data from or a **data object**.
+
+Layer Props
+-----------
+
+The `properties` parameter is a **named list** with names corresponding to the **properties** defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given **layer** type (class). For the example above see the [grid-layer-api-reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer). In case the property is a **data accessor** (usually a function in the form of a lambda expression) just use the `JS` function in R to pass it to the layer object. In the example above this is done for the properties `getPosition` and `getTooltip`. It is also possible to pass properties as named arguments via the `...` parameter. They are appended to the properties list. Same properties will be overwritten.
+
+Tooltips
+--------
+
+The tooltip for a layer can be set via the `tooltip` parameter. You can either pass a single template string or a list with the following properties (see also `use_tooltip`):
+
+-   `html`: The `innerHTML` of the tooltip.
+-   `style`: A `cssText` string that will modefiy the default style of the tooltip.
+
+### Tooltip template Syntax
+
+The tooltip string is a *mustache* template in which variable names are identified by the double curly brackets (*mustache* tags) that surround them. The variable names available to the template are given by deck.gl’s `pickingInfo.object` and vary by layer.
+
+See [mustache](https://github.com/janl/mustache.js) for a complete syntax overwiew.
+
+Run Examples
 ------------
 
 You can run the [api-examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples/deckgl-api-reference) from the `add_*_layer` functions with `example(add_*_layer)`. For the `IconLayer` it looks like this:
