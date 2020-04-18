@@ -126,6 +126,10 @@ deckgl(zoom = 9.5, pitch = 35) %>%
   add_basemap()
 ```
 
+## Colors
+
+_Deck.gl_ uses rgba arrays (`[r, g, b, a]`) to represent colors. Nevertheless you can pass hex color codes all color arguments of the `add_*_layer` functions. They are automatically converted to the required rgba arrays.
+
 ## Run Examples
 
 You can run the [api-examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples/deckgl-api-reference) from the `add_*_layer` functions with `example(add_*_layer)`. For the `IconLayer` it looks like this:
