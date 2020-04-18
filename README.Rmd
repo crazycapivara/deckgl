@@ -39,21 +39,6 @@ You can install the latest version of deckgl from github with:
 remotes::install_github("crazycapivara/deckgl")
 ```
 
-## Quickstart
-
-Just check if everything is fine:
-
-```{r does-it-work, eval = FALSE}
-library(deckgl)
-
-does_it_work()
-#> You should see a text layer telling you that it works.
-
-# Or in case you do have an api token from mapbox ...
-does_it_work("yourSuperSecretApiToken")
-#> Output should be the same as above but rendered on top of a base map from mapbox.
-```
-
 ## Usage
 
 Create a deckgl widget:
@@ -82,8 +67,8 @@ properties <- list(
   extruded = TRUE,
   cellSize = 200,
   elevationScale = 4,
-  getPosition = JS("data => [data.lng, data.lat]"),
-  getTooltip = JS("object => object.count")
+  getPosition = ~lng + lat,
+  getTooltip = "Count: {{count}}"
 )
 
 deckgl(zoom = 11, pitch = 45) %>%
