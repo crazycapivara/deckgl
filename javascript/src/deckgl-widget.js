@@ -22,7 +22,13 @@ if (!global._deckWidget) {
   };
 }
 
+function addSource(source) {
+  const viz = this;
+  this.addSource(source);
+}
+
 const funcs = {
+  addSource,
   addControl,
   addLegend,
   addJSONEditor
@@ -65,7 +71,7 @@ export default function(widgetElement, width, height) {
       const widgetData = obj.x;
       fixLayerProperties(widgetData.layers);
       console.log(widgetData);
-      viz.setLayerDefs(widgetData.layers);
+      viz.setLayers(widgetData.layers);
       viz.render();
     });
   }
