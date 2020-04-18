@@ -30,7 +30,7 @@ Create a *deckgl* widget:
 deckgl()
 ```
 
-Add a base map:
+Add a basemap:
 
 ``` r
 deckgl() %>%
@@ -59,22 +59,22 @@ deckgl(zoom = 11, pitch = 45) %>%
 Layers
 ------
 
-Due to the generic function `add_layer` any kind of layer defined in the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) is supported. The type of layer is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of the `add_*_layer` shortcut functions instead:
+Due to the generic function `add_layer` any kind of layer defined in the [deck.gl API Reference](https://deck.gl/#/documentation/deckgl-api-reference) is supported. The *layer type* is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of the `add_*_layer` shortcut functions instead:
 
 ``` r
 # Generic function
 deckgl() %>%
-  add_layer("ArcLayer", "arc-layer", data, properties)
+  add_layer("ArcLayer", id, data, properties)
 
 # Shortcut function
 deckgl() %>%
-  add_arc_layer("arc-layer", data, properties)
+  add_arc_layer(id, data, properties)
 ```
 
 Data
 ----
 
-The `data` parameter can either be an **url** to fetch data from or a **data object**. In most cases you will pass an object of type `data.frame` to the layers. To define *data accessors* (functions that are used by *deck.gl* to access the properties), you use the formula syntax in R. For example, if the coordinates are contained in the columns `lng` and `lat` you set your props like this:
+The `data` parameter can either be an *url* to fetch data from or a *data object*. In most cases you will pass an object of type `data.frame` to the layers. To define *data accessors* (functions that are used by *deck.gl* to access the properties of the data object), you use the formula syntax in R. For example, if the coordinates are contained in the columns `lng` and `lat` you set your `getPosition` prop like this:
 
 ``` r
 props <- list(
@@ -97,40 +97,47 @@ props <- list(
 Layer Props
 -----------
 
-The `properties` parameter is a *named list* with names corresponding to the *properties* defined in the [deck.gl-API-Reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given *layer type* (class). For the example above see the [Grid-Layer-API-Reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer).
+The `properties` parameter is a *named list* with names corresponding to the *properties* defined in the [deck.gl API Reference](https://deck.gl/#/documentation/deckgl-api-reference) for the given *layer type* (class). For the example above see the [GridLayer API Reference](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer).
 
 It is also possible to pass properties as named arguments via the `...` parameter. They are appended to the properties list. Same properties will be overwritten.
 
-See the [deck.gl-Layer-Catalog](https://github.com/visgl/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview) for a full list of available layers and their properties.
+See the [deck.gl Layer Catalog](https://github.com/visgl/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview) for a full list of available layers and their properties.
 
 ### Camels or Snakes
 
-...
+While *deck.gl* uses *camelCased* parameters according to the JavaScript standard, the R style conventions usually prefer the *snake\_case* standard. Therefore, all parameters that are passed to *deck.gl* can use *snake\_cake*, e. g. `getPosition` in *deck.gl* can be passed as `get_position`.
 
 ### Data Accessors
 
 Use the *formula* syntax in R if a property is a *data accessor*:
 
 ``` r
-list(
+props <- list(
   getPosition = ~lng + lat # js: d => [d.lng, d.lat]
   getFillColor = ~color # js: d => d.color
   # ...
 )
 ```
 
-The example above assumes that your data contains the columns `lng`, `lat` and `color`.
+The example above assumes that your data contains the columns `lng`, `lat` and `color`. It is also possible to pass JavaScript code by using the `JS` function in R:
+
+``` r
+props <- list(
+  getColor = JS("d => d.capital ? [140, 10, 10] : [60, 10, 10]")
+  # ...
+)
+```
 
 ### Colors
 
-*Deck.gl* uses rgba arrays (`[r, g, b, a]`) to represent colors. Nevertheless you can pass hex color codes all color arguments of the `add_*_layer` functions. They are automatically converted to the required rgba arrays.
+*Deck.gl* uses rgba arrays (`[r, g, b, a]`) to represent colors. Nevertheless you can pass hex color codes to all color arguments of the `add_*_layer` functions. They are automatically converted to the required rgba arrays.
 
 Tooltips
 --------
 
 The tooltip for a layer can be set via the `tooltip` parameter. You can either pass a single template string or a list with the following properties (see also `use_tooltip`):
 
--   `html`: The `innerHTML` of the tooltip.
+-   `html`: A template string that will be set as the `innerHTML` of the tooltip.
 -   `style`: A `cssText` string that will modefiy the default style of the tooltip.
 
 ### Tooltip template Syntax
@@ -162,24 +169,41 @@ deckgl(zoom = 9.5, pitch = 35) %>%
 Controls
 --------
 
-*Controls* are elements that are placed as overlays on top of the map / deck. Usually you can set the *position* and the *style* of the control. The most basic control is a text box:
+*Controls* are elements that are displayed as overlays on top of the map / deck. Usually you can set the *position* and the *style* of the control. The most basic control is a simple text box:
 
 ``` r
 deckgl() %>%
-  add_control("Some text")
+  add_basemap() %>%
+  add_control(
+    html = "Plain Base Map",
+    pos = "top-right",
+    style = "background: steelblue; color: white"
+  )
 ```
 
 ### Legends
 
 ...
 
+Basemaps
+--------
+
+Using `add_basemap` adds a [carto Basemap](https://carto.com/developers/carto-vl/reference/#cartobasemaps) by default. To use basemaps from [mapbox](https://www.mapbox.com/maps/) it is recommended that you set your API access token in an environment variable called `MAPBOX_API_TOKEN`:
+
+``` r
+# If not set globally
+#Sys.setenv(MAPBOX_API_TOKEN = "xyz")
+
+deckgl() %>%
+  add_mapbox_basemap("mapbox://styles/mapbox/light-v9")
+```
+
 Run Examples
 ------------
 
-You can run the [api-examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples/deckgl-api-reference) from the `add_*_layer` functions with `example(add_*_layer)`. For the `IconLayer` it looks like this:
+You can run the [API Examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples/deckgl-api-reference) from the `add_*_layer` functions with `example(add_*_layer)`. For the `IconLayer` it looks like this:
 
 ``` r
-# Sys.setenv(MAPBOX_API_TOKEN = "yourSuperSecretApiToken")
 example(add_icon_layer)
 ```
 
@@ -213,9 +237,9 @@ npm run start
 Concept
 -------
 
-Deckgl for R stays as close as possible to the JavaScript API so that usually all parameters of its JavaScript pendants are supported. Therefore, you need to check the [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) of the JavaScript framework to get information about the parameters you can pass to the R-functions mostly as named lists or named arguments (`...` parameter). Use the `JS` function if you need to pass any kind of JavaScript code, as it is the case for **data accessors**.
+*Deckgl for R* stays as close as possible to the JavaScript API so that usually all parameters of its JavaScript pendants are supported. Therefore, you need to check the [deck.gl API Reference](https://deck.gl/#/documentation/deckgl-api-reference) of the JavaScript framework to get information about the parameters you can pass to the R-functions mostly as *named lists* or *named arguments* (`...` parameter). Use the `JS` function if you need to pass any kind of JavaScript code. *camelCased* parameters in *deck.gl* can be passed as *snake\_cased* parameters in R.
 
-[GridLayer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) API-example:
+[GridLayer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) API Example:
 
 ``` javascript
 // JavaScript code
@@ -226,7 +250,7 @@ const layer = new GridLayer({
   extruded: true,
   cellSize: 200,
   elevationScale: 4,
-  getPosition: d => d.COORDINATES,
+  getPosition: d => [d.lng, d.lat]
 });
 ```
 
@@ -238,32 +262,13 @@ deck <- deckgl() %>%
     id = "grid-layer",
     data = data,
     extruded = TRUE,
-    cellSize = 200,
-    elevationScale = 4,
-    getPosition = JS("d => d.COORDINATES")
+    cell_size = 200,
+    elevation_scale = 4,
+    get_position = ~lng + lat
   )
 ```
 
 In this example all properties are passed as named arguments.
-
-You can test your R code like this:
-
-``` r
-properties <- list(
-  extruded = TRUE,
-  cellSize = 200,
-  elevationScale = 4,
-  getPosition = get_property("COORDINATES")
-)
-
-htmlwidgets:::toJSON2(properties, pretty = TRUE)
-#> {
-#>   "extruded": true,
-#>   "cellSize": 200,
-#>   "elevationScale": 4,
-#>   "getPosition": "data => data.COORDINATES"
-#> }
-```
 
 Documentation
 -------------
@@ -275,5 +280,5 @@ Documentation
 Notes
 -----
 
--   It is a known issue that the deckgl widget might not be visible in the viewer pane of RStudio. Just open it in your browser by clicking **Show in new window** and everything will be fine.
--   The [documentation](https://crazycapivara.github.io/deckgl/) is work in progress. Please check also the [examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples) as a starting point.
+-   It is a known issue that the *deckgl widget* might not be visible in the viewer pane of RStudio. Just open it in your browser by clicking *Show in new window* and everything will be fine.
+-   The [documentation](https://crazycapivara.github.io/deckgl/) is work in progress. See also the [examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples) as a good starting point.
