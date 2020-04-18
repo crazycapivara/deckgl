@@ -18,9 +18,9 @@ backend <- function(input, output) {
     deckgl(pitch = 45) %>%
       # 'data = NULL' loads some sample data
       add_hexagon_layer(
-        getTooltip = JS("object => `count: ${object.points.length}`")
+        getTooltip = "Count: {{points.length}}"
       ) %>%
-      add_mapbox_basemap()
+      add_basemap()
   })
 
   observeEvent(input$deck_onclick, {
