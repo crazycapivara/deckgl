@@ -37,13 +37,11 @@ Create a *deckgl* widget:
 deckgl()
 ```
 
-Add a base map from mapbox (optional):
+Add a base map:
 
 ``` r
-Sys.setenv(MAPBOX_API_TOKEN = "yourSuperSecretApiToken")
-
 deckgl() %>%
-  add_mapbox_basemap(style = "mapbox://styles/mapbox/dark-v9")
+  add_basemap()
 ```
 
 Add any kind of layers:
@@ -52,18 +50,17 @@ Add any kind of layers:
 # Grid layer example
 data("sf_bike_parking")
 
-properties <- list(
-  pickable = TRUE,
+props <- list(
   extruded = TRUE,
   cellSize = 200,
   elevationScale = 4,
   getPosition = ~lng + lat,
-  getTooltip = "Count: {{count}}"
+  tooltip = "Count: {{count}}"
 )
 
 deckgl(zoom = 11, pitch = 45) %>%
-  add_grid_layer(data = sf_bike_parking, properties = properties) %>%
-  add_mapbox_basemap() # optional
+  add_basemap() %>%
+  add_grid_layer(data = sf_bike_parking, properties = props)
 ```
 
 Layers
@@ -113,6 +110,33 @@ You can run the [api-examples](https://github.com/crazycapivara/deckgl/tree/mast
 ``` r
 # Sys.setenv(MAPBOX_API_TOKEN = "yourSuperSecretApiToken")
 example(add_icon_layer)
+```
+
+Development
+-----------
+
+The JavaScript library of the *deckgl widget* uses [webpack](https://webpack.js.org/) as module bundler. Therefore, you need [node.js](https://nodejs.org) to build the *widget* library.
+
+First of all you need to clone the repository:
+
+``` bash
+git clone https://github.com/crazycapivara/deckgl.git
+```
+
+Then you can build the library from inside the `javascript` folder like this:
+
+``` bash
+cd deckgl/javascript
+
+npm run build
+```
+
+All JavaScript code is located in the `src` folder and test components go to the `src/test-components` folder.
+
+To test the library just run the following command. This will spin up the [webpack-dev-server](https://github.com/webpack/webpack-dev-server):
+
+``` bash
+npm run start
 ```
 
 Concept
