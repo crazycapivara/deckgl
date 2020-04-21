@@ -20,6 +20,57 @@ library(deckgl)
 
 The deckgl package makes the open-source JavaScript library [deck.gl](https://deck.gl/) available within R via the [htmlwidgets](https://www.htmlwidgets.org/) package. 
 
+## Concept
+
+The deckgl package stays as close as possible to the [deck.gl JavaScript API](https://deck.gl/#/documentation/deckgl-api-reference), so that normally all parameters of its JavaScript counterparts are supported.
+
+### Named Parameters
+
+Layer properties are passed to the `add_*_layer` functions as named list or named parameters via the `...` parameter. See the [deck.gl Layer Catalog](https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview) to determine the available parameters for the used layer. According to the style conventions in R, `camelCased` parameters in deck.gl can be passed as `snake_cased` parameters in R.
+
+[GridLayer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) API Example:
+
+```JavaScript
+// JavaScript code
+
+const layer = new GridLayer({
+  id: "grid-layer",
+  data: data,
+  extruded: true,
+  cellSize: 200,
+  elevationScale: 4,
+  getPosition: d => [d.lng, d.lat]
+});
+```
+
+```{r eval = FALSE}
+# Corresponding R code
+
+# using named arguments
+deck <- deckgl() %>%
+  add_grid_layer(
+    id = "grid-layer",
+    data = data,
+    extruded = TRUE,
+    cell_size = 200,
+    elevation_scale = 4,
+    get_position = ~lng + lat
+  )
+
+# ... using a named props list
+props <- list(
+  cellSize = 200,
+  extruded = TRUE,
+  # ...
+)
+
+deckgl() %>%
+  add_grid_layer(
+    data = data,
+    properties = props
+  )
+```
+
 ## Installation
 
 ```{r cran-installation, eval = FALSE}
@@ -33,7 +84,7 @@ You can install the latest version of deckgl from github with:
 remotes::install_github("crazycapivara/deckgl")
 ```
 
-## Usage
+## Quickstart
 
 Create a `deckgl` instance:
 
@@ -247,10 +298,7 @@ example(add_grid_layer)
 
 ## Development
 
-The JavaScript library of deckgl uses [webpack](https://webpack.js.org/) as module bundler.
-Therefore, you need [node.js](https://nodejs.org) to build the module.
-
-All JavaScript code is located in the `javascript/src` folder and test components go to `javascript/src/test-components`.
+The JavaScript library of deckgl uses [webpack](https://webpack.js.org/) as module bundler. Therefore, you need [node.js](https://nodejs.org) to build the module. All JavaScript code is located in the `javascript/src` folder and test components go to `javascript/src/test-components`.
 
 Build the library from inside the `javascript` folder with:
 
@@ -263,41 +311,6 @@ To spin up the [webpack-dev-server](https://github.com/webpack/webpack-dev-serve
 ```bash
 npm run start
 ```
-
-## Concept
-
-_Deckgl for R_ stays as close as possible to the JavaScript API so that usually all parameters of its JavaScript pendants are supported. Therefore, you need to check the [deck.gl API Reference](https://deck.gl/#/documentation/deckgl-api-reference) of the JavaScript framework to get information about the parameters you can pass to the R-functions mostly as _named lists_ or _named arguments_ (`...` parameter). Use the `JS` function if you need to pass any kind of JavaScript code. _camelCased_ parameters in _deck.gl_ can be passed as _snake_cased_ parameters in R.
- 
-[GridLayer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) API Example:
- 
-```JavaScript
-// JavaScript code
-
-const layer = new GridLayer({
-  id: "grid-layer",
-  data: data,
-  extruded: true,
-  cellSize: 200,
-  elevationScale: 4,
-  getPosition: d => [d.lng, d.lat]
-});
-```
-
-```{r eval = FALSE}
-# Corresponding R code
-
-deck <- deckgl() %>%
-  add_grid_layer(
-    id = "grid-layer",
-    data = data,
-    extruded = TRUE,
-    cell_size = 200,
-    elevation_scale = 4,
-    get_position = ~lng + lat
-  )
-```
-
-In this example all properties are passed as named arguments.
 
 ## Documentation
 
