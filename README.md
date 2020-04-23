@@ -108,6 +108,19 @@ deckgl(zoom = 11, pitch = 45) %>%
   add_grid_layer(data = sf_bike_parking, properties = props)
 ```
 
+The `deckgl` Instance
+---------------------
+
+The `deckgl` function creates the widget / renderer to which you add layers and other configuration parameters:
+
+``` r
+rdeck <- deckgl(
+  latitude = 37.8,
+  longitude = -122.45,
+  zoom = 12
+)
+```
+
 Layers
 ------
 
@@ -135,7 +148,7 @@ props <- list(
 )
 ```
 
-### Data objects of class *sf*
+### Data objects of class `sf`
 
 An object of class [sf](https://github.com/r-spatial/sf) is a `data.frame` with a geometry list-column. Set the layer prop that fetches the geometry to the geometry column of your `sf` object:
 
