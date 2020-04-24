@@ -8,10 +8,10 @@ const source = {
 
 const GRID_LAYER = {
   className: "GridLayer",
-  // source: source, // SOURCE_ID,
+  source: SOURCE_ID,
   properties: {
     id: LAYER_ID,
-    data: source.data,
+    // data: source.data,
     pickable: true,
     extruded: true,
     cellSize: 200,
@@ -44,9 +44,6 @@ export default {
   zoom: 12,
   pitch: 35,
   bearing: 0,
-  sources: [
-    source
-  ],
   layers: [
     GRID_LAYER
   ],
@@ -56,6 +53,7 @@ export default {
     { funcName: "addControl", args: { html: "Down by Law", pos: "top-right" } },
     { funcName: "addControl", args: { html: "Test", pos: "top-left" } },
     { funcName: "addLegend", args: LEGEND_ARGS },
-    { funcName: "addJSONEditor", args: { mode: "code" } }
+    { funcName: "addJSONEditor", args: { mode: "code" } },
+    { funcName: "addSource", args: source }
   ]
 };

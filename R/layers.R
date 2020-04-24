@@ -14,9 +14,10 @@
 #'   if you want to use a properties object for more than one layer.
 #' @param tooltip A tooltip template that defines what should be displayed when the mouse enters an object.
 #'   You can also pass a list with the properties \code{html} and \code{style}. See also \code{\link{use_tooltip}}.
+#' @param source  The ID of the data source ...
 #' @return A deckgl widget object.
 #' @export
-add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., tooltip = NULL) {
+add_layer <- function(deckgl, class_name, id, data = NULL, properties = list(), ..., tooltip = NULL, source = NULL) {
   properties <- list(tooltip = tooltip) %>%
     utils::modifyList(properties) %>%
     utils::modifyList(list(...)) %>%
@@ -36,7 +37,7 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
   layer <- list(
     className = class_name,
     convertData = inherits(data, "data.frame"),
-    #source = create_source(data),
+    source = source,
     properties = utils::modifyList(
       list(id = id, data = data),
       formula_to_property(properties)

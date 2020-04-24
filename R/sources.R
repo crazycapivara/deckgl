@@ -4,20 +4,19 @@
 #' @param id The unique id of the source.
 #' @export
 add_source <- function(deckgl, id, data) {
-  #deckgl$x$sources %<>%
-  #  push(c(id = id, create_source(data)))
-  #deckgl
-  source <- create_source(data)
-  invoke_method(deckgl, "addSource", id = id, data = source$data, df = source$df)
+  #source <- create_source(data)
+  if (inherits(data, "sf")) data <- modify_sf(data)
+
+  invoke_method(deckgl, "addSource", id = id, data = data, convertData = inherits(data, "data.frame"))
 }
 
-create_source <- function(data) {
-  if (inherits(data, "sf")) {
-    data <- modify_sf(data)
-  }
-
-  list(
-    data = data,
-    df = inherits(data, "data.frame")
-  )
-}
+#create_source <- function(data) {
+#  if (inherits(data, "sf")) {
+#    data <- modify_sf(data)
+#  }
+#
+#  list(
+#    data = data,
+#    df = inherits(data, "data.frame")
+#  )
+#}

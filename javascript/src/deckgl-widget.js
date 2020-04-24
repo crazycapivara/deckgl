@@ -22,9 +22,10 @@ if (!global._deckWidget) {
   };
 }
 
-function addSource(source) {
+function addSource({ id, data, convertData }) {
   const viz = this;
-  this.addSource(source);
+  if (convertData) data = HTMLWidgets.dataframeToD3(data);
+  viz.addSource({ id, data });
 }
 
 const funcs = {

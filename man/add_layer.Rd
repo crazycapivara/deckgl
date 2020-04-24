@@ -4,8 +4,8 @@
 \alias{add_layer}
 \title{Add any kind of layer to the deckgl widget}
 \usage{
-add_layer(deckgl, class_name, id, data, properties = list(), ...,
-  tooltip = NULL)
+add_layer(deckgl, class_name, id, data = NULL, properties = list(),
+  ..., tooltip = NULL, source = NULL)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
@@ -25,6 +25,8 @@ if you want to use a properties object for more than one layer.}
 
 \item{tooltip}{A tooltip template that defines what should be displayed when the mouse enters an object.
 You can also pass a list with the properties \code{html} and \code{style}. See also \code{\link{use_tooltip}}.}
+
+\item{source}{The ID of the data source ...}
 }
 \value{
 A deckgl widget object.

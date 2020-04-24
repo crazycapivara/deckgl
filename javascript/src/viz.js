@@ -23,9 +23,9 @@ const Viz = ({ deckGL, widgetElement }) => ({
     return data;
   },
 
-  addSource({ id, data, df }) {
-    if (df) data = HTMLWidgets.dataframeToD3(data);
-    this.sources.push({ id, data });
+  addSource(source) {
+    // if (df) data = HTMLWidgets.dataframeToD3(data);
+    this.sources.push(source);
   },
 
   getSource(id) {
@@ -47,6 +47,7 @@ const Viz = ({ deckGL, widgetElement }) => ({
   render() {
     const deckLayers = this.layers.map(layer => {
       // layer.properties.data = this._getData(layer.source);
+      if (layer.source) layer.properties.data = this.getSource(layer.source).data;
       const props = parseLayerProps(layer.properties, this.widgetElement);
       return new deck[layer.className](props);
     });
