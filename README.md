@@ -355,9 +355,11 @@ Development
 
 The JavaScript library of r-deckgl uses [webpack](https://webpack.js.org/) as module bundler. Therefore, you need [node.js](https://nodejs.org) to build the module. All JavaScript code is located in the `javascript/src` folder and test components go to `javascript/src/test-components`.
 
-Build the library from inside the `javascript` folder with:
+Install deps and build the library from inside the `javascript` folder with:
 
 ``` bash
+npm install
+
 npm run build
 ```
 
