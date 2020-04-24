@@ -29,11 +29,16 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
     properties$pickable <- TRUE
   }
 
+  if (inherits(data, "sf")) {
+    data <- modify_sf(data)
+  }
+
   layer <- list(
     className = class_name,
-    source = create_source(data),
-    properties = c(
-      id = id,
+    convertData = inherits(data, "data.frame"),
+    #source = create_source(data),
+    properties = utils::modifyList(
+      list(id = id, data = data),
       formula_to_property(properties)
     )
   )

@@ -34,17 +34,19 @@ const Viz = ({ deckGL, widgetElement }) => ({
 
   setLayers(layers) {
     layers.forEach(layer => {
-      const source = layer.source;
+      /*const source = layer.source;
       if (typeof source === "object") {
         if (source.df) layer.source.data = HTMLWidgets.dataframeToD3(source.data);
       }
+      */
+      if (layer.convertData) layer.properties.data = HTMLWidgets.dataframeToD3(layer.properties.data);
     });
     this.layers = layers;
   },
 
   render() {
     const deckLayers = this.layers.map(layer => {
-      layer.properties.data = this._getData(layer.source);
+      // layer.properties.data = this._getData(layer.source);
       const props = parseLayerProps(layer.properties, this.widgetElement);
       return new deck[layer.className](props);
     });

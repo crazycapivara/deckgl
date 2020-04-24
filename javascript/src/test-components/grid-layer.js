@@ -8,9 +8,10 @@ const source = {
 
 const GRID_LAYER = {
   className: "GridLayer",
-  source: source, // SOURCE_ID,
+  // source: source, // SOURCE_ID,
   properties: {
     id: LAYER_ID,
+    data: source.data,
     pickable: true,
     extruded: true,
     cellSize: 200,
