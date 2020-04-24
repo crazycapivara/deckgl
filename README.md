@@ -76,7 +76,7 @@ rdeck <- deckgl(
 Layers
 ------
 
-Due to the generic function `add_layer` any kind of layer defined in the [deck.gl API Reference](https://deck.gl/#/documentation/deckgl-api-reference) is supported. The layer type is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of the `add_*_layer` shortcut functions instead:
+Due to the generic function `add_layer` any kind of layer defined in the [deck.gl Layer Catalog](https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview) is supported. The layer type is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of the `add_*_layer` shortcut functions instead:
 
 ``` r
 # Generic function
@@ -118,7 +118,7 @@ Layer Props
 
 Layer properties are passed to the `add_*_layer` functions either as named list by the `properties` argument or as named parameters / keyword arguments via the `...` parameter. The names correspond to the properties of the deck.gl counterparts. Therefore, please see the [deck.gl Layer Catalog](https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview) to determine the available parameters for the used layer. You can also pass a props list and keyword arguments together. Identical properties are overwritten by the latter ones.
 
-[GridLayer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) Example:
+[Grid Layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) Example:
 
 ``` javascript
 // JavaScript code
@@ -220,9 +220,9 @@ The tooltip for a layer can be set via the `tooltip` parameter. You can either p
 
 ### Tooltip template Syntax
 
-The tooltip string is a so called "mustache" template in which variable names are identified by the double curly brackets that surround them. The variable names available to the template are given by deck.gl’s [picking info object](https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object) and vary by layer.
+The tooltip string is a so called "mustache" template in which variable names are identified by the double curly brackets that surround them. The variable names available to the template are given by deck.gl’s [pickingInfo.object](https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object) and vary by layer.
 
-See [mustache](https://github.com/janl/mustache.js) for a complete syntax overwiew.
+See [mustache.js](https://github.com/janl/mustache.js) for a complete syntax overwiew.
 
 ``` r
 data("bart_segments")
@@ -338,14 +338,14 @@ shinyApp(frontend, backend)
 
 To update a `deckgl` instance use `deckgl_proxy` in combination with `update_deckgl`.
 
-Furthermore, the `onclick` event sends deck.gl’s [picking info object](https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object) to your shiny application and updates the corresponding input in the form of `input$widget_id_onclick`. For example, if the widget id is `rdeck`, you can access the `pickingInfo.object` with `input$rdeck_onclick`:
+Furthermore, the `onclick` event sends deck.gl’s [pickingInfo.object](https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object) to your shiny application and updates the corresponding input in the form of `input$widget_id_onclick`. For example, if the widget id is `rdeck`, you can access the `pickingInfo.object` with `input$rdeck_onclick`:
 
 ``` r
 backend < -function(input, output) {
   # ...
   observeEvent(input$rdeck_onclick, {
     info <- input$rdeck_onclick
-    print(info)
+    print(info$object)
   })
 }
 ```
@@ -353,7 +353,7 @@ backend < -function(input, output) {
 Development
 -----------
 
-The JavaScript library of deckgl uses [webpack](https://webpack.js.org/) as module bundler. Therefore, you need [node.js](https://nodejs.org) to build the module. All JavaScript code is located in the `javascript/src` folder and test components go to `javascript/src/test-components`.
+The JavaScript library of r-deckgl uses [webpack](https://webpack.js.org/) as module bundler. Therefore, you need [node.js](https://nodejs.org) to build the module. All JavaScript code is located in the `javascript/src` folder and test components go to `javascript/src/test-components`.
 
 Build the library from inside the `javascript` folder with:
 
