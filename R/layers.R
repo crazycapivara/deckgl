@@ -34,8 +34,8 @@ add_layer <- function(deckgl, class_name, id, data = NULL, properties = list(), 
     data <- modify_sf(data)
   }
 
-  invoke_method(
-    deckgl, "addLayer",
+  deckgl %>% push_to_prop(
+    "layers",
     className = class_name,
     convertData = inherits(data, "data.frame"),
     data = data,
