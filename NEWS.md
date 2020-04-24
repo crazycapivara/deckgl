@@ -1,5 +1,7 @@
 # deckgl 0.2.6
 
+* Get Started Docs: `README.md`
+
 ## deckgl 0.2.6-beta.4
 
 * Custom legend control: `add_legend`
