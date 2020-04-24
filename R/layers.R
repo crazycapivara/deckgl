@@ -34,20 +34,32 @@ add_layer <- function(deckgl, class_name, id, data = NULL, properties = list(), 
     data <- modify_sf(data)
   }
 
-  layer <- list(
+  invoke_method(
+    deckgl, "addLayer",
     className = class_name,
     convertData = inherits(data, "data.frame"),
     data = data,
     source = source,
     properties = utils::modifyList(
-      # list(id = id, data = data),
       list(id = id),
       formula_to_property(properties)
     )
   )
-  deckgl$x$layers %<>%
-    push(layer)
-  deckgl
+
+  #layer <- list(
+  #  className = class_name,
+  #  convertData = inherits(data, "data.frame"),
+  #  data = data,
+  #  source = source,
+  #  properties = utils::modifyList(
+  #    # list(id = id, data = data),
+  #    list(id = id),
+  #    formula_to_property(properties)
+  #  )
+  #)
+  #deckgl$x$layers %<>%
+  #  push(layer)
+  #deckgl
 }
 
 #has_source <- function(deckgl, source_id) {
