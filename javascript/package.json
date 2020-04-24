@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "build-dev": "webpack src/index.js --mode development -o ../inst/htmlwidgets/lib/widget/bundle-dev.js",
-    "start-dev": "webpack-dev-server src/test.js --mode development --open"
+    "start": "webpack-dev-server src/test.js --mode development --open"
   },
   "keywords": [],
   "author": "Stefan Kuethe",
