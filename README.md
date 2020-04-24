@@ -1,13 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-An R Interface to deck.gl
-=========================
+r-deckgl: An R Interface to deck.gl
+===================================
 
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![deck.gl Version](https://img.shields.io/badge/deck.gl-v8.1.0-blue.svg)](https://github.com/uber/deck.gl/releases/tag/v8.1.0)
 
-The deckgl package makes the open-source JavaScript library [deck.gl](https://deck.gl/) available within R via the [htmlwidgets](https://www.htmlwidgets.org/) package.
-
-By using mostly keyword arguments deckgl supports more or less all parameters of its JavaScript counterparts.
+The r-deckgl package makes the open-source JavaScript library [deck.gl](https://deck.gl/) available within R via the [htmlwidgets](https://www.htmlwidgets.org/) package.
 
 Installation
 ------------
@@ -16,7 +14,7 @@ Installation
 install.packages("deckgl")
 ```
 
-You can install the latest version of deckgl from github with:
+You can install the latest version of r-deckgl from github with:
 
 ``` r
 # install.packages("remotes")
@@ -104,7 +102,7 @@ props <- list(
 
 ### Data objects of class `sf`
 
-An object of class [sf](https://github.com/r-spatial/sf) is a `data.frame` with a geometry list-column. Set the layer prop that fetches the geometry to the geometry column of your `sf` object:
+An object of class [sf](https://github.com/r-spatial/sf) is a `data.frame` with a geometry list-column. Set the layer prop that fetches the geometry to the geometry list-column of your `sf` object:
 
 ``` r
 # Example: PolygonLayer
@@ -118,7 +116,7 @@ props <- list(
 Layer Props
 -----------
 
-Layer properties are passed to the `add_*_layer` functions either via the `properties` argument as named list or as named parameters / keyword arguments via the `...` parameter. The names correspond to the properties of their JavaScript counterparts. Therefore, please see the [deck.gl Layer Catalog](https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview) to determine the available parameters for the used layer. You can also pass a props list and keyword arguments together. Identical properties are overwritten by the latter ones.
+Layer properties are passed to the `add_*_layer` functions either as named list by the `properties` argument or as named parameters / keyword arguments via the `...` parameter. The names correspond to the properties of the deck.gl counterparts. Therefore, please see the [deck.gl Layer Catalog](https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview) to determine the available parameters for the used layer. You can also pass a props list and keyword arguments together. Identical properties are overwritten by the latter ones.
 
 [GridLayer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) Example:
 
@@ -144,9 +142,9 @@ deck <- deckgl() %>%
     id = "grid-layer",
     data = data,
     extruded = TRUE,
-    cell_size = 200,
-    elevation_scale = 4,
-    get_position = ~lng + lat
+    cellSize = 200,
+    elevationScale = 4,
+    getPosition = ~lng + lat
   )
 
 # ... using a named props list
@@ -165,7 +163,7 @@ deckgl() %>%
 
 ### Camels or Snakes
 
-According to the style conventions in R, `camelCased` parameters in deck.gl can alseo be passed as `snake_cased` parameters in R. For example, `getPosition` can be passed to deck.gl as `get_position`:
+According to the style conventions in R, `camelCased` parameters in deck.gl can also be passed as `snake_cased` parameters in R. For example, `getPosition` can be passed to deck.gl as `get_position`:
 
 ``` r
 deckgl() %>%
@@ -202,7 +200,15 @@ props <- list(
 
 ### Colors
 
-In deck.gl colors are represented by `[r, g, b, a]` arrays. In R you can pass hex color codes to all color props of the `add_*_layer` functions. They are automatically converted to the required format.
+In deck.gl colors are represented by `[r, g, b, a]` arrays. In R you can pass hex color codes or color names to all color props of the `add_*_layer` functions. They are automatically converted to the required format:
+
+``` r
+deckgl() %>%
+  add_grid_layer(
+    colorRange = RColorBrewer::brewer.pal(6, "Blues"),
+    # ...
+  )
+```
 
 Tooltips
 --------
@@ -214,7 +220,7 @@ The tooltip for a layer can be set via the `tooltip` parameter. You can either p
 
 ### Tooltip template Syntax
 
-The tooltip string is a so called "mustache" template in which variable names are identified by the double curly brackets that surround them. The variable names available to the template are given by deck.gl’s `pickingInfo.object` and vary by layer.
+The tooltip string is a so called "mustache" template in which variable names are identified by the double curly brackets that surround them. The variable names available to the template are given by deck.gl’s [picking info object](https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object) and vary by layer.
 
 See [mustache](https://github.com/janl/mustache.js) for a complete syntax overwiew.
 
@@ -280,7 +286,7 @@ deckgl() %>%
 Basemaps
 --------
 
-By default, `add_basemap` adds a [carto Basemap](https://carto.com/developers/carto-vl/reference/#cartobasemaps) to the widget.
+By default, `add_basemap` adds a [carto basemap](https://carto.com/developers/carto-vl/reference/#cartobasemaps) to the widget.
 
 To use basemaps from [mapbox](https://www.mapbox.com/maps/) it is recommended that you store your API access token in an environment variable called `MAPBOX_API_TOKEN`:
 
@@ -295,10 +301,53 @@ deckgl() %>%
 Run Examples
 ------------
 
-You can run the [API Examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples/deckgl-api-reference) from the `add_*_layer` functions with `example(add_*_layer)`:
+You can run the [API examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples/deckgl-api-reference) from the `add_*_layer` functions with `example(add_*_layer)`:
 
 ``` r
 example(add_grid_layer)
+```
+
+Shiny Integration
+-----------------
+
+With the `renderDeckgl` and `deckglOutput` functions you can use r-deckgl in shiny applications:
+
+``` r
+library(shiny)
+library(deckgl)
+
+backend <- function(input, output) {
+  output$rdeck <- renderDeckgl({
+    deckgl() %>%
+      add_grid_layer(
+        data = sf_bike_parking,
+        getPosition = ~lng + lat,
+        cellSize = 400,
+        pickable = TRUE
+      ) %>%
+    add_basemap()
+  })
+}
+
+frontend <- fluidPage(
+  deckglOutput("rdeck")
+)
+
+shinyApp(frontend, backend)
+```
+
+To update a `deckgl` instance use `deckgl_proxy` in combination with `update_deckgl`.
+
+Furthermore, the `onclick` event sends deck.gl’s [picking info object](https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object) to your shiny application and updates the corresponding input in the form of `input$widget_id_onclick`. For example, if the widget id is `rdeck`, you can access the `pickingInfo.object` with `input$rdeck_onclick`:
+
+``` r
+backend < -function(input, output) {
+  # ...
+  observeEvent(input$rdeck_onclick, {
+    info <- input$rdeck_onclick
+    print(info)
+  })
+}
 ```
 
 Development
@@ -321,12 +370,11 @@ npm run start
 Documentation
 -------------
 
--   [deckgl for R](https://crazycapivara.github.io/deckgl/) (pkgdown-site)
+-   [r-deckgl](https://crazycapivara.github.io/deckgl/) (pkgdown-site)
 -   [example scripts](https://github.com/crazycapivara/deckgl/tree/master/inst/examples)
--   [deckgl-api-reference](https://deck.gl/#/documentation/deckgl-api-reference) (JavaScript framework)
+-   [deck.gl API reference](https://deck.gl/#/documentation/deckgl-api-reference) (JavaScript framework)
 
 Notes
 -----
 
--   It is a known issue that the *deckgl widget* might not be visible in the viewer pane of RStudio. Just open it in your browser by clicking *Show in new window* and everything will be fine.
--   The [documentation](https://crazycapivara.github.io/deckgl/) is work in progress. See also the [examples](https://github.com/crazycapivara/deckgl/tree/master/inst/examples) as a good starting point.
+-   It is a known issue that the `deckgl` widget might not be visible in the viewer pane of RStudio. Just open it in your browser by clicking "Show in new window" and everything will be fine.
