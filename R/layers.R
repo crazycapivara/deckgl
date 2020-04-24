@@ -37,9 +37,11 @@ add_layer <- function(deckgl, class_name, id, data = NULL, properties = list(), 
   layer <- list(
     className = class_name,
     convertData = inherits(data, "data.frame"),
+    data = data,
     source = source,
     properties = utils::modifyList(
-      list(id = id, data = data),
+      # list(id = id, data = data),
+      list(id = id),
       formula_to_property(properties)
     )
   )

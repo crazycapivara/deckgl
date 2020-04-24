@@ -39,7 +39,8 @@ const Viz = ({ deckGL, widgetElement }) => ({
         if (source.df) layer.source.data = HTMLWidgets.dataframeToD3(source.data);
       }
       */
-      if (layer.convertData) layer.properties.data = HTMLWidgets.dataframeToD3(layer.properties.data);
+      // if (layer.convertData) layer.properties.data = HTMLWidgets.dataframeToD3(layer.properties.data);
+      if (layer.convertData) layer.data = HTMLWidgets.dataframeToD3(layer.data);
     });
     this.layers = layers;
   },
@@ -47,7 +48,8 @@ const Viz = ({ deckGL, widgetElement }) => ({
   render() {
     const deckLayers = this.layers.map(layer => {
       // layer.properties.data = this._getData(layer.source);
-      if (layer.source) layer.properties.data = this.getSource(layer.source).data;
+      // if (layer.source) layer.properties.data = this.getSource(layer.source).data;
+      layer.properties.data = layer.source ? this.getSource(layer.source).data : layer.data;
       const props = parseLayerProps(layer.properties, this.widgetElement);
       return new deck[layer.className](props);
     });
