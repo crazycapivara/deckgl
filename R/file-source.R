@@ -1,7 +1,9 @@
 create_file_source <- function(id, data) {
+  if (inherits(data, "df")) data <- modify_sf(data)
+
   src <- tempdir()
   filename <- paste0(id, ".js")
-  source <- list(id = id, data = create_source(data)$data) %>%
+  source <- list(id = id, data = data) %>%
     jsonlite::toJSON(auto_unbox = TRUE, force = TRUE)
   #data <- jsonify::to_json(create_source(data)$data, auto_unbox = TRUE)
   paste0("_deckWidget.sources.push(", source, ");") %>%
