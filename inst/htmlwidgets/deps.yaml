@@ -7,7 +7,7 @@ deck.gl:
   package: deckgl
 mapbox-gl:
   name: mapbox-gl
-  version: 1.8.0
+  version: 1.9.1
   src: htmlwidgets/lib/mapboxgl
   script: mapbox-gl.js
   stylesheet: mapbox-gl.css
@@ -24,9 +24,11 @@ h3-js:
 # Experimental
 json-editor:
   name: json-editor
-  version: 8.6.4
+  version: 8.6.6
   src:
-    href: https://unpkg.com/jsoneditor@8.6.4/dist/
+    #href: https://unpkg.com/jsoneditor@8.6.6/dist/
+    file: htmlwidgets/lib/jsoneditor
   script: jsoneditor.min.js
   stylesheet: jsoneditor.min.css
   all_files: false
+  package: deckgl
