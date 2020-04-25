@@ -86,6 +86,7 @@ export default function(widgetElement, width, height) {
       */
       viz.setLayers([ ]);
       widgetData.calls.forEach(({ funcName, args }) => funcs[funcName].call(viz, args));
+      fixLayerProperties(viz.layers);
       viz.render();
     });
   }
