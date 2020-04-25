@@ -17,6 +17,7 @@ properties <- list(
 
 deck <- deckgl(pitch = 25, zoom = 10.5) %>%
   add_path_layer(data = sample_data, properties = properties) %>%
-  add_basemap()
+  add_basemap() %>%
+  add_control("Path Layer")
 
 if (interactive()) deck

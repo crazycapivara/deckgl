@@ -11,8 +11,8 @@ deck <- deckgl(zoom = 10, pitch = 35) %>%
     getAngle = 0,
     getTextAnchor = "middle",
     getAlignmentBaseline = "center",
-    getTooltip = JS("object =>`${object.name}<br/>${object.address}`")
+    tooltip = "{{name}}<br/>{{address}}"
   ) %>%
-  add_mapbox_basemap()
+  add_basemap(use_carto_style("voyager"))
 
 if (interactive()) deck
