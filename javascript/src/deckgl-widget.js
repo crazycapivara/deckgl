@@ -28,17 +28,15 @@ function addSource({ id, data, convertData }) {
   viz.addSource({ id, data });
 }
 
-/*
 function addLayer(layer) {
   const viz = this;
   if (layer.convertData) layer.data = HTMLWidgets.dataframeToD3(layer.data);
   viz.addLayer(layer);
 }
-*/
 
 // TODO: Must be global, so that they can be extended by other libs
 const funcs = {
-  //addLayer,
+  addLayer,
   addSource,
   addControl,
   addLegend,
@@ -67,7 +65,7 @@ export default function(widgetElement, width, height) {
     viz = globalStorage.viz = Viz({ deckGL, widgetElement });
     //sources.forEach(source => viz.addSource(source));
     sources.concat(_deckWidget.sources).forEach(source => viz.addSource(source));
-    viz.setLayers(layers);
+    // viz.setLayers(layers);
     calls.forEach(({ funcName, args }) => funcs[funcName].call(viz, args));
     viz.render();
   }
@@ -80,9 +78,14 @@ export default function(widgetElement, width, height) {
     Shiny.addCustomMessageHandler('proxythis', function(obj) {
       // console.log(obj);
       const widgetData = obj.x;
+      console.log(widgetData);
+      /*
       fixLayerProperties(widgetData.layers);
       console.log(widgetData);
       viz.setLayers(widgetData.layers);
+      */
+      viz.setLayers([ ]);
+      widgetData.calls.forEach(({ funcName, args }) => funcs[funcName].call(viz, args));
       viz.render();
     });
   }
