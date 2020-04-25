@@ -1,3 +1,10 @@
+# deckgl 0.2.7
+
+## deckgl 0.2.7-alpha.1
+
+* JSON Editor
+* Data Sources
+
 # deckgl 0.2.6
 
 * Get Started Docs: `README.md`
