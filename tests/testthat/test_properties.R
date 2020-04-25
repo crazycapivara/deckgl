@@ -14,7 +14,7 @@ test_that("merge properties", {
     add_icon_layer(
       data = "some-data",
       properties = default_icon_properties, getColor = c(140, 120, 0), getSize = 5)
-  properties <- deck$x$layers[[1]]$properties
+  properties <- get_layer_props(deck) #deck$x$layers[[1]]$properties
 
   # Assert
   expected_properties <- c(

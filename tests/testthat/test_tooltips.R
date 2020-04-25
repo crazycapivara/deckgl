@@ -4,7 +4,7 @@ test_that("pickable not set", {
   # Prepare
   sample_data <- "some-sample-data"
   properties <- list(
-    getTooltip = JS("object => `count: ${object.points.length}`")
+    tooltip = "{{points.length}}"
   )
 
   # Act
@@ -12,7 +12,7 @@ test_that("pickable not set", {
     add_hexagon_layer(data = sample_data, properties = properties)
 
   # Assert
-  expect_equal(properties_(deckgl)$pickable, TRUE)
+  expect_equal(get_layer_props(deckgl)$pickable, TRUE)
 })
 
 test_that("pickable set to FALSE", {
@@ -20,7 +20,7 @@ test_that("pickable set to FALSE", {
   sample_data <- "some-sample-data"
   properties <- list(
     pickable = FALSE,
-    getTooltip = JS("object => `count: ${object.points.length}`")
+    getTooltip = "{{points.length}}"
   )
 
   # Act
@@ -28,5 +28,5 @@ test_that("pickable set to FALSE", {
     add_hexagon_layer(data = sample_data, properties = properties)
 
   # Assert
-  expect_equal(properties_(deckgl)$pickable, FALSE)
+  expect_equal(get_layer_props(deckgl)$pickable, FALSE)
 })
