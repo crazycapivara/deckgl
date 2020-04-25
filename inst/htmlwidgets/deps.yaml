@@ -20,3 +20,13 @@ h3-js:
   script: h3-js.umd.js
   all_files: false
   package: deckgl
+
+# Experimental
+json-editor:
+  name: json-editor
+  version: 8.6.4
+  src:
+    href: https://unpkg.com/jsoneditor@8.6.4/dist/
+  script: jsoneditor.min.js
+  stylesheet: jsoneditor.min.css
+  all_files: false

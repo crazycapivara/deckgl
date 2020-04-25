@@ -14,9 +14,10 @@
 #'   if you want to use a properties object for more than one layer.
 #' @param tooltip A tooltip template that defines what should be displayed when the mouse enters an object.
 #'   You can also pass a list with the properties \code{html} and \code{style}. See also \code{\link{use_tooltip}}.
+#' @param source  The ID of the data source ...
 #' @return A deckgl widget object.
 #' @export
-add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., tooltip = NULL) {
+add_layer <- function(deckgl, class_name, id, data = NULL, properties = list(), ..., tooltip = NULL, source = NULL) {
   properties <- list(tooltip = tooltip) %>%
     utils::modifyList(properties) %>%
     utils::modifyList(list(...)) %>%
@@ -33,29 +34,48 @@ add_layer <- function(deckgl, class_name, id, data, properties = list(), ..., to
     data <- modify_sf(data)
   }
 
-  if (is.data.frame(data)) {
-    properties$dataframeToD3 <- TRUE
-  }
-
-  n <- length(deckgl$x$layers)
-  deckgl$x$layers[[n + 1]] <- list(
+  deckgl %>% invoke_method(
+    "addLayer",
     className = class_name,
+    convertData = inherits(data, "data.frame"),
     data = data,
-    properties = c(
-      id = id,
+    source = source,
+    properties = utils::modifyList(
+      list(id = id),
       formula_to_property(properties)
     )
   )
-  deckgl
+
+  #layer <- list(
+  #  className = class_name,
+  #  convertData = inherits(data, "data.frame"),
+  #  data = data,
+  #  source = source,
+  #  properties = utils::modifyList(
+  #    # list(id = id, data = data),
+  #    list(id = id),
+  #    formula_to_property(properties)
+  #  )
+  #)
+  #deckgl$x$layers %<>%
+  #  push(layer)
+  #deckgl
 }
+
+#has_source <- function(deckgl, source_id) {
+#  n <- length(deckgl$x$sources)
+#  if (n == 0) return(FALSE)
+
+#  source_id %in% sapply(1:n, function(i) deckgl$x$sources[[i]]$id)
+#}
 
 # Deprecated
 # TODO: Remove in next release
-merge_properties <- function(x, y) {
-  .Deprecated("modifyList")
+#merge_properties <- function(x, y) {
+#  .Deprecated("modifyList")
 
-  for (name in names(y)) {
-    x[[name]] <- y[[name]]
-  }
-  x
-}
+#  for (name in names(y)) {
+#    x[[name]] <- y[[name]]
+#  }
+#  x
+#}

@@ -30,17 +30,20 @@ The color and height of the cell is scaled by number of points it contains.
 data("sf_bike_parking")
 
 properties <- list(
+  visible = TRUE,
   extruded = TRUE,
   cellSize = 200,
   elevationScale = 4,
   getPosition = ~lng + lat,
-  getTooltip = JS("object => `${object.position.join(', ')}<br/>Count: ${object.count}`"),
-  fixedTooltip = TRUE
+  tooltip = "{{position.0}}, {{position.1}}<br/>Count: {{count}}"
 )
 
-deck <- deckgl(zoom = 11, pitch = 45, bearing = 35) \%>\%
-  add_grid_layer(data = sf_bike_parking, properties = properties) \%>\%
-  add_basemap()
+deck <- deckgl(zoom = 11, pitch = 45, bearing = 35, element_id = "grid-layer") \%>\%
+  add_source("sf-bike-parking", sf_bike_parking) \%>\%
+  add_grid_layer(source = "sf-bike-parking", properties = properties) \%>\%
+  add_control("Grid Layer") \%>\%
+  add_basemap() \%>\%
+  add_json_editor()
 
 if (interactive()) deck
 }

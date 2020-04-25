@@ -7,6 +7,6 @@ map <- deckgl() %>%
     getPosition = ~lng + lat,
     getWeight = ~spaces
   ) %>%
-  add_mapbox_basemap()
+  add_basemap()
 
 if (interactive()) map

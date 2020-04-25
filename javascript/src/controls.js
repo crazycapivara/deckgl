@@ -1,13 +1,11 @@
-const CLASS_NAME_CTRL = "deckgl-widget-ctrl";
-const CLASS_NAME_CTRL_GROUP = `${CLASS_NAME_CTRL}-group`;
-const POSITIONS = [
-  "top-left",
-  "top-right",
-  "bottom-right",
-  "bottom-left"
-];
+import {
+  CLASS_NAME_TOOLTIP,
+  CLASS_NAME_CTRL,
+  CLASS_NAME_CTRL_GROUP,
+  CLASS_NAME_INPUT,
+  POSITIONS } from "./constants";
 
-export function createControls(widgetElement) {
+export function createControlGroups(widgetElement) {
   POSITIONS.forEach(pos => {
     const ctrl = document.createElement("div");
     ctrl.classList.add(CLASS_NAME_CTRL_GROUP, `${CLASS_NAME_CTRL}-${pos}`);
@@ -15,18 +13,18 @@ export function createControls(widgetElement) {
   });
 }
 
-export function addControl(html, pos, style) {
+export function addControl({ html, pos, style }) {
   const ctrl = document.createElement("div");
   ctrl.classList.add(CLASS_NAME_CTRL);
   if (style) ctrl.style.cssText = style;
 
   ctrl.innerHTML = html;
-  const parent = document.getElementsByClassName(`${CLASS_NAME_CTRL}-${pos}`)[0];
+  const parent = document.getElementsByClassName(`${CLASS_NAME_CTRL}-${pos  || "top-right"}`)[0];
   parent.appendChild(ctrl);
   return ctrl;
 }
 
-export function addLegend(items, title, pos, style) {
+export function addLegend({ items, title, pos, style }) {
   const rows = items.map(item => `
     <li>
       <span class="point-mark" style="background-color:${item.color};border: 1px solid black;"></span>
@@ -39,6 +37,33 @@ export function addLegend(items, title, pos, style) {
       <div class="legend-items"><ul>${rows.join("\n")}</ul></div>
     </div>
   `;
-  const legend = addControl(html, pos || "top-right", style);
+  const legend = addControl({ html, pos, style });
   return legend;
+}
+
+export function createTooltip(widgetElement) {
+  const tooltip = document.createElement("div");
+  tooltip.classList.add(CLASS_NAME_TOOLTIP);
+  widgetElement.appendChild(tooltip);
+  return tooltip;
+}
+
+export function addInteractiveControl({ props, text, pos }) {
+  const ctrl = document.createElement("div");
+  ctrl.classList.add(CLASS_NAME_CTRL, CLASS_NAME_INPUT);
+  const label = document.createElement("label");
+  label.innerText = text || "I am your label";
+  const input = document.createElement("input");
+  Object.assign(input, props);
+  /* Example
+  input.onchange = (e) => {
+    this.layers[0].properties["elevationScale"] = e.target.value;
+    this.render();
+  };
+  */
+  ctrl.appendChild(label);
+  ctrl.appendChild(input);
+  const parent = document.getElementsByClassName(`${CLASS_NAME_CTRL}-${pos  || "top-right"}`)[0];
+  parent.appendChild(ctrl);
+  return input;
 }

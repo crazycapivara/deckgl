@@ -8,5 +8,5 @@
 #' @export
 add_legend <- function(deckgl, colors, labels, title = NULL, pos = "top-right", style = NULL, ...) {
   items <- lapply(1:length(colors), function(i) list(color = colors[i], label = labels[i]))
-  invoke_method(deckgl, "addLegend", items, title, pos, style, ...)
+  invoke_method(deckgl, "addLegend", items = items, title = title, pos = pos, style = style, ...)
 }

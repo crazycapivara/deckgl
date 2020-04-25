@@ -7,6 +7,6 @@ bounds <- c(-122.5190, 37.7045, -122.355, 37.829)
 
 deck <- deckgl() %>%
   add_bitmap_layer(image = image, bounds = bounds) %>%
-  add_mapbox_basemap()
+  add_basemap()
 
 if (interactive()) deck

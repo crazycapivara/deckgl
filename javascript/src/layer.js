@@ -2,7 +2,7 @@ import { render as mustacheRender } from "mustache";
 import { CLASS_NAME_TOOLTIP } from "./constants";
 import { convertColor } from "./utils";
 
-export default function(className, props, widgetElement) {
+export default function(props, widgetElement) {
   // Pass data back to R in 'shinyMode'
   if (HTMLWidgets.shinyMode) {
     props.onClick = function(info) {
@@ -18,7 +18,8 @@ export default function(className, props, widgetElement) {
   // Support deprecated? 'getTooltip' property
   const tooltip = props.tooltip || props.getTooltip;
   if (tooltip) {
-    const tooltipElement = createTooltip(widgetElement);
+    // const tooltipElement = createTooltip(widgetElement);
+    const tooltipElement = document.getElementsByClassName(CLASS_NAME_TOOLTIP)[0];
     if (tooltip.style) tooltipElement.style.cssText = tooltip.style;
     props.onHover = function({ x, y, object }) {
       if (!object) {
@@ -35,15 +36,17 @@ export default function(className, props, widgetElement) {
     };
   }
 
-  Object.assign(props, convertColorProps(props));
-  return new deck[className](props);
+  return Object.assign(props, convertColorProps(props));
+  //return new deck[className](props);
 }
 
 function convertColorProps(props) {
   const convertedProps = { };
   for (let [key, value] of Object.entries(props)) {
-    if (key === "colorRange" && typeof value[0] === "string") {
-      convertedProps[key] = value.map(specifier => convertColor(specifier));
+    // if (key === "colorRange" && typeof value[0] === "string") {
+    if (key === "colorRange") {
+      convertedProps[key] = value.map(specifier => typeof specifier === "string" ?
+        convertColor(specifier) : specifier);
     }
     else if (key.includes("Color")) {
       convertedProps[key] = (data) => {
@@ -55,11 +58,4 @@ function convertColorProps(props) {
   }
 
   return convertedProps;
-}
-
-function createTooltip(widgetElement) {
-  const tooltip = document.createElement("div");
-  tooltip.classList.add(CLASS_NAME_TOOLTIP);
-  widgetElement.appendChild(tooltip);
-  return tooltip;
 }

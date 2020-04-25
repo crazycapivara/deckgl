@@ -22,7 +22,10 @@ deckgl_proxy <- function(shinyId, session = shiny::getDefaultReactiveDomain()) {
     list(
       session = session,
       id = shinyId,
-      x = list(layers = list())
+      x = list(
+        calls = list(),
+        layers = list()
+      )
     ),
     class = c("deckgl_proxy", "htmlwidget_proxy")
   )

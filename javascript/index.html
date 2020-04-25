@@ -13,31 +13,15 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/jsoneditor@8.6.4/dist/jsoneditor.min.css">
     <style>
       #widget {
-        width: 800px;
+        /* width: 800px; */
         height: 500px;
       }
     </style>
   </head>
   <body>
-    <div id="widget"></div>
-    <div id="editor"></div>
-    <script>
-      const editorElement = document.getElementById("editor");
-      const options = {
-        mode: "form",
-        search: false,
-        mainMenuBar: false,
-        navigationBar: false,
-        onChangeJSON: (e) => console.log("JSON", e),
-        onChangeText: (e) => console.log("text", e),
-        onEvent: (obj, e) => {
-          // console.log(e.type);
-          if (e.type === "blur") console.log("Here we go");
-        }
-      };
-      const editor = new JSONEditor(editorElement, options);
-      editor.set(options);
-    </script>
+    <div id="htmlwidget_container">
+      <div id="widget"></div>
+    </div>
     <script src="deckgl-widget.min.js"></script>
   </body>
 </html>
