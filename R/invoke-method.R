@@ -4,8 +4,8 @@ invoke_method <- function(widget, func_name, ...) {
   widget
 }
 
-push_to_prop <- function(widget, prop, ...) {
-  pos <- length(widget$x[[prop]]) + 1
-  widget$x[[prop]][[pos]] <- list(...)
-  widget
-}
+#push_to_prop <- function(widget, prop, ...) {
+#  pos <- length(widget$x[[prop]]) + 1
+#  widget$x[[prop]][[pos]] <- list(...)
+#  widget
+#}
