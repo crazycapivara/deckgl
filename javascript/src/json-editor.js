@@ -25,10 +25,11 @@ const ACE_OPTIONS = {
   maxLines: 20
 };
 
-export default function(options) {
+export default function({ options, style }) {
   const viz = this;
   const container = document.createElement("div");
   container.classList.add(CLASS_NAME_JSON_CTRL);
+  if (style) container.style.cssText = style;
   const editor = _deckWidget.editor = new JSONEditor(container, Object.assign(DEFAULT_OPTIONS, options || { }));
   if (editor.aceEditor) editor.aceEditor.setOptions(ACE_OPTIONS);
   document.getElementById(DECKGL_OVERLAY).addEventListener("keydown", (e) => {
@@ -51,8 +52,9 @@ export default function(options) {
 function render(viz) {
   return (text) => {
     try {
+      // console.log(text);
       const obj = JSON.parse(text);
-      // console.log(obj.layers);
+      // console.log(obj);
       viz.layers.map((layer, i) => Object.assign(layer.properties, obj.layers[i]));
       // console.log(viz.layers);
       viz.render();

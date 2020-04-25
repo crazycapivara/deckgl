@@ -4,12 +4,15 @@
 \alias{add_json_editor}
 \title{Add a JSON-Editor to the deckgl widget}
 \usage{
-add_json_editor(deckgl, ...)
+add_json_editor(deckgl, ..., style = "width: 50\%;")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
 
 \item{...}{Optional args that are passed to the \code{JSONEditor}.}
+
+\item{style}{A \code{cssText} string that will modefiy the default style of the container that holds
+the editor.}
 }
 \description{
 Adds a JSON-Editor below the map to interact with the layers of your \code{deck} instance.

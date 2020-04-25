@@ -56,6 +56,6 @@ export default {
     { funcName: "addLegend", args: LEGEND_ARGS },
     { funcName: "addSource", args: source },
     { funcName: "addLayer", args: GRID_LAYER },
-    { funcName: "addJSONEditor", args: { mode: "code" } }
+    { funcName: "addJSONEditor", args: { options: { mode: "code", colorPicker: false }, style: "width: 600px;" } }
   ]
 };
