@@ -1,5 +1,4 @@
 ## @knitr shiny-integration
-library(magrittr)
 library(shiny)
 library(deckgl)
 
@@ -7,7 +6,9 @@ sample_data <- bart_segments
 properties <- list(
   getWidth = 10,
   getSourcePosition = ~from_lng + from_lat,
-  getTargetPosition = ~to_lng + to_lat
+  getTargetPosition = ~to_lng + to_lat,
+  getSourceColor = "yellow",
+  getTargetColor = "orange"
 )
 
 view <- fluidPage(
@@ -23,7 +24,8 @@ backend <- function(input, output) {
       add_arc_layer(
         data = sample_data,
         properties = properties
-      ) %>% add_mapbox_basemap()
+      ) %>%
+      add_basemap()
   })
 
   observeEvent(input$deck_onclick, {

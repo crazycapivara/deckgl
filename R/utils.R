@@ -9,3 +9,8 @@ keys_to_camel_case <- function(x) {
 compact <- function(x) {
   x[!sapply(x, is.null)]
 }
+
+# Append a list (y) to a list of lists (x)
+push <- function(x, y) {
+  c(x, list(y))
+}

@@ -19,6 +19,6 @@ deck <- deckgl(zoom = 10, pickingRadius = 5) %>%
     getElevation = 30,
     getTooltip = JS("object => object.properties.name || object.properties.station")
   ) %>%
-  add_mapbox_basemap()
+  add_basemap()
 
 if (interactive()) deck

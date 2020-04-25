@@ -1,8 +1,18 @@
+const SOURCE_ID = "data-grid-layer";
+const LAYER_ID = "grid-layer";
+
+const source = {
+  id: SOURCE_ID,
+  data: "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json"
+};
+
 const GRID_LAYER = {
   className: "GridLayer",
-  data: "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json",
+  // source: SOURCE_ID,
+  data: source.data,
   properties: {
-    id: "grid-layer",
+    id: LAYER_ID,
+    // data: source.data,
     pickable: true,
     extruded: true,
     cellSize: 200,
@@ -26,7 +36,7 @@ const LEGEND_ARGS = {
   ],
   title: "Legend",
   pos: "top-right",
-  style: "background: yellow;"
+  style: "background: yellow; width: 100px;"
 };
 
 export default {
@@ -44,6 +54,7 @@ export default {
     { funcName: "addControl", args: { html: "Down by Law", pos: "top-right" } },
     { funcName: "addControl", args: { html: "Test", pos: "top-left" } },
     { funcName: "addLegend", args: LEGEND_ARGS },
-    { funcName: "addJSONEditor", args: { mode: "code" } }
+    { funcName: "addJSONEditor", args: { mode: "code" } },
+    { funcName: "addSource", args: source }
   ]
 };

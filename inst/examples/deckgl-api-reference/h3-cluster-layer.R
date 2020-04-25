@@ -19,6 +19,6 @@ properties <- list(
 
 deck <- deckgl(zoom = 10.5, pitch = 20) %>%
   add_h3_cluster_layer(data = sample_data, properties = properties) %>%
-  add_mapbox_basemap()
+  add_basemap()
 
 if (interactive()) deck

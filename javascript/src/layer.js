@@ -18,7 +18,8 @@ export default function(props, widgetElement) {
   // Support deprecated? 'getTooltip' property
   const tooltip = props.tooltip || props.getTooltip;
   if (tooltip) {
-    const tooltipElement = createTooltip(widgetElement);
+    // const tooltipElement = createTooltip(widgetElement);
+    const tooltipElement = document.getElementsByClassName(CLASS_NAME_TOOLTIP)[0];
     if (tooltip.style) tooltipElement.style.cssText = tooltip.style;
     props.onHover = function({ x, y, object }) {
       if (!object) {
@@ -57,11 +58,4 @@ function convertColorProps(props) {
   }
 
   return convertedProps;
-}
-
-function createTooltip(widgetElement) {
-  const tooltip = document.createElement("div");
-  tooltip.classList.add(CLASS_NAME_TOOLTIP);
-  widgetElement.appendChild(tooltip);
-  return tooltip;
 }
