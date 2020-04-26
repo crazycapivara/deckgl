@@ -54,7 +54,12 @@ export default {
     { funcName: "addControl", args: { html: "Down by Law", pos: "top-right" } },
     { funcName: "addControl", args: { html: "Test", pos: "top-left" } },
     { funcName: "addLegend", args: LEGEND_ARGS },
-    { funcName: "addJSONEditor", args: { mode: "code" } },
-    { funcName: "addSource", args: source }
+    { funcName: "addSource", args: source },
+    { funcName: "addLayer", args: GRID_LAYER },
+    { funcName: "addJSONEditor", args: {
+      options: { maxLines: 15, wrap: 40 },
+      style: "width: 400px;",
+      theme: "textmate"
+    } }
   ]
 };
