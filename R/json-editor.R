@@ -7,6 +7,6 @@
 #'   the editor.
 #' @export
 add_json_editor <- function(deckgl, ..., style = "width: 50%;") {
-  deckgl$dependencies <- c(deckgl$dependencies, use_deps("json-editor"))
+  deckgl$dependencies <- c(deckgl$dependencies, use_deps(c("json-editor", "ace")))
   invoke_method(deckgl, "addJSONEditor", options = list(...), style = style)
 }

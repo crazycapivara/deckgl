@@ -32,3 +32,13 @@ json-editor:
   stylesheet: jsoneditor.min.css
   all_files: false
   package: deckgl
+ace:
+  name: ace
+  version: 1.4.11
+  src: htmlwidgets/lib/ace
+  script:
+    - ace.min.js
+    - mode-json.min.js
+    - theme-idle_fingers.min.js
+  all_file: false
+  package: deckgl
