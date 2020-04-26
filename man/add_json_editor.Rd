@@ -2,18 +2,22 @@
 % Please edit documentation in R/json-editor.R
 \name{add_json_editor}
 \alias{add_json_editor}
-\title{Add a JSON-Editor to the deckgl widget}
+\title{Add a JSON-editor to the deckgl widget}
 \usage{
-add_json_editor(deckgl, ..., style = "width: 50\%;")
+add_json_editor(deckgl, ..., style = "width: 50\%;",
+  theme = "idle_fingers")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
 
-\item{...}{Optional args that are passed to the \code{JSONEditor}.}
+\item{...}{Optional args that are passed to the editor. See \url{https://github.com/ajaxorg/ace/wiki/Configuring-Ace}
+for a list of available options.}
 
 \item{style}{A \code{cssText} string that will modefiy the default style of the container that holds
 the editor.}
+
+\item{theme}{The name of the theme used by the editor.}
 }
 \description{
-Adds a JSON-Editor below the map to interact with the layers of your \code{deck} instance.
+Adds a \code{Ace}-editor in JSON mode to the map to interact with the layers of your \code{deck} instance.
 }
