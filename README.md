@@ -95,7 +95,7 @@ The `data` parameter can either be an url to fetch data from or a data object. I
 
 ``` r
 props <- list(
-  getPosition: ~lng + lat
+  getPosition = ~lng + lat
   # ...
 )
 ```

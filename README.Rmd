@@ -105,7 +105,7 @@ Use the formula syntax to define data accessors that deck.gl uses to access the 
 
 ```r
 props <- list(
-  getPosition: ~lng + lat
+  getPosition = ~lng + lat
   # ...
 )
 ```
