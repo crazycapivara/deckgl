@@ -274,6 +274,20 @@ deckgl() %>%
   )
 ```
 
+### JSON Editor
+
+You can add an instance of the [ace](https://ace.c9.io/) editor in JSON mode to the map by using `add_json_editor`:
+
+```r
+deckgl() %>%
+  add_grid_layer(
+    # ...
+  ) %>%
+  add_json_editor()
+```
+
+This allows you to change your layer props on the fly. You can toggle the visibility of the editor by pressing "e".
+
 ### Legends
 
 With `add_legend` you can add a custom legend to your widget:
