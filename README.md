@@ -7,6 +7,8 @@ r-deckgl: An R Interface to deck.gl
 
 The r-deckgl package makes the open-source JavaScript library [deck.gl](https://deck.gl/) available within R via the [htmlwidgets](https://www.htmlwidgets.org/) package.
 
+![vancouver-blocks](man/figures/README-vancouver-blocks.png)
+
 Installation
 ------------
 
@@ -338,7 +340,7 @@ shinyApp(frontend, backend)
 
 To update a `deckgl` instance use `deckgl_proxy` in combination with `update_deckgl`.
 
-Furthermore, the `onclick` event sends deck.gl’s [pickingInfo.object](https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object) to your shiny application and updates the corresponding input in the form of `input$widget_id_onclick`. For example, if the widget id is `rdeck`, you can access the `pickingInfo.object` with `input$rdeck_onclick`:
+Furthermore, the `onclick` event sends deck.gl’s [picking info object](https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object) to your shiny application and updates the corresponding input in the form of `input$widget_id_onclick`. For example, if the widget id is `rdeck`, you can access the `pickingInfo` object with `input$rdeck_onclick`:
 
 ``` r
 backend < -function(input, output) {
