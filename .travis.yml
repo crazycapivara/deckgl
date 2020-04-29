@@ -12,6 +12,8 @@ r_binary_packages:
   - sf
   - Rcpp
 
+install:
+  - R -q -e "update.packages(checkBuilt = TRUE, ask = FALSE)"
+
 before_install:
-  - sudo R -q -e "update.packages(checkBuilt = TRUE, ask = FALSE)"
   - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
