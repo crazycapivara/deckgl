@@ -5,12 +5,13 @@ sudo: true,
 latex: false
 #cache: packages
 
-env:
-  - TRAVIS_R_VERSION=3.6.0
+#env:
+#  - TRAVIS_R_VERSION=3.6.0
 
 r_binary_packages:
   - sf
   - Rcpp
 
 before_install:
+  - sudo R -q -e "update.packages(checkBuilt = TRUE, ask = FALSE)"
   - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
