@@ -1,6 +1,8 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: R
+language: r
+r:
+  - oldrel
 sudo: true,
 latex: false
 #cache: packages
@@ -12,9 +14,10 @@ r_binary_packages:
   - sf
   - Rcpp
 
-install:
-  - R -q -e "devtools::install_deps(dep = T)"
-  - R -q -e "update.packages(checkBuilt = TRUE, ask = FALSE)"
+#install:
+  #- R -q -e 'install.packages("Rcpp")'
+  #- R -q -e "devtools::install_deps(dep = T)"
+  #- R -q -e "update.packages(checkBuilt = TRUE, ask = FALSE)"
 
 before_install:
   - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
