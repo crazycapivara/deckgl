@@ -14,11 +14,12 @@ properties <- list(
   getNormal = ~normal,
   getColor = ~color,
   lightSettings = list(),
-  getTooltip = JS("object => object.position.join(', ')")
+  tooltip = "{{position.0}}, {{position.1}}"
 )
 
 deck <- deckgl(pitch = 45, zoom = 10.5) %>%
   add_point_cloud_layer(data = sample_data, properties = properties) %>%
-  add_mapbox_basemap()
+  add_basemap() %>%
+  add_control("Point Cloud Layer")
 
 if (interactive()) deck

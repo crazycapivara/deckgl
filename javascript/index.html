@@ -11,32 +11,31 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/mapbox-gl/dist/mapbox-gl.css">
     <script src="https://unpkg.com/jsoneditor@8.6.4/dist/jsoneditor.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/jsoneditor@8.6.4/dist/jsoneditor.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js"></script>
     <style>
       #widget {
-        width: 800px;
+        /* width: 800px; */
         height: 500px;
       }
     </style>
   </head>
   <body>
-    <div id="widget"></div>
-    <div id="editor"></div>
+    <div id="htmlwidget_container">
+      <div id="widget"></div>
+    </div>
+    <div id="ace-editor" style="height: 200px; font-size: 12pt;"></div>
     <script>
-      const editorElement = document.getElementById("editor");
-      const options = {
-        mode: "form",
-        search: false,
-        mainMenuBar: false,
-        navigationBar: false,
-        onChangeJSON: (e) => console.log("JSON", e),
-        onChangeText: (e) => console.log("text", e),
-        onEvent: (obj, e) => {
-          // console.log(e.type);
-          if (e.type === "blur") console.log("Here we go");
-        }
-      };
-      const editor = new JSONEditor(editorElement, options);
-      editor.set(options);
+    /*
+      editor = ace.edit("ace-editor", { mode: "ace/mode/json"});
+      //editor.setTheme("ace/theme/twilight");
+      editor.setTheme("ace/theme/idle_fingers");
+      editor.session.setTabSize(2);
+      json = '{"a": 10}'; // JSON.stringify(_deckWidget.widget.viz.layers, null, "\t");
+      editor.session.setValue(json);
+      editor.session.on('change', function(delta) {
+      console.log(editor.getValue());
+      });
+      */
     </script>
     <script src="deckgl-widget.min.js"></script>
   </body>

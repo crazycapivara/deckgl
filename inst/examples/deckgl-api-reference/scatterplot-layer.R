@@ -11,6 +11,7 @@ properties <- list(
 
 deck <- deckgl(zoom = 10.5, pitch = 35) %>%
   add_scatterplot_layer(data = bart_stations, properties = properties) %>%
-  add_mapbox_basemap()
+  add_basemap() %>%
+  add_control("Scatterplot Layer")
 
 if (interactive()) deck

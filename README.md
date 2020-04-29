@@ -3,9 +3,11 @@
 r-deckgl: An R Interface to deck.gl
 ===================================
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![r-deckgl Edge](https://img.shields.io/badge/r.deckgl-edge-blue.svg)](https://github.com/crazycapivara/deckgl/releases/latest) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![deck.gl Version](https://img.shields.io/badge/deck.gl-v8.1.0-blue.svg)](https://github.com/uber/deck.gl/releases/tag/v8.1.0)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![r-deckgl Edge](https://img.shields.io/badge/r.deckgl-edge-blue.svg)](https://github.com/crazycapivara/deckgl/releases/latest) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![deck.gl Version](https://img.shields.io/badge/deck.gl-v8.1.3-blue.svg)](https://github.com/uber/deck.gl/releases/tag/v8.1.3)
 
 The r-deckgl package makes the open-source JavaScript library [deck.gl](https://deck.gl/) available within R via the [htmlwidgets](https://www.htmlwidgets.org/) package.
+
+![vancouver-blocks](man/figures/README-vancouver-blocks.png)
 
 Installation
 ------------
@@ -95,7 +97,7 @@ The `data` parameter can either be an url to fetch data from or a data object. I
 
 ``` r
 props <- list(
-  getPosition: ~lng + lat
+  getPosition = ~lng + lat
   # ...
 )
 ```
@@ -259,6 +261,20 @@ deckgl() %>%
   )
 ```
 
+### JSON Editor
+
+You can add an instance of the [ace](https://ace.c9.io/) editor in JSON mode to the map by using `add_json_editor`:
+
+``` r
+deckgl() %>%
+  add_grid_layer(
+    # ...
+  ) %>%
+  add_json_editor()
+```
+
+This allows you to change your layer props on the fly. You can toggle the visibility of the editor by pressing "e".
+
 ### Legends
 
 With `add_legend` you can add a custom legend to your widget:
@@ -338,7 +354,7 @@ shinyApp(frontend, backend)
 
 To update a `deckgl` instance use `deckgl_proxy` in combination with `update_deckgl`.
 
-Furthermore, the `onclick` event sends deck.gl’s [pickingInfo.object](https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object) to your shiny application and updates the corresponding input in the form of `input$widget_id_onclick`. For example, if the widget id is `rdeck`, you can access the `pickingInfo.object` with `input$rdeck_onclick`:
+Furthermore, the `onclick` event sends deck.gl’s [picking info object](https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object) to your shiny application and updates the corresponding input in the form of `input$widget_id_onclick`. For example, if the widget id is `rdeck`, you can access the `pickingInfo` object with `input$rdeck_onclick`:
 
 ``` r
 backend < -function(input, output) {

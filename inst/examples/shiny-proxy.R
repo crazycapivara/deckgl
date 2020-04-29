@@ -1,5 +1,4 @@
 ## @knitr shiny-integration
-library(magrittr)
 library(shiny)
 library(deckgl)
 
@@ -9,24 +8,24 @@ properties <- list(
   radius = 200,
   elevationScale = 4,
   getPosition = ~lng + lat,
-  getTooltip = JS("object => `${object.position.join(', ')}<br/>Count: ${object.points.length}`"),
-  fixedTooltip = TRUE
+  tooltip = "{{position.0}}, {{position.1}}<br/>Count: {{points.length}}"
 )
 
 view <- fluidPage(
   h1("deckgl for R"),
   actionButton("go", "go"),
-  deckglOutput("deck"),
+  deckglOutput("rdeck"),
   style = "font-family: Helvetica, Arial, sans-serif;"
 )
 
 backend <- function(input, output) {
-  output$deck <- renderDeckgl({
+  output$rdeck <- renderDeckgl({
     deckgl(pitch = 45) %>%
       add_hexagon_layer(
         data = sample_data,
         properties = properties
-      ) %>% add_mapbox_basemap()
+      ) %>%
+      add_basemap()
   })
 
   observeEvent(input$deck_onclick, {
@@ -35,9 +34,9 @@ backend <- function(input, output) {
   })
 
   observeEvent(input$go, {
-    deckgl_proxy("deck") %>%
+    deckgl_proxy("rdeck") %>%
       add_hexagon_layer(
-        data = sample_data, # [1:sample(1:190, 1), ],
+        data = sample_data[1:sample(1:190, 1), ],
         properties = properties,
         elevationScale = sample(1:10, 1)
       ) %>%

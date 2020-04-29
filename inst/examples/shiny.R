@@ -1,9 +1,16 @@
 ## @knitr shiny-integration
-library(magrittr)
 library(shiny)
 library(deckgl)
 
+data("sf_bike_parking")
+
 .app = reactiveValues(visible = TRUE)
+
+props <- list(
+  getPosition = ~lng + lat,
+  extruded = TRUE,
+  getTooltip = "Count: {{points.length}}"
+)
 
 view <- fluidPage(
   h1("deckgl for R"),
@@ -16,11 +23,12 @@ view <- fluidPage(
 backend <- function(input, output) {
   output$deck <- renderDeckgl({
     deckgl(pitch = 45) %>%
-      # 'data = NULL' loads some sample data
+      add_source("sf-bike-parking", sf_bike_parking) %>%
       add_hexagon_layer(
-        getTooltip = JS("object => `count: ${object.points.length}`")
+        source = "sf-bike-parking",
+        properties = props
       ) %>%
-      add_mapbox_basemap()
+      add_basemap()
   })
 
   observeEvent(input$deck_onclick, {
@@ -36,16 +44,20 @@ backend <- function(input, output) {
     .app$visible = ifelse(.app$visible == TRUE, FALSE, TRUE)
     print(.app$visible)
     deckgl_proxy("deck") %>%
-      add_hexagon_layer(visible = .app$visible) %>%
+      add_hexagon_layer(
+        source = "sf-bike-parking",
+        properties = props,
+        visible = .app$visible
+      ) %>%
       update_deckgl(it = "works")
   })
 
   df <- eventReactive(input$deck_onclick, {
     df <- input$deck_onclick$object$points %>%
-      sapply("[", c("ADDRESS", "RACKS", "SPACES")) %>%
+      sapply("[", c("address", "racks", "spaces")) %>%
       t() %>%
       as.data.frame()
-    df[, c("RACKS", "SPACES")] %<>% sapply(as.integer)
+    df[, c("racks", "spaces")] %<>% sapply(as.integer)
     df
   })
 
