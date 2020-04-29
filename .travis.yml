@@ -5,6 +5,9 @@ sudo: true,
 latex: false
 #cache: packages
 
+env:
+  - TRAVIS_R_VERSION=3.6.0
+
 r_binary_packages:
   - sf
   - Rcpp
