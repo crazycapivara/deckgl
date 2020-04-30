@@ -130,17 +130,12 @@ deckgl() %>%
   add_scatterplot_layer(
     source = "bart-stations",
     getPosition = ~lng + lat,
-    getFillColor = "steelblue",
-    getRadius = 50,
-    radiusScale = 6
+    # ...
   ) %>%
   add_text_layer(
     source = "bart-stations",
     getPosition = ~lng + lat,
-    getText = ~name,
-    getSize = 15,
-    sizeScale = 1.5,
-    getColor = "white"
+    # ...
   ) %>%
   add_basemap()
 ```
@@ -424,7 +419,7 @@ Documentation
 -   [example scripts](https://github.com/crazycapivara/deckgl/tree/master/inst/examples)
 -   [deck.gl API reference](https://deck.gl/#/documentation/deckgl-api-reference) (JavaScript framework)
 
-Notes
------
+Note
+----
 
--   It is a known issue that the `deckgl` widget might not be visible in the viewer pane of RStudio. Just open it in your browser by clicking "Show in new window" and everything will be fine.
+If the `deckgl` widget is not visible in the viewer pane of RStudio, just open it in your browser by clicking "Show in new window" and everything will be fine.
