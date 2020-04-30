@@ -2,6 +2,7 @@
 #'
 #' @inheritParams add_layer
 #' @param id The unique id of the source.
+#' @example inst/examples/deckgl-api-reference/sources.R
 #' @export
 add_source <- function(deckgl, id, data) {
   if (inherits(data, "sf")) data <- modify_sf(data)
