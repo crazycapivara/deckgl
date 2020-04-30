@@ -55,7 +55,10 @@ props <- list(
 
 deckgl(zoom = 11, pitch = 45) %>%
   add_basemap() %>%
-  add_grid_layer(data = sf_bike_parking, properties = props)
+  add_grid_layer(
+    data = sf_bike_parking,
+    properties = props
+  )
 ```
 
 The `deckgl` Instance
@@ -114,6 +117,35 @@ props <- list(
   # ...
 )
 ```
+
+### Sources
+
+With `add_source` you can add a source to the widget that can be used accross layers:
+
+``` r
+data("bart_stations")
+
+deckgl() %>%
+  add_source("bart-stations", bart_stations) %>%
+  add_scatterplot_layer(
+    source = "bart-stations",
+    getPosition = ~lng + lat,
+    getFillColor = "steelblue",
+    getRadius = 50,
+    radiusScale = 6
+  ) %>%
+  add_text_layer(
+    source = "bart-stations",
+    getPosition = ~lng + lat,
+    getText = ~name,
+    getSize = 15,
+    sizeScale = 1.5,
+    getColor = "white"
+  ) %>%
+  add_basemap()
+```
+
+Please note that you use the parameter `source` instead of `data`.
 
 Layer Props
 -----------
