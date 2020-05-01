@@ -3,7 +3,7 @@
 r-deckgl: An R Interface to deck.gl
 ===================================
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![r-deckgl Edge](https://img.shields.io/badge/r.deckgl-edge-blue.svg)](https://github.com/crazycapivara/deckgl/releases/latest) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![deck.gl Version](https://img.shields.io/badge/deck.gl-v8.1.3-blue.svg)](https://github.com/uber/deck.gl/releases/tag/v8.1.3)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![r-deckgl Edge](https://img.shields.io/badge/r.deckgl-edge-blue.svg)](https://github.com/crazycapivara/deckgl/releases/latest) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![deck.gl Version](https://img.shields.io/badge/deck.gl-v8.1.4-blue.svg)](https://github.com/uber/deck.gl/releases/tag/v8.1.4)
 
 The r-deckgl package makes the open-source JavaScript library [deck.gl](https://deck.gl/) available within R via the [htmlwidgets](https://www.htmlwidgets.org/) package.
 
@@ -416,7 +416,7 @@ Documentation
 -------------
 
 -   [r-deckgl](https://crazycapivara.github.io/deckgl/) (pkgdown-site)
--   [example scripts](https://github.com/crazycapivara/deckgl/tree/master/inst/examples)
+-   [example scripts](https://github.com/crazycapivara/deckgl/tree/master/_examples)
 -   [deck.gl API reference](https://deck.gl/#/documentation/deckgl-api-reference) (JavaScript framework)
 
 Note

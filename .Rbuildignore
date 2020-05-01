@@ -14,3 +14,4 @@
 ^Dockerfile$
 ^docker-entrypoint.sh$
 ^.dockerignore$
+^_examples$
