@@ -8,7 +8,7 @@
 #'   the editor.
 #' @param theme The name of the theme used by the editor.
 #' @export
-add_json_editor <- function(deckgl, ..., style = "width: 50%;", theme = "idle_fingers") {
+add_json_editor <- function(deckgl, ..., style = "width: 40%;", theme = "idle_fingers") {
   deckgl$dependencies <- c(deckgl$dependencies, use_deps("ace"))
   invoke_method(deckgl, "addJSONEditor", options = list(...), style = style, theme = theme)
 }

@@ -6,7 +6,7 @@
 \usage{
 deckgl(latitude = 37.8, longitude = -122.45, zoom = 12, pitch = 0,
   bearing = 0, initial_view_state = NULL, views = NULL,
-  width = "100\%", height = NULL, element_id = NULL, ...)
+  width = NULL, height = NULL, element_id = NULL, ...)
 }
 \arguments{
 \item{latitude}{The latitude of the initial view state.}
