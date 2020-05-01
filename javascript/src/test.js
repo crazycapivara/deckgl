@@ -1,6 +1,6 @@
 import deckGLWidget from "./deckgl-widget";
-import widget_data from "./test-components/grid-layer";
-// import widget_data from "./test-components/path-layer";
+// import widget_data from "./test-components/grid-layer";
+import widget_data from "./test-components/path-layer";
 
 global.HTMLWidgets = { };
 

@@ -50,7 +50,8 @@ function convertDataAccessors(props) {
       if (typeof value === "string") {
         console.log("try to convert this");
         const func = compile(value);
-        console.log(func({ lat: 10, lng: 20 }));
+        // console.log(func({ lat: 10, lng: 20 }));
+        convertedProps[key] = (data) => func(data);
       }
     }
   }
