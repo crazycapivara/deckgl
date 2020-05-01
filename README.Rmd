@@ -424,7 +424,7 @@ npm run start
 ## Documentation
 
 - [r-deckgl](https://crazycapivara.github.io/deckgl/) (pkgdown-site)
-- [example scripts](https://github.com/crazycapivara/deckgl/tree/master/inst/examples)
+- [example scripts](https://github.com/crazycapivara/deckgl/tree/master/_examples)
 - [deck.gl API reference](https://deck.gl/#/documentation/deckgl-api-reference) (JavaScript framework)
 
 ## Note
