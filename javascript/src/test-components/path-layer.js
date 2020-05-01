@@ -4,8 +4,8 @@ const PATH_LAYER = {
     pickable: true,
     widthScale: 20,
     widthMinPixels: 2,
-    getPath: "path", //data => data.path,
-    getColor: "color", // d => d.color, // [25,145, 12],
+    getPath: "@=path", //data => data.path,
+    getColor: "@=color", // d => d.color, // [25,145, 12],
     getWidth: 5,
     tooltip: { html: "{{name}}" }
   },

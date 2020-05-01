@@ -17,8 +17,8 @@ const GRID_LAYER = {
     extruded: true,
     cellSize: 200,
     elevationScale: 4,
-    getPosition: "COORDINATES",// d => d.COORDINATES,
-    getColorWeight: "2",
+    getPosition: "@=COORDINATES",// d => d.COORDINATES,
+    getColorWeight: "@=2",
     // onClick: ({ object }) => console.log(object)
     // getTooltip: object => object.count
     getTooltip: {
