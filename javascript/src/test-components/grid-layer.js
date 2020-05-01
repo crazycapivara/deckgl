@@ -25,7 +25,8 @@ const GRID_LAYER = {
       style: "background: blue; color: white",
       // eventType: "onClick"
     },
-    colorRange: [ "green", "yellow", "red", "steelblue", "purple", "white" ]
+    colorRange: [ "green", "yellow", "red", "steelblue", "purple", "white" ],
+    getTest: "[lng, lat]"
   }
 };
 

@@ -14,11 +14,15 @@ import {
   convertColor } from "./utils";
 import addJSONEditor from "./json-editor";
 
+import { parse, compile } from "expression-eval";
+
 if (!global._deckWidget) {
   global._deckWidget = {
     convertColor,
     addInteractiveControl,
-    sources: [ ]
+    sources: [ ],
+    parse,
+    compile
   };
 }
 

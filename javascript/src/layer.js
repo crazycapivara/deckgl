@@ -1,3 +1,4 @@
+import { parse, compile } from "expression-eval";
 import { render as mustacheRender } from "mustache";
 import { CLASS_NAME_TOOLTIP } from "./constants";
 import { convertColor } from "./utils";
@@ -36,8 +37,25 @@ export default function(props, widgetElement) {
     };
   }
 
+  Object.assign(props, convertDataAccessors(props));
   return Object.assign(props, convertColorProps(props));
   //return new deck[className](props);
+}
+
+function convertDataAccessors(props) {
+  const convertedProps = { };
+  for (let [key, value] of Object.entries(props)) {
+    if (key.startsWith("get")) {
+      console.log("dc", key);
+      if (typeof value === "string") {
+        console.log("try to convert this");
+        const func = compile(value);
+        console.log(func({ lat: 10, lng: 20 }));
+      }
+    }
+  }
+
+  return convertedProps;
 }
 
 function convertColorProps(props) {
