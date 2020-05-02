@@ -120,7 +120,39 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-deckgl-instance" class="hasAnchor"><a href="#section-deckgl-instance" class="anchor"></a>deckgl Instance</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="deckgl-shiny.html">deckglOutput()</a></code> <code><a href="deckgl-shiny.html">renderDeckgl()</a></code> </p>
+        </td>
+        <td><p>Shiny bindings for deckgl</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="deckgl.html">deckgl()</a></code> </p>
+        </td>
+        <td><p>Create a deckgl widget</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="deckgl_proxy.html">deckgl_proxy()</a></code> </p>
+        </td>
+        <td><p>Create a deckgl proxy object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="update_deckgl.html">update_deckgl()</a></code> </p>
+        </td>
+        <td><p>Send commands to a deckgl instance in a <code>Shiny</code> app</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-layers" class="hasAnchor"><a href="#section-layers" class="anchor"></a>Layers</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -130,12 +162,6 @@
           <p><code><a href="add_arc_layer.html">add_arc_layer()</a></code> </p>
         </td>
         <td><p>Add an arc layer to the deckgl widget</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_basemap.html">add_basemap()</a></code> </p>
-        </td>
-        <td><p>Add a basemap to the deckgl widget</p></td>
       </tr><tr>
         
         <td>
@@ -154,18 +180,6 @@
           <p><code><a href="add_contour_layer.html">add_contour_layer()</a></code> </p>
         </td>
         <td><p>Add a contour layer to the deckgl widget</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_control.html">add_control()</a></code> </p>
-        </td>
-        <td><p>Add a control to the widget</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_data.html">add_data()</a></code> </p>
-        </td>
-        <td><p>Add JavaScript data file</p></td>
       </tr><tr>
         
         <td>
@@ -223,39 +237,15 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="add_json_editor.html">add_json_editor()</a></code> </p>
-        </td>
-        <td><p>Add a JSON-editor to the deckgl widget</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="add_layer.html">add_layer()</a></code> </p>
         </td>
         <td><p>Add any kind of layer to the deckgl widget</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="add_legend.html">add_legend()</a></code> </p>
-        </td>
-        <td><p>Add a legend to the map</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_legend_pal.html">add_legend_pal()</a></code> </p>
-        </td>
-        <td><p>Add a legend to the deckgl widget</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="add_line_layer.html">add_line_layer()</a></code> </p>
         </td>
         <td><p>Add a line layer to the deckgl widget</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_mapbox_basemap.html">add_mapbox_basemap()</a></code> </p>
-        </td>
-        <td><p>Add a base map from mapbox to the deckgl widget</p></td>
       </tr><tr>
         
         <td>
@@ -295,6 +285,116 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="add_text_layer.html">add_text_layer()</a></code> </p>
+        </td>
+        <td><p>Add a text layer to the deckgl widget</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-props" class="hasAnchor"><a href="#section-props" class="anchor"></a>Props</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="use_carto_style.html">use_carto_style()</a></code> </p>
+        </td>
+        <td><p>Use a Carto style</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="use_contour_definition.html">use_contour_definition()</a></code> </p>
+        </td>
+        <td><p>Create a contour definition</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="use_default_icon_properties.html">use_default_icon_properties()</a></code> </p>
+        </td>
+        <td><p>Use default icon properties</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="use_icon_definition.html">use_icon_definition()</a></code> </p>
+        </td>
+        <td><p>Create an icon definition on an atlas image</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="use_tooltip.html">use_tooltip()</a></code> </p>
+        </td>
+        <td><p>Create a tooltip property</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="encode_icon_atlas.html">encode_icon_atlas()</a></code> </p>
+        </td>
+        <td><p>Encode atlas image to base64</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-basemaps" class="hasAnchor"><a href="#section-basemaps" class="anchor"></a>Basemaps</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="add_basemap.html">add_basemap()</a></code> </p>
+        </td>
+        <td><p>Add a basemap to the deckgl widget</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="add_mapbox_basemap.html">add_mapbox_basemap()</a></code> </p>
+        </td>
+        <td><p>Add a basemap from mapbox to the deckgl widget</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-controls" class="hasAnchor"><a href="#section-controls" class="anchor"></a>Controls</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="add_legend.html">add_legend()</a></code> </p>
+        </td>
+        <td><p>Add a legend to the deckgl widget</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="add_legend_pal.html">add_legend_pal()</a></code> </p>
+        </td>
+        <td><p>Add a legend to the deckgl widget using a palette func</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="add_control.html">add_control()</a></code> </p>
+        </td>
+        <td><p>Add a control to the widget</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="add_json_editor.html">add_json_editor()</a></code> </p>
+        </td>
+        <td><p>Add a JSON-editor to the deckgl widget</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
           <p><code><a href="add_source.html">add_source()</a></code> </p>
         </td>
         <td><p>Add a data source to the deckgl widget</p></td>
@@ -304,12 +404,6 @@
           <p><code><a href="add_source_as_dep.html">add_source_as_dep()</a></code> </p>
         </td>
         <td><p>Add source as JavaScript dep</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_text_layer.html">add_text_layer()</a></code> </p>
-        </td>
-        <td><p>Add a text layer to the deckgl widget</p></td>
       </tr><tr>
         
         <td>
@@ -325,34 +419,18 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="deckgl-shiny.html">deckglOutput()</a></code> <code><a href="deckgl-shiny.html">renderDeckgl()</a></code> </p>
+          <p><code><a href="sf_bike_parking.html">sf_bike_parking</a></code> </p>
         </td>
-        <td><p>Shiny bindings for deckgl</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="deckgl.html">deckgl()</a></code> </p>
-        </td>
-        <td><p>Create a deckgl widget</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="deckgl_proxy.html">deckgl_proxy()</a></code> </p>
-        </td>
-        <td><p>Create a deckgl proxy object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="does_it_work.html">does_it_work()</a></code> </p>
-        </td>
-        <td><p>Check if everything works fine</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="encode_icon_atlas.html">encode_icon_atlas()</a></code> </p>
-        </td>
-        <td><p>Encode atlas image to base64</p></td>
-      </tr><tr>
+        <td><p>sf bike parking</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-deprecated" class="hasAnchor"><a href="#section-deprecated" class="anchor"></a>Deprecated</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="get_color_to_rgb_array.html">get_color_to_rgb_array()</a></code> </p>
@@ -391,45 +469,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="sf_bike_parking.html">sf_bike_parking</a></code> </p>
+          <p><code><a href="add_data.html">add_data()</a></code> </p>
         </td>
-        <td><p>sf bike parking</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="update_deckgl.html">update_deckgl()</a></code> </p>
-        </td>
-        <td><p>Send commands to a deckgl instance in a <code>Shiny</code> app</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="use_carto_style.html">use_carto_style()</a></code> </p>
-        </td>
-        <td><p>Use a Carto style</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="use_contour_definition.html">use_contour_definition()</a></code> </p>
-        </td>
-        <td><p>Use contour definition</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="use_default_icon_properties.html">use_default_icon_properties()</a></code> </p>
-        </td>
-        <td><p>Use default icon properties</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="use_icon_definition.html">use_icon_definition()</a></code> </p>
-        </td>
-        <td><p>Icon definition on an atlas image</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="use_tooltip.html">use_tooltip()</a></code> </p>
-        </td>
-        <td><p>Create a tooltip property</p></td>
+        <td><p>Add JavaScript data file</p></td>
       </tr>
     </tbody>
     </table>
@@ -438,7 +480,13 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-deckgl-instance">deckgl Instance</a></li>
+      <li><a href="#section-layers">Layers</a></li>
+      <li><a href="#section-props">Props</a></li>
+      <li><a href="#section-basemaps">Basemaps</a></li>
+      <li><a href="#section-controls">Controls</a></li>
+      <li><a href="#section-data">Data</a></li>
+      <li><a href="#section-deprecated">Deprecated</a></li>
     </ul>
   </div>
 </div>
