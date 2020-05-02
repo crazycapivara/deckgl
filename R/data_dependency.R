@@ -19,15 +19,13 @@ data_dependency <- function(data, var_name) {
 #' Add JavaScript data file
 #'
 #' EXPERIMENTAL
-#'
 #' @param deckgl deckgl widget
 #' @param data data object
 #' @param var_name JavaScript variable name used to make the data available
-#'
-#' @example inst/examples/deckgl-api-reference/grid-layer-data-dependency.R
-#'
 #' @export
 add_data <- function(deckgl, data, var_name = "thanksForAllTheFish") {
+  .Deprecated("add_source")
+
   deckgl$dependencies <- c(
     deckgl$dependencies,
     data_dependency(data, var_name)
@@ -38,10 +36,10 @@ add_data <- function(deckgl, data, var_name = "thanksForAllTheFish") {
 #' Get data
 #'
 #' EXPERIMENTAL, usually used in conjunction with \link{add_data}
-#'
 #' @param var_name JavaScript variable name
-#'
 #' @export
 get_data <- function(var_name = "thanksForAllTheFish") {
+  .Deprecated("add_source")
+
   JS(var_name)
 }

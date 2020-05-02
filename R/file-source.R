@@ -1,11 +1,9 @@
 create_file_source <- function(id, data) {
   if (inherits(data, "df")) data <- modify_sf(data)
-
   src <- tempdir()
   filename <- paste0(id, ".js")
   source <- list(id = id, data = data) %>%
     jsonlite::toJSON(auto_unbox = TRUE, force = TRUE)
-  #data <- jsonify::to_json(create_source(data)$data, auto_unbox = TRUE)
   paste0("_deckWidget.sources.push(", source, ");") %>%
     readr::write_file(file.path(src, filename))
   list(
@@ -19,7 +17,11 @@ create_file_source <- function(id, data) {
   )
 }
 
-add_source2 <- function(deckgl, id, data) {
+#' Add source as JavaScript dep
+#'
+#' @inheritParams add_source
+#' @export
+add_source_as_dep <- function(deckgl, id, data) {
   deckgl$dependencies %<>% c(create_file_source(id, data))
   deckgl
 }

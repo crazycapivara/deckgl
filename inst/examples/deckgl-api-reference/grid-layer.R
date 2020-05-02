@@ -16,6 +16,6 @@ deck <- deckgl(zoom = 11, pitch = 45, bearing = 35, element_id = "grid-layer") %
   add_grid_layer(source = "sf-bike-parking", properties = properties) %>%
   add_control("Grid Layer") %>%
   add_basemap() %>%
-  add_json_editor(wrap = 50)
+  add_json_editor(wrap = 50, maxLines = 22)
 
 if (interactive()) deck
