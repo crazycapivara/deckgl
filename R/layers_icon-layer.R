@@ -1,7 +1,6 @@
 #' Add an icon layer to the deckgl widget
 #'
 #' The \code{IconLayer} renders raster icons at given coordinates.
-#'
 #' @inheritParams add_layer
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/icon-layer}
 #' @example inst/examples/deckgl-api-reference/icon-layer.R
@@ -19,7 +18,6 @@ add_icon_layer <- function(deckgl, id = "icon-layer", data = NULL,
 #'
 #' Returns icon properties with default values for \code{iconAtlas}, \code{iconMapping}
 #' and \code{getIcon}, so that the default icon is used.
-#'
 #' @param sizeScale icon size multiplier
 #' @param getSize height of each object (in pixels),
 #'   if a number is provided, it is used as the size for all objects,

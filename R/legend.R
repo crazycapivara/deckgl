@@ -1,4 +1,4 @@
-#' Add a legend to the map
+#' Add a legend to the deckgl widget
 #'
 #' @inheritParams add_control
 #' @param colors The colors of the legend items.

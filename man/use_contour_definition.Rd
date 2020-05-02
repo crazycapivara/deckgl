@@ -2,18 +2,18 @@
 % Please edit documentation in R/layers_contour-layer.R
 \name{use_contour_definition}
 \alias{use_contour_definition}
-\title{Use contour definition}
+\title{Create a contour definition}
 \usage{
 use_contour_definition(threshold = 1, color = c(255, 255, 255),
   stroke_width = 1)
 }
 \arguments{
-\item{threshold}{threshold value to be used in contour generation}
+\item{threshold}{The threshold value used in contour generation.}
 
-\item{color}{RGB color array to be used to render contour lines}
+\item{color}{The RGB color array used to render contour lines.}
 
-\item{stroke_width}{width of the contour lines in pixels}
+\item{stroke_width}{The width of the contour lines in pixels.}
 }
 \description{
-Use contour definition
+Create a contour definition
 }
