@@ -16,3 +16,5 @@
 ^.dockerignore$
 ^_examples$
 ^_vignettes$
+^index.Rmd$
+^index.md$

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Objects exported from other packages — reexports • deckgl for R</title>
+<title>Add a legend to the deckgl widget — add_legend_pal • deckgl for R</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,16 +32,9 @@
 
 
 
-<meta property="og:title" content="Objects exported from other packages — reexports" />
+<meta property="og:title" content="Add a legend to the deckgl widget — add_legend_pal" />
 
-<meta property="og:description" content="These objects are imported from other packages. Follow the links
-below to see their documentation.
-
-  htmlwidgetsJS, onRender
-
-  magrittr%&amp;gt;%, %&amp;lt;&amp;gt;%
-
-" />
+<meta property="og:description" content="Add a legend to the deckgl widget" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -116,31 +109,50 @@ below to see their documentation.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Objects exported from other packages</h1>
-    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/re-exports.R'><code>R/re-exports.R</code></a></small>
-    <div class="hidden name"><code>reexports.Rd</code></div>
+    <h1>Add a legend to the deckgl widget</h1>
+    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/legend_pal.R'><code>R/legend_pal.R</code></a></small>
+    <div class="hidden name"><code>add_legend_pal.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These objects are imported from other packages. Follow the links
-below to see their documentation.</p>
-<dl class='dl-horizontal'>
-  <dt>htmlwidgets</dt><dd><p><code><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></code>, <code><a href='https://rdrr.io/pkg/htmlwidgets/man/onRender.html'>onRender</a></code></p></dd>
-
-  <dt>magrittr</dt><dd><p><code>%&gt;%</code>, <code>%&lt;&gt;%</code></p></dd>
-
-</dl>
+    <p>Add a legend to the deckgl widget</p>
     
     </div>
 
-        
+    <pre class="usage"><span class='fu'>add_legend_pal</span>(<span class='no'>deckgl</span>, <span class='no'>pal</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>deckgl</th>
+      <td><p>A deckgl widget object.</p></td>
+    </tr>
+    <tr>
+      <th>pal</th>
+      <td><p>A palette function that is used to create the
+legend elements (colors and labels) automatically.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Parameters that are passed to <code><a href='add_legend.html'>add_legend</a></code>.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://scales.r-lib.org//reference/col_numeric.html'>col_numeric</a></code> et cetera for how to create a palette function.</p></div>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>

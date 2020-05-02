@@ -1,5 +1,9 @@
 ## Quickstart
 
+```r
+library(deckgl)
+```
+
 Create a `deckgl` instance:
 
 ```{r create-deckgl-widget, eval = FALSE}

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Objects exported from other packages — reexports • deckgl for R</title>
+<title>Add a JSON-editor to the deckgl widget — add_json_editor • deckgl for R</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,16 +32,9 @@
 
 
 
-<meta property="og:title" content="Objects exported from other packages — reexports" />
+<meta property="og:title" content="Add a JSON-editor to the deckgl widget — add_json_editor" />
 
-<meta property="og:description" content="These objects are imported from other packages. Follow the links
-below to see their documentation.
-
-  htmlwidgetsJS, onRender
-
-  magrittr%&amp;gt;%, %&amp;lt;&amp;gt;%
-
-" />
+<meta property="og:description" content="Adds a Ace-editor in JSON mode to the map to interact with the layers of your deck instance." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -116,30 +109,49 @@ below to see their documentation.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Objects exported from other packages</h1>
-    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/re-exports.R'><code>R/re-exports.R</code></a></small>
-    <div class="hidden name"><code>reexports.Rd</code></div>
+    <h1>Add a JSON-editor to the deckgl widget</h1>
+    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/json-editor.R'><code>R/json-editor.R</code></a></small>
+    <div class="hidden name"><code>add_json_editor.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These objects are imported from other packages. Follow the links
-below to see their documentation.</p>
-<dl class='dl-horizontal'>
-  <dt>htmlwidgets</dt><dd><p><code><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></code>, <code><a href='https://rdrr.io/pkg/htmlwidgets/man/onRender.html'>onRender</a></code></p></dd>
-
-  <dt>magrittr</dt><dd><p><code>%&gt;%</code>, <code>%&lt;&gt;%</code></p></dd>
-
-</dl>
+    <p>Adds a <code>Ace</code>-editor in JSON mode to the map to interact with the layers of your <code>deck</code> instance.</p>
     
     </div>
 
-        
+    <pre class="usage"><span class='fu'>add_json_editor</span>(<span class='no'>deckgl</span>, <span class='no'>...</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"width: 40%;"</span>,
+  <span class='kw'>theme</span> <span class='kw'>=</span> <span class='st'>"idle_fingers"</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>deckgl</th>
+      <td><p>A deckgl widget object.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Optional args that are passed to the editor. See <a href='https://github.com/ajaxorg/ace/wiki/Configuring-Ace'>https://github.com/ajaxorg/ace/wiki/Configuring-Ace</a>
+for a list of available options.</p></td>
+    </tr>
+    <tr>
+      <th>style</th>
+      <td><p>A <code>cssText</code> string that will modefiy the default style of the container that holds
+the editor.</p></td>
+    </tr>
+    <tr>
+      <th>theme</th>
+      <td><p>The name of the theme used by the editor.</p></td>
+    </tr>
+    </table>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
                 </ul>
 
   </div>

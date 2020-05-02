@@ -26,6 +26,10 @@ remotes::install_github("crazycapivara/deckgl")
 Quickstart
 ----------
 
+``` r
+library(deckgl)
+```
+
 Create a `deckgl` instance:
 
 ``` r

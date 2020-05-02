@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Objects exported from other packages — reexports • deckgl for R</title>
+<title>Create a tooltip property — use_tooltip • deckgl for R</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,16 +32,9 @@
 
 
 
-<meta property="og:title" content="Objects exported from other packages — reexports" />
+<meta property="og:title" content="Create a tooltip property — use_tooltip" />
 
-<meta property="og:description" content="These objects are imported from other packages. Follow the links
-below to see their documentation.
-
-  htmlwidgetsJS, onRender
-
-  magrittr%&amp;gt;%, %&amp;lt;&amp;gt;%
-
-" />
+<meta property="og:description" content="Create a tooltip property" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -116,31 +109,81 @@ below to see their documentation.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Objects exported from other packages</h1>
-    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/re-exports.R'><code>R/re-exports.R</code></a></small>
-    <div class="hidden name"><code>reexports.Rd</code></div>
+    <h1>Create a tooltip property</h1>
+    <small class="dont-index">Source: <a href='https://github.com/crazycapivara/deckgl/blob/master/R/tooltip.R'><code>R/tooltip.R</code></a></small>
+    <div class="hidden name"><code>use_tooltip.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These objects are imported from other packages. Follow the links
-below to see their documentation.</p>
-<dl class='dl-horizontal'>
-  <dt>htmlwidgets</dt><dd><p><code><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></code>, <code><a href='https://rdrr.io/pkg/htmlwidgets/man/onRender.html'>onRender</a></code></p></dd>
-
-  <dt>magrittr</dt><dd><p><code>%&gt;%</code>, <code>%&lt;&gt;%</code></p></dd>
-
-</dl>
+    <p>Create a tooltip property</p>
     
     </div>
 
-        
+    <pre class="usage"><span class='fu'>use_tooltip</span>(<span class='no'>html</span>, <span class='no'>style</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>html</th>
+      <td><p>The <code>innerHTML</code> of the element.</p></td>
+    </tr>
+    <tr>
+      <th>style</th>
+      <td><p>A <code>cssText</code> string that will modefiy the default style of the element.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>not used</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="tooltip-template-syntax"><a class="anchor" href="#tooltip-template-syntax"></a>Tooltip template Syntax</h2>
 
+    
+
+<p>The tooltip string is a <em>mustache</em> template in which variable names are identified
+by the double curly brackets (<em>mustache</em> tags) that surround them. The variable names available to the
+template are given by deck.gl’s <code>pickingInfo.object</code> and vary by layer.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='https://github.com/janl/mustache.js'>mustache</a> for a complete syntax overwiew.</p></div>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"bart_segments"</span>)
+
+<span class='no'>props</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+  <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='fu'>use_tooltip</span>(
+    <span class='kw'>html</span> <span class='kw'>=</span> <span class='st'>"{{from_name}} to {{to_name}}"</span>,
+    <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"background: steelBlue; border-radius: 5px;"</span>
+  )
+)
+
+<span class='co'># The picking object of the hexagon layer offers</span>
+<span class='co'># a property that contains the list of points of the hexagon.</span>
+<span class='co'># You can iterate over this list as shown below.</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"sf_bike_parking"</span>)
+
+<span class='no'>html</span> <span class='kw'>=</span> <span class='st'>"
+  &lt;p&gt;{{position.0}}, {{position.1}}&lt;p&gt;
+  &lt;p&gt;Count: {{points.length}}&lt;/p&gt;
+  &lt;p&gt;{{#points}}&lt;div&gt;{{address}}&lt;/div&gt;{{/points}}&lt;/p&gt;
+"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#tooltip-template-syntax">Tooltip template Syntax</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
