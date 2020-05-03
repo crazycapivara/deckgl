@@ -18,7 +18,7 @@ You can install the latest version of r-deckgl from github with:
 remotes::install_github("crazycapivara/deckgl")
 ```
 
-Usage
------
+Let's dive in!
+--------------
 
-[Get Started](articles/deckgl.html)
+[Get Started](articles/deckgl.html) quickly or dig into the [API Reference](reference/index.html).

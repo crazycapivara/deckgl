@@ -128,7 +128,7 @@ props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/
 <div id="layers" class="section level2">
 <h2 class="hasAnchor">
 <a href="#layers" class="anchor"></a>Layers</h2>
-<p>Due to the generic function <code>add_layer</code> any kind of layer defined in the <a href="https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview">deck.gl Layer Catalog</a> is supported. The layer type is chosen via the <code>class_name</code> parameter, e. g. <code>ScatterplotLayer</code> or <code>GeoJsonLayer</code>. Usually you will not use the generic function but one of the <code>add_*_layer</code> shortcut functions instead:</p>
+<p>Due to the generic function <code>add_layer</code> any kind of layer defined in the <a href="https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview">deck.gl Layer Catalog</a> is supported. The layer type is chosen via the <code>class_name</code> parameter, e. g. <code>ScatterplotLayer</code> or <code>GeoJsonLayer</code>. Usually you will not use the generic function but one of the <code>add_*_layer</code> shortcuts instead:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Generic function</span>
 <span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_layer.html">add_layer</a></span>(<span class="st">"ArcLayer"</span>, id, data, properties)
@@ -145,10 +145,9 @@ props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/
   <span class="dt">getPosition =</span> <span class="op">~</span>lng <span class="op">+</span><span class="st"> </span>lat
   <span class="co"># ...</span>
 )</code></pre></div>
-<div id="data-objects-of-class-sf" class="section level3">
+<div id="sf-data-objects" class="section level3">
 <h3 class="hasAnchor">
-<a href="#data-objects-of-class-sf" class="anchor"></a>Data objects of class <code>sf</code>
-</h3>
+<a href="#sf-data-objects" class="anchor"></a><code>sf</code> Data Objects</h3>
 <p>An object of class <a href="https://github.com/r-spatial/sf">sf</a> is a <code>data.frame</code> with a geometry list-column. Set the layer prop that fetches the geometry to the geometry list-column of your <code>sf</code> object:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Example: PolygonLayer</span>
 
@@ -183,7 +182,7 @@ props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/
 <h2 class="hasAnchor">
 <a href="#layer-props" class="anchor"></a>Layer Props</h2>
 <p>Layer properties are passed to the <code>add_*_layer</code> functions either as named list by the <code>properties</code> argument or as named parameters / keyword arguments via the <code>...</code> parameter. The names correspond to the properties of the deck.gl counterparts. Therefore, please see the <a href="https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview">deck.gl Layer Catalog</a> to determine the available parameters for the used layer. You can also pass a props list and keyword arguments together. Identical properties are overwritten by the latter ones.</p>
-<p><a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer">Grid Layer</a> Example:</p>
+<p><a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer">Grid Layer</a> example:</p>
 <div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// JavaScript code</span>
 
 <span class="kw">const</span> layer <span class="op">=</span> <span class="kw">new</span> <span class="at">GridLayer</span>(<span class="op">{</span>
@@ -270,9 +269,9 @@ props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/
 </ul>
 <div id="tooltip-template-syntax" class="section level3">
 <h3 class="hasAnchor">
-<a href="#tooltip-template-syntax" class="anchor"></a>Tooltip template Syntax</h3>
+<a href="#tooltip-template-syntax" class="anchor"></a>Tooltip Template Syntax</h3>
 <p>The tooltip string is a so called “mustache” template in which variable names are identified by the double curly brackets that surround them. The variable names available to the template are given by deck.gl’s <a href="https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object">pickingInfo.object</a> and vary by layer.</p>
-<p>See <a href="https://github.com/janl/mustache.js">mustache.js</a> for a complete syntax overwiew.</p>
+<p><a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/arc-layer">Arc Layer</a> example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"bart_segments"</span>)
 
 props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
@@ -290,6 +289,7 @@ props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/
 <span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">zoom =</span> <span class="fl">9.5</span>, <span class="dt">pitch =</span> <span class="dv">35</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_arc_layer.html">add_arc_layer</a></span>(<span class="dt">data =</span> bart_segments, <span class="dt">properties =</span> props) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_basemap.html">add_basemap</a></span>()</code></pre></div>
+<p>See <a href="https://github.com/janl/mustache.js">mustache.js</a> for a complete syntax overwiew.</p>
 </div>
 </div>
 <div id="controls" class="section level2">
