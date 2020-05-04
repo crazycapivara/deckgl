@@ -1,5 +1,20 @@
 # deckgl 0.2.7
 
+* __Get Started__ vignette
+* Group API Reference
+* deck.gl v8.1.4
+* Data Sources as deps
+
+## deckgl 0.2.7-beta.2
+
+* Update README
+* deck.gl v8.1.3
+
+## deckgl 0.2.7-beta.1
+
+* Use __Ace__ only as JSON Editor
+* deck.gl v8.1.2
+
 ## deckgl 0.2.7-alpha.1
 
 * JSON Editor
