@@ -3,5 +3,6 @@ pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
   _get-started: _get-started.html
+  _showcase: _showcase.html
   deckgl: deckgl.html
 

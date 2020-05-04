@@ -1,0 +1,27 @@
+Change props on the fly. Press "e" when focused on the map to toggle the editor.
+
+```{r, message = FALSE, echo = FALSE}
+library(deckgl)
+
+data("sf_bike_parking")
+
+deckgl(
+  zoom = 11,
+  pitch = 45,
+  bearing = 35,
+  width = "100%",
+  style = list(background = "black")
+) %>%
+  add_grid_layer(
+    data = sf_bike_parking,
+    getPosition = ~lng + lat,
+    visible = TRUE,
+    extruded = TRUE,
+    cellSize = 200,
+    elevationScale = 4,
+    colorRange = RColorBrewer::brewer.pal(6, "YlOrRd"),
+    tooltip = "{{position.0}}, {{position.1}}<br/>Count: {{count}}"
+  ) %>%
+  add_control("Grid Layer") %>%
+  add_json_editor(maxLines = 22, theme = "idle_fingers") #%>% add_basemap()
+```
