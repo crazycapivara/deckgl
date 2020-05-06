@@ -2,7 +2,7 @@
 % Please edit documentation in R/legend_pal.R
 \name{add_legend_pal}
 \alias{add_legend_pal}
-\title{Add a legend to the deckgl widget}
+\title{Add a legend to the deckgl widget using a palette func}
 \usage{
 add_legend_pal(deckgl, pal, ...)
 }
@@ -15,7 +15,7 @@ legend elements (colors and labels) automatically.}
 \item{...}{Parameters that are passed to \code{\link{add_legend}}.}
 }
 \description{
-Add a legend to the deckgl widget
+Add a legend to the deckgl widget using a palette func
 }
 \seealso{
 \code{\link[scales]{col_numeric}} et cetera for how to create a palette function.

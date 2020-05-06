@@ -7,7 +7,7 @@
 encode_icon_atlas(filename = NULL)
 }
 \arguments{
-\item{filename}{filename of atlas image}
+\item{filename}{The filename of the atlas image.}
 }
 \value{
 base64 encoded atlas image

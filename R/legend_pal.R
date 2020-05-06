@@ -31,7 +31,7 @@ use_pal.col_bin <- use_pal_bin
 use_pal.col_quantile <- use_pal_quantile
 use_pal.col_factor <- use_pal_numeric
 
-#' Add a legend to the deckgl widget
+#' Add a legend to the deckgl widget using a palette func
 #'
 #' @inheritParams add_legend
 #' @param pal A palette function that is used to create the

@@ -1,17 +1,19 @@
 ## Comments
 
-* Switched to deck.gl.js v8.0.17
-* Switched to mapbox-gl.js v1.8.0
-* Added shiny proxy support
-* Added new layer types
-* Added support for 'sf' data objects
-* Added formula syntax to define data accessors
+* 'Get Started' vignette
+* Group API Reference
+* deck.gl v8.1.4
+* Data Sources
+* Controls
+* JSON Editor
+* Tooltip Templates
+* HEX Colors
 
 ## Test environments
 
 * local ubuntu 17.10, R 3.4.4
 * ubuntu 14.04 (on travis-ci), R 3.5.1
-* win-builder (devel and release)
+* win-builder (devel, oldrelease. release)
 
 ## R CMD check results
 

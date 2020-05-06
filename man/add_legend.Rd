@@ -2,7 +2,7 @@
 % Please edit documentation in R/legend.R
 \name{add_legend}
 \alias{add_legend}
-\title{Add a legend to the map}
+\title{Add a legend to the deckgl widget}
 \usage{
 add_legend(deckgl, colors, labels, title = NULL, pos = "top-right",
   style = NULL, ...)
@@ -24,5 +24,5 @@ add_legend(deckgl, colors, labels, title = NULL, pos = "top-right",
 \item{...}{not used}
 }
 \description{
-Add a legend to the map
+Add a legend to the deckgl widget
 }
