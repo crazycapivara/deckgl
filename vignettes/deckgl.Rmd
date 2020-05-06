@@ -1,0 +1,22 @@
+---
+title: "Introduction to r-deckgl"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{deckgl}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include = FALSE}
+# library(deckgl)
+```
+
+```{r, child = "partials/_get-started"}
+```

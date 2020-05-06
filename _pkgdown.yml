@@ -4,3 +4,36 @@ template:
     bootswatch: flatly
 #navbar:
 #  type: inverse
+reference:
+- title: deckgl Instance
+  contents:
+  - matches("deckgl")
+
+- title: Layers
+  contents:
+  - ends_with("layer")
+
+- title: Props
+  contents:
+  - starts_with("use")
+  - encode_icon_atlas
+
+- title: Basemaps
+  contents:
+  - matches("basemap")
+
+- title: Controls
+  contents:
+  - starts_with("add_legend")
+  - add_control
+  - add_json_editor
+
+- title: Data
+  contents:
+  - starts_with("add_source")
+  - starts_with("bart|sf")
+
+- title: Deprecated
+  contents:
+  - starts_with("get_")
+  - add_data

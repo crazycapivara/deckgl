@@ -1,3 +1,5 @@
+### TODO: Remove in next version
+###
 #' Add a raster tile layer to the deckgl widget
 #'
 #' EXPERIMENTAL, see \url{https://deck.gl/#/examples/core-layers/tile-layer}

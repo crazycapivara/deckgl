@@ -67,7 +67,7 @@ The color and height of the cell is scaled by number of points it contains." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.7</span>
       </span>
     </div>
 
@@ -80,58 +80,10 @@ The color and height of the cell is scaled by number of points it contains." />
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/deckgl.html">Get started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/arc-layer.html">ArcLayer</a>
-    </li>
-    <li>
-      <a href="../articles/contour-layer.html">ContourLayer</a>
-    </li>
-    <li>
-      <a href="../articles/geojson-layer.html">GeoJsonLayer</a>
-    </li>
-    <li>
-      <a href="../articles/grid-layer.html">GridLayer</a>
-    </li>
-    <li>
-      <a href="../articles/hexagon-layer.html">HexagonLayer</a>
-    </li>
-    <li>
-      <a href="../articles/icon-layer.html">IconLayer</a>
-    </li>
-    <li>
-      <a href="../articles/line-layer.html">LineLayer</a>
-    </li>
-    <li>
-      <a href="../articles/path-layer.html">PathLayer</a>
-    </li>
-    <li>
-      <a href="../articles/point-cloud-layer.html">PointCloudLayer</a>
-    </li>
-    <li>
-      <a href="../articles/polygon-layer.html">PolygonLayer</a>
-    </li>
-    <li>
-      <a href="../articles/scatterplot-layer.html">ScatterplotLayer</a>
-    </li>
-    <li>
-      <a href="../articles/screen-grid-layer.html">ScreenGridLayer</a>
-    </li>
-    <li>
-      <a href="../articles/shiny.html">Shiny integration</a>
-    </li>
-    <li>
-      <a href="../articles/text-layer.html">TextLayer</a>
-    </li>
-  </ul>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -178,28 +130,26 @@ The color and height of the cell is scaled by number of points it contains.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>deckgl</th>
-      <td><p>deckgl widget</p></td>
+      <td><p>A deckgl widget object.</p></td>
     </tr>
     <tr>
       <th>id</th>
-      <td><p>id of the layer</p></td>
+      <td><p>The unique id of the layer.</p></td>
     </tr>
     <tr>
       <th>data</th>
-      <td><p>url to fetch data from or data object</p></td>
+      <td><p>The url to fetch data from or a data object.</p></td>
     </tr>
     <tr>
       <th>properties</th>
-      <td><p>named list of properties with names corresponding to the properties defined
+      <td><p>A named list of properties with names corresponding to the properties defined
 in the <a href='https://deck.gl/#/documentation/deckgl-api-reference'>deckgl-api-reference</a>
-for the given layer class, additionally there is a <code>getTooltip</code> property (callback)
-showing a tooltip when the mouse enters an object,
-e. g. <code>getTooltip = JS("object =&gt; object.name")</code></p></td>
+for the given layer class.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>more properties (will be added to the properties object), useful if you
-want to use a properties object for more than one layer</p></td>
+      <td><p>More properties that will be added to the <code>properties</code> object. This can be useful
+if you want to use a properties object for more than one layer.</p></td>
     </tr>
     </table>
     
@@ -213,17 +163,21 @@ want to use a properties object for more than one layer</p></td>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"sf_bike_parking"</span>)
 
 <span class='no'>properties</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+  <span class='kw'>visible</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>extruded</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>cellSize</span> <span class='kw'>=</span> <span class='fl'>200</span>,
   <span class='kw'>elevationScale</span> <span class='kw'>=</span> <span class='fl'>4</span>,
   <span class='kw'>getPosition</span> <span class='kw'>=</span> ~<span class='no'>lng</span> + <span class='no'>lat</span>,
-  <span class='kw'>getTooltip</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span>(<span class='st'>"object =&gt; `${object.position.join(', ')}&lt;br/&gt;Count: ${object.count}`"</span>),
-  <span class='kw'>fixedTooltip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>colorRange</span> <span class='kw'>=</span> <span class='kw pkg'>RColorBrewer</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span>(<span class='fl'>6</span>, <span class='st'>"YlOrRd"</span>),
+  <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='st'>"{{position.0}}, {{position.1}}&lt;br/&gt;Count: {{count}}"</span>
 )
 
-<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>11</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>45</span>, <span class='kw'>bearing</span> <span class='kw'>=</span> <span class='fl'>35</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>add_grid_layer</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sf_bike_parking</span>, <span class='kw'>properties</span> <span class='kw'>=</span> <span class='no'>properties</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='add_mapbox_basemap.html'>add_mapbox_basemap</a></span>()
+<span class='no'>deck</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='deckgl.html'>deckgl</a></span>(<span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>11</span>, <span class='kw'>pitch</span> <span class='kw'>=</span> <span class='fl'>45</span>, <span class='kw'>bearing</span> <span class='kw'>=</span> <span class='fl'>35</span>, <span class='kw'>element_id</span> <span class='kw'>=</span> <span class='st'>"grid-layer"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='add_source.html'>add_source</a></span>(<span class='st'>"sf-bike-parking"</span>, <span class='no'>sf_bike_parking</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_grid_layer</span>(<span class='kw'>source</span> <span class='kw'>=</span> <span class='st'>"sf-bike-parking"</span>, <span class='kw'>properties</span> <span class='kw'>=</span> <span class='no'>properties</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='add_control.html'>add_control</a></span>(<span class='st'>"Grid Layer"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='add_basemap.html'>add_basemap</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='add_json_editor.html'>add_json_editor</a></span>(<span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>maxLines</span> <span class='kw'>=</span> <span class='fl'>22</span>)
 
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) <span class='no'>deck</span></div></pre>
   </div>

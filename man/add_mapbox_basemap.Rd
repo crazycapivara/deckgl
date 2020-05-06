@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapboxgl_basemap.R
 \name{add_mapbox_basemap}
 \alias{add_mapbox_basemap}
-\title{Add a base map from mapbox to the deckgl widget}
+\title{Add a basemap from mapbox to the deckgl widget}
 \usage{
 add_mapbox_basemap(deckgl, style = "mapbox://styles/mapbox/light-v9",
   token = Sys.getenv("MAPBOX_API_TOKEN"))
@@ -18,5 +18,5 @@ add_mapbox_basemap(deckgl, style = "mapbox://styles/mapbox/light-v9",
 deckgl widget
 }
 \description{
-Add a base map from mapbox to the deckgl widget
+Add a basemap from mapbox to the deckgl widget
 }

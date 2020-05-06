@@ -26,6 +26,10 @@ remotes::install_github("crazycapivara/deckgl")
 Quickstart
 ----------
 
+``` r
+library(deckgl)
+```
+
 Create a `deckgl` instance:
 
 ``` r
@@ -81,7 +85,7 @@ rdeck <- deckgl(
 Layers
 ------
 
-Due to the generic function `add_layer` any kind of layer defined in the [deck.gl Layer Catalog](https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview) is supported. The layer type is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of the `add_*_layer` shortcut functions instead:
+Due to the generic function `add_layer` any kind of layer defined in the [deck.gl Layer Catalog](https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview) is supported. The layer type is chosen via the `class_name` parameter, e. g. `ScatterplotLayer` or `GeoJsonLayer`. Usually you will not use the generic function but one of the `add_*_layer` shortcuts instead:
 
 ``` r
 # Generic function
@@ -105,7 +109,7 @@ props <- list(
 )
 ```
 
-### Data objects of class `sf`
+### `sf` Data Objects
 
 An object of class [sf](https://github.com/r-spatial/sf) is a `data.frame` with a geometry list-column. Set the layer prop that fetches the geometry to the geometry list-column of your `sf` object:
 
@@ -147,7 +151,7 @@ Layer Props
 
 Layer properties are passed to the `add_*_layer` functions either as named list by the `properties` argument or as named parameters / keyword arguments via the `...` parameter. The names correspond to the properties of the deck.gl counterparts. Therefore, please see the [deck.gl Layer Catalog](https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview) to determine the available parameters for the used layer. You can also pass a props list and keyword arguments together. Identical properties are overwritten by the latter ones.
 
-[Grid Layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) Example:
+[Grid Layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer) example:
 
 ``` javascript
 // JavaScript code
@@ -247,11 +251,11 @@ The tooltip for a layer can be set via the `tooltip` parameter. You can either p
 -   `html`: A template string that will be set as the `innerHTML` of the tooltip.
 -   `style`: A `cssText` string that will modefiy the default style of the tooltip.
 
-### Tooltip template Syntax
+### Tooltip Template Syntax
 
 The tooltip string is a so called "mustache" template in which variable names are identified by the double curly brackets that surround them. The variable names available to the template are given by deck.gl’s [pickingInfo.object](https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object) and vary by layer.
 
-See [mustache.js](https://github.com/janl/mustache.js) for a complete syntax overwiew.
+[Arc Layer](https://deck.gl/#/documentation/deckgl-api-reference/layers/arc-layer) example:
 
 ``` r
 data("bart_segments")
@@ -272,6 +276,8 @@ deckgl(zoom = 9.5, pitch = 35) %>%
   add_arc_layer(data = bart_segments, properties = props) %>%
   add_basemap()
 ```
+
+See [mustache.js](https://github.com/janl/mustache.js) for a complete syntax overwiew.
 
 Controls
 --------
@@ -415,9 +421,9 @@ npm run start
 Documentation
 -------------
 
--   [r-deckgl](https://crazycapivara.github.io/deckgl/) (pkgdown-site)
--   [example scripts](https://github.com/crazycapivara/deckgl/tree/master/_examples)
--   [deck.gl API reference](https://deck.gl/#/documentation/deckgl-api-reference) (JavaScript framework)
+-   [r-deckgl pkgdown Site](https://crazycapivara.github.io/deckgl/)
+-   [Example Scripts](https://github.com/crazycapivara/deckgl/tree/master/_examples)
+-   [deck.gl JavaScript API Reference](https://deck.gl/#/documentation/deckgl-api-reference)
 
 Note
 ----

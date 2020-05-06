@@ -24,8 +24,8 @@ COPY . /deckgl
 
 RUN cd deckgl \
   && R -q -e 'devtools::install()' \
-  && cp inst/examples/h3-hexagon-layer-greater-manchester.R /home/rstudio \
-  && cp inst/examples/deckgl-examples/polygon-layer-vancouver-blocks.R /home/rstudio \
+  && cp _examples/h3-hexagon-layer-greater-manchester.R /home/rstudio \
+  && cp _examples/deckgl-examples/polygon-layer-vancouver-blocks.R /home/rstudio \
   && cd .. \
   && rm -rf deckgl
 
@@ -36,4 +36,3 @@ RUN chmod +x docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 
 CMD [ "/init" ]
-

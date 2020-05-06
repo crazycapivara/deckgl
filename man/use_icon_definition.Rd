@@ -2,7 +2,7 @@
 % Please edit documentation in R/icons.R
 \name{use_icon_definition}
 \alias{use_icon_definition}
-\title{Icon definition on an atlas image}
+\title{Create an icon definition on an atlas image}
 \usage{
 use_icon_definition(x = 0, y = 0, width = 128, height = 128,
   anchor_x = (width/2), anchor_y = 128, mask = TRUE)
@@ -25,5 +25,5 @@ if \code{TRUE}, user defined color is applied,
 if \code{FALSE}, pixel color from the image is applied}
 }
 \description{
-Icon definition on an atlas image
+Create an icon definition on an atlas image
 }

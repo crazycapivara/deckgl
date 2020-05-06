@@ -1,6 +1,6 @@
 #' Encode atlas image to base64
 #'
-#' @param filename filename of atlas image
+#' @param filename The filename of the atlas image.
 #' @return base64 encoded atlas image
 #' @export
 encode_icon_atlas <- function(filename = NULL) { # nocov start
@@ -11,7 +11,7 @@ encode_icon_atlas <- function(filename = NULL) { # nocov start
   paste("data:image/png;base64,", base64enc::base64encode(filename))
 } # nocov end
 
-#' Icon definition on an atlas image
+#' Create an icon definition on an atlas image
 #'
 #' @param x The x position of the icon on the atlas image.
 #' @param y The y position of the icon on the atlas image.

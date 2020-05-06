@@ -1,4 +1,4 @@
-#' Add a base map from mapbox to the deckgl widget
+#' Add a basemap from mapbox to the deckgl widget
 #'
 #' @param deckgl deckgl widget
 #' @param style map style
