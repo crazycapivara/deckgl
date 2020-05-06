@@ -35,7 +35,7 @@ You can install the latest version of r-deckgl from github with:
 remotes::install_github("crazycapivara/deckgl")
 ```
 
-```{r, child="vignettes/_get-started.Rmd"}
+```{r, child="vignettes/partials/_get-started"}
 ```
 
 ## Development

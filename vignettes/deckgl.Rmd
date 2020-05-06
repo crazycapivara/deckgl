@@ -18,5 +18,5 @@ knitr::opts_chunk$set(
 # library(deckgl)
 ```
 
-```{r, child = "_get-started.Rmd"}
+```{r, child = "partials/_get-started"}
 ```

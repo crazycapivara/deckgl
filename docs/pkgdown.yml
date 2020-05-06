@@ -2,6 +2,5 @@ pandoc: 1.19.2.1
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
-  _get-started: _get-started.html
   deckgl: deckgl.html
 
