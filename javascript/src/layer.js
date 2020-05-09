@@ -25,7 +25,8 @@ export default function(props, widgetElement) {
   const tooltip = props.tooltip || props.getTooltip;
   if (tooltip) props.onHover = toTooltip(tooltip);
 
-  return Object.assign(props, convertJSON(props), convertColors(props));
+  props = Object.assign(props, convertJSON(props));
+  return Object.assign(props, convertColors(props));
 }
 
 function convertJSON(props) {
