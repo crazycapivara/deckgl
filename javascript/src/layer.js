@@ -5,6 +5,13 @@ import { convertColor } from "./utils";
 
 const FUNCTION_IDENTIFIER = "@=";
 const COLOR_PROPS = [ "getColor", "getStrokeColor", "getFillColor" ];
+const isFunction = (value) => typeof value === "string" && value.startsWith(FUNCTION_IDENTIFIER);
+const toFunction = (value) => {
+  const expr = value.replace(FUNCTION_IDENTIFIER, "");
+  const func = compile(expr);
+  return (data) => func(Object.assign({ "Math": Math, "console": console }, data));
+};
+const toColor = (specifier) => typeof specifier === "string" ? convertColor(specifier) : specifier;
 
 export default function(props, widgetElement) {
   // Pass data back to R in 'shinyMode'
@@ -19,43 +26,39 @@ export default function(props, widgetElement) {
     };
   }
 
-  // Support deprecated? 'getTooltip' property
+  // TODO: Support deprecated? 'getTooltip' property
   const tooltip = props.tooltip || props.getTooltip;
-  if (tooltip) {
-    props.onHover = createTooltipProp(tooltip);
-    /*
-    const tooltipElement = document.getElementsByClassName(CLASS_NAME_TOOLTIP)[0];
-    if (tooltip.style) tooltipElement.style.cssText = tooltip.style;
-    props.onHover = function({ x, y, object }) {
-      if (!object) {
-        tooltipElement.innerHTML = "";
-        tooltipElement.style.display = "none";
-        return;
-      }
+  if (tooltip) props.onHover = toTooltip(tooltip);
 
-      tooltipElement.style.top = y + "px";
-      tooltipElement.style.left = x + "px";
-      tooltipElement.innerHTML = typeof tooltip === "function" ?
-        tooltip(object) : mustacheRender(typeof tooltip === "string" ? tooltip : tooltip.html, object);
-      tooltipElement.style.display = "block";
-    };
-    */
-  }
 
-  return Object.assign(props, convertProps(props));
+  return Object.assign(props, convertJSON(props), convertProps(props));
 }
 
-const isFunction = (value) => typeof value === "string" && value.startsWith(FUNCTION_IDENTIFIER);
+function convertJSON(props) {
+  const convertedProps= { };
+  for (const key in props) {
+    const value = props[key];
+    if (isFunction(value)) convertedProps[key] = toFunction(value);
+  }
+
+  return convertedProps;
+}
+
+function convertColors() {
+
+}
 
 function convertProps(props) {
   const convertedProps = { };
   for (let [key, value] of Object.entries(props)) {
+    /*
     if (isFunction(value)) {
       console.log("function", key);
-      value = convertFunction(value);
+      value = toFunction(value);
       convertedProps[key] = value;
       // convertedProps[key] = (data) => func(Object.assign({ "Math": Math, "console": console }, data));
     }
+    */
 
     // Convert color prop
     if (key === "colorRange") {
@@ -73,7 +76,7 @@ function convertProps(props) {
   return convertedProps;
 }
 
-function createTooltipProp(tooltip) {
+function toTooltip(tooltip) {
   const tooltipElement = document.getElementsByClassName(CLASS_NAME_TOOLTIP)[0];
   if (tooltip.style) tooltipElement.style.cssText = tooltip.style;
   return function({ x, y, object }) {
@@ -90,11 +93,3 @@ function createTooltipProp(tooltip) {
     tooltipElement.style.display = "block";
   };
 }
-
-function convertFunction(value) {
-  const expr = value.replace(FUNCTION_IDENTIFIER, "");
-  const func = compile(expr);
-  return (data) => func(Object.assign({ "Math": Math, "console": console }, data));
-}
-
-const toColor = (specifier) => typeof specifier === "string" ? convertColor(specifier) : specifier;
