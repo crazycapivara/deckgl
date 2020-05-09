@@ -22,7 +22,6 @@ export default function(props, widgetElement) {
   // Support deprecated? 'getTooltip' property
   const tooltip = props.tooltip || props.getTooltip;
   if (tooltip) {
-    // const tooltipElement = createTooltip(widgetElement);
     const tooltipElement = document.getElementsByClassName(CLASS_NAME_TOOLTIP)[0];
     if (tooltip.style) tooltipElement.style.cssText = tooltip.style;
     props.onHover = function({ x, y, object }) {
@@ -49,13 +48,7 @@ function convertProps(props) {
   const convertedProps = { };
   for (let [key, value] of Object.entries(props)) {
     if (isFunction(value)) {
-      /*
-      console.log("function:", key);
-      const expr = value.replace(FUNCTION_IDENTIFIER, "");
-      const func = compile(expr);
-      value = (data) => func(Object.assign({ "Math": Math, "console": console }, data));
-      */
-      console.log("function:", key);
+      console.log("function", key);
       value = convertFunction(value);
       convertedProps[key] = value;
       // convertedProps[key] = (data) => func(Object.assign({ "Math": Math, "console": console }, data));
@@ -63,13 +56,12 @@ function convertProps(props) {
 
     // Convert color prop
     if (key === "colorRange") {
-      convertedProps[key] = value.map(specifier => typeof specifier === "string" ?
-        convertColor(specifier) : specifier);
+      convertedProps[key] = value.map(specifier => toColor(specifier));
     } else if (COLOR_PROPS.includes(key)) {
       console.log("color", key);
       convertedProps[key] = (data) => {
         const specifier = typeof value === "function" ? value(data) : value;
-        const rgba = typeof specifier === "string" ? convertColor(specifier) : specifier;
+        const rgba = toColor(specifier);
         return rgba;
       };
     }
@@ -83,3 +75,5 @@ function convertFunction(value) {
   const func = compile(expr);
   return (data) => func(Object.assign({ "Math": Math, "console": console }, data));
 }
+
+const toColor = (specifier) => typeof specifier === "string" ? convertColor(specifier) : specifier;
