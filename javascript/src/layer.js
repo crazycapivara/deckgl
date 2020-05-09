@@ -6,11 +6,6 @@ import { convertColor } from "./utils";
 const FUNCTION_IDENTIFIER = "@=";
 const COLOR_PROPS = [ "getColor", "getStrokeColor", "getFillColor" ];
 const isFunction = (value) => typeof value === "string" && value.startsWith(FUNCTION_IDENTIFIER);
-const toFunction = (value) => {
-  const expr = value.replace(FUNCTION_IDENTIFIER, "");
-  const func = compile(expr);
-  return (data) => func(Object.assign({ "Math": Math, "console": console }, data));
-};
 const toColor = (specifier) => typeof specifier === "string" ? convertColor(specifier) : specifier;
 
 export default function(props, widgetElement) {
@@ -60,36 +55,6 @@ function convertColors(props) {
   return convertedProps;
 }
 
-function convertProps(props) {
-  const convertedProps = { };
-  for (let [key, value] of Object.entries(props)) {
-    /*
-    if (isFunction(value)) {
-      console.log("function", key);
-      value = toFunction(value);
-      convertedProps[key] = value;
-      // convertedProps[key] = (data) => func(Object.assign({ "Math": Math, "console": console }, data));
-    }
-    */
-
-    // Convert color prop
-    /*
-    if (key === "colorRange") {
-      convertedProps[key] = value.map(specifier => toColor(specifier));
-    } else if (COLOR_PROPS.includes(key)) {
-      console.log("color", key);
-      convertedProps[key] = (data) => {
-        const specifier = typeof value === "function" ? value(data) : value;
-        const rgba = toColor(specifier);
-        return rgba;
-      };
-    }
-    */
-  }
-
-  return convertedProps;
-}
-
 function toTooltip(tooltip) {
   const tooltipElement = document.getElementsByClassName(CLASS_NAME_TOOLTIP)[0];
   if (tooltip.style) tooltipElement.style.cssText = tooltip.style;
@@ -106,4 +71,10 @@ function toTooltip(tooltip) {
       tooltip(object) : mustacheRender(typeof tooltip === "string" ? tooltip : tooltip.html, object);
     tooltipElement.style.display = "block";
   };
+}
+
+function toFunction(value) {
+  const expr = value.replace(FUNCTION_IDENTIFIER, "");
+  const func = compile(expr);
+  return (data) => func(Object.assign({ "Math": Math, "console": console }, data));
 }
