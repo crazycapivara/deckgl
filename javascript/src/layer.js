@@ -3,6 +3,7 @@ import { render as mustacheRender } from "mustache";
 import { CLASS_NAME_TOOLTIP } from "./constants";
 import { convertColor } from "./utils";
 
+const FUNCTION_IDENTIFIER = "@=";
 const COLOR_PROPS = [ "getColor", "getStrokeColor", "getFillColor" ];
 
 export default function(props, widgetElement) {
@@ -39,39 +40,23 @@ export default function(props, widgetElement) {
     };
   }
 
-  //Object.assign(props, convertDataAccessors(props));
   return Object.assign(props, convertProps(props));
-  //return new deck[className](props);
 }
 
-/*
-function convertDataAccessors(props) {
-  const convertedProps = { };
-  for (let [key, value] of Object.entries(props)) {
-    if (typeof value === "string" && value.startsWith("@=")) {
-      console.log("dc", key);
-      value = value.replace("@=", "");
-      const func = compile(value);
-      // console.log(func({ lat: 10, lng: 20 }));
-      convertedProps[key] = (data) => func(Object.assign({ "Math": Math, "console": console }, data));
-    }
-  }
-
-  return convertedProps;
-}
-*/
+const isFunction = (value) => typeof value === "string" && value.startsWith(FUNCTION_IDENTIFIER);
 
 function convertProps(props) {
   const convertedProps = { };
   for (let [key, value] of Object.entries(props)) {
-    // if (key === "colorRange" && typeof value[0] === "string") {
-
-    if (typeof value === "string" && value.startsWith("@=")) {
-      console.log("dc", key);
-      value = value.replace("@=", "");
-      const func = compile(value);
-      // console.log(func({ lat: 10, lng: 20 }));
+    if (isFunction(value)) {
+      /*
+      console.log("function:", key);
+      const expr = value.replace(FUNCTION_IDENTIFIER, "");
+      const func = compile(expr);
       value = (data) => func(Object.assign({ "Math": Math, "console": console }, data));
+      */
+      console.log("function:", key);
+      value = convertFunction(value);
       convertedProps[key] = value;
       // convertedProps[key] = (data) => func(Object.assign({ "Math": Math, "console": console }, data));
     }
@@ -80,9 +65,7 @@ function convertProps(props) {
     if (key === "colorRange") {
       convertedProps[key] = value.map(specifier => typeof specifier === "string" ?
         convertColor(specifier) : specifier);
-    }
-    // else if (key.includes("Color")) {
-    else if (COLOR_PROPS.includes(key)) {
+    } else if (COLOR_PROPS.includes(key)) {
       console.log("color", key);
       convertedProps[key] = (data) => {
         const specifier = typeof value === "function" ? value(data) : value;
@@ -93,4 +76,10 @@ function convertProps(props) {
   }
 
   return convertedProps;
+}
+
+function convertFunction(value) {
+  const expr = value.replace(FUNCTION_IDENTIFIER, "");
+  const func = compile(expr);
+  return (data) => func(Object.assign({ "Math": Math, "console": console }, data));
 }
