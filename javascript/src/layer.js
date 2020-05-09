@@ -30,8 +30,7 @@ export default function(props, widgetElement) {
   const tooltip = props.tooltip || props.getTooltip;
   if (tooltip) props.onHover = toTooltip(tooltip);
 
-
-  return Object.assign(props, convertJSON(props), convertProps(props));
+  return Object.assign(props, convertJSON(props), convertColors(props));
 }
 
 function convertJSON(props) {
@@ -44,8 +43,21 @@ function convertJSON(props) {
   return convertedProps;
 }
 
-function convertColors() {
+function convertColors(props) {
+  const convertedProps = { };
+  for (const key in props) {
+    const value = props[key];
+    if (key === "colorRange") {
+      convertedProps[key] = value.map(specifier => toColor(specifier));
+    } else if (COLOR_PROPS.includes(key)) {
+      convertedProps[key] = (data) => {
+        const specifier = typeof value === "function" ? value(data) : value;
+        return toColor(specifier);
+      };
+    }
+  }
 
+  return convertedProps;
 }
 
 function convertProps(props) {
@@ -61,6 +73,7 @@ function convertProps(props) {
     */
 
     // Convert color prop
+    /*
     if (key === "colorRange") {
       convertedProps[key] = value.map(specifier => toColor(specifier));
     } else if (COLOR_PROPS.includes(key)) {
@@ -71,6 +84,7 @@ function convertProps(props) {
         return rgba;
       };
     }
+    */
   }
 
   return convertedProps;
