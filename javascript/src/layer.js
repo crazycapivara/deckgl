@@ -22,6 +22,8 @@ export default function(props, widgetElement) {
   // Support deprecated? 'getTooltip' property
   const tooltip = props.tooltip || props.getTooltip;
   if (tooltip) {
+    props.onHover = createTooltipProp(tooltip);
+    /*
     const tooltipElement = document.getElementsByClassName(CLASS_NAME_TOOLTIP)[0];
     if (tooltip.style) tooltipElement.style.cssText = tooltip.style;
     props.onHover = function({ x, y, object }) {
@@ -37,6 +39,7 @@ export default function(props, widgetElement) {
         tooltip(object) : mustacheRender(typeof tooltip === "string" ? tooltip : tooltip.html, object);
       tooltipElement.style.display = "block";
     };
+    */
   }
 
   return Object.assign(props, convertProps(props));
@@ -68,6 +71,24 @@ function convertProps(props) {
   }
 
   return convertedProps;
+}
+
+function createTooltipProp(tooltip) {
+  const tooltipElement = document.getElementsByClassName(CLASS_NAME_TOOLTIP)[0];
+  if (tooltip.style) tooltipElement.style.cssText = tooltip.style;
+  return function({ x, y, object }) {
+    if (!object) {
+      tooltipElement.innerHTML = "";
+      tooltipElement.style.display = "none";
+      return;
+    }
+
+    tooltipElement.style.top = y + "px";
+    tooltipElement.style.left = x + "px";
+    tooltipElement.innerHTML = typeof tooltip === "function" ?
+      tooltip(object) : mustacheRender(typeof tooltip === "string" ? tooltip : tooltip.html, object);
+    tooltipElement.style.display = "block";
+  };
 }
 
 function convertFunction(value) {
