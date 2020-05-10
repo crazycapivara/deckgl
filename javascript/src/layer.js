@@ -4,13 +4,13 @@ import {
   CLASS_NAME_TOOLTIP,
   /*FUNCTION_IDENTIFIER*/ } from "./constants";
 import {
-  convertColor,
-  convertExpressions } from "./utils";
+  convertExpressions,
+  convertColors } from "./utils";
 
 // Move to utils
-const COLOR_PROPS = [ "getColor", "getStrokeColor", "getFillColor" ];
+//const COLOR_PROPS = [ "getColor", "getStrokeColor", "getFillColor" ];
 //const isFunction = (value) => typeof value === "string" && value.startsWith(FUNCTION_IDENTIFIER);
-const toColor = (specifier) => typeof specifier === "string" ? convertColor(specifier) : specifier;
+//const toColor = (specifier) => typeof specifier === "string" ? convertColor(specifier) : specifier;
 
 export default function(props, widgetElement) {
   // Pass data back to R in 'shinyMode'
@@ -27,7 +27,9 @@ export default function(props, widgetElement) {
 
   // TODO: Support deprecated? 'getTooltip' property
   const tooltip = props.tooltip || props.getTooltip;
-  if (tooltip) props.onHover = toTooltip(tooltip);
+  if (tooltip) {
+    props.onHover = toTooltip(tooltip);
+  }
 
   props = Object.assign(props, convertExpressions(props));
   return Object.assign(props, convertColors(props));
@@ -45,6 +47,7 @@ function convertJSON(props) {
 }
 */
 
+/*
 function convertColors(props) {
   const convertedProps = { };
   for (const key in props) {
@@ -61,7 +64,7 @@ function convertColors(props) {
 
   return convertedProps;
 }
-
+*/
 function toTooltip(tooltip) {
   const tooltipElement = document.getElementsByClassName(CLASS_NAME_TOOLTIP)[0];
   if (tooltip.style) tooltipElement.style.cssText = tooltip.style;
