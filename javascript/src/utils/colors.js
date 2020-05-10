@@ -13,13 +13,7 @@ export function convertColors(props) {
     }
 
     if (COLOR_PROPS.includes(key)) {
-      convertedProps[key] = (data) => {
-        /*
-        const specifier = typeof value === "function" ? value(data) : value;
-        return _convertColor(specifier);
-        */
-        return _convertColor(typeof value === "function" ? value(data) : value);
-      };
+      convertedProps[key] = (data) => _convertColor(typeof value === "function" ? value(data) : value);
     }
   }
 
