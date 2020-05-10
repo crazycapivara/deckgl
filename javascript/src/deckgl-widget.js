@@ -11,18 +11,20 @@ import {
   createDeckGLProperties,
   logVersions,
   fixLayerProperties,
-  convertColor } from "./utils";
+  /*convertColor*/ } from "./utils";
 import addJSONEditor from "./json-editor";
 
-import { parse, compile } from "expression-eval";
+// import { parse, compile } from "expression-eval";
 
 if (!global._deckWidget) {
   global._deckWidget = {
-    convertColor,
     addInteractiveControl,
-    sources: [ ],
-    parse,
-    compile
+    sources: [ ]
+    /*
+    , convertColor
+    , parse
+    , compile
+    */
   };
 }
 
