@@ -1,9 +1,12 @@
 import { parse, compile } from "expression-eval";
 import { render as mustacheRender } from "mustache";
-import { CLASS_NAME_TOOLTIP } from "./constants";
+import {
+  CLASS_NAME_TOOLTIP,
+  FUNCTION_IDENTIFIER } from "./constants";
 import { convertColor } from "./utils";
 
-const FUNCTION_IDENTIFIER = "@=";
+// TODO: Rename func stuff to expression
+// Move to utils
 const COLOR_PROPS = [ "getColor", "getStrokeColor", "getFillColor" ];
 const isFunction = (value) => typeof value === "string" && value.startsWith(FUNCTION_IDENTIFIER);
 const toColor = (specifier) => typeof specifier === "string" ? convertColor(specifier) : specifier;
