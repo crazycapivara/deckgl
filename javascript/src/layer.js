@@ -1,9 +1,9 @@
-import { parse, compile } from "expression-eval";
+// import { parse, compile } from "expression-eval";
 import { render as mustacheRender } from "mustache";
 import {
   CLASS_NAME_TOOLTIP,
   FUNCTION_IDENTIFIER } from "./constants";
-import { convertColor } from "./utils";
+import { convertColor, convertExpression } from "./utils";
 
 // TODO: Rename func stuff to expression
 // Move to utils
@@ -36,7 +36,7 @@ function convertJSON(props) {
   const convertedProps= { };
   for (const key in props) {
     const value = props[key];
-    if (isFunction(value)) convertedProps[key] = toFunction(value);
+    if (isFunction(value)) convertedProps[key] = convertExpression(value);
   }
 
   return convertedProps;
@@ -77,8 +77,10 @@ function toTooltip(tooltip) {
   };
 }
 
+/*
 function toFunction(value) {
   const expr = value.replace(FUNCTION_IDENTIFIER, "");
   const func = compile(expr);
   return (data) => func(Object.assign({ "Math": Math, "console": console }, data));
 }
+*/
