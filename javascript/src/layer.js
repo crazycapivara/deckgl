@@ -2,13 +2,14 @@
 import { render as mustacheRender } from "mustache";
 import {
   CLASS_NAME_TOOLTIP,
-  FUNCTION_IDENTIFIER } from "./constants";
-import { convertColor, convertExpression } from "./utils";
+  /*FUNCTION_IDENTIFIER*/ } from "./constants";
+import {
+  convertColor,
+  convertExpressions } from "./utils";
 
-// TODO: Rename func stuff to expression
 // Move to utils
 const COLOR_PROPS = [ "getColor", "getStrokeColor", "getFillColor" ];
-const isFunction = (value) => typeof value === "string" && value.startsWith(FUNCTION_IDENTIFIER);
+//const isFunction = (value) => typeof value === "string" && value.startsWith(FUNCTION_IDENTIFIER);
 const toColor = (specifier) => typeof specifier === "string" ? convertColor(specifier) : specifier;
 
 export default function(props, widgetElement) {
@@ -28,10 +29,11 @@ export default function(props, widgetElement) {
   const tooltip = props.tooltip || props.getTooltip;
   if (tooltip) props.onHover = toTooltip(tooltip);
 
-  props = Object.assign(props, convertJSON(props));
+  props = Object.assign(props, convertExpressions(props));
   return Object.assign(props, convertColors(props));
 }
 
+/*
 function convertJSON(props) {
   const convertedProps= { };
   for (const key in props) {
@@ -41,6 +43,7 @@ function convertJSON(props) {
 
   return convertedProps;
 }
+*/
 
 function convertColors(props) {
   const convertedProps = { };

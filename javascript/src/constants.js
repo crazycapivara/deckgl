@@ -8,5 +8,3 @@ export const POSITIONS = [
   "bottom-right",
   "bottom-left"
 ];
-
-export const FUNCTION_IDENTIFIER = "@=";
