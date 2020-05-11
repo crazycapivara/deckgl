@@ -1,6 +1,7 @@
 data("sf_bike_parking")
 
 properties <- list(
+  filter = "spaces > 4",
   visible = TRUE,
   extruded = TRUE,
   cellSize = 200,
