@@ -26,15 +26,14 @@ The \code{ArcLayer} renders raised arcs joining pairs of source and target point
 specified as latitude/longitude coordinates.
 }
 \examples{
-## @knitr arc-layer
 data("bart_segments")
 
 properties <- list(
   getWidth = 12,
   getSourcePosition = ~from_lng + from_lat,
   getTargetPosition = ~to_lng + to_lat,
-  getSourceColor = JS("d => [Math.sqrt(d.inbound), 140, 0]"),
-  getTargetColor = JS("d => [Math.sqrt(d.outbound), 140, 0]"),
+  getSourceColor = "@=[Math.sqrt(inbound), 140, 0]", #JS("d => [Math.sqrt(d.inbound), 140, 0]"),
+  getTargetColor = "@=[Math.sqrt(outbound), 140, 0]", #JS("d => [Math.sqrt(d.outbound), 140, 0]"),
   tooltip = use_tooltip(
     html = "{{from_name}} to {{to_name}}",
     style = "background: steelBlue; border-radius: 5px;"

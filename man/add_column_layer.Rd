@@ -26,7 +26,6 @@ The \code{ColumnLayer} can be used to render a heatmap of vertical cylinders.
 It renders a tesselated regular polygon centered at each given position (a "disk"), and extrude it in 3d.
 }
 \examples{
-## @knitr column-layer
 hexagon_centroids <- system.file("sample-data/centroids.csv", package = "deckgl") \%>\%
   read.csv()
 
@@ -36,7 +35,7 @@ deck <- deckgl(zoom = 11, pitch = 35) \%>\%
     diskResolution = 12,
     getPosition = ~lng + lat,
     getElevation = ~value,
-    getFillColor = JS("d => [48, 128, d.value * 255, 255]"),
+    getFillColor = "@=[48, 128, value * 255, 255]",
     elevationScale = 5000,
     radius = 250,
     extruded = TRUE,
