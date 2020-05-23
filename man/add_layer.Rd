@@ -21,7 +21,7 @@ in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-re
 for the given layer class. The \code{properties} parameter can also be an empty list. In this case
 all props must be passed as named arguments.}
 
-\item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters are
+\item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters
 are overwritten.}
 
 \item{tooltip}{A tooltip template that defines what should be displayed when the mouse enters an object.

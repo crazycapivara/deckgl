@@ -11,7 +11,7 @@
 #'   in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
 #'   for the given layer class. The \code{properties} parameter can also be an empty list. In this case
 #'   all props must be passed as named arguments.
-#' @param ... Named arguments that will be added to the \code{properties} object. Identical parameters are
+#' @param ... Named arguments that will be added to the \code{properties} object. Identical parameters
 #'   are overwritten.
 #' @param tooltip A tooltip template that defines what should be displayed when the mouse enters an object.
 #'   You can also pass a list with the properties \code{html} and \code{style}. See also \code{\link{use_tooltip}}.
