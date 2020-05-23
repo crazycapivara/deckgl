@@ -16,17 +16,17 @@ add_column_layer(deckgl, id = "column-layer", data = NULL,
 
 \item{properties}{A named list of properties with names corresponding to the properties defined
 in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
-for the given layer class.}
+for the given layer class. The \code{properties} parameter can also be an empty list. In this case
+all props must be passed as named arguments.}
 
-\item{...}{More properties that will be added to the \code{properties} object. This can be useful
-if you want to use a properties object for more than one layer.}
+\item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters are
+are overwritten.}
 }
 \description{
 The \code{ColumnLayer} can be used to render a heatmap of vertical cylinders.
 It renders a tesselated regular polygon centered at each given position (a "disk"), and extrude it in 3d.
 }
 \examples{
-## @knitr column-layer
 hexagon_centroids <- system.file("sample-data/centroids.csv", package = "deckgl") \%>\%
   read.csv()
 
@@ -36,7 +36,7 @@ deck <- deckgl(zoom = 11, pitch = 35) \%>\%
     diskResolution = 12,
     getPosition = ~lng + lat,
     getElevation = ~value,
-    getFillColor = JS("d => [48, 128, d.value * 255, 255]"),
+    getFillColor = "@=[48, 128, value * 255, 255]",
     elevationScale = 5000,
     radius = 250,
     extruded = TRUE,

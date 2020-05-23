@@ -3,9 +3,9 @@ data("bart_stations")
 
 properties <- list(
   getPosition = ~lng + lat,
-  getRadius = JS("data => Math.sqrt(data.exits)"),
+  getRadius = "@=Math.sqrt(exits)", #JS("data => Math.sqrt(data.exits)"),
   radiusScale = 6,
-  getFillColor = c(255, 140, 20),
+  getFillColor = "@=code === 'LF' ? 'white': 'red'", #c(255, 140, 20),
   getTooltip = ~name
 )
 

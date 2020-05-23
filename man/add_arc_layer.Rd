@@ -16,25 +16,25 @@ add_arc_layer(deckgl, id = "arc-layer", data = NULL,
 
 \item{properties}{A named list of properties with names corresponding to the properties defined
 in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
-for the given layer class.}
+for the given layer class. The \code{properties} parameter can also be an empty list. In this case
+all props must be passed as named arguments.}
 
-\item{...}{More properties that will be added to the \code{properties} object. This can be useful
-if you want to use a properties object for more than one layer.}
+\item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters are
+are overwritten.}
 }
 \description{
 The \code{ArcLayer} renders raised arcs joining pairs of source and target points,
 specified as latitude/longitude coordinates.
 }
 \examples{
-## @knitr arc-layer
 data("bart_segments")
 
 properties <- list(
   getWidth = 12,
   getSourcePosition = ~from_lng + from_lat,
   getTargetPosition = ~to_lng + to_lat,
-  getSourceColor = JS("d => [Math.sqrt(d.inbound), 140, 0]"),
-  getTargetColor = JS("d => [Math.sqrt(d.outbound), 140, 0]"),
+  getSourceColor = "@=[Math.sqrt(inbound), 140, 0]", #JS("d => [Math.sqrt(d.inbound), 140, 0]"),
+  getTargetColor = "@=[Math.sqrt(outbound), 140, 0]", #JS("d => [Math.sqrt(d.outbound), 140, 0]"),
   tooltip = use_tooltip(
     html = "{{from_name}} to {{to_name}}",
     style = "background: steelBlue; border-radius: 5px;"

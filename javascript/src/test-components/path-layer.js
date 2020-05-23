@@ -4,8 +4,8 @@ const PATH_LAYER = {
     pickable: true,
     widthScale: 20,
     widthMinPixels: 2,
-    getPath: data => data.path,
-    getColor: d => d.color, // [25,145, 12],
+    getPath: "@=path", //data => data.path,
+    getColor: "@=color", // d => d.color, // [25,145, 12],
     getWidth: 5,
     tooltip: { html: "{{name}}" }
   },
@@ -20,5 +20,9 @@ export default {
   bearing: 0,
   layers: [
     PATH_LAYER
+  ],
+  calls: [
+    { funcName: "addLayer", args: PATH_LAYER },
+    { funcName: "addJSONEditor", args: {} }
   ]
 };

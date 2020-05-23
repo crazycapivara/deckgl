@@ -1,4 +1,5 @@
 import parseLayerProps from "./layer";
+import { convertExpression } from "./utils";
 
 const Viz = ({ deckGL, widgetElement }) => ({
   deckGL,
@@ -46,7 +47,13 @@ const Viz = ({ deckGL, widgetElement }) => ({
 
   render() {
     const deckLayers = this.layers.map(layer => {
-      layer.properties.data = layer.source ? this.getSource(layer.source).data : layer.data;
+      // layer.properties.data = layer.source ? this.getSource(layer.source).data : layer.data;
+      const data = layer.source ? this.getSource(layer.source).data : layer.data;
+      // console.log("d", data);
+      layer.properties.data = typeof data === "object" && layer.properties.filter
+        ? data.filter(convertExpression(layer.properties.filter))
+        //? data.filter(row => row.racks > 7)
+        : data;
       const props = parseLayerProps(layer.properties, this.widgetElement);
       return new deck[layer.className](props);
     });

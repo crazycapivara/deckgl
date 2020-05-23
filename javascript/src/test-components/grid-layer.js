@@ -1,3 +1,5 @@
+import _data from "./data/sf-bike-parking";
+
 const SOURCE_ID = "data-grid-layer";
 const LAYER_ID = "grid-layer";
 
@@ -9,7 +11,7 @@ const source = {
 const GRID_LAYER = {
   className: "GridLayer",
   // source: SOURCE_ID,
-  data: source.data,
+  data: _data, //source.data,
   properties: {
     id: LAYER_ID,
     // data: source.data,
@@ -17,7 +19,9 @@ const GRID_LAYER = {
     extruded: true,
     cellSize: 200,
     elevationScale: 4,
-    getPosition: d => d.COORDINATES,
+    //getPosition: "@=COORDINATES",// d => d.COORDINATES,
+    getPosition: "@=[lng, lat]",
+    getColorWeight: "@=2",
     // onClick: ({ object }) => console.log(object)
     // getTooltip: object => object.count
     getTooltip: {
@@ -25,7 +29,8 @@ const GRID_LAYER = {
       style: "background: blue; color: white",
       // eventType: "onClick"
     },
-    colorRange: [ "green", "yellow", "red", "steelblue", "purple", "white" ]
+    colorRange: [ "green", "yellow", "red", "steelblue", "purple", "white" ],
+    filter: "racks > 2"
   }
 };
 
