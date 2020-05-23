@@ -5,7 +5,7 @@
 \title{Add any kind of layer to the deckgl widget}
 \usage{
 add_layer(deckgl, class_name, id, data = NULL, properties = list(),
-  ..., tooltip = NULL, source = NULL)
+  ..., tooltip = NULL, source = NULL, filter = NULL)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
@@ -18,15 +18,18 @@ add_layer(deckgl, class_name, id, data = NULL, properties = list(),
 
 \item{properties}{A named list of properties with names corresponding to the properties defined
 in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
-for the given layer class.}
+for the given layer class. The \code{properties} parameter can also be an empty list. In this case
+all props must be passed as named arguments.}
 
-\item{...}{More properties that will be added to the \code{properties} object. This can be useful
-if you want to use a properties object for more than one layer.}
+\item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters are
+are overwritten.}
 
 \item{tooltip}{A tooltip template that defines what should be displayed when the mouse enters an object.
 You can also pass a list with the properties \code{html} and \code{style}. See also \code{\link{use_tooltip}}.}
 
-\item{source}{The ID of the data source ...}
+\item{source}{The ID of the data source. See \code{\link{add_source}}.}
+
+\item{filter}{A filter expression that is applied to the data object.}
 }
 \value{
 A deckgl widget object.

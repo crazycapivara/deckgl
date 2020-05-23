@@ -9,16 +9,19 @@
 #' @param data The url to fetch data from or a data object.
 #' @param properties A named list of properties with names corresponding to the properties defined
 #'   in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
-#'   for the given layer class.
-#' @param ... More properties that will be added to the \code{properties} object. This can be useful
-#'   if you want to use a properties object for more than one layer.
+#'   for the given layer class. The \code{properties} parameter can also be an empty list. In this case
+#'   all props must be passed as named arguments.
+#' @param ... Named arguments that will be added to the \code{properties} object. Identical parameters are
+#'   are overwritten.
 #' @param tooltip A tooltip template that defines what should be displayed when the mouse enters an object.
 #'   You can also pass a list with the properties \code{html} and \code{style}. See also \code{\link{use_tooltip}}.
-#' @param source  The ID of the data source ...
+#' @param source The ID of the data source. See \code{\link{add_source}}.
+#' @param filter A filter expression that is applied to the data object.
 #' @return A deckgl widget object.
 #' @export
-add_layer <- function(deckgl, class_name, id, data = NULL, properties = list(), ..., tooltip = NULL, source = NULL) {
-  properties <- list(tooltip = tooltip) %>%
+add_layer <- function(deckgl, class_name, id, data = NULL, properties = list(), ...,
+                      tooltip = NULL, source = NULL, filter = NULL) {
+  properties <- list(tooltip = tooltip, filter = filter) %>%
     utils::modifyList(properties) %>%
     utils::modifyList(list(...)) %>%
     compact() %>%

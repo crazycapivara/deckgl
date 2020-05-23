@@ -16,10 +16,11 @@ add_scatterplot_layer(deckgl, id = "scatterplot-layer", data = NULL,
 
 \item{properties}{A named list of properties with names corresponding to the properties defined
 in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
-for the given layer class.}
+for the given layer class. The \code{properties} parameter can also be an empty list. In this case
+all props must be passed as named arguments.}
 
-\item{...}{More properties that will be added to the \code{properties} object. This can be useful
-if you want to use a properties object for more than one layer.}
+\item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters are
+are overwritten.}
 }
 \description{
 The \code{ScatterplotLayer} takes in paired latitude and longitude coordinated points
