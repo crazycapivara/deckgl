@@ -27,7 +27,6 @@ The \code{GeoJsonLayer} takes in \href{http://geojson.org}{GeoJson} formatted da
 and renders it as interactive polygons, lines and points.
 }
 \examples{
-## @knitr geojson-layer
 geojson <- paste0(
   "https://raw.githubusercontent.com/",
   "uber-common/deck.gl-data/",
@@ -43,10 +42,10 @@ deck <- deckgl(zoom = 10, pickingRadius = 5) \%>\%
     lineWidthScale = 20,
     lineWidthMinPixels = 2,
     getLineWidth = 1,
-    getLineColor = get_color_to_rgb_array("properties.color || 'black'"),
+    getLineColor = "@=properties.color || 'green'",
     getFillColor = c(160, 160, 180, 200),
     getElevation = 30,
-    getTooltip = JS("object => object.properties.name || object.properties.station")
+    tooltip = JS("object => object.properties.name || object.properties.station")
   ) \%>\%
   add_basemap()
 
