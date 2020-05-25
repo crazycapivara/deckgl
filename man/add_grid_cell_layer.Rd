@@ -4,13 +4,11 @@
 \alias{add_grid_cell_layer}
 \title{Add a grid cell layer to the deckgl widget}
 \usage{
-add_grid_cell_layer(deckgl, id = "grid-cell-layer", data = NULL,
-  properties = list(), ...)
+add_grid_cell_layer(deckgl, data = NULL, properties = list(), ...,
+  id = "grid-cell-layer")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
-
-\item{id}{The unique id of the layer.}
 
 \item{data}{The url to fetch data from or a data object.}
 
@@ -21,6 +19,8 @@ all props must be passed as named arguments.}
 
 \item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters
 are overwritten.}
+
+\item{id}{The unique id of the layer.}
 }
 \description{
 The \code{GridCellLayer} can render a grid-based heatmap.
@@ -36,11 +36,11 @@ deck <- deckgl(zoom = 11, pitch = 35) \%>\%
     data = hexagon_centroids,
     getPosition = ~lng + lat,
     getElevation = ~value,
-    getFillColor = JS("d => [48, 128, d.value * 255, 255]"),
+    getFillColor = "@=[48, 128, value * 255, 255]",
     elevationScale = 5000,
     cellSize = 250,
     extruded = TRUE,
-    getTooltip = JS("object => `height: ${object.value * 5000}m`")
+    tooltip = "{{value}}"
   ) \%>\%
   add_mapbox_basemap()
 

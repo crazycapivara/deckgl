@@ -4,13 +4,11 @@
 \alias{add_path_layer}
 \title{Add a path layer to the deckgl widget}
 \usage{
-add_path_layer(deckgl, id = "path-layer", data = NULL,
-  properties = list(), ...)
+add_path_layer(deckgl, data = NULL, properties = list(), ...,
+  id = "path-layer")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
-
-\item{id}{The unique id of the layer.}
 
 \item{data}{The url to fetch data from or a data object.}
 
@@ -21,12 +19,13 @@ all props must be passed as named arguments.}
 
 \item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters
 are overwritten.}
+
+\item{id}{The unique id of the layer.}
 }
 \description{
 The \code{PathLayer} takes in lists of coordinate points and renders them as extruded lines with mitering.
 }
 \examples{
-## @knitr path-layer
 sample_data <- paste0(
   "https://raw.githubusercontent.com/",
   "uber-common/deck.gl-data/",
@@ -40,7 +39,7 @@ properties <- list(
   getPath = ~path,
   getColor = ~color,
   getWidth = 5,
-  getTooltip = ~name
+  tooltip = "{{name}}"
 )
 
 deck <- deckgl(pitch = 25, zoom = 10.5) \%>\%

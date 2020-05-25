@@ -5,7 +5,6 @@
 #'
 #' @param deckgl A deckgl widget object.
 #' @param class_name The name of the JavaScript layer class, e. g. \code{ScatterplotLayer}.
-#' @param id The unique id of the layer.
 #' @param data The url to fetch data from or a data object.
 #' @param properties A named list of properties with names corresponding to the properties defined
 #'   in the \href{https://deck.gl/#/documentation/deckgl-api-reference}{deckgl-api-reference}
@@ -13,14 +12,15 @@
 #'   all props must be passed as named arguments.
 #' @param ... Named arguments that will be added to the \code{properties} object. Identical parameters
 #'   are overwritten.
+#' @param id The unique id of the layer.
 #' @param tooltip A tooltip template that defines what should be displayed when the mouse enters an object.
 #'   You can also pass a list with the properties \code{html} and \code{style}. See also \code{\link{use_tooltip}}.
 #' @param source The ID of the data source. See \code{\link{add_source}}.
 #' @param filter A filter expression that is applied to the data object.
 #' @return A deckgl widget object.
 #' @export
-add_layer <- function(deckgl, class_name, id, data = NULL, properties = list(), ...,
-                      tooltip = NULL, source = NULL, filter = NULL) {
+add_layer <- function(deckgl, class_name, data = NULL, properties = list(), ...,
+                      id = "hopeful-hopper", tooltip = NULL, source = NULL, filter = NULL) {
   properties <- list(tooltip = tooltip, filter = filter) %>%
     utils::modifyList(properties) %>%
     utils::modifyList(list(...)) %>%

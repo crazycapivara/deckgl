@@ -1,4 +1,3 @@
-## @knitr scatterplot-layer
 data("bart_stations")
 
 properties <- list(
@@ -6,7 +5,7 @@ properties <- list(
   getRadius = "@=Math.sqrt(exits)", #JS("data => Math.sqrt(data.exits)"),
   radiusScale = 6,
   getFillColor = "@=code === 'LF' ? 'white': 'red'", #c(255, 140, 20),
-  getTooltip = ~name
+  tooltip = "{{name}}"
 )
 
 deck <- deckgl(zoom = 10.5, pitch = 35) %>%

@@ -3,12 +3,13 @@
 #' The \code{ContourLayer} renders contour lines for a given threshold and cell size.
 #' Internally it implements \href{https://en.wikipedia.org/wiki/Marching_squares}{Marching Squares} algorithm to generate contour line segments
 #' and feeds them into \code{LineLayer} to render lines.
+#'
 #' @inheritParams add_layer
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/contour-layer}
 #' @example inst/examples/deckgl-api-reference/contour-layer.R
 #' @export
-add_contour_layer <- function(deckgl, id = "contour-layer", data = NULL, properties = list(), ...) {
-  add_layer(deckgl, "ContourLayer", id, data, properties, ...)
+add_contour_layer <- function(deckgl, data = NULL, properties = list(), ..., id = "contour-layer") {
+  add_layer(deckgl, "ContourLayer", data, properties, ..., id = id)
 }
 
 #' Create a contour definition

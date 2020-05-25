@@ -4,13 +4,11 @@
 \alias{add_arc_layer}
 \title{Add an arc layer to the deckgl widget}
 \usage{
-add_arc_layer(deckgl, id = "arc-layer", data = NULL,
-  properties = list(), ...)
+add_arc_layer(deckgl, data = NULL, properties = list(), ...,
+  id = "arc-layer")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
-
-\item{id}{The unique id of the layer.}
 
 \item{data}{The url to fetch data from or a data object.}
 
@@ -21,6 +19,8 @@ all props must be passed as named arguments.}
 
 \item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters
 are overwritten.}
+
+\item{id}{The unique id of the layer.}
 }
 \description{
 The \code{ArcLayer} renders raised arcs joining pairs of source and target points,

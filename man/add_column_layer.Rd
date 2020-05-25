@@ -4,13 +4,11 @@
 \alias{add_column_layer}
 \title{Add a column layer to the deckgl widget}
 \usage{
-add_column_layer(deckgl, id = "column-layer", data = NULL,
-  properties = list(), ...)
+add_column_layer(deckgl, data = NULL, properties = list(), ...,
+  id = "column-layer")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
-
-\item{id}{The unique id of the layer.}
 
 \item{data}{The url to fetch data from or a data object.}
 
@@ -21,6 +19,8 @@ all props must be passed as named arguments.}
 
 \item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters
 are overwritten.}
+
+\item{id}{The unique id of the layer.}
 }
 \description{
 The \code{ColumnLayer} can be used to render a heatmap of vertical cylinders.

@@ -4,12 +4,9 @@
 #' The color and height of the cell is scaled by number of points it contains.
 #'
 #' @inheritParams add_layer
-#'
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer}
-#'
 #' @example inst/examples/deckgl-api-reference/grid-layer.R
-#'
 #' @export
-add_grid_layer <- function(deckgl, id = "grid-layer", data = NULL, properties = list(), ...) {
-  add_layer(deckgl, "GridLayer", id, data, properties, ...)
+add_grid_layer <- function(deckgl, data = NULL, properties = list(), ..., id = "grid-layer") {
+  add_layer(deckgl, "GridLayer", data, properties, ..., id = id)
 }

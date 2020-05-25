@@ -1,4 +1,3 @@
-## @knitr path-layer
 sample_data <- paste0(
   "https://raw.githubusercontent.com/",
   "uber-common/deck.gl-data/",
@@ -12,7 +11,7 @@ properties <- list(
   getPath = ~path,
   getColor = ~color,
   getWidth = 5,
-  getTooltip = ~name
+  tooltip = "{{name}}"
 )
 
 deck <- deckgl(pitch = 25, zoom = 10.5) %>%

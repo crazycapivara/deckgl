@@ -4,13 +4,11 @@
 \alias{add_scatterplot_layer}
 \title{Add a scatterplot layer to the deckgl widget}
 \usage{
-add_scatterplot_layer(deckgl, id = "scatterplot-layer", data = NULL,
-  properties = list(), ...)
+add_scatterplot_layer(deckgl, data = NULL, properties = list(), ...,
+  id = "scatterplot-layer")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
-
-\item{id}{The unique id of the layer.}
 
 \item{data}{The url to fetch data from or a data object.}
 
@@ -21,13 +19,14 @@ all props must be passed as named arguments.}
 
 \item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters
 are overwritten.}
+
+\item{id}{The unique id of the layer.}
 }
 \description{
 The \code{ScatterplotLayer} takes in paired latitude and longitude coordinated points
 and renders them as circles with a certain radius.
 }
 \examples{
-## @knitr scatterplot-layer
 data("bart_stations")
 
 properties <- list(
@@ -35,7 +34,7 @@ properties <- list(
   getRadius = "@=Math.sqrt(exits)", #JS("data => Math.sqrt(data.exits)"),
   radiusScale = 6,
   getFillColor = "@=code === 'LF' ? 'white': 'red'", #c(255, 140, 20),
-  getTooltip = ~name
+  tooltip = "{{name}}"
 )
 
 deck <- deckgl(zoom = 10.5, pitch = 35) \%>\%
