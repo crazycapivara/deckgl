@@ -6,11 +6,11 @@ deck <- deckgl(zoom = 11, pitch = 35) %>%
     data = hexagon_centroids,
     getPosition = ~lng + lat,
     getElevation = ~value,
-    getFillColor = JS("d => [48, 128, d.value * 255, 255]"),
+    getFillColor = "@=[48, 128, value * 255, 255]",
     elevationScale = 5000,
     cellSize = 250,
     extruded = TRUE,
-    getTooltip = JS("object => `height: ${object.value * 5000}m`")
+    tooltip = "{{value}}"
   ) %>%
   add_mapbox_basemap()
 

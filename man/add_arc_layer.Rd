@@ -4,13 +4,11 @@
 \alias{add_arc_layer}
 \title{Add an arc layer to the deckgl widget}
 \usage{
-add_arc_layer(deckgl, id = "arc-layer", data = NULL,
-  properties = list(), ...)
+add_arc_layer(deckgl, data = NULL, properties = list(), ...,
+  id = "arc-layer")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
-
-\item{id}{The unique id of the layer.}
 
 \item{data}{The url to fetch data from or a data object.}
 
@@ -21,6 +19,8 @@ all props must be passed as named arguments.}
 
 \item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters
 are overwritten.}
+
+\item{id}{The unique id of the layer.}
 }
 \description{
 The \code{ArcLayer} renders raised arcs joining pairs of source and target points,
@@ -33,8 +33,8 @@ properties <- list(
   getWidth = 12,
   getSourcePosition = ~from_lng + from_lat,
   getTargetPosition = ~to_lng + to_lat,
-  getSourceColor = "@=[Math.sqrt(inbound), 140, 0]", #JS("d => [Math.sqrt(d.inbound), 140, 0]"),
-  getTargetColor = "@=[Math.sqrt(outbound), 140, 0]", #JS("d => [Math.sqrt(d.outbound), 140, 0]"),
+  getSourceColor = "@=[Math.sqrt(inbound), 140, 0]",
+  getTargetColor = "@=[Math.sqrt(outbound), 140, 0]",
   tooltip = use_tooltip(
     html = "{{from_name}} to {{to_name}}",
     style = "background: steelBlue; border-radius: 5px;"

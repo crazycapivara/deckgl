@@ -4,13 +4,11 @@
 \alias{add_contour_layer}
 \title{Add a contour layer to the deckgl widget}
 \usage{
-add_contour_layer(deckgl, id = "contour-layer", data = NULL,
-  properties = list(), ...)
+add_contour_layer(deckgl, data = NULL, properties = list(), ...,
+  id = "contour-layer")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
-
-\item{id}{The unique id of the layer.}
 
 \item{data}{The url to fetch data from or a data object.}
 
@@ -21,6 +19,8 @@ all props must be passed as named arguments.}
 
 \item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters
 are overwritten.}
+
+\item{id}{The unique id of the layer.}
 }
 \description{
 The \code{ContourLayer} renders contour lines for a given threshold and cell size.

@@ -8,6 +8,6 @@
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-cell-layer}
 #' @example inst/examples/deckgl-api-reference/grid-cell-layer.R
 #' @export
-add_grid_cell_layer <- function(deckgl, id = "grid-cell-layer", data = NULL, properties = list(), ...) {
-  add_layer(deckgl, "GridCellLayer", id, data, properties, ...)
+add_grid_cell_layer <- function(deckgl, data = NULL, properties = list(), ..., id = "grid-cell-layer") {
+  add_layer(deckgl, "GridCellLayer", data, properties, ..., id = id)
 }

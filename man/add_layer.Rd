@@ -4,15 +4,14 @@
 \alias{add_layer}
 \title{Add any kind of layer to the deckgl widget}
 \usage{
-add_layer(deckgl, class_name, id, data = NULL, properties = list(),
-  ..., tooltip = NULL, source = NULL, filter = NULL)
+add_layer(deckgl, class_name, data = NULL, properties = list(), ...,
+  id = "hopeful-hopper", tooltip = NULL, source = NULL,
+  filter = NULL)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
 
 \item{class_name}{The name of the JavaScript layer class, e. g. \code{ScatterplotLayer}.}
-
-\item{id}{The unique id of the layer.}
 
 \item{data}{The url to fetch data from or a data object.}
 
@@ -23,6 +22,8 @@ all props must be passed as named arguments.}
 
 \item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters
 are overwritten.}
+
+\item{id}{The unique id of the layer.}
 
 \item{tooltip}{A tooltip template that defines what should be displayed when the mouse enters an object.
 You can also pass a list with the properties \code{html} and \code{style}. See also \code{\link{use_tooltip}}.}

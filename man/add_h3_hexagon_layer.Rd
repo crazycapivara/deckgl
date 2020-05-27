@@ -4,13 +4,11 @@
 \alias{add_h3_hexagon_layer}
 \title{Add a h3 hexagon layer to the deckgl widget}
 \usage{
-add_h3_hexagon_layer(deckgl, id = "h3-hexagon-layer", data = NULL,
-  properties = list(), ...)
+add_h3_hexagon_layer(deckgl, data = NULL, properties = list(), ...,
+  id = "h3-hexagon-layer")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
-
-\item{id}{The unique id of the layer.}
 
 \item{data}{The url to fetch data from or a data object.}
 
@@ -21,6 +19,8 @@ all props must be passed as named arguments.}
 
 \item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters
 are overwritten.}
+
+\item{id}{The unique id of the layer.}
 }
 \description{
 Add a h3 hexagon layer to the deckgl widget

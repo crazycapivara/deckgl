@@ -7,6 +7,6 @@
 #' @seealso \url{https://deck.gl/#/documentation/deckgl-api-reference/layers/column-layer}
 #' @example inst/examples/deckgl-api-reference/column-layer.R
 #' @export
-add_column_layer <- function(deckgl, id = "column-layer", data = NULL, properties = list(), ...) {
-  add_layer(deckgl, "ColumnLayer", id, data, properties, ...)
+add_column_layer <- function(deckgl, data = NULL, properties = list(), ..., id = "column-layer") {
+  add_layer(deckgl, "ColumnLayer", data, properties, ..., id = id)
 }

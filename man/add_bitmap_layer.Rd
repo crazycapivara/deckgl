@@ -4,13 +4,11 @@
 \alias{add_bitmap_layer}
 \title{Add a bitmap layer to the deckgl widget}
 \usage{
-add_bitmap_layer(deckgl, id = "h3-hexagon-layer", image = NULL,
-  properties = list(), ...)
+add_bitmap_layer(deckgl, image = NULL, properties = list(), ...,
+  id = "h3-hexagon-layer")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
-
-\item{id}{The unique id of the layer.}
 
 \item{image}{image}
 
@@ -21,6 +19,8 @@ all props must be passed as named arguments.}
 
 \item{...}{Named arguments that will be added to the \code{properties} object. Identical parameters
 are overwritten.}
+
+\item{id}{The unique id of the layer.}
 }
 \description{
 Add a bitmap layer to the deckgl widget
