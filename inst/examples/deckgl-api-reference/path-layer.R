@@ -11,7 +11,7 @@ properties <- list(
   getPath = ~path,
   getColor = ~color,
   getWidth = 5,
-  tooltip = "{{name}}"
+  tooltip = ~name
 )
 
 deck <- deckgl(pitch = 25, zoom = 10.5) %>%
