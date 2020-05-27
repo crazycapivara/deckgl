@@ -17,14 +17,15 @@ export default function(props, widgetElement) {
     };
   }
 
+  props = Object.assign(props, convertExpressions(props));
+  props = Object.assign(props, convertColors(props));
+
   // TODO: Support deprecated? 'getTooltip' property
   const tooltip = props.tooltip || props.getTooltip;
   if (tooltip) {
     props.onHover = convertTooltip(tooltip);
   }
 
-  props = Object.assign(props, convertExpressions(props));
-  props = Object.assign(props, convertColors(props));
   return props;
 }
 
