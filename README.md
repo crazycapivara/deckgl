@@ -3,7 +3,7 @@
 r-deckgl: An R Interface to deck.gl
 ===================================
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![github\_status\_badge](https://img.shields.io/badge/github-v0.3.1beta.1-blue.svg)](https://github.com/crazycapivara/deckgl/releases/latest) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![deck.gl Version](https://img.shields.io/badge/deck.gl-v8.1.4-blue.svg)](https://github.com/uber/deck.gl/releases/tag/v8.1.4)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/deckgl)](https://cran.r-project.org/package=deckgl) [![github\_status\_badge](https://img.shields.io/badge/github-v0.3.0_beta.1-blue.svg)](https://github.com/crazycapivara/deckgl/releases/latest) [![Travis-CI Build Status](https://travis-ci.org/crazycapivara/deckgl.svg?branch=master)](https://travis-ci.org/crazycapivara/deckgl) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![deck.gl Version](https://img.shields.io/badge/deck.gl-v8.1.4-blue.svg)](https://github.com/uber/deck.gl/releases/tag/v8.1.4)
 
 The r-deckgl package makes the open-source JavaScript library [deck.gl](https://deck.gl/) available within R via the [htmlwidgets](https://www.htmlwidgets.org/) package.
 
