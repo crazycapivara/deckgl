@@ -42,7 +42,7 @@ function addLayer(layer) {
 
 function setViewState(viewState) {
   const viz = this;
-  viz.deckGL.setProps({ viewState: viewState });
+  viz.deckGL.setProps({ initialViewState: viewState });
 }
 
 // TODO: Must be global, so that they can be extended by other libs
