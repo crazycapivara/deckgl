@@ -65,6 +65,7 @@ export default {
       options: { maxLines: 15, wrap: 40 },
       style: "width: 400px;",
       theme: "textmate"
-    } }
+    } },
+    { funcName: "setViewState", args: { latitude: 37.8, longitude: -122.45, zoom: 12, pitch: 60} }
   ]
 };

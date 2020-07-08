@@ -2,7 +2,7 @@
   mapbox_message <- ""
   if (Sys.getenv("MAPBOX_API_TOKEN") == "") {
     mapbox_message <- c(
-      "\nIf you want to add a base map from mapbox, ",
+      "\nIf you want to add a basemap from mapbox, ",
       "it is recommended that you store your API token in an environment variable called MAPBOX_API_TOKEN.\n"
     )
   }
@@ -14,3 +14,6 @@
     mapbox_message
   )
 } # nocov end
+
+
+globalVariables(c("."))
