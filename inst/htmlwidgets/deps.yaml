@@ -1,6 +1,6 @@
 deck.gl:
   name: deck.gl
-  version: 8.1.4
+  version: 8.1.9
   src: htmlwidgets/lib/deckgl
   script: dist.min.js
   all_files: false
