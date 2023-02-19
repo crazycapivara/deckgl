@@ -1,3 +1,8 @@
+# deckgl 0.3.0
+
+* deck.gl v8.1.9
+* Fix warnings
+
 # deckgl 0.2.7
 
 * __Get Started__ vignette
