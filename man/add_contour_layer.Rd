@@ -4,8 +4,13 @@
 \alias{add_contour_layer}
 \title{Add a contour layer to the deckgl widget}
 \usage{
-add_contour_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "contour-layer")
+add_contour_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "contour-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

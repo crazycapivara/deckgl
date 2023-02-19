@@ -4,8 +4,7 @@
 \alias{add_arc_layer}
 \title{Add an arc layer to the deckgl widget}
 \usage{
-add_arc_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "arc-layer")
+add_arc_layer(deckgl, data = NULL, properties = list(), ..., id = "arc-layer")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

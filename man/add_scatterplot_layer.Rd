@@ -4,8 +4,13 @@
 \alias{add_scatterplot_layer}
 \title{Add a scatterplot layer to the deckgl widget}
 \usage{
-add_scatterplot_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "scatterplot-layer")
+add_scatterplot_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "scatterplot-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

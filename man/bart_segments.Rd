@@ -4,7 +4,8 @@
 \name{bart_segments}
 \alias{bart_segments}
 \title{bart segments}
-\format{tibble with 45 rows and 8 variables:
+\format{
+tibble with 45 rows and 8 variables:
 \describe{
   \item{inbound}{number of inbound trips}
   \item{outbound}{number of outbound trips}
@@ -14,7 +15,8 @@
   \item{to_name}{name of target station}
   \item{to_lng}{longitude of target station}
   \item{to_lat}{latitude of target station}
-}}
+}
+}
 \source{
 \url{https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-segments.json}
 }

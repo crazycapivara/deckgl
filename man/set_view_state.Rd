@@ -4,8 +4,14 @@
 \alias{set_view_state}
 \title{Set the view state of the map}
 \usage{
-set_view_state(deckgl, latitude = 37.8, longitude = -122.45,
-  zoom = 12, pitch = 0, bearing = 0)
+set_view_state(
+  deckgl,
+  latitude = 37.8,
+  longitude = -122.45,
+  zoom = 12,
+  pitch = 0,
+  bearing = 0
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

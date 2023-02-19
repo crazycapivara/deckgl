@@ -4,8 +4,13 @@
 \alias{add_heatmap_layer}
 \title{Add a heatmap layer to the deckgl widget}
 \usage{
-add_heatmap_layer(deckgl, id = "heatmap-layer", data = NULL,
-  properties = list(), ...)
+add_heatmap_layer(
+  deckgl,
+  id = "heatmap-layer",
+  data = NULL,
+  properties = list(),
+  ...
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

@@ -4,8 +4,13 @@
 \alias{add_line_layer}
 \title{Add a line layer to the deckgl widget}
 \usage{
-add_line_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "line-layer")
+add_line_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "line-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

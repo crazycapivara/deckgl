@@ -4,14 +4,16 @@
 \name{sf_bike_parking}
 \alias{sf_bike_parking}
 \title{sf bike parking}
-\format{tibble with 2520 rows and 5 variables:
+\format{
+tibble with 2520 rows and 5 variables:
 \describe{
   \item{address}{address}
   \item{racks}{number of racks}
   \item{spaces}{number of spaces}
   \item{lng}{longitude}
   \item{lat}{latidude}
-}}
+}
+}
 \source{
 \url{https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/sf-bike-parking.json}
 }

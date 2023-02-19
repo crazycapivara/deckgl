@@ -4,8 +4,15 @@
 \alias{add_legend}
 \title{Add a legend to the deckgl widget}
 \usage{
-add_legend(deckgl, colors, labels, title = NULL, pos = "top-right",
-  style = NULL, ...)
+add_legend(
+  deckgl,
+  colors,
+  labels,
+  title = NULL,
+  pos = "top-right",
+  style = NULL,
+  ...
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

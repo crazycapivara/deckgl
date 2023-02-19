@@ -4,8 +4,13 @@
 \alias{add_great_circle_layer}
 \title{Add a great circle layer to the deckgl widget}
 \usage{
-add_great_circle_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "great-circle-layer")
+add_great_circle_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "great-circle-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

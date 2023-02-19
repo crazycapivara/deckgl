@@ -16,6 +16,6 @@ below to see their documentation.
 \describe{
   \item{htmlwidgets}{\code{\link[htmlwidgets]{JS}}, \code{\link[htmlwidgets]{onRender}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%<>\%}}}
+  \item{magrittr}{\code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}}
 }}
 

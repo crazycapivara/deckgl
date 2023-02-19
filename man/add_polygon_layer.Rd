@@ -4,8 +4,13 @@
 \alias{add_polygon_layer}
 \title{Add a polygon layer to the deckgl widget}
 \usage{
-add_polygon_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "polygon-layer")
+add_polygon_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "polygon-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

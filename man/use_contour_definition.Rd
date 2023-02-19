@@ -4,8 +4,11 @@
 \alias{use_contour_definition}
 \title{Create a contour definition}
 \usage{
-use_contour_definition(threshold = 1, color = c(255, 255, 255),
-  stroke_width = 1)
+use_contour_definition(
+  threshold = 1,
+  color = c(255, 255, 255),
+  stroke_width = 1
+)
 }
 \arguments{
 \item{threshold}{The threshold value used in contour generation.}

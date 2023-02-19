@@ -4,9 +4,13 @@
 \alias{add_raster_tile_layer}
 \title{Add a raster tile layer to the deckgl widget}
 \usage{
-add_raster_tile_layer(deckgl, id = "raster-tiles",
+add_raster_tile_layer(
+  deckgl,
+  id = "raster-tiles",
   tileServer = "https://c.tile.openstreetmap.org/",
-  properties = list(), ...)
+  properties = list(),
+  ...
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
