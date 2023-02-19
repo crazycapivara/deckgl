@@ -8,6 +8,8 @@ reference:
 - title: deckgl Instance
   contents:
   - matches("deckgl")
+  - set_view_state
+  - does_it_work
 
 - title: Layers
   contents:

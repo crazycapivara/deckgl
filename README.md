@@ -170,7 +170,7 @@ named list by the `properties` argument or as named parameters / keyword
 arguments via the `...` parameter. The names correspond to the
 properties of the deck.gl counterparts. Therefore, please see the
 [deck.gl Layer
-Catalog](https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview)
+Catalog](https://github.com/visgl/deck.gl/tree/master/docs/api-reference/layers)
 to determine the available parameters for the used layer. You can also
 pass a props list and keyword arguments together. Identical properties
 are overwritten by the latter ones.
