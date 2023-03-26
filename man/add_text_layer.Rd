@@ -4,8 +4,13 @@
 \alias{add_text_layer}
 \title{Add a text layer to the deckgl widget}
 \usage{
-add_text_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "text-layer")
+add_text_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "text-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

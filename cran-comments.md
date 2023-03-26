@@ -1,18 +1,10 @@
 ## Comments
 
-* 'Get Started' vignette
-* Group API Reference
-* deck.gl v8.1.4
-* Data Sources
-* Controls
-* JSON Editor
-* Tooltip Templates
-* HEX Colors
+* deck.gl v8.1.9
 
 ## Test environments
 
-* local ubuntu 17.10, R 3.4.4
-* ubuntu 14.04 (on travis-ci), R 3.5.1
+* local ubuntu 22.04, R 4.2.1
 * win-builder (devel, oldrelease. release)
 
 ## R CMD check results

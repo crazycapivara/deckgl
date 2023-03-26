@@ -1,7 +1,7 @@
 Package: deckgl
 Title: An R Interface to 'deck.gl'
-Version: 0.2.9.9001
-Date: 2020-05-23
+Version: 0.3.0
+Date: 2023-02-19
 Authors@R: person("Stefan", "Kuethe", email = "crazycapivara@gmail.com", role = c("aut", "cre"))
 Maintainer: Stefan Kuethe <crazycapivara@gmail.com>
 Description: Makes 'deck.gl' <https://deck.gl/>, a WebGL-powered open-source JavaScript framework
@@ -25,7 +25,7 @@ Imports:
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.2.0
 Suggests:
   knitr,
   rmarkdown,
@@ -33,5 +33,6 @@ Suggests:
   rprojroot,
   sf,
   scales,
-  RColorBrewer
+  RColorBrewer,
+  shiny
 VignetteBuilder: knitr

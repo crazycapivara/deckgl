@@ -4,8 +4,13 @@
 \alias{add_path_layer}
 \title{Add a path layer to the deckgl widget}
 \usage{
-add_path_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "path-layer")
+add_path_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "path-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

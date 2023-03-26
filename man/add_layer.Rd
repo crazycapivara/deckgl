@@ -4,9 +4,17 @@
 \alias{add_layer}
 \title{Add any kind of layer to the deckgl widget}
 \usage{
-add_layer(deckgl, class_name, data = NULL, properties = list(), ...,
-  id = "hopeful-hopper", tooltip = NULL, source = NULL,
-  filter = NULL)
+add_layer(
+  deckgl,
+  class_name,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "hopeful-hopper",
+  tooltip = NULL,
+  source = NULL,
+  filter = NULL
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

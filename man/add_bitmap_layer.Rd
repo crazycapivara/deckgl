@@ -4,8 +4,13 @@
 \alias{add_bitmap_layer}
 \title{Add a bitmap layer to the deckgl widget}
 \usage{
-add_bitmap_layer(deckgl, image = NULL, properties = list(), ...,
-  id = "h3-hexagon-layer")
+add_bitmap_layer(
+  deckgl,
+  image = NULL,
+  properties = list(),
+  ...,
+  id = "h3-hexagon-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

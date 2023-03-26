@@ -4,8 +4,13 @@
 \alias{add_screen_grid_layer}
 \title{Add a screen grid layer to the deckgl widget}
 \usage{
-add_screen_grid_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "screen-grid-layer")
+add_screen_grid_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "screen-grid-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

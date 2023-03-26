@@ -4,8 +4,13 @@
 \alias{add_h3_cluster_layer}
 \title{Add a h3 cluster layer to the deckgl widget}
 \usage{
-add_h3_cluster_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "h3-cluster-layer")
+add_h3_cluster_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "h3-cluster-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

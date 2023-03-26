@@ -4,8 +4,13 @@
 \alias{add_grid_layer}
 \title{Add a grid layer to the deckgl widget}
 \usage{
-add_grid_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "grid-layer")
+add_grid_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "grid-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

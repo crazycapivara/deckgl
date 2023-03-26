@@ -4,8 +4,15 @@
 \alias{use_icon_definition}
 \title{Create an icon definition on an atlas image}
 \usage{
-use_icon_definition(x = 0, y = 0, width = 128, height = 128,
-  anchor_x = (width/2), anchor_y = 128, mask = TRUE)
+use_icon_definition(
+  x = 0,
+  y = 0,
+  width = 128,
+  height = 128,
+  anchor_x = (width/2),
+  anchor_y = 128,
+  mask = TRUE
+)
 }
 \arguments{
 \item{x}{The x position of the icon on the atlas image.}

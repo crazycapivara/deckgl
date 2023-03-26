@@ -6,19 +6,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Introduction to r-deckgl • deckgl for R</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to r-deckgl">
-<meta property="og:description" content="">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="deckgl">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">deckgl for R</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/deckgl.html">Get started</a>
 </li>
@@ -55,8 +51,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/crazycapivara/deckgl">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/crazycapivara/deckgl/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -73,193 +69,207 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Introduction to r-deckgl</h1>
+      <h1 data-toc-skip>Introduction to r-deckgl</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/crazycapivara/deckgl/blob/master/vignettes/deckgl.Rmd"><code>vignettes/deckgl.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/crazycapivara/deckgl/blob/HEAD/vignettes/deckgl.Rmd" class="external-link"><code>vignettes/deckgl.Rmd</code></a></small>
       <div class="hidden name"><code>deckgl.Rmd</code></div>
 
     </div>
 
     
     
-<div id="quickstart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#quickstart" class="anchor"></a>Quickstart</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(deckgl)</code></pre></div>
+<div class="section level2">
+<h2 id="quickstart">Quickstart<a class="anchor" aria-label="anchor" href="#quickstart"></a>
+</h2>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/crazycapivara/deckgl/" class="external-link">deckgl</a></span><span class="op">)</span></span></code></pre></div>
 <p>Create a <code>deckgl</code> instance:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>()</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Add a basemap:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_basemap.html">add_basemap</a></span>()</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_basemap.html">add_basemap</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Add any kind of layers:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Grid layer example</span>
-<span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"sf_bike_parking"</span>)
-
-props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-  <span class="dt">extruded =</span> <span class="ot">TRUE</span>,
-  <span class="dt">cellSize =</span> <span class="dv">200</span>,
-  <span class="dt">elevationScale =</span> <span class="dv">4</span>,
-  <span class="dt">getPosition =</span> <span class="op">~</span>lng <span class="op">+</span><span class="st"> </span>lat,
-  <span class="dt">tooltip =</span> <span class="st">"Count: {{count}}"</span>
-)
-
-<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">zoom =</span> <span class="dv">11</span>, <span class="dt">pitch =</span> <span class="dv">45</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_basemap.html">add_basemap</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span>(
-    <span class="dt">data =</span> sf_bike_parking,
-    <span class="dt">properties =</span> props
-  )</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Grid layer example</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"sf_bike_parking"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">props</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  extruded <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  cellSize <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  elevationScale <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  getPosition <span class="op">=</span> <span class="op">~</span><span class="va">lng</span> <span class="op">+</span> <span class="va">lat</span>,</span>
+<span>  tooltip <span class="op">=</span> <span class="st">"Count: {{count}}"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span>zoom <span class="op">=</span> <span class="fl">11</span>, pitch <span class="op">=</span> <span class="fl">45</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_basemap.html">add_basemap</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">sf_bike_parking</span>,</span>
+<span>    properties <span class="op">=</span> <span class="va">props</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 </div>
-<div id="the-deckgl-instance" class="section level2">
-<h2 class="hasAnchor">
-<a href="#the-deckgl-instance" class="anchor"></a>The <code>deckgl</code> Instance</h2>
+<div class="section level2">
+<h2 id="the-deckgl-instance">The <code>deckgl</code> Instance<a class="anchor" aria-label="anchor" href="#the-deckgl-instance"></a>
+</h2>
 <p>The <code>deckgl</code> function creates the widget / renderer to which you add layers and other configuration parameters:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rdeck &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(
-  <span class="dt">latitude =</span> <span class="fl">37.8</span>,
-  <span class="dt">longitude =</span> <span class="op">-</span><span class="fl">122.45</span>,
-  <span class="dt">zoom =</span> <span class="dv">12</span>
-) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span>(
-    <span class="dt">data =</span> data,
-    <span class="dt">properties =</span> props
-  )</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rdeck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span></span>
+<span>  latitude <span class="op">=</span> <span class="fl">37.8</span>,</span>
+<span>  longitude <span class="op">=</span> <span class="op">-</span><span class="fl">122.45</span>,</span>
+<span>  zoom <span class="op">=</span> <span class="fl">12</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">data</span>,</span>
+<span>    properties <span class="op">=</span> <span class="va">props</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 </div>
-<div id="layers" class="section level2">
-<h2 class="hasAnchor">
-<a href="#layers" class="anchor"></a>Layers</h2>
-<p>Due to the generic function <code>add_layer</code> any kind of layer defined in the <a href="https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview">deck.gl Layer Catalog</a> is supported. The layer type is chosen via the <code>class_name</code> parameter, e. g. <code>ScatterplotLayer</code> or <code>GeoJsonLayer</code>. Usually you will not use the generic function but one of the <code>add_*_layer</code> shortcuts instead:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Generic function</span>
-<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_layer.html">add_layer</a></span>(<span class="st">"ArcLayer"</span>, id, data, properties)
-
-<span class="co"># Shortcut function</span>
-<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_arc_layer.html">add_arc_layer</a></span>(id, data, properties)</code></pre></div>
+<div class="section level2">
+<h2 id="layers">Layers<a class="anchor" aria-label="anchor" href="#layers"></a>
+</h2>
+<p>Due to the generic function <code>add_layer</code> any kind of layer defined in the <a href="https://github.com/visgl/deck.gl/tree/master/docs/api-reference/layers" class="external-link">deck.gl Layer Catalog</a> is supported. The layer type is chosen via the <code>class_name</code> parameter, e. g. <code>ScatterplotLayer</code> or <code>GeoJsonLayer</code>. Usually you will not use the generic function but one of the <code>add_*_layer</code> shortcuts instead:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Generic function</span></span>
+<span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_layer.html">add_layer</a></span><span class="op">(</span><span class="st">"ArcLayer"</span>, <span class="va">id</span>, <span class="va">data</span>, <span class="va">properties</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Shortcut function</span></span>
+<span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_arc_layer.html">add_arc_layer</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">data</span>, <span class="va">properties</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data" class="anchor"></a>Data</h2>
+<div class="section level2">
+<h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h2>
 <p>The <code>data</code> parameter can either be an url to fetch data from or a data object. In most cases you will pass an object of type <code>data.frame</code> to the layers. Use the formula syntax to define data accessors that deck.gl uses to access the properties of the data object:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-  <span class="dt">getPosition =</span> <span class="op">~</span>lng <span class="op">+</span><span class="st"> </span>lat
-  <span class="co"># ...</span>
-)</code></pre></div>
-<div id="sf-data-objects" class="section level3">
-<h3 class="hasAnchor">
-<a href="#sf-data-objects" class="anchor"></a><code>sf</code> Data Objects</h3>
-<p>An object of class <a href="https://github.com/r-spatial/sf">sf</a> is a <code>data.frame</code> with a geometry list-column. Set the layer prop that fetches the geometry to the geometry list-column of your <code>sf</code> object:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Example: PolygonLayer</span>
-
-props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-  <span class="dt">getPolygon =</span> <span class="op">~</span>geometry
-  <span class="co"># ...</span>
-)</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">props</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  getPosition <span class="op">=</span> <span class="op">~</span><span class="va">lng</span> <span class="op">+</span> <span class="va">lat</span></span>
+<span>  <span class="co"># ...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="sf-data-objects">
+<code>sf</code> Data Objects<a class="anchor" aria-label="anchor" href="#sf-data-objects"></a>
+</h3>
+<p>An object of class <a href="https://github.com/r-spatial/sf" class="external-link">sf</a> is a <code>data.frame</code> with a geometry list-column. Set the layer prop that fetches the geometry to the geometry list-column of your <code>sf</code> object:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Example: PolygonLayer</span></span>
+<span></span>
+<span><span class="va">props</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  getPolygon <span class="op">=</span> <span class="op">~</span><span class="va">geometry</span></span>
+<span>  <span class="co"># ...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="sources" class="section level3">
-<h3 class="hasAnchor">
-<a href="#sources" class="anchor"></a>Sources</h3>
+<div class="section level3">
+<h3 id="sources">Sources<a class="anchor" aria-label="anchor" href="#sources"></a>
+</h3>
 <p>With <code>add_source</code> you can add a source to the widget that can be used accross layers:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"bart_stations"</span>)
-
-<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_source.html">add_source</a></span>(<span class="st">"bart-stations"</span>, bart_stations) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_scatterplot_layer.html">add_scatterplot_layer</a></span>(
-    <span class="dt">source =</span> <span class="st">"bart-stations"</span>,
-    <span class="dt">getPosition =</span> <span class="op">~</span>lng <span class="op">+</span><span class="st"> </span>lat,
-    <span class="co"># ...</span>
-  ) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_text_layer.html">add_text_layer</a></span>(
-    <span class="dt">source =</span> <span class="st">"bart-stations"</span>,
-    <span class="dt">getPosition =</span> <span class="op">~</span>lng <span class="op">+</span><span class="st"> </span>lat,
-    <span class="co"># ...</span>
-  ) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_basemap.html">add_basemap</a></span>()</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"bart_stations"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_source.html">add_source</a></span><span class="op">(</span><span class="st">"bart-stations"</span>, <span class="va">bart_stations</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_scatterplot_layer.html">add_scatterplot_layer</a></span><span class="op">(</span></span>
+<span>    source <span class="op">=</span> <span class="st">"bart-stations"</span>,</span>
+<span>    getPosition <span class="op">=</span> <span class="op">~</span><span class="va">lng</span> <span class="op">+</span> <span class="va">lat</span>,</span>
+<span>    <span class="co"># ...</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_text_layer.html">add_text_layer</a></span><span class="op">(</span></span>
+<span>    source <span class="op">=</span> <span class="st">"bart-stations"</span>,</span>
+<span>    getPosition <span class="op">=</span> <span class="op">~</span><span class="va">lng</span> <span class="op">+</span> <span class="va">lat</span>,</span>
+<span>    <span class="co"># ...</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_basemap.html">add_basemap</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Please note that you use the parameter <code>source</code> instead of <code>data</code>.</p>
 </div>
 </div>
-<div id="layer-props" class="section level2">
-<h2 class="hasAnchor">
-<a href="#layer-props" class="anchor"></a>Layer Props</h2>
-<p>Layer properties are passed to the <code>add_*_layer</code> functions either as named list by the <code>properties</code> argument or as named parameters / keyword arguments via the <code>...</code> parameter. The names correspond to the properties of the deck.gl counterparts. Therefore, please see the <a href="https://github.com/uber/deck.gl/tree/master/docs/layers#deckgl-layer-catalog-overview">deck.gl Layer Catalog</a> to determine the available parameters for the used layer. You can also pass a props list and keyword arguments together. Identical properties are overwritten by the latter ones.</p>
-<p><a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer">Grid Layer</a> example:</p>
-<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// JavaScript code</span>
-
-<span class="kw">const</span> layer <span class="op">=</span> <span class="kw">new</span> <span class="at">GridLayer</span>(<span class="op">{</span>
-  <span class="dt">id</span><span class="op">:</span> <span class="st">"grid-layer"</span><span class="op">,</span>
-  <span class="dt">data</span><span class="op">:</span> data<span class="op">,</span>
-  <span class="dt">extruded</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span>
-  <span class="dt">cellSize</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span>
-  <span class="dt">elevationScale</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span>
-  <span class="dt">getPosition</span><span class="op">:</span> d <span class="op">=&gt;</span> [<span class="va">d</span>.<span class="at">lng</span><span class="op">,</span> <span class="va">d</span>.<span class="at">lat</span>]
-<span class="op">}</span>)<span class="op">;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Corresponding R code</span>
-
-<span class="co"># using named arguments</span>
-deck &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span>(
-    <span class="dt">id =</span> <span class="st">"grid-layer"</span>,
-    <span class="dt">data =</span> data,
-    <span class="dt">extruded =</span> <span class="ot">TRUE</span>,
-    <span class="dt">cellSize =</span> <span class="dv">200</span>,
-    <span class="dt">elevationScale =</span> <span class="dv">4</span>,
-    <span class="dt">getPosition =</span> <span class="op">~</span>lng <span class="op">+</span><span class="st"> </span>lat
-  )
-
-<span class="co"># ... using a named props list</span>
-props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-  <span class="dt">cellSize =</span> <span class="dv">200</span>,
-  <span class="dt">extruded =</span> <span class="ot">TRUE</span>,
-  <span class="co"># ...</span>
-)
-
-<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span>(
-    <span class="dt">data =</span> data,
-    <span class="dt">properties =</span> props
-  )</code></pre></div>
-<div id="camels-or-snakes" class="section level3">
-<h3 class="hasAnchor">
-<a href="#camels-or-snakes" class="anchor"></a>Camels or Snakes</h3>
+<div class="section level2">
+<h2 id="layer-props">Layer Props<a class="anchor" aria-label="anchor" href="#layer-props"></a>
+</h2>
+<p>Layer properties are passed to the <code>add_*_layer</code> functions either as named list by the <code>properties</code> argument or as named parameters / keyword arguments via the <code>...</code> parameter. The names correspond to the properties of the deck.gl counterparts. Therefore, please see the <a href="https://github.com/visgl/deck.gl/tree/master/docs/api-reference/layers" class="external-link">deck.gl Layer Catalog</a> to determine the available parameters for the used layer. You can also pass a props list and keyword arguments together. Identical properties are overwritten by the latter ones.</p>
+<p><a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/grid-layer" class="external-link">Grid Layer</a> example:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">// JavaScript code</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> layer <span class="op">=</span> <span class="kw">new</span> <span class="fu">GridLayer</span>({</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">id</span><span class="op">:</span> <span class="st">"grid-layer"</span><span class="op">,</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">data</span><span class="op">:</span> data<span class="op">,</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">extruded</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">cellSize</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">elevationScale</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">getPosition</span><span class="op">:</span> d <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">lng</span><span class="op">,</span> d<span class="op">.</span><span class="at">lat</span>]</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Corresponding R code</span></span>
+<span></span>
+<span><span class="co"># using named arguments</span></span>
+<span><span class="va">deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span><span class="op">(</span></span>
+<span>    id <span class="op">=</span> <span class="st">"grid-layer"</span>,</span>
+<span>    data <span class="op">=</span> <span class="va">data</span>,</span>
+<span>    extruded <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    cellSize <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>    elevationScale <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>    getPosition <span class="op">=</span> <span class="op">~</span><span class="va">lng</span> <span class="op">+</span> <span class="va">lat</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># ... using a named props list</span></span>
+<span><span class="va">props</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  cellSize <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  extruded <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="co"># ...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">data</span>,</span>
+<span>    properties <span class="op">=</span> <span class="va">props</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="camels-or-snakes">Camels or Snakes<a class="anchor" aria-label="anchor" href="#camels-or-snakes"></a>
+</h3>
 <p>According to the style conventions in R, <code>camelCased</code> parameters in deck.gl can also be passed as <code>snake_cased</code> parameters in R. For example, <code>getPosition</code> can be passed to deck.gl as <code>get_position</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span>(
-    <span class="dt">get_position =</span> <span class="op">~</span>lng <span class="op">+</span><span class="st"> </span>lat,
-    <span class="dt">cell_size =</span> <span class="dv">200</span>,
-    <span class="co"># ...</span>
-    
-  )</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span><span class="op">(</span></span>
+<span>    get_position <span class="op">=</span> <span class="op">~</span><span class="va">lng</span> <span class="op">+</span> <span class="va">lat</span>,</span>
+<span>    cell_size <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>    <span class="co"># ...</span></span>
+<span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 </div>
-<div id="data-accessors" class="section level3">
-<h3 class="hasAnchor">
-<a href="#data-accessors" class="anchor"></a>Data Accessors</h3>
+<div class="section level3">
+<h3 id="data-accessors">Data Accessors<a class="anchor" aria-label="anchor" href="#data-accessors"></a>
+</h3>
 <p>Use the formula syntax to define data accessors:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-  <span class="dt">getPosition =</span> <span class="op">~</span>lng <span class="op">+</span><span class="st"> </span>lat <span class="co"># js: d =&gt; [d.lng, d.lat]</span>
-  <span class="dt">getFillColor =</span> <span class="op">~</span>color <span class="co"># js: d =&gt; d.color</span>
-  <span class="co"># ...</span>
-)</code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>props <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">getPosition =</span> <span class="sc">~</span>lng <span class="sc">+</span> lat <span class="co"># js: d =&gt; [d.lng, d.lat]</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">getFillColor =</span> <span class="sc">~</span>color <span class="co"># js: d =&gt; d.color</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>The example above assumes that your data contains the columns <code>lng</code>, <code>lat</code> and <code>color</code>.</p>
 <p>It is also possible to pass JavaScript code by using the <code>JS</code> function in R:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-  <span class="dt">getColor =</span> <span class="kw"><a href="https://rdrr.io/pkg/htmlwidgets/man/JS.html">JS</a></span>(<span class="st">"d =&gt; d.capital ? [140, 10, 10] : [60, 10, 10]"</span>)
-  <span class="co"># ...</span>
-)</code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">props</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  getColor <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/htmlwidgets/man/JS.html" class="external-link">JS</a></span><span class="op">(</span><span class="st">"d =&gt; d.capital ? [140, 10, 10] : [60, 10, 10]"</span><span class="op">)</span></span>
+<span>  <span class="co"># ...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="colors" class="section level3">
-<h3 class="hasAnchor">
-<a href="#colors" class="anchor"></a>Colors</h3>
+<div class="section level3">
+<h3 id="colors">Colors<a class="anchor" aria-label="anchor" href="#colors"></a>
+</h3>
 <p>In deck.gl colors are represented by <code>[r, g, b, a]</code> arrays. In R you can pass hex color codes or color names to all color props of the <code>add_*_layer</code> functions. They are automatically converted to the required format:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span>(
-    <span class="dt">colorRange =</span> RColorBrewer<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span>(<span class="dv">6</span>, <span class="st">"Blues"</span>),
-    <span class="co"># ...</span>
-  )</code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span><span class="op">(</span></span>
+<span>    colorRange <span class="op">=</span> <span class="fu">RColorBrewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html" class="external-link">brewer.pal</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Blues"</span><span class="op">)</span>,</span>
+<span>    <span class="co"># ...</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="tooltips" class="section level2">
-<h2 class="hasAnchor">
-<a href="#tooltips" class="anchor"></a>Tooltips</h2>
+<div class="section level2">
+<h2 id="tooltips">Tooltips<a class="anchor" aria-label="anchor" href="#tooltips"></a>
+</h2>
 <p>The tooltip for a layer can be set via the <code>tooltip</code> parameter. You can either pass a single template string or a list with the following properties (see also <code>use_tooltip</code>):</p>
 <ul>
 <li>
@@ -267,155 +277,153 @@ props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/
 <li>
 <code>style</code>: A <code>cssText</code> string that will modefiy the default style of the tooltip.</li>
 </ul>
-<div id="tooltip-template-syntax" class="section level3">
-<h3 class="hasAnchor">
-<a href="#tooltip-template-syntax" class="anchor"></a>Tooltip Template Syntax</h3>
-<p>The tooltip string is a so called “mustache” template in which variable names are identified by the double curly brackets that surround them. The variable names available to the template are given by deck.gl’s <a href="https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object">pickingInfo.object</a> and vary by layer.</p>
-<p><a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/arc-layer">Arc Layer</a> example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"bart_segments"</span>)
-
-props &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-  <span class="dt">getWidth =</span> <span class="dv">12</span>,
-  <span class="dt">getSourcePosition =</span> <span class="op">~</span>from_lng <span class="op">+</span><span class="st"> </span>from_lat,
-  <span class="dt">getTargetPosition =</span> <span class="op">~</span>to_lng <span class="op">+</span><span class="st"> </span>to_lat,
-  <span class="dt">getSourceColor =</span> <span class="st">"yellow"</span>,
-  <span class="dt">getTargetColor =</span> <span class="st">"orange"</span>,
-  <span class="dt">tooltip =</span> <span class="kw"><a href="../reference/use_tooltip.html">use_tooltip</a></span>(
-    <span class="dt">html =</span> <span class="st">"{{from_name}} to {{to_name}}"</span>,
-    <span class="dt">style =</span> <span class="st">"background: steelBlue; border-radius: 5px;"</span>
-  )
-)
-
-<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>(<span class="dt">zoom =</span> <span class="fl">9.5</span>, <span class="dt">pitch =</span> <span class="dv">35</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_arc_layer.html">add_arc_layer</a></span>(<span class="dt">data =</span> bart_segments, <span class="dt">properties =</span> props) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_basemap.html">add_basemap</a></span>()</code></pre></div>
-<p>See <a href="https://github.com/janl/mustache.js">mustache.js</a> for a complete syntax overwiew.</p>
+<div class="section level3">
+<h3 id="tooltip-template-syntax">Tooltip Template Syntax<a class="anchor" aria-label="anchor" href="#tooltip-template-syntax"></a>
+</h3>
+<p>The tooltip string is a so called “mustache” template in which variable names are identified by the double curly brackets that surround them. The variable names available to the template are given by deck.gl’s <a href="https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object" class="external-link">pickingInfo.object</a> and vary by layer.</p>
+<p><a href="https://deck.gl/#/documentation/deckgl-api-reference/layers/arc-layer" class="external-link">Arc Layer</a> example:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"bart_segments"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">props</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  getWidth <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>  getSourcePosition <span class="op">=</span> <span class="op">~</span><span class="va">from_lng</span> <span class="op">+</span> <span class="va">from_lat</span>,</span>
+<span>  getTargetPosition <span class="op">=</span> <span class="op">~</span><span class="va">to_lng</span> <span class="op">+</span> <span class="va">to_lat</span>,</span>
+<span>  getSourceColor <span class="op">=</span> <span class="st">"yellow"</span>,</span>
+<span>  getTargetColor <span class="op">=</span> <span class="st">"orange"</span>,</span>
+<span>  tooltip <span class="op">=</span> <span class="fu"><a href="../reference/use_tooltip.html">use_tooltip</a></span><span class="op">(</span></span>
+<span>    html <span class="op">=</span> <span class="st">"{{from_name}} to {{to_name}}"</span>,</span>
+<span>    style <span class="op">=</span> <span class="st">"background: steelBlue; border-radius: 5px;"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span>zoom <span class="op">=</span> <span class="fl">9.5</span>, pitch <span class="op">=</span> <span class="fl">35</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_arc_layer.html">add_arc_layer</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">bart_segments</span>, properties <span class="op">=</span> <span class="va">props</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_basemap.html">add_basemap</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>See <a href="https://github.com/janl/mustache.js" class="external-link">mustache.js</a> for a complete syntax overwiew.</p>
 </div>
 </div>
-<div id="controls" class="section level2">
-<h2 class="hasAnchor">
-<a href="#controls" class="anchor"></a>Controls</h2>
+<div class="section level2">
+<h2 id="controls">Controls<a class="anchor" aria-label="anchor" href="#controls"></a>
+</h2>
 <p>Controls are displayed as overlays on top of the map / deck. Usually you can set the position and the style of the control. The most basic control is a simple text box:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_basemap.html">add_basemap</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_control.html">add_control</a></span>(
-    <span class="dt">html =</span> <span class="st">"Plain Base Map"</span>,
-    <span class="dt">pos =</span> <span class="st">"top-right"</span>,
-    <span class="dt">style =</span> <span class="st">"background: steelblue; color: white"</span>
-  )</code></pre></div>
-<div id="json-editor" class="section level3">
-<h3 class="hasAnchor">
-<a href="#json-editor" class="anchor"></a>JSON Editor</h3>
-<p>You can add an instance of the <a href="https://ace.c9.io/">ace</a> editor in JSON mode to the map by using <code>add_json_editor</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span>(
-    <span class="co"># ...</span>
-  ) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_json_editor.html">add_json_editor</a></span>()</code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_basemap.html">add_basemap</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_control.html">add_control</a></span><span class="op">(</span></span>
+<span>    html <span class="op">=</span> <span class="st">"Plain Base Map"</span>,</span>
+<span>    pos <span class="op">=</span> <span class="st">"top-right"</span>,</span>
+<span>    style <span class="op">=</span> <span class="st">"background: steelblue; color: white"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="json-editor">JSON Editor<a class="anchor" aria-label="anchor" href="#json-editor"></a>
+</h3>
+<p>You can add an instance of the <a href="https://ace.c9.io/" class="external-link">ace</a> editor in JSON mode to the map by using <code>add_json_editor</code>:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span><span class="op">(</span></span>
+<span>    <span class="co"># ...</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_json_editor.html">add_json_editor</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>This allows you to change your layer props on the fly. You can toggle the visibility of the editor by pressing “e”.</p>
 </div>
-<div id="legends" class="section level3">
-<h3 class="hasAnchor">
-<a href="#legends" class="anchor"></a>Legends</h3>
+<div class="section level3">
+<h3 id="legends">Legends<a class="anchor" aria-label="anchor" href="#legends"></a>
+</h3>
 <p>With <code>add_legend</code> you can add a custom legend to your widget:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_basemap.html">add_basemap</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_legend.html">add_legend</a></span>(
-    <span class="dt">colors =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"yellow"</span>, <span class="st">"orange"</span>),
-    <span class="dt">labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Cake"</span>, <span class="st">"Icecream"</span>),
-    <span class="dt">title =</span> <span class="st">"Sweets"</span>
-  )</code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_basemap.html">add_basemap</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_legend.html">add_legend</a></span><span class="op">(</span></span>
+<span>    colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yellow"</span>, <span class="st">"orange"</span><span class="op">)</span>,</span>
+<span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Cake"</span>, <span class="st">"Icecream"</span><span class="op">)</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Sweets"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p>In most cases, you will create the legend automatically using a palette function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_column &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
-pal &lt;-<span class="st"> </span>scales<span class="op">::</span><span class="kw"><a href="https://scales.r-lib.org//reference/col_numeric.html">col_bin</a></span>(<span class="st">"Blues"</span>, data_column, <span class="dt">bins =</span> <span class="dv">5</span>)
-<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_basemap.html">add_basemap</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_legend_pal.html">add_legend_pal</a></span>(pal, <span class="dt">title =</span> <span class="st">"Blues"</span>)</code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_column</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/col_numeric.html" class="external-link">col_bin</a></span><span class="op">(</span><span class="st">"Blues"</span>, <span class="va">data_column</span>, bins <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_basemap.html">add_basemap</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_legend_pal.html">add_legend_pal</a></span><span class="op">(</span><span class="va">pal</span>, title <span class="op">=</span> <span class="st">"Blues"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="basemaps" class="section level2">
-<h2 class="hasAnchor">
-<a href="#basemaps" class="anchor"></a>Basemaps</h2>
-<p>By default, <code>add_basemap</code> adds a <a href="https://carto.com/developers/carto-vl/reference/#cartobasemaps">carto basemap</a> to the widget.</p>
-<p>To use basemaps from <a href="https://www.mapbox.com/maps/">mapbox</a> it is recommended that you store your API access token in an environment variable called <code>MAPBOX_API_TOKEN</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># If not set globally</span>
-<span class="co">#Sys.setenv(MAPBOX_API_TOKEN = "xyz")</span>
-
-<span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span>(<span class="st">"mapbox://styles/mapbox/light-v9"</span>)</code></pre></div>
+<div class="section level2">
+<h2 id="basemaps">Basemaps<a class="anchor" aria-label="anchor" href="#basemaps"></a>
+</h2>
+<p>By default, <code>add_basemap</code> adds a <a href="https://carto.com/developers/carto-vl/reference/#cartobasemaps" class="external-link">carto basemap</a> to the widget.</p>
+<p>To use basemaps from <a href="https://www.mapbox.com/maps/" class="external-link">mapbox</a> it is recommended that you store your API access token in an environment variable called <code>MAPBOX_API_TOKEN</code>:</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># If not set globally</span></span>
+<span><span class="co">#Sys.setenv(MAPBOX_API_TOKEN = "xyz")</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_mapbox_basemap.html">add_mapbox_basemap</a></span><span class="op">(</span><span class="st">"mapbox://styles/mapbox/light-v9"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="run-examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#run-examples" class="anchor"></a>Run Examples</h2>
-<p>You can run the <a href="https://github.com/crazycapivara/deckgl/tree/master/inst/examples/deckgl-api-reference">API examples</a> from the <code>add_*_layer</code> functions with <code>example(add_*_layer)</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/example.html">example</a></span>(add_grid_layer)</code></pre></div>
+<div class="section level2">
+<h2 id="run-examples">Run Examples<a class="anchor" aria-label="anchor" href="#run-examples"></a>
+</h2>
+<p>You can run the <a href="https://github.com/crazycapivara/deckgl/tree/master/inst/examples/deckgl-api-reference" class="external-link">API examples</a> from the <code>add_*_layer</code> functions with <code>example(add_*_layer)</code>:</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/example.html" class="external-link">example</a></span><span class="op">(</span><span class="va">add_grid_layer</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="shiny-integration" class="section level2">
-<h2 class="hasAnchor">
-<a href="#shiny-integration" class="anchor"></a>Shiny Integration</h2>
+<div class="section level2">
+<h2 id="shiny-integration">Shiny Integration<a class="anchor" aria-label="anchor" href="#shiny-integration"></a>
+</h2>
 <p>With the <code>renderDeckgl</code> and <code>deckglOutput</code> functions you can use r-deckgl in shiny applications:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(shiny)
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(deckgl)
-
-backend &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
-  output<span class="op">$</span>rdeck &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deckgl-shiny.html">renderDeckgl</a></span>({
-    <span class="kw"><a href="../reference/deckgl.html">deckgl</a></span>() <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span>(
-        <span class="dt">data =</span> sf_bike_parking,
-        <span class="dt">getPosition =</span> <span class="op">~</span>lng <span class="op">+</span><span class="st"> </span>lat,
-        <span class="dt">cellSize =</span> <span class="dv">400</span>,
-        <span class="dt">pickable =</span> <span class="ot">TRUE</span>
-      ) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/add_basemap.html">add_basemap</a></span>()
-  })
-}
-
-frontend &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span>(
-  <span class="kw"><a href="../reference/deckgl-shiny.html">deckglOutput</a></span>(<span class="st">"rdeck"</span>)
-)
-
-<span class="kw"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span>(frontend, backend)</code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/" class="external-link">shiny</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/crazycapivara/deckgl/" class="external-link">deckgl</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">backend</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">rdeck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deckgl-shiny.html">renderDeckgl</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/deckgl.html">deckgl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="../reference/add_grid_layer.html">add_grid_layer</a></span><span class="op">(</span></span>
+<span>        data <span class="op">=</span> <span class="va">sf_bike_parking</span>,</span>
+<span>        getPosition <span class="op">=</span> <span class="op">~</span><span class="va">lng</span> <span class="op">+</span> <span class="va">lat</span>,</span>
+<span>        cellSize <span class="op">=</span> <span class="fl">400</span>,</span>
+<span>        pickable <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="../reference/add_basemap.html">add_basemap</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">frontend</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/deckgl-shiny.html">deckglOutput</a></span><span class="op">(</span><span class="st">"rdeck"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">frontend</span>, <span class="va">backend</span><span class="op">)</span></span></code></pre></div>
 <p>To update a <code>deckgl</code> instance use <code>deckgl_proxy</code> in combination with <code>update_deckgl</code>.</p>
-<p>Furthermore, the <code>onclick</code> event sends deck.gl’s <a href="https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object">picking info object</a> to your shiny application and updates the corresponding input in the form of <code>input$widget_id_onclick</code>. For example, if the widget id is <code>rdeck</code>, you can access the <code>pickingInfo</code> object with <code>input$rdeck_onclick</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">backend <span class="op">&lt;</span><span class="st"> </span><span class="op">-</span><span class="cf">function</span>(input, output) {
-  <span class="co"># ...</span>
-  <span class="kw"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span>(input<span class="op">$</span>rdeck_onclick, {
-    info &lt;-<span class="st"> </span>input<span class="op">$</span>rdeck_onclick
-    <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(info<span class="op">$</span>object)
-  })
-}</code></pre></div>
+<p>Furthermore, the <code>onclick</code> event sends deck.gl’s <a href="https://github.com/visgl/deck.gl/blob/master/docs/developer-guide/interactivity.md#the-picking-info-object" class="external-link">picking info object</a> to your shiny application and updates the corresponding input in the form of <code>input$widget_id_onclick</code>. For example, if the widget id is <code>rdeck</code>, you can access the <code>pickingInfo</code> object with <code>input$rdeck_onclick</code>:</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">backend</span> <span class="op">&lt;</span> <span class="op">-</span><span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># ...</span></span>
+<span>  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">rdeck_onclick</span>, <span class="op">{</span></span>
+<span>    <span class="va">info</span> <span class="op">&lt;-</span> <span class="va">input</span><span class="op">$</span><span class="va">rdeck_onclick</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">info</span><span class="op">$</span><span class="va">object</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#quickstart">Quickstart</a></li>
-      <li><a href="#the-deckgl-instance">The <code>deckgl</code> Instance</a></li>
-      <li><a href="#layers">Layers</a></li>
-      <li><a href="#data">Data</a></li>
-      <li><a href="#layer-props">Layer Props</a></li>
-      <li><a href="#tooltips">Tooltips</a></li>
-      <li><a href="#controls">Controls</a></li>
-      <li><a href="#basemaps">Basemaps</a></li>
-      <li><a href="#run-examples">Run Examples</a></li>
-      <li><a href="#shiny-integration">Shiny Integration</a></li>
-      </ul>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
 
 
 
       <footer><div class="copyright">
-  <p>Developed by Stefan Kuethe.</p>
+  <p></p>
+<p>Developed by Stefan Kuethe.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -423,6 +431,8 @@ frontend &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io
 
   
 
+
+  
 
   </body>
 </html>

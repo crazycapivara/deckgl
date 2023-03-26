@@ -4,8 +4,13 @@
 \alias{add_hexagon_layer}
 \title{Add a hexagon layer to the deckgl widget}
 \usage{
-add_hexagon_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "hexagon-layer")
+add_hexagon_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "hexagon-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

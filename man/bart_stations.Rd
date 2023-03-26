@@ -4,7 +4,8 @@
 \name{bart_stations}
 \alias{bart_stations}
 \title{bart stations}
-\format{tibble with 44 rows and 7 variables:
+\format{
+tibble with 44 rows and 7 variables:
 \describe{
   \item{name}{station name}
   \item{code}{two-letter station code}
@@ -13,7 +14,8 @@
   \item{exits}{number of exits}
   \item{lng}{longitude}
   \item{lat}{latitude}
-}}
+}
+}
 \source{
 \url{https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-stations.json}
 }

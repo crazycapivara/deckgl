@@ -4,8 +4,11 @@
 \alias{use_default_icon_properties}
 \title{Use default icon properties}
 \usage{
-use_default_icon_properties(sizeScale = 15, getSize = 5,
-  getColor = c(240, 140, 0))
+use_default_icon_properties(
+  sizeScale = 15,
+  getSize = 5,
+  getColor = c(240, 140, 0)
+)
 }
 \arguments{
 \item{sizeScale}{icon size multiplier}

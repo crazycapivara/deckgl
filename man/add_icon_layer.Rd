@@ -4,8 +4,13 @@
 \alias{add_icon_layer}
 \title{Add an icon layer to the deckgl widget}
 \usage{
-add_icon_layer(deckgl, data = NULL,
-  properties = use_default_icon_properties(), ..., id = "icon-layer")
+add_icon_layer(
+  deckgl,
+  data = NULL,
+  properties = use_default_icon_properties(),
+  ...,
+  id = "icon-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

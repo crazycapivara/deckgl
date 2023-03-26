@@ -4,8 +4,13 @@
 \alias{add_point_cloud_layer}
 \title{Add a point cloud layer to the deckgl widget}
 \usage{
-add_point_cloud_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "point-cloud-layer")
+add_point_cloud_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "point-cloud-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

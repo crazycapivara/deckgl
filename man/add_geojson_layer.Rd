@@ -4,8 +4,13 @@
 \alias{add_geojson_layer}
 \title{Add a geojson layer to the deckgl widget}
 \usage{
-add_geojson_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "geojson-layer")
+add_geojson_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "geojson-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
@@ -23,7 +28,7 @@ are overwritten.}
 \item{id}{The unique id of the layer.}
 }
 \description{
-The \code{GeoJsonLayer} takes in \href{http://geojson.org}{GeoJson} formatted data
+The \code{GeoJsonLayer} takes in \href{https://geojson.org}{GeoJson} formatted data
 and renders it as interactive polygons, lines and points.
 }
 \examples{

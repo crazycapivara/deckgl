@@ -4,8 +4,13 @@
 \alias{add_column_layer}
 \title{Add a column layer to the deckgl widget}
 \usage{
-add_column_layer(deckgl, data = NULL, properties = list(), ...,
-  id = "column-layer")
+add_column_layer(
+  deckgl,
+  data = NULL,
+  properties = list(),
+  ...,
+  id = "column-layer"
+)
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}

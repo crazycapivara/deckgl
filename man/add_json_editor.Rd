@@ -4,8 +4,7 @@
 \alias{add_json_editor}
 \title{Add a JSON-editor to the deckgl widget}
 \usage{
-add_json_editor(deckgl, ..., style = "width: 40\%;",
-  theme = "idle_fingers")
+add_json_editor(deckgl, ..., style = "width: 40\%;", theme = "idle_fingers")
 }
 \arguments{
 \item{deckgl}{A deckgl widget object.}
