@@ -23,4 +23,4 @@ properties <- list(
 layer_class <- "PolygonLayer"
 
 deckgl(zoom = 10, pitch = 35) %>%
-  add_layer(layer_class, "polygon-layer", data, properties)
+  add_layer(layer_class, "polygon-layer", data=data, properties=properties)
